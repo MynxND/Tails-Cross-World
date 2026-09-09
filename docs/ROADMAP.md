@@ -21,7 +21,8 @@ Progress:
 - [x] Add a metadata-only assembly inventory tool that does not load or execute legacy DLLs.
 - [x] Establish the initial system catalog and evidence/confidence format.
 - [ ] Review and sanitize the assembly inventory into evidence-backed type and system summaries.
-- [ ] Complete protocol/RPC payload semantics; 12 distinct `SendEvent` codes and representative call sites are now cataloged.
+- [ ] Complete protocol/RPC payload semantics; eight priority payloads now have IL-derived key maps.
+- [x] Define versioned client-intent contracts that exclude server-owned damage, healing, rewards, and progression.
 - [x] Classify `.zrData` as BinaryFormatter/NRBF using a non-deserializing probe and synthetic tests.
 - [x] Define strict version-1 contracts for Account, Character, Item, Equipment, Quest, Monster, and Map.
 - [x] Reject unknown fields, invalid versions, invalid numbers, duplicate IDs, and incomplete 12-rig equipment variants.
