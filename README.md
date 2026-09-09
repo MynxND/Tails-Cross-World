@@ -22,5 +22,5 @@ See [the roadmap](docs/ROADMAP.md) and [clean-room boundary](docs/architecture/0
 The .NET metadata inspector reads CLI metadata without loading or executing legacy assemblies:
 
 ```powershell
-dotnet run --project tools/assembly_inspector -- "D:\path\to\Game_Data\Managed" "D:\private-reports\assembly-inventory.json"
+pwsh tools/assembly_inspector/Inspect-Assemblies.ps1 -ManagedDirectory "D:\path\to\Game_Data\Managed" -OutputPath "D:\private-reports\assembly-inventory.json"
 ```
