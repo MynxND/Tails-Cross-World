@@ -16,6 +16,14 @@ Exit criteria: the inspector works without changing the reference tree, tests pa
 
 Create evidence-backed assembly/type, system, protocol, RPC, and persistence catalogs. Define schemas for character, item, equipment, quest, monster, map, and account data. Parsers must reject malformed input.
 
+Progress:
+
+- [x] Add a metadata-only assembly inventory tool that does not load or execute legacy DLLs.
+- [x] Establish the initial system catalog and evidence/confidence format.
+- [ ] Review and sanitize the assembly inventory into evidence-backed type and system summaries.
+- [ ] Build protocol/opcode/RPC and persistence catalogs with synthetic fixtures.
+- [ ] Define the initial domain schemas and malformed-input tests.
+
 ## Phase 2 - Offline vertical slice
 
 Build one complete quest, combat, loot, reward, save, and reload loop in a new Unity 6 URP project without legacy DLL dependencies.

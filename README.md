@@ -16,3 +16,11 @@ python tools/reference_inspector/inspect_reference.py --root "D:\path\to\legacy-
 The inspector opens reference files only for reading. The output contains file metadata and SHA-256 checksums, but no save contents, log contents, secrets, or extracted game assets. Keep generated reports private unless they have been reviewed and sanitized.
 
 See [the roadmap](docs/ROADMAP.md) and [clean-room boundary](docs/architecture/0001-clean-room-boundary.md).
+
+## Phase 1 assembly inventory
+
+The .NET metadata inspector reads CLI metadata without loading or executing legacy assemblies:
+
+```powershell
+dotnet run --project tools/assembly_inspector -- "D:\path\to\Game_Data\Managed" "D:\private-reports\assembly-inventory.json"
+```
