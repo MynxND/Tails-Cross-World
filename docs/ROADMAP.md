@@ -21,8 +21,10 @@ Progress:
 - [x] Add a metadata-only assembly inventory tool that does not load or execute legacy DLLs.
 - [x] Establish the initial system catalog and evidence/confidence format.
 - [ ] Review and sanitize the assembly inventory into evidence-backed type and system summaries.
-- [ ] Build protocol/opcode/RPC and persistence catalogs with synthetic fixtures.
-- [ ] Define the initial domain schemas and malformed-input tests.
+- [ ] Complete protocol/opcode/RPC semantics; the occurrence catalog and evidence rules now exist.
+- [x] Classify `.zrData` as BinaryFormatter/NRBF using a non-deserializing probe and synthetic tests.
+- [x] Define strict version-1 contracts for Account, Character, Item, Equipment, Quest, Monster, and Map.
+- [x] Reject unknown fields, invalid versions, invalid numbers, duplicate IDs, and incomplete 12-rig equipment variants.
 
 ## Phase 2 - Offline vertical slice
 

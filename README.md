@@ -15,6 +15,14 @@ python tools/reference_inspector/inspect_reference.py --root "D:\path\to\legacy-
 
 The inspector opens reference files only for reading. The output contains file metadata and SHA-256 checksums, but no save contents, log contents, secrets, or extracted game assets. Keep generated reports private unless they have been reviewed and sanitized.
 
+Run all current checks from PowerShell with:
+
+```powershell
+.\scripts\test.ps1
+```
+
+The tests cover the read-only reference inventory, public Git boundary, versioned domain contracts, and safe `.zrData` format classification. A playable clean-room game begins in Phase 2.
+
 See [the roadmap](docs/ROADMAP.md) and [clean-room boundary](docs/architecture/0001-clean-room-boundary.md).
 
 ## Phase 1 assembly inventory

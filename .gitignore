@@ -11,6 +11,10 @@
 !tools/**
 !tests/
 !tests/**
+!src/
+!src/**
+!scripts/
+!scripts/**
 !.github/
 !.github/**
 
