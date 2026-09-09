@@ -1,0 +1,11 @@
+# Unity YAML commonly uses significant blank values with a trailing space.
+*.asset whitespace=-blank-at-eol
+*.meta whitespace=-blank-at-eol
+*.unity whitespace=-blank-at-eol
+
+# Keep source and configuration text normalized in Git.
+*.cs text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.ps1 text eol=lf
