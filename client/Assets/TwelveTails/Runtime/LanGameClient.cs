@@ -1,0 +1,156 @@
+using System;
+using System.Collections.Concurrent;
+using System.IO;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace TwelveTails.Gameplay
+{
+    public sealed class LanGameClient : MonoBehaviour
+    {
+        [Serializable] private sealed class Request
+        {
+            public int protocol_version = 1;
+            public string kind = string.Empty;
+            public string account_id = string.Empty;
+            public string token = string.Empty;
+            public string lobby_id = string.Empty;
+            public int sequence;
+            public float[] direction = Array.Empty<float>();
+        }
+        [Serializable] private sealed class Response { public bool ok; public string error = string.Empty; public Result result = null!; }
+        [Serializable] private sealed class Result
+        {
+            public string token = string.Empty;
+            public string account_id = string.Empty;
+            public string lobby_id = string.Empty;
+            public string host_account_id = string.Empty;
+            public MapState map = null!;
+            public PlayerState[] players = Array.Empty<PlayerState>();
+        }
+        [Serializable] private sealed class MapState { public int monster_hp; }
+        [Serializable] private sealed class PlayerState
+        {
+            public string account_id = string.Empty;
+            public float[] position = Array.Empty<float>();
+            public int experience;
+            public int potions;
+        }
+
+        private readonly ConcurrentQueue<Action> mainThread = new();
+        private string host = "127.0.0.1";
+        private string account = "player.one";
+        private string joinCode = string.Empty;
+        private string token = string.Empty;
+        private string lobbyId = string.Empty;
+        private string status = "Offline";
+        private int sequence;
+        private bool inFlight;
+        private float nextSync;
+        private GameObject? remotePlayer;
+
+        private void Update()
+        {
+            while (mainThread.TryDequeue(out var action)) action();
+            if (string.IsNullOrEmpty(lobbyId) || inFlight || Time.unscaledTime < nextSync) return;
+            nextSync = Time.unscaledTime + 0.15f;
+            var keyboard = Keyboard.current;
+            var direction = keyboard == null ? Vector3.zero : new Vector3(
+                (keyboard.dKey.isPressed ? 1 : 0) - (keyboard.aKey.isPressed ? 1 : 0), 0,
+                (keyboard.wKey.isPressed ? 1 : 0) - (keyboard.sKey.isPressed ? 1 : 0)).normalized;
+            if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame)
+                Send(new Request { kind = "attack", token = token, sequence = ++sequence });
+            else if (direction.sqrMagnitude > 0)
+                Send(new Request { kind = "move", token = token, sequence = ++sequence, direction = new[] { direction.x, direction.y, direction.z } });
+            else Send(new Request { kind = "state", token = token, lobby_id = lobbyId });
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.BeginArea(new Rect(Screen.width - 330, 20, 310, 235), GUI.skin.box);
+            GUILayout.Label("LAN Authoritative Server");
+            host = GUILayout.TextField(host);
+            account = GUILayout.TextField(account);
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Login")) Send(new Request { kind = "login", account_id = account });
+            if (GUILayout.Button("Create Lobby") && !string.IsNullOrEmpty(token)) Send(new Request { kind = "create_lobby", token = token });
+            GUILayout.EndHorizontal();
+            joinCode = GUILayout.TextField(joinCode);
+            if (GUILayout.Button("Join Lobby") && !string.IsNullOrEmpty(token))
+                Send(new Request { kind = "join_lobby", token = token, lobby_id = joinCode });
+            GUILayout.Label($"Status: {status}\nLobby code: {lobbyId}");
+            GUILayout.EndArea();
+        }
+
+        private void Send(Request request)
+        {
+            if (inFlight) return;
+            inFlight = true;
+            Task.Run(async () =>
+            {
+                try
+                {
+                    using var client = new TcpClient();
+                    await client.ConnectAsync(host, 12712);
+                    using var stream = client.GetStream();
+                    var bytes = Encoding.UTF8.GetBytes(JsonUtility.ToJson(request) + "\n");
+                    await stream.WriteAsync(bytes, 0, bytes.Length);
+                    using var reader = new StreamReader(stream, Encoding.UTF8);
+                    var json = await reader.ReadLineAsync();
+                    var response = JsonUtility.FromJson<Response>(json);
+                    mainThread.Enqueue(() => Apply(response));
+                }
+                catch (Exception error) { mainThread.Enqueue(() => status = error.Message); }
+                finally { mainThread.Enqueue(() => inFlight = false); }
+            });
+        }
+
+        private void Apply(Response response)
+        {
+            if (!response.ok) { status = response.error; return; }
+            if (!string.IsNullOrEmpty(response.result.token)) token = response.result.token;
+            if (!string.IsNullOrEmpty(response.result.account_id)) status = $"Logged in: {response.result.account_id}";
+            if (!string.IsNullOrEmpty(response.result.lobby_id))
+            {
+                lobbyId = response.result.lobby_id;
+                joinCode = lobbyId;
+                status = $"Online | Monster HP {response.result.map.monster_hp}";
+                var localAttack = GetComponent<MeleeAttack>();
+                if (localAttack != null) localAttack.enabled = false;
+                var enemy = FindFirstObjectByType<EnemyTarget>(FindObjectsInactive.Include);
+                if (enemy != null) enemy.gameObject.SetActive(response.result.map.monster_hp > 0);
+                ApplyPlayers(response.result.players);
+            }
+        }
+
+        private void ApplyPlayers(PlayerState[] players)
+        {
+            foreach (var player in players)
+            {
+                if (player.position.Length != 3) continue;
+                var position = new Vector3(player.position[0], player.position[1] + 1f, player.position[2]);
+                if (player.account_id == account)
+                {
+                    transform.position = position;
+                    var progress = GetComponent<PlayerProgress>();
+                    if (progress != null) progress.Restore(player.experience, player.potions, player.experience > 0);
+                    var quest = GetComponent<QuestProgress>();
+                    if (quest != null) quest.Restore(player.experience > 0);
+                }
+                else
+                {
+                    if (remotePlayer == null)
+                    {
+                        remotePlayer = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                        remotePlayer.name = "Remote Player";
+                        remotePlayer.GetComponent<Renderer>().material.color = Color.cyan;
+                    }
+                    remotePlayer.transform.position = position;
+                }
+            }
+        }
+    }
+}

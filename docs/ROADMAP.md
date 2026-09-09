@@ -46,8 +46,9 @@ Implement account/session, lobby, map instances, two-player synchronization, rec
 Progress:
 
 - [x] Add the first server-owned session and two-player lobby authority with host migration.
-- [ ] Expose the authority through a local LAN transport and connect the Unity client.
-- [ ] Add authoritative map state, movement, combat, rewards, reconnects, and persistence.
+- [x] Expose the authority through a versioned TCP LAN transport and connect the Unity client.
+- [x] Add authoritative map state, movement, combat, rewards, reconnects, and atomic persistence.
+- [x] Pass a two-client TCP integration test and reject forged/replayed movement and invalid combat requests.
 
 ## Phase 4 - Content pipeline
 

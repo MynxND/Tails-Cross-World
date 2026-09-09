@@ -42,3 +42,13 @@ Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Sc
 ```
 
 After a Windows build has been generated locally, launch `client\Builds\Windows\TwelveTailsPrototype.exe` directly.
+
+## Phase 3 LAN play
+
+Start the authoritative server on the host computer:
+
+```powershell
+.\scripts\run-server.ps1
+```
+
+Open two Unity clients. In each LAN panel, enter a unique account name and click **Login**. On the first client click **Create Lobby**; copy its six-character lobby code into the second client and click **Join Lobby**. The server owns movement, monster damage, quest completion, EXP, and potion rewards. Port `12712/TCP` must be allowed through the host firewall for other computers on the LAN.

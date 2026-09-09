@@ -33,6 +33,7 @@ namespace TwelveTails.EditorTools
             var progress = player.AddComponent<PlayerProgress>();
             var saves = player.AddComponent<SaveCoordinator>();
             saves.Configure(progress, quest);
+            player.AddComponent<LanGameClient>();
 
             var enemy = GameObject.CreatePrimitive(PrimitiveType.Capsule);
             enemy.name = "Training Dummy";

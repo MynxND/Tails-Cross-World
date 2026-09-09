@@ -28,6 +28,7 @@
 
 # Local reports and caches stay private.
 artifacts/
+server-data/
 tmp/
 **/__pycache__/
 *.py[cod]
