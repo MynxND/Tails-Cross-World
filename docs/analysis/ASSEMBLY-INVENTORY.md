@@ -19,3 +19,5 @@ Generated from CLI metadata only. The private full report contains names, method
 The primary gameplay assembly contains direct metadata evidence for `LoginGui`, `eLoginState`, `CharacterData`, `CharacterControl`, `PlayerData`, `MissionClass`, `MissionData`, `QuestClass`, `QuestData`, `SpawnZone`, shop/recipe types, character-specific skill types, and many RPC-named generated types. These names establish system presence but do not establish payload semantics or server authority.
 
 Observed keyword groups in the game and Photon assemblies include 30 mission/quest type names, 67 combat/skill names, 20 shop/craft names, and 1,613 RPC/network-related names. Counts are discovery aids and may include compiler-generated or false-positive names.
+
+A targeted IL pass found 9,365 calls to network/RPC-named methods, including 225 `SendEvent` calls. Repetition is substantial because many actor types contain generated or duplicated behavior. The sanitized protocol catalog records distinct event codes and representative declaring methods rather than committing the raw call-site dump.
