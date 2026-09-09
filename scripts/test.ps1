@@ -20,7 +20,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Unit tests failed.' }
     & $pythonPath tools/check_public_tree.py
     if ($LASTEXITCODE -ne 0) { throw 'Public-tree policy failed.' }
-    Write-Host 'All Phase 0-1 checks passed.' -ForegroundColor Green
+    Write-Host 'All Python and public-tree checks passed.' -ForegroundColor Green
 }
 finally {
     Pop-Location

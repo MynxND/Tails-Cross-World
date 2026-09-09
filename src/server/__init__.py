@@ -1,0 +1,2 @@
+"""Authoritative LAN server domain."""
+

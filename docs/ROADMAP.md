@@ -43,6 +43,12 @@ Progress:
 
 Implement account/session, lobby, map instances, two-player synchronization, reconnects, persistence, and server validation of combat and rewards.
 
+Progress:
+
+- [x] Add the first server-owned session and two-player lobby authority with host migration.
+- [ ] Expose the authority through a local LAN transport and connect the Unity client.
+- [ ] Add authoritative map state, movement, combat, rewards, reconnects, and persistence.
+
 ## Phase 4 - Content pipeline
 
 Add data-driven maps, portals, spawns, NPCs, chapters, quests, armor, and weapons with editor validation and character-specific visual variants.
