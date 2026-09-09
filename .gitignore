@@ -15,6 +15,13 @@
 !src/**
 !scripts/
 !scripts/**
+!client/
+!client/Assets/
+!client/Assets/**
+!client/Packages/
+!client/Packages/**
+!client/ProjectSettings/
+!client/ProjectSettings/**
 !.github/
 !.github/**
 
@@ -26,3 +33,18 @@ tmp/
 .pytest_cache/
 tools/**/bin/
 tools/**/obj/
+client/Library/
+client/Logs/
+client/Temp/
+client/UserSettings/
+client/Builds/
+client/*.csproj
+client/*.sln
+client/Assets/TutorialInfo/
+client/Assets/TutorialInfo.meta
+client/Assets/Scenes/
+client/Assets/Scenes.meta
+client/Assets/Readme.asset
+client/Assets/Readme.asset.meta
+client/Assets/InputSystem_Actions.inputactions
+client/Assets/InputSystem_Actions.inputactions.meta

@@ -32,3 +32,13 @@ The .NET metadata inspector reads CLI metadata without loading or executing lega
 ```powershell
 pwsh tools/assembly_inspector/Inspect-Assemblies.ps1 -ManagedDirectory "D:\path\to\Game_Data\Managed" -OutputPath "D:\private-reports\assembly-inventory.json"
 ```
+
+## Phase 2 playable prototype
+
+Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Scenes/TrainingGround.unity`, and press Play. Use WASD to move and Space to attack the Training Dummy. Run Unity tests with:
+
+```powershell
+.\scripts\test-unity.ps1
+```
+
+After a Windows build has been generated locally, launch `client\Builds\Windows\TwelveTailsPrototype.exe` directly.

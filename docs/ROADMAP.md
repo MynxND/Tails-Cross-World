@@ -31,6 +31,14 @@ Progress:
 
 Build one complete quest, combat, loot, reward, save, and reload loop in a new Unity 6 URP project without legacy DLL dependencies.
 
+Progress:
+
+- [x] Create a Unity 6000.6 URP project from the installed official blank template.
+- [x] Add the first controllable player, follow camera, training enemy, guide NPC, combat health, quest progress, and HUD scripts.
+- [x] Generate the Training Ground scene and pass Unity EditMode tests.
+- [x] Produce and smoke-test a Windows x64 development build.
+- [ ] Add loot, reward, versioned save/load, and reload verification.
+
 ## Phase 3 - LAN authoritative server
 
 Implement account/session, lobby, map instances, two-player synchronization, reconnects, persistence, and server validation of combat and rewards.
