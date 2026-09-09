@@ -1,0 +1,22 @@
+# Security boundary: this directory also contains the private legacy build.
+# Keep the repository deny-by-default and explicitly allow only clean-room work.
+*
+
+!.gitignore
+!README.md
+!pyproject.toml
+!docs/
+!docs/**
+!tools/
+!tools/**
+!tests/
+!tests/**
+!.github/
+!.github/**
+
+# Local reports and caches stay private.
+artifacts/
+tmp/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/

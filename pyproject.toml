@@ -1,0 +1,8 @@
+[project]
+name = "twelve-tails-reference-inspector"
+version = "0.1.0"
+description = "Read-only inventory tooling for a private legacy game reference build"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
