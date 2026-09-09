@@ -7,6 +7,8 @@ namespace TwelveTails.Gameplay
     {
         [SerializeField] private string entityId = "monster.training_dummy";
         [SerializeField] private QuestProgress quest = null!;
+        [SerializeField] private PlayerProgress progress = null!;
+        [SerializeField] private SaveCoordinator saves = null!;
         public Health Health { get; private set; } = null!;
 
         private void Awake()
@@ -15,12 +17,21 @@ namespace TwelveTails.Gameplay
             Health.Defeated += OnDefeated;
         }
 
-        public void Configure(QuestProgress questProgress) => quest = questProgress;
+        public void Configure(QuestProgress questProgress, PlayerProgress playerProgress, SaveCoordinator saveCoordinator)
+        {
+            quest = questProgress;
+            progress = playerProgress;
+            saves = saveCoordinator;
+        }
         public void TakeHit(int amount) => Health.ApplyDamage(amount);
 
         private void OnDefeated()
         {
-            quest?.RegisterDefeat(entityId);
+            if (quest != null && quest.RegisterDefeat(entityId))
+            {
+                progress?.GrantQuestReward(25, 1);
+                saves?.Save();
+            }
             gameObject.SetActive(false);
         }
 

@@ -37,7 +37,7 @@ Progress:
 - [x] Add the first controllable player, follow camera, training enemy, guide NPC, combat health, quest progress, and HUD scripts.
 - [x] Generate the Training Ground scene and pass Unity EditMode tests.
 - [x] Produce and smoke-test a Windows x64 development build.
-- [ ] Add loot, reward, versioned save/load, and reload verification.
+- [x] Add loot, one-time quest reward, versioned checksummed save/load, atomic writes, and corrupted-save rejection.
 
 ## Phase 3 - LAN authoritative server
 

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using TwelveTails.Gameplay;
 using UnityEngine;
+using System.IO;
 
 namespace TwelveTails.Tests
 {
@@ -34,6 +35,41 @@ namespace TwelveTails.Tests
                 Assert.That(quest.Defeats, Is.EqualTo(1));
             }
             finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void RewardCanOnlyBeGrantedOnce()
+        {
+            var gameObject = new GameObject();
+            try
+            {
+                var progress = gameObject.AddComponent<PlayerProgress>();
+                Assert.That(progress.GrantQuestReward(25, 1), Is.True);
+                Assert.That(progress.GrantQuestReward(25, 1), Is.False);
+                Assert.That(progress.Experience, Is.EqualTo(25));
+                Assert.That(progress.PotionCount, Is.EqualTo(1));
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void SaveRoundTripAndChecksumRejectionWork()
+        {
+            var directory = Path.Combine(Application.temporaryCachePath, "twelve-tails-tests", System.Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "save.json");
+            try
+            {
+                ProgressSave.Write(path, new ProgressSaveData { experience = 25, potionCount = 1, questComplete = true, rewardClaimed = true });
+                var loaded = ProgressSave.Read(path);
+                Assert.That(loaded.experience, Is.EqualTo(25));
+                Assert.That(loaded.questComplete, Is.True);
+                File.WriteAllText(path, File.ReadAllText(path).Replace("\"experience\": 25", "\"experience\": 999"));
+                Assert.Throws<InvalidDataException>(() => ProgressSave.Read(path));
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
         }
     }
 }

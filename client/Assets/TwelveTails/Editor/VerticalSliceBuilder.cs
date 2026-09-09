@@ -30,12 +30,15 @@ namespace TwelveTails.EditorTools
             player.AddComponent<MeleeAttack>();
             player.AddComponent<Health>().Configure(100);
             var quest = player.AddComponent<QuestProgress>();
+            var progress = player.AddComponent<PlayerProgress>();
+            var saves = player.AddComponent<SaveCoordinator>();
+            saves.Configure(progress, quest);
 
             var enemy = GameObject.CreatePrimitive(PrimitiveType.Capsule);
             enemy.name = "Training Dummy";
             enemy.transform.position = new Vector3(0f, 1f, 3f);
             enemy.AddComponent<Health>().Configure(30);
-            enemy.AddComponent<EnemyTarget>().Configure(quest);
+            enemy.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
 
             var npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
             npc.name = "Guide NPC";
@@ -56,7 +59,7 @@ namespace TwelveTails.EditorTools
             cameraObject.transform.position = player.transform.position + new Vector3(0f, 8f, -10f);
 
             var hud = new GameObject("Prototype HUD").AddComponent<PrototypeHud>();
-            hud.Configure(quest);
+            hud.Configure(quest, progress, saves);
 
             EditorSceneManager.SaveScene(scene, ScenePath);
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };

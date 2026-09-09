@@ -18,5 +18,7 @@ namespace TwelveTails.Gameplay
             Defeats++;
             return IsComplete;
         }
+
+        public void Restore(bool complete) => Defeats = complete ? requiredDefeats : 0;
     }
 }
