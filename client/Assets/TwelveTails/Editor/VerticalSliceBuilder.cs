@@ -57,9 +57,27 @@ namespace TwelveTails.EditorTools
             saves.Configure(progress, quest);
             player.AddComponent<LanGameClient>();
 
-            var enemy = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            enemy.name = "Training Dummy";
-            enemy.transform.position = GroundedPosition(Position(catalog.spawns, "spawn.dummy"));
+            var enemy = new GameObject("Carron - Training Target");
+            enemy.transform.position = GroundedPosition(Position(catalog.spawns, "spawn.dummy"), .05f);
+            var enemyCollider = enemy.AddComponent<CapsuleCollider>();
+            enemyCollider.center = new Vector3(0f, .75f, 0f);
+            enemyCollider.height = 1.5f;
+            enemyCollider.radius = .65f;
+            var originalCarron = Resources.Load<GameObject>("OriginalMonsters/Carron");
+            if (originalCarron != null)
+            {
+                var visual = (GameObject)PrefabUtility.InstantiatePrefab(originalCarron, enemy.transform);
+                visual.name = "Original Carron Visual";
+                visual.transform.localPosition = Vector3.zero;
+                visual.transform.localRotation = Quaternion.identity;
+            }
+            else
+            {
+                var visual = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                visual.name = "Fallback Training Target Visual";
+                visual.transform.SetParent(enemy.transform, false);
+                Object.DestroyImmediate(visual.GetComponent<Collider>());
+            }
             enemy.AddComponent<Health>().Configure(30);
             enemy.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
 

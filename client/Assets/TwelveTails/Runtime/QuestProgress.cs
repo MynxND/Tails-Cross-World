@@ -9,8 +9,8 @@ namespace TwelveTails.Gameplay
         public int Defeats { get; private set; }
         public bool IsComplete => Defeats >= requiredDefeats;
         public string ObjectiveText => IsComplete
-            ? "Quest complete - Training Dummy defeated!"
-            : $"Defeat Training Dummy ({Defeats}/{requiredDefeats})";
+            ? "Quest complete - Carron defeated!"
+            : $"Defeat Carron ({Defeats}/{requiredDefeats})";
 
         public bool RegisterDefeat(string defeatedId)
         {

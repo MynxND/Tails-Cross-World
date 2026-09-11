@@ -35,7 +35,7 @@ pwsh tools/assembly_inspector/Inspect-Assemblies.ps1 -ManagedDirectory "D:\path\
 
 ## Phase 2 playable prototype
 
-Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Scenes/TrainingGround.unity`, and press Play. Use WASD to move, Space to attack the Training Dummy, F5 to save, and F9 to load. Completing the quest grants 25 EXP and one potion, then saves automatically. Run Unity tests with:
+Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Scenes/TrainingGround.unity`, and press Play. Use WASD to move, Space to attack the Carron, F5 to save, and F9 to load. Completing the quest grants 25 EXP and one potion, then saves automatically. Run Unity tests with:
 
 Use the character panel at the bottom of the game window to switch between all 12 procedural prototype characters. The selected character is retained for the next run.
 

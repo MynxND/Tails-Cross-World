@@ -314,12 +314,14 @@ namespace TwelveTails.EditorTools
             const string outputPath = sceneRoot + "/M101_CarronHarvest_URP.unity";
             const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
             const string mapResourceRoot = resourceRoot + "/OriginalMaps";
+            const string monsterResourceRoot = resourceRoot + "/OriginalMonsters";
             if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M101 scene is missing", sourcePath);
             EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
             EnsureFolder(generatedRoot, "MapMaterials");
             EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Scenes");
             EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
             EnsureFolder(resourceRoot, "OriginalMaps");
+            EnsureFolder(resourceRoot, "OriginalMonsters");
 
             var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
             foreach (var root in scene.GetRootGameObjects())
@@ -327,11 +329,40 @@ namespace TwelveTails.EditorTools
                 RemoveMissingScripts(root);
                 ConvertMaterials(root, "M101", materialRoot);
             }
+
+            var carronCandidates = scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                .Where(item => item.name == "Carron")
+                .Select(item => new { Transform = item, Renderers = item.GetComponentsInChildren<Renderer>(true) })
+                .Where(item => item.Renderers.Length > 0)
+                .OrderBy(item => item.Renderers.Length)
+                .ToArray();
+            if (carronCandidates.Length == 0)
+                throw new System.Exception("No rendered Carron root was found in M101");
+
+            var carronInstance = Object.Instantiate(carronCandidates[0].Transform.gameObject);
+            carronInstance.name = "Carron";
+            carronInstance.SetActive(true);
+            carronInstance.transform.SetParent(null, false);
+            carronInstance.transform.localPosition = Vector3.zero;
+            carronInstance.transform.localRotation = Quaternion.identity;
+            RemoveMissingScripts(carronInstance);
+            foreach (var collider in carronInstance.GetComponentsInChildren<Collider>(true))
+                Object.DestroyImmediate(collider);
+            PrefabUtility.SaveAsPrefabAsset(carronInstance, monsterResourceRoot + "/Carron.prefab");
+            Object.DestroyImmediate(carronInstance);
+
             EditorSceneManager.SaveScene(scene, outputPath, true);
             var sceneObjects = scene.GetRootGameObjects().FirstOrDefault(item => item.name == "SceneObjects");
             if (sceneObjects == null) throw new System.Exception("M101 SceneObjects root is missing");
             var mapInstance = Object.Instantiate(sceneObjects);
             mapInstance.name = "M101_CarronHarvest";
+            var embeddedCarrons = mapInstance.GetComponentsInChildren<Transform>(true)
+                .Where(item => item.name == "Carron")
+                .OrderByDescending(item => HierarchyDepth(item))
+                .ToArray();
+            foreach (var embeddedCarron in embeddedCarrons)
+                Object.DestroyImmediate(embeddedCarron.gameObject);
             PrefabUtility.SaveAsPrefabAsset(mapInstance, mapResourceRoot + "/M101_CarronHarvest.prefab");
             Object.DestroyImmediate(mapInstance);
             AssetDatabase.SaveAssets();
@@ -354,8 +385,28 @@ namespace TwelveTails.EditorTools
                 .Where(item => item != null).Distinct().ToArray();
             var colliders = roots.SelectMany(root => root.GetComponentsInChildren<Collider>(true)).ToArray();
             var terrains = roots.SelectMany(root => root.GetComponentsInChildren<Terrain>(true)).ToArray();
-            var carrons = roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+            var sourceCarrons = roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true))
                 .Count(item => item.name == "Carron");
+            var environment = AssetDatabase.LoadAssetAtPath<GameObject>(
+                "Assets/TwelveTails/LegacyPrivate/Resources/OriginalMaps/M101_CarronHarvest.prefab");
+            var environmentCarrons = environment == null ? -1 : environment.GetComponentsInChildren<Transform>(true)
+                .Count(item => item.name == "Carron");
+            var carronPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(
+                "Assets/TwelveTails/LegacyPrivate/Resources/OriginalMonsters/Carron.prefab");
+            var carronRenderers = carronPrefab == null
+                ? System.Array.Empty<Renderer>()
+                : carronPrefab.GetComponentsInChildren<Renderer>(true);
+            var carronMaterials = carronRenderers.SelectMany(item => item.sharedMaterials)
+                .Where(item => item != null).Distinct().ToArray();
+            var carronBadMaterials = carronMaterials.Count(item => item.shader == null || !item.shader.isSupported ||
+                item.shader.name == "Hidden/InternalErrorShader");
+            var carronAnimation = carronPrefab == null ? null : carronPrefab.GetComponentInChildren<Animation>(true);
+            var carronAnimations = carronAnimation == null ? 0 : 1;
+            var carronAnimationClips = carronAnimation == null ? 0 : carronAnimation.GetClipCount();
+            var carronDefaultClip = carronAnimation != null && carronAnimation.clip != null
+                ? carronAnimation.clip.name
+                : "none";
+            var carronAnimators = carronPrefab == null ? 0 : carronPrefab.GetComponentsInChildren<Animator>(true).Length;
             var badMaterials = materials.Count(item => item.shader == null || !item.shader.isSupported ||
                 item.shader.name == "Hidden/InternalErrorShader");
             var bounds = renderers[0].bounds;
@@ -370,7 +421,15 @@ namespace TwelveTails.EditorTools
                 $"materials={materials.Length}",
                 $"colliders={colliders.Length}",
                 $"terrains={terrains.Length}",
-                $"carrons={carrons}",
+                $"sourceCarrons={sourceCarrons}",
+                $"environmentCarrons={environmentCarrons}",
+                $"carronPrefabRenderers={carronRenderers.Length}",
+                $"carronPrefabMaterials={carronMaterials.Length}",
+                $"carronPrefabUnsupportedMaterials={carronBadMaterials}",
+                $"carronPrefabAnimations={carronAnimations}",
+                $"carronPrefabAnimationClips={carronAnimationClips}",
+                $"carronPrefabDefaultClip={carronDefaultClip}",
+                $"carronPrefabAnimators={carronAnimators}",
                 $"unsupportedMaterials={badMaterials}",
                 $"rootNames={string.Join(",", roots.Select(item => item.name))}",
                 $"boundsCenter={bounds.center}",
@@ -386,8 +445,21 @@ namespace TwelveTails.EditorTools
             Debug.Log(string.Join("\n", report));
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             if (renderers.Length == 0 || meshes.Length == 0 || colliders.Length == 0 || terrains.Length == 0 ||
-                carrons == 0 || badMaterials > 0)
+                sourceCarrons == 0 || environmentCarrons != 0 || carronRenderers.Length == 0 ||
+                carronMaterials.Length == 0 || carronBadMaterials > 0 || carronAnimationClips == 0 ||
+                badMaterials > 0)
                 throw new System.Exception($"Original M101 map validation failed. See {reportPath}");
+        }
+
+        private static int HierarchyDepth(Transform transform)
+        {
+            var depth = 0;
+            while (transform.parent != null)
+            {
+                depth++;
+                transform = transform.parent;
+            }
+            return depth;
         }
     }
 }
