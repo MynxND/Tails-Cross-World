@@ -187,7 +187,8 @@ Completed:
 - Phase 4B.5 now includes Wolf Blade Fang level 1 on input `5` as `skill.wolf_blade_fang`. The shared runtime supports validated multi-hit sequences; source timing produces two damage pulses at `0.7s` and `0.9s` with recovery ending at `1.1s`. The authoritative server owns both hits and rejects the skill for non-Wolf characters. The private Wolf prefab includes the rig-compatible original `bladeFang1`, `bladeFang2`, and `bladeFang3` clips, while current presentation starts with `bladeFang1`. Damage/resource/cooldown remain prototype values until the character ATK, talent adjustment, skill cost, and Double Art timeout models exist. The source dash, rectangular hit volume, alternating knockback, SP gain, later animation transitions, effects/audio, and Blood Fang passive 403 remain intentionally deferred rather than approximated as complete. Unity gameplay tests pass (`39/39`), repository checks pass (`45/45`), C# diagnostics report no errors, and the combined Windows build completes successfully.
 - Batch A evidence records now cover Bison, Panda, Whale, Rabbit, Monkey, Penguin, Bat, Chameleon, and Cat under ignored `artifacts/skill-evidence/`. Direct caller/projectile source corrected several initial summaries: Bison is charge-count-driven, Panda has three non-uniform hit times, Monkey Fireball has a pre-cast phase before `cast3`, Whale Javelin persists and can hit repeatedly, and Cat Support Fire requires summon/controller behavior.
 - Phase 4B.5 now includes Panda Three Steps level 1 through the shared character-skill slot on input `4`. The runtime adds reusable explicit hit schedules, oriented boxes, multi-target application, and collider deduplication. Source-backed behavior is three box hits at `0.4s`, `0.7s`, and `1.3s`, a `30s` base timeout before AGI adjustment, and the rig-compatible `threeSteps` animation. Damage `10` and resource cost `0` are prototype values because the current catalog cannot evaluate the source attack/focused-art/talent formula or recover an authoritative cost. The Nine Steps passive, movement phases, SP/combo side effects, VFX, and audio remain deferred. Both client and server enforce Panda ownership; the server owns all three damage applications. Repository checks pass (`48/48`), Unity gameplay tests pass (`45/45`), C# diagnostics report no errors, the private Panda prefab references the verified `threeSteps` clip GUID, and the combined Windows build reached responsive input-idle.
-- Character-skill development uses the repository-wide batch process in `docs/SKILL_BATCH_WORKFLOW.md`. Batch A is complete for all 12 characters. Continue Batch B by implementing grouped shared primitives; do not re-audit source unless an evidence record is missing, contradictory, or `unknown` for a required field.
+- Character-skill runtime implementation is paused. Do not resume Batch B primitive or per-skill C# work unless the user explicitly changes direction; the current skill effort is parser-only legacy catalog extraction across all 12 characters.
+- A stdlib-only static interpreter translates all 12 legacy `getSkillTree` implementations into `content/v1/skill_tree.json`: 1,159 source-exact IDs with requirements, target metadata, effect keys, tree lines, tiers, and prerequisites. Combat extraction now covers 15 of 311 distinct raw effect keys and emits 15 source-backed generated records while preserving the seven existing runtime records, for 22 `content/v1/skills.json` rows total. The parser handles leaf coroutine regions, static formulas, simultaneous multi-target calls, supported box/radial queries, and generic-handler animation aliases without importing generic damage or targeting semantics. The ignored `artifacts/skills-unresolved.json` records the remaining 296 raw effect keys across 308 character-scoped entries; dynamic formulas, unsupported target shapes, projectiles, summons, and branch-dependent behavior remain unresolved rather than guessed.
 - All 211 exported legacy scenes audited without running legacy code.
 - Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
 - Chapter 1 Unity source-scene validation added.
@@ -696,7 +697,7 @@ Run Python tests, public-tree policy, and content validation:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test.ps1
 ```
 
-Latest repository validation result during this handoff: 45 tests passed, followed by public-tree and content validation.
+Latest repository validation result during this handoff: 50/50 tests passed, followed by content validation.
 
 Run Unity EditMode tests:
 
@@ -704,7 +705,7 @@ Run Unity EditMode tests:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-unity.ps1
 ```
 
-Latest Unity gameplay result during this handoff: 39 EditMode tests passed. Re-run after any runtime/editor code change when the Unity Editor is closed.
+Latest recorded Unity gameplay result: 45/45 EditMode tests passed. Unity tests were not rerun for the parser-only catalog batch; re-run them after any runtime/editor code change when the Unity Editor is closed.
 
 Run the LAN server:
 
@@ -744,83 +745,57 @@ Never restore intentional source edits indiscriminately.
 
 ## 10. Immediate next implementation plan
 
-For character skills, `docs/SKILL_BATCH_WORKFLOW.md` overrides the older one-skill-at-a-time sequencing below. Batch A is complete for all 12 characters. Resume Batch B from the normalized evidence records and direct-source corrections; do not repeat audits unless a required field is missing, contradictory, or `unknown`.
+### Active phase - Phase 4B.6: unresolved skill semantics catalog
 
-### Priority 1 - Finish M102 verification
+The next agent should continue the skill catalog as a parser-only batch. Do not resume the runtime-primitives sequence in `docs/SKILL_BATCH_WORKFLOW.md`, implement individual skills, or modify C#/Unity files unless the user explicitly changes scope.
 
-M102 is `Mupo Round Up`. The recovered mission text says the player must herd six Mupo into a pen without killing them.
+Current baseline:
 
-Remaining verification:
+- `content/v1/skill_tree.json`: 1,159 unique skill-tree records and 311 distinct raw `effect_key` values.
+- `content/v1/skills.json`: 22 records, consisting of seven preserved runtime records and 15 source-extracted records.
+- Coverage: 15/311 raw effect keys; the progression was `0 -> 2 -> 11 -> 12 -> 13 -> 14 -> 15`.
+- `artifacts/skills-unresolved.json`: 296 unresolved raw keys across 308 character-scoped entries.
+- Covered keys: `blazingArrow`, `callToArm`, `cosmicFriday`, `divinityAxe`, `divinitySpear`, `divinitySword`, `dreamDazzle`, `gobbleUp`, `holyLight`, `megalodon`, `phantasmBlast`, `phoenix`, `shatteringDream`, `volcanicEruption`, and `warCapital`.
+- Latest repository tests: 50/50 passed. Content validation, JSON parsing, unique-ID checks, deterministic regeneration, Python diagnostics, and `git diff --check` passed.
 
-1. Compare the generated pen trigger against the original M102 gates/fences and record the exact geometry.
-2. Connect lethal player damage to Mupo failure and reject client-side damage authority.
-3. Add a Unity-client-to-LAN-server integration test for M102 completion/failure and reconnect.
-4. Build Windows and visually test terrain, pen, fences, Mupo scale, animation, collision, and camera.
+Work in this order:
 
-After these checks, move to M103 rather than expanding M102 with optional VFX/cutscene parity.
+1. Read `tools/extract_skill_effects.py`, `tests/test_extract_skill_effects.py`, and the current unresolved artifact. Inspect `git status` before editing; preserve unrelated changes, especially `client/Assets/TwelveTails/Scenes/ChapterMenu.unity`.
+2. Convert unresolved reasons into more precise structured evidence where possible. Keep raw source expressions, target-query kind, delivery kind, branch/conditional markers, and referenced handler/component names separate from runtime-ready scalar fields.
+3. Add table-driven parser tests for each generalized source pattern before or with its implementation. Prefer parser rules that apply across characters; do not hard-code an effect key merely to increase coverage.
+4. Promote an effect into `skills.json` only when every required field in the current schema is source-exact and unambiguous. Preserve the exact raw `effect_key`; continue using deterministic lowercase runtime IDs.
+5. Regenerate outputs after each coherent parser round and report covered distinct raw keys out of 311. Leave unsupported effects in `artifacts/skills-unresolved.json`.
+6. Stop again when remaining records require actor stats, passives, random/branch state, unsupported target geometry, projectile/component behavior, summons, or schema assumptions.
 
-### Priority 2 - Shared combat and animation runtime
+Known boundary after the latest inspection:
 
-The reusable skill runtime and defeat presentation foundation now exist. Continue with evidence-backed content and presentation fidelity:
+- 51 entries are blocked only by dynamic or ambiguous damage formulas.
+- 10 entries are blocked only by target range/shape semantics.
+- Six entries have no discoverable command/RPC region.
+- The range-only group includes selection radii mixed with impact radii, swept-sphere or raycast shapes, homing projectiles, caller-supplied targets, and summon/controller behavior. Do not coerce these into the current sphere/oriented-box model.
+- Blocker occurrence counts overlap: dynamic damage 276, target range 210, hit timing 162, no timed damage event 162, cooldown 22, animation 18, no command/RPC region six, and referenced projectile/effect component one.
 
-- Keep original per-character clips on their matching original rigs through `LegacyAnimationDriver`; retarget only when a clip must run on a generated rig, and never attach clips whose transform paths target a different character rig.
-- Add a PlayMode-validated animation-event or normalized-time impact adapter while preserving deterministic timing fallback for clips without events. EditMode does not reliably advance crossfaded Animator state progress.
-- Implement the remaining grouped primitives before promoting dependent records: Bison charge hold/release; Monkey cast phases; Whale persistent projectile contact ticks; Rabbit trap/sticky status; Penguin defensive block; Bat/Chameleon spawned or channelled area behavior; Cat summon/controller behavior.
-- Continue mapping recovered class skills to projectile/status values only where source evidence supports them; Sheep, Mole, Wolf, and Panda now have initial records while unresolved values remain explicitly prototype or deferred.
-- Bind `SkillStarted`, `SkillReleased`, and `SkillEnded` to source-backed VFX/audio assets and timing.
-- Add evidence-backed nonlethal hit reactions where rig-compatible clips exist, and complete player recovery/game-over presentation after KO.
-- Add LAN tests for client resource reconciliation and multiple skill types beyond `skill.basic_slash`.
+Required completion checks:
 
-### Priority 3 - General map runtime
+```powershell
+$python = 'C:\Users\nikza\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+$legacy = 'D:\CaseShop\12tails-legacy-unity-export\ExportedProject\Assets\Scripts\Assembly-UnityScript'
+& $python tools/extract_skill_effects.py $legacy
+& $python -m unittest discover -s tests -v
+& $python tools/content_validator/validate_content.py content/v1
+git diff --check
+git status --short
+git diff --cached --name-only
+```
 
-Replace the hard-coded training map selection with data-driven definitions containing:
+Generate twice and compare SHA-256 for `skill_tree.json`, `skills.json`, and `skills-unresolved.json`. Parse both tracked JSON files, assert unique IDs, and report final coverage plus the unresolved raw/scoped counts. Keep `artifacts/` ignored and do not stage private legacy source, generated assets, binaries, logs, or `ChapterMenu.unity` noise.
 
-- Map ID and original resource path.
-- Spawn locations and rotations.
-- Player/team spawn groups.
-- NPC definitions.
-- Monster groups and respawn rules.
-- Trigger volumes.
-- Portals and destinations.
-- Mission objective graph.
-- Lighting/music/weather profiles.
-- Safe zones and instance rules.
+### Deferred phases requiring an explicit scope change
 
-Keep environment assets separate from runtime entities. This separation is already established by the Chapter 1 converter.
-
-### Priority 4 - Chapter 1 missions M103-M108
-
-Work in order after M102 proves the reusable runtime:
-
-- M103 Bug Trouble: protect Carrons/Goat NPC while defeating Stingbugs. The original StingBug visual and configurable defeat objective path are ready; actor AI/protection/failure logic remains.
-- M104 Stingbug Nest: enemy spawn/combat mission and nest environment.
-- M105 Needle Cave: cave navigation, enemies, lighting, and objective triggers.
-- M106 Boldas Recruitment: Boldas actor, weapon/trail reconstruction, dialogue/combat logic.
-- M107 Request From Alcacia: 12 NPC appearances, CosmoClock/ImageEffect/ZodiacRing reconstruction, dialogue/cutscene.
-- M108 One On One Bout: duel rules, Boldas weapon trail, win/fail state.
-
-For every mission, first inventory actors, missing scripts, triggers, animations, audio, and runtime-created effects. Then implement one complete objective/reward/save/server loop before moving to the next.
-
-### Priority 4 - Scale migration to all scenes
-
-After Chapter 1 gameplay/runtime patterns stabilize:
-
-1. Re-run the complete 211-scene import dry plan with the latest matcher.
-2. Review total size and every ambiguous/unresolved mesh name.
-3. Copy in batches by chapter or scene family, not one uncontrolled 1.8+ GiB import.
-4. Generalize `GenerateChapterOneEnvironmentPrefabs` into a manifest-driven converter instead of duplicating methods per chapter.
-5. Validate every generated prefab for missing mesh/material/script, supported shaders, renderer count, collider count, terrain presence, bounds, and expected dynamic-container separation.
-6. Add screenshot/reference comparison checkpoints for every playable scene.
-7. Handle the remaining 25 static-batch scenes explicitly and retain the mapping decisions in a private manifest.
-
-### Priority 5 - Reconcile all content
-
-- Build the canonical 12-chapter/96-stage manifest.
-- Account for every one of the 271 original level binaries.
-- Map multi-part scenes to one logical mission.
-- Classify extra content: town, guild, lobby, arena, event, dungeon, tutorial, PvP.
-- Extract and validate all monsters, bosses, NPCs, structures, weapons, armor, accessories, mounts, VFX, audio, and animation clips.
-- Record provenance and private/public status for every production asset.
+- Runtime/schema expansion for dynamic formulas, passives, projectiles, target shapes, summons, channels, traps, and defensive mechanics.
+- Remaining M102 visual/LAN verification and Chapter 1 mission polish.
+- Data-driven general map runtime and campaign progression.
+- Batched migration of the remaining scenes and canonical 12-chapter/96-stage reconciliation.
 
 ## 11. Definition of done per map
 

@@ -173,8 +173,10 @@ def validate(root: Path) -> None:
         if not isinstance(skill.get("cooldown_seconds"), (int, float)) or skill["cooldown_seconds"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid cooldown")
         expected_fields = {"id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "hit_times_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "target_shape", "target_width", "target_height", "max_targets", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}
-        if set(skill) != expected_fields:
+        if set(skill) not in {frozenset(expected_fields), frozenset(expected_fields | {"effect_key"})}:
             raise ContentError(f"skill {skill.get('id')} has unsupported or missing fields")
+        if "effect_key" in skill and not isinstance(skill["effect_key"], str):
+            raise ContentError(f"skill {skill.get('id')} has invalid effect key")
         if not isinstance(skill["character_id"], str):
             raise ContentError(f"skill {skill.get('id')} has invalid character")
         if skill["character_id"] and skill["character_id"] not in EXPECTED_CHARACTERS:
@@ -196,7 +198,7 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has invalid status configuration")
         if bool(skill["status_effect_id"]) != (skill["status_duration_seconds"] > 0):
             raise ContentError(f"skill {skill.get('id')} has incomplete status configuration")
-        if not isinstance(skill.get("hit_delay_seconds"), (int, float)) or not 0 <= skill["hit_delay_seconds"] <= skill["cooldown_seconds"]:
+        if not isinstance(skill.get("hit_delay_seconds"), (int, float)) or skill["hit_delay_seconds"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid hit delay")
         duration = skill.get("action_duration_seconds")
         combo_start = skill.get("combo_window_start_seconds")

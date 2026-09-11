@@ -11,6 +11,7 @@ from pathlib import Path
 class ServerSkill:
     skill_id: str
     character_id: str
+    effect_key: str
     damage: int
     cooldown_seconds: float
     hit_count: int
@@ -34,6 +35,7 @@ def load_skill_catalog(path: Path | None = None) -> dict[str, ServerSkill]:
         skill = ServerSkill(
             skill_id=raw["id"],
             character_id=raw["character_id"],
+            effect_key=raw.get("effect_key", ""),
             damage=raw["damage"],
             cooldown_seconds=raw["cooldown_seconds"],
             hit_count=raw["hit_count"],

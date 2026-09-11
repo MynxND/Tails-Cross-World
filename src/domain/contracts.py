@@ -144,8 +144,12 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "hit_times_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "target_shape", "target_width", "target_height", "max_targets", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
+    required = {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "hit_times_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "target_shape", "target_width", "target_height", "max_targets", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}
+    if data.keys() not in (required, required | {"effect_key"}):
+        _exact_fields(data, required, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
+    if "effect_key" in data and not isinstance(data["effect_key"], str):
+        raise ContractError("data.effect_key must be a string")
     if data["character_id"]:
         _string(data["character_id"], "data.character_id", identifier=True)
     elif data["character_id"] != "":
