@@ -173,6 +173,7 @@ Completed:
 - Full Unity EditMode tests pass (`20/20`) and Python/content/policy tests pass (`37/37`) after the M101 routing fix.
 - M108 One On One Bout local slice uses the original arena, source StartPoint1/StartPoint2 positions, an original Bison visual as the offline opponent, and duel semantics derived from team events `1081`/`1082`/`1083`. Defeating the opponent completes the objective; player defeat fails it.
 - M108 scene generation and standalone Windows build completed successfully. The Windows build remained responsive and its fresh startup log contained no matched critical runtime errors. Full Unity tests remain `20/20` and repository checks remain `37/37`.
+- Phase 4B animation-driven combat has started. Skill definitions now carry strict `hit_delay_seconds` timing; `SkillExecutor` starts the animation immediately, applies damage only at the configured impact time, blocks overlapping wind-ups, and supports normal, Mupo, and recurrent-knockout targets through the timed path.
 - All 211 exported legacy scenes audited without running legacy code.
 - Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
 - Chapter 1 Unity source-scene validation added.

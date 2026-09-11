@@ -144,12 +144,13 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "resource_cost", "range"}, "data")
+    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "resource_cost", "range"}, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
     _string(data["name_key"], "data.name_key", identifier=True)
     _string(data["animation_clip"], "data.animation_clip", maximum=128)
     _integer(data["damage"], "data.damage", maximum=100000)
     _number(data["cooldown_seconds"], "data.cooldown_seconds", minimum=0.0, maximum=3600.0)
+    _number(data["hit_delay_seconds"], "data.hit_delay_seconds", minimum=0.0, maximum=60.0)
     _integer(data["resource_cost"], "data.resource_cost", maximum=100000)
     _number(data["range"], "data.range", minimum=0.1, maximum=100.0)
 

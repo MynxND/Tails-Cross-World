@@ -350,6 +350,77 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void SkillExecutorAppliesDamageOnlyAtConfiguredHitTime()
+        {
+            var playerObject = new GameObject("Skill User") { transform = { position = Vector3.zero } };
+            var targetObject = new GameObject("Skill Target") { transform = { position = new Vector3(0f, 0f, 1f) } };
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.timed", damage = 12, cooldownSeconds = 1f, hitDelaySeconds = .3f, range = 2f }
+                });
+                targetObject.AddComponent<SphereCollider>().radius = .5f;
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(30);
+                var quest = targetObject.AddComponent<QuestProgress>();
+                var progress = targetObject.AddComponent<PlayerProgress>();
+                var saves = targetObject.AddComponent<SaveCoordinator>();
+                saves.Configure(progress, quest);
+                targetObject.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
+                Physics.SyncTransforms();
+
+                Assert.That(executor.ExecuteSkill("skill.timed", 10f), Is.True);
+                Assert.That(executor.IsWindingUp, Is.True);
+                Assert.That(health.Current, Is.EqualTo(30));
+                Assert.That(executor.AdvanceAction(10.29f), Is.False);
+                Assert.That(health.Current, Is.EqualTo(30));
+                Assert.That(executor.AdvanceAction(10.3f), Is.True);
+                Assert.That(executor.IsWindingUp, Is.False);
+                Assert.That(health.Current, Is.EqualTo(18));
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
+        public void TimedSkillCanKnockOutMissionTarget()
+        {
+            var playerObject = new GameObject("Skill User") { transform = { position = Vector3.zero } };
+            var targetObject = new GameObject("Knockout Target") { transform = { position = new Vector3(0f, 0f, 1f) } };
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.timed", damage = 10, hitDelaySeconds = .2f, range = 2f }
+                });
+                targetObject.AddComponent<SphereCollider>().radius = .5f;
+                targetObject.AddComponent<Health>().Configure(10);
+                var quest = targetObject.AddComponent<QuestProgress>();
+                quest.Configure("npc.target", 1, "Knock out");
+                var progress = targetObject.AddComponent<PlayerProgress>();
+                var target = targetObject.AddComponent<KnockoutObjectiveTarget>();
+                target.Configure("npc.target", quest, progress, null, 0, 0);
+                Physics.SyncTransforms();
+
+                Assert.That(executor.ExecuteSkill("skill.timed", 20f), Is.True);
+                Assert.That(quest.IsComplete, Is.False);
+                Assert.That(executor.AdvanceAction(20.2f), Is.True);
+                Assert.That(quest.IsComplete, Is.True);
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
         public void RewardCanOnlyBeGrantedOnce()
         {
             var gameObject = new GameObject();

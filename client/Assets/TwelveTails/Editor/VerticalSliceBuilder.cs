@@ -74,6 +74,7 @@ namespace TwelveTails.EditorTools
             public string animation_clip = string.Empty;
             public int damage;
             public float cooldown_seconds;
+            public float hit_delay_seconds;
             public int resource_cost;
             public float range;
         }
@@ -599,6 +600,7 @@ namespace TwelveTails.EditorTools
                 animationClip = skill.animation_clip,
                 damage = skill.damage,
                 cooldownSeconds = skill.cooldown_seconds,
+                hitDelaySeconds = skill.hit_delay_seconds,
                 resourceCost = skill.resource_cost,
                 range = skill.range
             }).ToArray();

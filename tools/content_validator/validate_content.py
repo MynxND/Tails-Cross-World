@@ -172,6 +172,8 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has invalid damage")
         if not isinstance(skill.get("cooldown_seconds"), (int, float)) or skill["cooldown_seconds"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid cooldown")
+        if not isinstance(skill.get("hit_delay_seconds"), (int, float)) or not 0 <= skill["hit_delay_seconds"] <= skill["cooldown_seconds"]:
+            raise ContentError(f"skill {skill.get('id')} has invalid hit delay")
         if not isinstance(skill.get("resource_cost"), int) or skill["resource_cost"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid resource cost")
         if not isinstance(skill.get("range"), (int, float)) or skill["range"] <= 0:

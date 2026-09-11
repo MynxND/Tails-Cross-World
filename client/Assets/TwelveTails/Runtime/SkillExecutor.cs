@@ -12,6 +12,7 @@ namespace TwelveTails.Gameplay
         public string animationClip = string.Empty;
         public int damage;
         public float cooldownSeconds;
+        public float hitDelaySeconds;
         public int resourceCost;
         public float range;
     }
@@ -34,9 +35,12 @@ namespace TwelveTails.Gameplay
         private readonly Dictionary<string, float> cooldowns = new();
         private CharacterAnimationDriver proceduralAnimation = null!;
         private AnimatorMotionDriver animatorMotion = null!;
+        private SkillDefinition pendingSkill = null!;
+        private float pendingHitAt;
 
         public int Resource => resource;
         public IReadOnlyList<SkillDefinition> Skills => skills;
+        public bool IsWindingUp => pendingSkill != null;
 
         public void Configure(IEnumerable<SkillDefinition> definitions, int initialResource = 100)
         {
@@ -44,6 +48,7 @@ namespace TwelveTails.Gameplay
             maximumResource = Mathf.Max(0, initialResource);
             resource = maximumResource;
             cooldowns.Clear();
+            pendingSkill = null;
         }
 
         public void ConfigureAnimations(IEnumerable<SkillAnimationBinding> bindings)
@@ -59,6 +64,7 @@ namespace TwelveTails.Gameplay
 
         private void Update()
         {
+            AdvanceAction(Time.time);
             var keyboard = Keyboard.current;
             if (keyboard == null) return;
             if (keyboard.digit1Key.wasPressedThisFrame) ExecuteSkill("skill.basic_slash");
@@ -66,27 +72,42 @@ namespace TwelveTails.Gameplay
             if (keyboard.digit3Key.wasPressedThisFrame) ExecuteSkill("skill.class_special");
         }
 
-        public bool ExecuteSkill(string skillId)
+        public bool ExecuteSkill(string skillId) => ExecuteSkill(skillId, Time.time);
+
+        public bool ExecuteSkill(string skillId, float actionTime)
         {
             var definition = FindSkill(skillId);
-            if (definition == null || definition.damage < 0 || definition.range <= 0f) return false;
+            if (pendingSkill != null || definition == null || definition.damage < 0 || definition.range <= 0f) return false;
             if (resource < definition.resourceCost) return false;
-            if (cooldowns.TryGetValue(skillId, out var readyAt) && Time.time < readyAt) return false;
+            if (cooldowns.TryGetValue(skillId, out var readyAt) && actionTime < readyAt) return false;
 
             var clipName = ResolveAnimationClip(definition);
             proceduralAnimation?.PlaySkillAnimation(clipName);
             animatorMotion?.PlaySkillAnimation(clipName);
             resource -= definition.resourceCost;
-            cooldowns[skillId] = Time.time + Mathf.Max(0f, definition.cooldownSeconds);
+            cooldowns[skillId] = actionTime + Mathf.Max(0f, definition.cooldownSeconds);
+            if (definition.hitDelaySeconds <= 0f) return ApplyDamage(definition);
+            pendingSkill = definition;
+            pendingHitAt = actionTime + definition.hitDelaySeconds;
+            return true;
+        }
+
+        public bool AdvanceAction(float actionTime)
+        {
+            if (pendingSkill == null || actionTime < pendingHitAt) return false;
+            var definition = pendingSkill;
+            pendingSkill = null;
             return ApplyDamage(definition);
         }
 
         public bool CanExecute(string skillId)
         {
             var definition = FindSkill(skillId);
-            return definition != null && resource >= definition.resourceCost &&
+            return pendingSkill == null && definition != null && resource >= definition.resourceCost &&
                 (!cooldowns.TryGetValue(skillId, out var readyAt) || Time.time >= readyAt);
         }
+
+        private void OnDisable() => pendingSkill = null;
 
         private SkillDefinition FindSkill(string skillId)
         {
@@ -114,6 +135,12 @@ namespace TwelveTails.Gameplay
                 if (enemy != null && !enemy.Health.IsDefeated)
                 {
                     enemy.TakeHit(definition.damage);
+                    return true;
+                }
+                var knockout = collider.GetComponentInParent<KnockoutObjectiveTarget>();
+                if (knockout != null && !knockout.Health.IsDefeated)
+                {
+                    knockout.TakeHit(definition.damage);
                     return true;
                 }
                 var mupo = collider.GetComponentInParent<MupoHerdTarget>();
