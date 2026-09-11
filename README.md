@@ -51,6 +51,8 @@ Regenerate all original Blender character sources and Unity FBX imports with:
 
 After a Windows build has been generated locally, launch `client\Builds\Windows\TwelveTailsPrototype.exe` directly.
 
+When the private original-asset import is present, the build uses the original 12 character models and the M101 Carron Harvest environment. Those assets remain under `client/Assets/TwelveTails/LegacyPrivate/` and are intentionally excluded from Git. The editor builder falls back to the generated prototype art when the private import is unavailable.
+
 ## Phase 3 LAN play
 
 Start the authoritative server on the host computer:

@@ -63,7 +63,10 @@ Progress:
 - [x] Drive player/monster spawns, NPC placement, and portal markers from validated chapter data.
 - [x] Add an original Unity-native low-poly rig, idle/run/attack motion, weapon socket, armor shell, and class prop to every character prefab.
 - [x] Generate reproducible Blender source and FBX exports for all 12 characters, with armatures and Idle/Run/Attack actions wired to Unity Animator Controllers.
-- [ ] Replace low-poly geometry with final art-directed meshes, authored skin weights, animation clips, textures, VFX, and LODs.
+- [x] Add a private GUID-closure importer for assets from the user's original installation without committing them to Git.
+- [x] Import and validate the original 12 character models, convert their default materials to URP, and restore Cat's default hair accessory.
+- [x] Import, convert, and validate the original M101 Carron Harvest map pilot, including terrain, colliders, scene meshes, and six Carrons.
+- [ ] Expand the private production-asset migration to the remaining maps, monsters, equipment variants, animation clips, VFX, and LODs.
 
 ## Phase 5 - Private online alpha
 

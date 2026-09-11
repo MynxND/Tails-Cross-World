@@ -29,13 +29,22 @@ namespace TwelveTails.EditorTools
             Directory.CreateDirectory("Assets/TwelveTails/Scenes");
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
-            var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            ground.name = "Training Ground";
-            ground.transform.localScale = new Vector3(4f, 1f, 4f);
+            var originalMap = Resources.Load<GameObject>("OriginalMaps/M101_CarronHarvest");
+            if (originalMap != null)
+            {
+                var environment = (GameObject)PrefabUtility.InstantiatePrefab(originalMap);
+                environment.name = "Original M101 Carron Harvest";
+            }
+            else
+            {
+                var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                ground.name = "Training Ground";
+                ground.transform.localScale = new Vector3(4f, 1f, 4f);
+            }
 
             var player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
             player.name = "Player";
-            player.transform.position = Position(catalog.spawns, "spawn.player");
+            player.transform.position = GroundedPosition(Position(catalog.spawns, "spawn.player"));
             Object.DestroyImmediate(player.GetComponent<CapsuleCollider>());
             player.AddComponent<CharacterController>();
             player.AddComponent<PlayerMotor>();
@@ -50,20 +59,20 @@ namespace TwelveTails.EditorTools
 
             var enemy = GameObject.CreatePrimitive(PrimitiveType.Capsule);
             enemy.name = "Training Dummy";
-            enemy.transform.position = Position(catalog.spawns, "spawn.dummy");
+            enemy.transform.position = GroundedPosition(Position(catalog.spawns, "spawn.dummy"));
             enemy.AddComponent<Health>().Configure(30);
             enemy.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
 
             var npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
             npc.name = "Guide NPC";
-            npc.transform.position = Position(catalog.npcs, "npc.guide");
+            npc.transform.position = GroundedPosition(Position(catalog.npcs, "npc.guide"));
             npc.transform.localScale = new Vector3(1f, 2f, 1f);
 
             foreach (var definition in catalog.portals)
             {
                 var portal = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 portal.name = $"Portal {definition.id} -> {definition.destination_map}";
-                portal.transform.position = ToVector(definition.position);
+                portal.transform.position = GroundedPosition(ToVector(definition.position), .1f);
                 portal.transform.localScale = new Vector3(1.5f, .1f, 1.5f);
                 portal.GetComponent<Renderer>().sharedMaterial.color = new Color(.2f, .7f, 1f);
             }
@@ -112,6 +121,14 @@ namespace TwelveTails.EditorTools
         }
 
         private static Vector3 ToVector(float[] value) => new(value[0], value[1], value[2]);
+
+        private static Vector3 GroundedPosition(Vector3 position, float offset = 1f)
+        {
+            var terrain = Object.FindFirstObjectByType<Terrain>();
+            if (terrain == null) return position;
+            position.y = terrain.SampleHeight(position) + terrain.transform.position.y + offset;
+            return position;
+        }
 
         [MenuItem("12 Tails/Generate Character Prefabs")]
         public static void GenerateCharacterPrefabs()

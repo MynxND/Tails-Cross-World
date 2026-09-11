@@ -60,3 +60,5 @@ client/Assets/InputSystem_Actions.inputactions.meta
 # These are required for visual parity but must never be committed or published.
 client/Assets/TwelveTails/LegacyPrivate/
 client/Assets/TwelveTails/LegacyPrivate.meta
+client/Assets/_TerrainAutoUpgrade/
+client/Assets/_TerrainAutoUpgrade.meta

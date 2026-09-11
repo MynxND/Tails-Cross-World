@@ -303,5 +303,91 @@ namespace TwelveTails.EditorTools
             var fullPath = $"{parent}/{name}";
             if (!AssetDatabase.IsValidFolder(fullPath)) AssetDatabase.CreateFolder(parent, name);
         }
+
+        [MenuItem("12 Tails/Generate Original M101 Map Pilot")]
+        public static void GenerateOriginalMapPilot()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M101_CarronHarvest.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/MapMaterials";
+            const string sceneRoot = "Assets/TwelveTails/LegacyPrivate/Scenes";
+            const string outputPath = sceneRoot + "/M101_CarronHarvest_URP.unity";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string mapResourceRoot = resourceRoot + "/OriginalMaps";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M101 scene is missing", sourcePath);
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "MapMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Scenes");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalMaps");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            foreach (var root in scene.GetRootGameObjects())
+            {
+                RemoveMissingScripts(root);
+                ConvertMaterials(root, "M101", materialRoot);
+            }
+            EditorSceneManager.SaveScene(scene, outputPath, true);
+            var sceneObjects = scene.GetRootGameObjects().FirstOrDefault(item => item.name == "SceneObjects");
+            if (sceneObjects == null) throw new System.Exception("M101 SceneObjects root is missing");
+            var mapInstance = Object.Instantiate(sceneObjects);
+            mapInstance.name = "M101_CarronHarvest";
+            PrefabUtility.SaveAsPrefabAsset(mapInstance, mapResourceRoot + "/M101_CarronHarvest.prefab");
+            Object.DestroyImmediate(mapInstance);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            ValidateOriginalMapPilot();
+        }
+
+        [MenuItem("12 Tails/Validate Original M101 Map Pilot")]
+        public static void ValidateOriginalMapPilot()
+        {
+            const string scenePath = "Assets/TwelveTails/LegacyPrivate/Scenes/M101_CarronHarvest_URP.unity";
+            var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
+            var roots = scene.GetRootGameObjects();
+            var renderers = roots.SelectMany(root => root.GetComponentsInChildren<Renderer>(true)).ToArray();
+            var meshFilters = roots.SelectMany(root => root.GetComponentsInChildren<MeshFilter>(true)).ToArray();
+            var skinned = roots.SelectMany(root => root.GetComponentsInChildren<SkinnedMeshRenderer>(true)).ToArray();
+            var meshes = meshFilters.Select(item => item.sharedMesh)
+                .Concat(skinned.Select(item => item.sharedMesh)).Where(item => item != null).Distinct().ToArray();
+            var materials = renderers.SelectMany(item => item.sharedMaterials)
+                .Where(item => item != null).Distinct().ToArray();
+            var colliders = roots.SelectMany(root => root.GetComponentsInChildren<Collider>(true)).ToArray();
+            var terrains = roots.SelectMany(root => root.GetComponentsInChildren<Terrain>(true)).ToArray();
+            var carrons = roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                .Count(item => item.name == "Carron");
+            var badMaterials = materials.Count(item => item.shader == null || !item.shader.isSupported ||
+                item.shader.name == "Hidden/InternalErrorShader");
+            var bounds = renderers[0].bounds;
+            foreach (var renderer in renderers.Skip(1)) bounds.Encapsulate(renderer.bounds);
+            var report = new[]
+            {
+                "Twelve Tails original M101 map pilot validation",
+                $"Unity: {Application.unityVersion}",
+                $"roots={roots.Length}",
+                $"renderers={renderers.Length}",
+                $"meshes={meshes.Length}",
+                $"materials={materials.Length}",
+                $"colliders={colliders.Length}",
+                $"terrains={terrains.Length}",
+                $"carrons={carrons}",
+                $"unsupportedMaterials={badMaterials}",
+                $"rootNames={string.Join(",", roots.Select(item => item.name))}",
+                $"boundsCenter={bounds.center}",
+                $"boundsSize={bounds.size}",
+                $"terrainPosition={(terrains.Length > 0 ? terrains[0].transform.position.ToString() : "none")}",
+                $"terrainSize={(terrains.Length > 0 ? terrains[0].terrainData.size.ToString() : "none")}"
+            };
+            var repositoryRoot = Directory.GetParent(Application.dataPath)?.Parent?.FullName ?? ".";
+            var artifactDirectory = Path.Combine(repositoryRoot, "artifacts");
+            Directory.CreateDirectory(artifactDirectory);
+            var reportPath = Path.Combine(artifactDirectory, "legacy-m101-validation.txt");
+            File.WriteAllLines(reportPath, report);
+            Debug.Log(string.Join("\n", report));
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            if (renderers.Length == 0 || meshes.Length == 0 || colliders.Length == 0 || terrains.Length == 0 ||
+                carrons == 0 || badMaterials > 0)
+                throw new System.Exception($"Original M101 map validation failed. See {reportPath}");
+        }
     }
 }
