@@ -657,6 +657,7 @@ namespace TwelveTails.EditorTools
             const string prefabDirectory = "Assets/TwelveTails/Resources/Characters";
             const string materialDirectory = "Assets/TwelveTails/Generated/Materials";
             const string controllerDirectory = "Assets/TwelveTails/Generated/Controllers";
+            var animationBindings = LoadAnimationBindings();
             Directory.CreateDirectory(prefabDirectory);
             Directory.CreateDirectory(materialDirectory);
             Directory.CreateDirectory(controllerDirectory);
@@ -685,6 +686,17 @@ namespace TwelveTails.EditorTools
                     var idleState = machine.AddState("Idle"); idleState.motion = idle;
                     var runState = machine.AddState("Run"); runState.motion = run;
                     var attackState = machine.AddState("Attack"); attackState.motion = attack;
+                    foreach (var binding in animationBindings.Where(value => value.characterId == id))
+                    {
+                        var skillClip = clips.FirstOrDefault(clip => clip.name == binding.clipName);
+                        if (skillClip == null)
+                        {
+                            skillClip = attack;
+                            Debug.LogWarning($"{title}.fbx is missing mapped clip {binding.clipName}; using {attack.name} until the legacy clip is retargeted.");
+                        }
+                        var skillState = machine.AddState(binding.clipName);
+                        skillState.motion = skillClip;
+                    }
                     machine.defaultState = idleState;
                     var toRun = idleState.AddTransition(runState); toRun.hasExitTime = false; toRun.AddCondition(AnimatorConditionMode.Greater, .1f, "Speed");
                     var toIdle = runState.AddTransition(idleState); toIdle.hasExitTime = false; toIdle.AddCondition(AnimatorConditionMode.Less, .1f, "Speed");

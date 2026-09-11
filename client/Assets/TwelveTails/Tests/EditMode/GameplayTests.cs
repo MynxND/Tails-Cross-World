@@ -581,5 +581,25 @@ namespace TwelveTails.Tests
                     Assert.That(animator != null && animator.runtimeAnimatorController != null, Is.True, $"Missing Animator Controller for {id}");
             }
         }
+
+        [Test]
+        public void EveryCharacterAnimatorContainsMappedSkillStates()
+        {
+            foreach (var id in CharacterRoster.Ids)
+            {
+                var name = char.ToUpperInvariant(id[0]) + id.Substring(1);
+                var prefab = Resources.Load<GameObject>($"Characters/{name}");
+                var instance = Object.Instantiate(prefab);
+                try
+                {
+                    var animator = instance.GetComponent<Animator>();
+                    animator.Update(0f);
+                    foreach (var state in new[] { "nAttack1", "nAttack2", "cAttack1" })
+                        Assert.That(animator.HasState(0, AnimatorMotionDriver.StateHash(state)), Is.True, $"{id} is missing Animator state {state}");
+                }
+                finally { Object.DestroyImmediate(instance); }
+            }
+        }
+
     }
 }

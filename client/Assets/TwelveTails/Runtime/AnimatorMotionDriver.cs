@@ -21,15 +21,21 @@ namespace TwelveTails.Gameplay
 
         public void PlayAttack()
         {
-            if (animator != null) animator.SetTrigger("Attack");
+            if (animator == null) return;
+            animator.SetTrigger("Attack");
         }
 
         public void PlaySkillAnimation(string clipName)
         {
             if (animator == null || string.IsNullOrWhiteSpace(clipName)) return;
-            if (animator.HasState(0, Animator.StringToHash(clipName)))
-                animator.CrossFadeInFixedTime(clipName, .05f);
-            else animator.SetTrigger("Attack");
+            var stateHash = StateHash(clipName);
+            if (animator.HasState(0, stateHash))
+            {
+                animator.CrossFadeInFixedTime(stateHash, .05f);
+            }
+            else PlayAttack();
         }
+
+        public static int StateHash(string stateName) => Animator.StringToHash($"Base Layer.{stateName}");
     }
 }
