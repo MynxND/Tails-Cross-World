@@ -119,138 +119,13 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &186087470
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 186087476}
-  - component: {fileID: 186087475}
-  - component: {fileID: 186087474}
-  - component: {fileID: 186087473}
-  - component: {fileID: 186087472}
-  - component: {fileID: 186087471}
-  m_Layer: 0
-  m_Name: group.m101_carrons 8
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &186087471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186087470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &186087472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186087470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &186087473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186087470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &186087474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186087470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &186087475
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186087470}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &186087476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186087470}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.985099, y: 50.251427, z: -9.232304}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1511675620}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &203628229
+--- !u!1001 &74326505
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1665190873}
+    m_TransformParent: {fileID: 558327334}
     m_Modifications:
     - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -302,31 +177,31 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 203628232}
+      addedObject: {fileID: 74326508}
   m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &203628230 stripped
+--- !u!4 &74326506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 203628229}
+  m_PrefabInstance: {fileID: 74326505}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &203628231 stripped
+--- !u!1 &74326507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 203628229}
+  m_PrefabInstance: {fileID: 74326505}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &203628232
+--- !u!114 &74326508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203628231}
+  m_GameObject: {fileID: 74326507}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &234464420
+--- !u!1 &227489024
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,137 +209,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 234464426}
-  - component: {fileID: 234464425}
-  - component: {fileID: 234464424}
-  - component: {fileID: 234464423}
-  - component: {fileID: 234464422}
-  - component: {fileID: 234464421}
-  m_Layer: 0
-  m_Name: group.m101_carrons 11
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &234464421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234464420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &234464422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234464420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &234464423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234464420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &234464424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234464420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &234464425
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234464420}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &234464426
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234464420}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.7719703, y: 50.251427, z: -12.001584}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 266829084}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &249427317
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 249427323}
-  - component: {fileID: 249427322}
-  - component: {fileID: 249427321}
-  - component: {fileID: 249427320}
-  - component: {fileID: 249427319}
-  - component: {fileID: 249427318}
+  - component: {fileID: 227489030}
+  - component: {fileID: 227489029}
+  - component: {fileID: 227489028}
+  - component: {fileID: 227489027}
+  - component: {fileID: 227489026}
+  - component: {fileID: 227489025}
   m_Layer: 0
   m_Name: group.m101_carrons 4
   m_TagString: Untagged
@@ -472,13 +222,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &249427318
+--- !u!114 &227489025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249427317}
+  m_GameObject: {fileID: 227489024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
@@ -486,13 +236,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
   defeatClipName: ko
   deactivateDelayOverride: 0
---- !u!114 &249427319
+--- !u!114 &227489026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249427317}
+  m_GameObject: {fileID: 227489024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
@@ -503,45 +253,45 @@ MonoBehaviour:
   moveSpeed: 3
   attackCooldown: 1.2
   attackDamage: 2
---- !u!114 &249427320
+--- !u!114 &227489027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249427317}
+  m_GameObject: {fileID: 227489024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
   entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
   protectMission: {fileID: 0}
   rewardExperience: 0
   rewardPotions: 0
---- !u!114 &249427321
+--- !u!114 &227489028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249427317}
+  m_GameObject: {fileID: 227489024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
   maximum: 12
---- !u!143 &249427322
+--- !u!143 &227489029
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249427317}
+  m_GameObject: {fileID: 227489024}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -560,105 +310,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &249427323
+--- !u!4 &227489030
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249427317}
+  m_GameObject: {fileID: 227489024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.786675, y: 50.251427, z: -1.3082161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1551822168}
+  - {fileID: 695958269}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &266829083
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 234464426}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 266829086}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &266829084 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 266829083}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &266829085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 266829083}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &266829086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266829085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &321637089
+--- !u!1 &397732099
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -666,26 +334,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 321637095}
-  - component: {fileID: 321637094}
-  - component: {fileID: 321637093}
-  - component: {fileID: 321637092}
-  - component: {fileID: 321637091}
-  - component: {fileID: 321637090}
+  - component: {fileID: 397732105}
+  - component: {fileID: 397732104}
+  - component: {fileID: 397732103}
+  - component: {fileID: 397732102}
+  - component: {fileID: 397732101}
+  - component: {fileID: 397732100}
   m_Layer: 0
-  m_Name: group.m101_carrons 1
+  m_Name: group.m101_carrons 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &321637090
+--- !u!114 &397732100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321637089}
+  m_GameObject: {fileID: 397732099}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
@@ -693,13 +361,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
   defeatClipName: ko
   deactivateDelayOverride: 0
---- !u!114 &321637091
+--- !u!114 &397732101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321637089}
+  m_GameObject: {fileID: 397732099}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
@@ -710,45 +378,45 @@ MonoBehaviour:
   moveSpeed: 3
   attackCooldown: 1.2
   attackDamage: 2
---- !u!114 &321637092
+--- !u!114 &397732102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321637089}
+  m_GameObject: {fileID: 397732099}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
   entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
   protectMission: {fileID: 0}
   rewardExperience: 0
   rewardPotions: 0
---- !u!114 &321637093
+--- !u!114 &397732103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321637089}
+  m_GameObject: {fileID: 397732099}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
   maximum: 12
---- !u!143 &321637094
+--- !u!143 &397732104
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321637089}
+  m_GameObject: {fileID: 397732099}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -767,23 +435,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &321637095
+--- !u!4 &397732105
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321637089}
+  m_GameObject: {fileID: 397732099}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.26318, y: 50.251427, z: -1.3082161}
+  m_LocalPosition: {x: 4.54115, y: 50.251427, z: 15.4704895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1489475696}
+  - {fileID: 1259523947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &474949011
+--- !u!1 &457560931
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -791,137 +459,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 474949017}
-  - component: {fileID: 474949016}
-  - component: {fileID: 474949015}
-  - component: {fileID: 474949014}
-  - component: {fileID: 474949013}
-  - component: {fileID: 474949012}
-  m_Layer: 0
-  m_Name: group.m101_carrons 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &474949012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474949011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &474949013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474949011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &474949014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474949011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &474949015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474949011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &474949016
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474949011}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &474949017
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474949011}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2876778, y: 50.251427, z: 3.530418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1032255698}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &832251380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 832251386}
-  - component: {fileID: 832251385}
-  - component: {fileID: 832251384}
-  - component: {fileID: 832251383}
-  - component: {fileID: 832251382}
-  - component: {fileID: 832251381}
+  - component: {fileID: 457560937}
+  - component: {fileID: 457560936}
+  - component: {fileID: 457560935}
+  - component: {fileID: 457560934}
+  - component: {fileID: 457560933}
+  - component: {fileID: 457560932}
   m_Layer: 0
   m_Name: group.m101_carrons 6
   m_TagString: Untagged
@@ -929,13 +472,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &832251381
+--- !u!114 &457560932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832251380}
+  m_GameObject: {fileID: 457560931}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
@@ -943,13 +486,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
   defeatClipName: ko
   deactivateDelayOverride: 0
---- !u!114 &832251382
+--- !u!114 &457560933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832251380}
+  m_GameObject: {fileID: 457560931}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
@@ -960,45 +503,45 @@ MonoBehaviour:
   moveSpeed: 3
   attackCooldown: 1.2
   attackDamage: 2
---- !u!114 &832251383
+--- !u!114 &457560934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832251380}
+  m_GameObject: {fileID: 457560931}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
   entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
   protectMission: {fileID: 0}
   rewardExperience: 0
   rewardPotions: 0
---- !u!114 &832251384
+--- !u!114 &457560935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832251380}
+  m_GameObject: {fileID: 457560931}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
   maximum: 12
---- !u!143 &832251385
+--- !u!143 &457560936
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832251380}
+  m_GameObject: {fileID: 457560931}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1017,23 +560,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &832251386
+--- !u!4 &457560937
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832251380}
+  m_GameObject: {fileID: 457560931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.74998474, y: 50.251427, z: -10.198425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1207289121}
+  - {fileID: 680014559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &847164127
+--- !u!1 &524623901
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1041,10 +584,260 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 847164131}
-  - component: {fileID: 847164130}
-  - component: {fileID: 847164129}
-  - component: {fileID: 847164128}
+  - component: {fileID: 524623907}
+  - component: {fileID: 524623906}
+  - component: {fileID: 524623905}
+  - component: {fileID: 524623904}
+  - component: {fileID: 524623903}
+  - component: {fileID: 524623902}
+  m_Layer: 0
+  m_Name: group.m101_carrons 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &524623902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524623901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &524623903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524623901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &524623904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524623901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &524623905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524623901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &524623906
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524623901}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &524623907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524623901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.828732, y: 50.251427, z: 11.094151}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2018966710}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &558327328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558327334}
+  - component: {fileID: 558327333}
+  - component: {fileID: 558327332}
+  - component: {fileID: 558327331}
+  - component: {fileID: 558327330}
+  - component: {fileID: 558327329}
+  m_Layer: 0
+  m_Name: group.m101_carrons 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &558327329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558327328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &558327330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558327328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &558327331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558327328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &558327332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558327328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &558327333
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558327328}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &558327334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558327328}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.26318, y: 50.251427, z: -1.3082161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 74326506}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &567438272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567438276}
+  - component: {fileID: 567438275}
+  - component: {fileID: 567438274}
+  - component: {fileID: 567438273}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1052,35 +845,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &847164128
+--- !u!114 &567438273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847164127}
+  m_GameObject: {fileID: 567438272}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfb2f0e8b087a9148bfe648353e7947d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.CameraFollow
-  target: {fileID: 1924985776}
+  target: {fileID: 1435787329}
   offset: {x: 0, y: 8, z: -10}
---- !u!81 &847164129
+--- !u!81 &567438274
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847164127}
+  m_GameObject: {fileID: 567438272}
   m_Enabled: 1
---- !u!20 &847164130
+--- !u!20 &567438275
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847164127}
+  m_GameObject: {fileID: 567438272}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -1125,13 +918,13 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &847164131
+--- !u!4 &567438276
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847164127}
+  m_GameObject: {fileID: 567438272}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.761261, y: 59.201427, z: 4.6030807}
@@ -1140,13 +933,263 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1032255697
+--- !u!1 &576714976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576714982}
+  - component: {fileID: 576714981}
+  - component: {fileID: 576714980}
+  - component: {fileID: 576714979}
+  - component: {fileID: 576714978}
+  - component: {fileID: 576714977}
+  m_Layer: 0
+  m_Name: group.m101_carrons 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &576714977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576714976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &576714978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576714976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &576714979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576714976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &576714980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576714976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &576714981
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576714976}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &576714982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576714976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2876778, y: 50.251427, z: 3.530418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 585434923}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &582509287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582509293}
+  - component: {fileID: 582509292}
+  - component: {fileID: 582509291}
+  - component: {fileID: 582509290}
+  - component: {fileID: 582509289}
+  - component: {fileID: 582509288}
+  m_Layer: 0
+  m_Name: group.m101_carrons 12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &582509288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582509287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &582509289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582509287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &582509290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582509287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &582509291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582509287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &582509292
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582509287}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &582509293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582509287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.88938, y: 50.251427, z: 15.7312155}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1754256737}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &585434922
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 474949017}
+    m_TransformParent: {fileID: 576714982}
     m_Modifications:
     - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1198,162 +1241,37 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1032255700}
+      addedObject: {fileID: 585434925}
   m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1032255698 stripped
+--- !u!4 &585434923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1032255697}
+  m_PrefabInstance: {fileID: 585434922}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1032255699 stripped
+--- !u!1 &585434924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1032255697}
+  m_PrefabInstance: {fileID: 585434922}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1032255700
+--- !u!114 &585434925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032255699}
+  m_GameObject: {fileID: 585434924}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &1044065428
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1044065434}
-  - component: {fileID: 1044065433}
-  - component: {fileID: 1044065432}
-  - component: {fileID: 1044065431}
-  - component: {fileID: 1044065430}
-  - component: {fileID: 1044065429}
-  m_Layer: 0
-  m_Name: group.m101_carrons 5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1044065429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044065428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &1044065430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044065428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &1044065431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044065428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &1044065432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044065428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &1044065433
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044065428}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1044065434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044065428}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.828732, y: 50.251427, z: 11.094151}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1423643746}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1207289120
+--- !u!1001 &680014558
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 832251386}
+    m_TransformParent: {fileID: 457560937}
     m_Modifications:
     - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1405,156 +1323,113 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1207289123}
+      addedObject: {fileID: 680014561}
   m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1207289121 stripped
+--- !u!4 &680014559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1207289120}
+  m_PrefabInstance: {fileID: 680014558}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1207289122 stripped
+--- !u!1 &680014560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1207289120}
+  m_PrefabInstance: {fileID: 680014558}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1207289123
+--- !u!114 &680014561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207289122}
+  m_GameObject: {fileID: 680014560}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &1247152014
-GameObject:
+--- !u!1001 &695958268
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1247152020}
-  - component: {fileID: 1247152019}
-  - component: {fileID: 1247152018}
-  - component: {fileID: 1247152017}
-  - component: {fileID: 1247152016}
-  - component: {fileID: 1247152015}
-  m_Layer: 0
-  m_Name: group.m101_carrons 10
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1247152015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247152014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &1247152016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247152014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &1247152017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247152014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &1247152018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247152014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &1247152019
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247152014}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1247152020
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247152014}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.521794, y: 50.251427, z: 5.3628488}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1835565753}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1259024748
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 227489030}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695958271}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &695958269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 695958268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &695958270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 695958268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &695958271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695958270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1 &786445298
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1562,12 +1437,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1259024754}
-  - component: {fileID: 1259024753}
-  - component: {fileID: 1259024752}
-  - component: {fileID: 1259024751}
-  - component: {fileID: 1259024750}
-  - component: {fileID: 1259024749}
+  - component: {fileID: 786445304}
+  - component: {fileID: 786445303}
+  - component: {fileID: 786445302}
+  - component: {fileID: 786445301}
+  - component: {fileID: 786445300}
+  - component: {fileID: 786445299}
   m_Layer: 0
   m_Name: group.m101_carrons 7
   m_TagString: Untagged
@@ -1575,13 +1450,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1259024749
+--- !u!114 &786445299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259024748}
+  m_GameObject: {fileID: 786445298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
@@ -1589,13 +1464,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
   defeatClipName: ko
   deactivateDelayOverride: 0
---- !u!114 &1259024750
+--- !u!114 &786445300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259024748}
+  m_GameObject: {fileID: 786445298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
@@ -1606,45 +1481,45 @@ MonoBehaviour:
   moveSpeed: 3
   attackCooldown: 1.2
   attackDamage: 2
---- !u!114 &1259024751
+--- !u!114 &786445301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259024748}
+  m_GameObject: {fileID: 786445298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
   entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
   protectMission: {fileID: 0}
   rewardExperience: 0
   rewardPotions: 0
---- !u!114 &1259024752
+--- !u!114 &786445302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259024748}
+  m_GameObject: {fileID: 786445298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
   maximum: 12
---- !u!143 &1259024753
+--- !u!143 &786445303
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259024748}
+  m_GameObject: {fileID: 786445298}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1663,269 +1538,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1259024754
+--- !u!4 &786445304
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259024748}
+  m_GameObject: {fileID: 786445298}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7985494, y: 50.251427, z: 12.244303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1847715615}
+  - {fileID: 1165610389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1314634971
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1852581993}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1314634974}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1314634972 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1314634971}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1314634973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1314634971}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1314634974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314634973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1001 &1421076100
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1955796849}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1421076103}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1421076101 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1421076100}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1421076102 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1421076100}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1421076103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421076102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1001 &1423643745
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1044065434}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1423643748}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1423643746 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1423643745}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1423643747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1423643745}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1423643748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423643747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &1453211679
+--- !u!1 &1067934818
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1933,8 +1562,461 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1453211681}
-  - component: {fileID: 1453211680}
+  - component: {fileID: 1067934824}
+  - component: {fileID: 1067934823}
+  - component: {fileID: 1067934822}
+  - component: {fileID: 1067934821}
+  - component: {fileID: 1067934820}
+  - component: {fileID: 1067934819}
+  m_Layer: 0
+  m_Name: group.m101_carrons 9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1067934819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067934818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &1067934820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067934818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &1067934821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067934818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1067934822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067934818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &1067934823
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067934818}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1067934824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067934818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.381895, y: 50.251427, z: -5.2686157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1298378160}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1165610388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 786445304}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1165610391}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1165610389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1165610388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1165610390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1165610388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1165610391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165610390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1001 &1237621518
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1480435118}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1237621521}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1237621519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1237621518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1237621520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1237621518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1237621521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237621520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1001 &1259523946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 397732105}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1259523949}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1259523947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1259523946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1259523948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1259523946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259523949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259523948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1001 &1298378159
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1067934824}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1298378162}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1298378160 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1298378159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1298378161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1298378159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1298378162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298378161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1 &1413900154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413900156}
+  - component: {fileID: 1413900155}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -1942,13 +2024,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &1453211680
+--- !u!108 &1413900155
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453211679}
+  m_GameObject: {fileID: 1413900154}
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
@@ -2007,13 +2089,13 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!4 &1453211681
+--- !u!4 &1413900156
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453211679}
+  m_GameObject: {fileID: 1413900154}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.10938166, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2022,253 +2104,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1489475695
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 321637095}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1489475698}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1489475696 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1489475695}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1489475697 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1489475695}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1489475698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489475697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1001 &1511675619
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 186087476}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1511675622}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1511675620 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1511675619}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1511675621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1511675619}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1511675622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511675621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1001 &1551822167
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 249427323}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1551822170}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1551822168 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1551822167}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1551822169 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1551822167}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1551822170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551822169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &1665190867
+--- !u!1 &1435787325
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2276,433 +2112,19 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1665190873}
-  - component: {fileID: 1665190872}
-  - component: {fileID: 1665190871}
-  - component: {fileID: 1665190870}
-  - component: {fileID: 1665190869}
-  - component: {fileID: 1665190868}
-  m_Layer: 0
-  m_Name: group.m101_carrons 12
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1665190868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665190867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &1665190869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665190867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &1665190870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665190867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &1665190871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665190867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &1665190872
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665190867}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1665190873
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665190867}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.88938, y: 50.251427, z: 15.7312155}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 203628230}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1835565752
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1247152020}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1835565755}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1835565753 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1835565752}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1835565754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1835565752}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1835565755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835565754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1001 &1847715614
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1259024754}
-    m_Modifications:
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      propertyPath: m_Name
-      value: Original monster.carron Visual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1847715617}
-  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
---- !u!4 &1847715615 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1847715614}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1847715616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
-  m_PrefabInstance: {fileID: 1847715614}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1847715617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847715616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
---- !u!1 &1852581987
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1852581993}
-  - component: {fileID: 1852581992}
-  - component: {fileID: 1852581991}
-  - component: {fileID: 1852581990}
-  - component: {fileID: 1852581989}
-  - component: {fileID: 1852581988}
-  m_Layer: 0
-  m_Name: group.m101_carrons 9
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1852581988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852581987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &1852581989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852581987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &1852581990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852581987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &1852581991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852581987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &1852581992
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852581987}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1852581993
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852581987}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.381895, y: 50.251427, z: -5.2686157}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1314634972}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1924985772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1924985776}
-  - component: {fileID: 1924985785}
-  - component: {fileID: 1924985784}
-  - component: {fileID: 1924985783}
-  - component: {fileID: 1924985782}
-  - component: {fileID: 1924985781}
-  - component: {fileID: 1924985780}
-  - component: {fileID: 1924985779}
-  - component: {fileID: 1924985778}
-  - component: {fileID: 1924985777}
-  - component: {fileID: 1924985775}
-  - component: {fileID: 1924985774}
-  - component: {fileID: 1924985773}
+  - component: {fileID: 1435787329}
+  - component: {fileID: 1435787338}
+  - component: {fileID: 1435787337}
+  - component: {fileID: 1435787336}
+  - component: {fileID: 1435787335}
+  - component: {fileID: 1435787334}
+  - component: {fileID: 1435787333}
+  - component: {fileID: 1435787332}
+  - component: {fileID: 1435787331}
+  - component: {fileID: 1435787330}
+  - component: {fileID: 1435787328}
+  - component: {fileID: 1435787327}
+  - component: {fileID: 1435787326}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2710,40 +2132,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1924985773
+--- !u!114 &1435787326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 593be01dd4ab8df4d838d3a3d19ea834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SaveCoordinator
-  progress: {fileID: 1924985774}
-  quest: {fileID: 1924985775}
+  progress: {fileID: 1435787327}
+  quest: {fileID: 1435787328}
   mupoMission: {fileID: 0}
---- !u!114 &1924985774
+--- !u!114 &1435787327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11dcfc3e22c438e4f9d8852d146ab372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PlayerProgress
---- !u!114 &1924985775
+--- !u!114 &1435787328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c6f1eeb9dce94a4ea83f1b23229db6e, type: 3}
@@ -2752,13 +2174,13 @@ MonoBehaviour:
   targetId: monster.carron
   objectiveVerb: Defeat
   requiredDefeats: 12
---- !u!4 &1924985776
+--- !u!4 &1435787329
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.761261, y: 51.201427, z: 14.603081}
@@ -2767,13 +2189,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1924985777
+--- !u!114 &1435787330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
@@ -2781,38 +2203,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
   defeatClipName: ko
   deactivateDelayOverride: 0
---- !u!114 &1924985778
+--- !u!114 &1435787331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 365e27917e0d70145b32970ccaf2274a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.CharacterSelector
---- !u!114 &1924985779
+--- !u!114 &1435787332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
   maximum: 100
---- !u!114 &1924985780
+--- !u!114 &1435787333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a080e0b8370f184d870a441928f1b5c, type: 3}
@@ -2825,6 +2247,8 @@ MonoBehaviour:
     damage: 10
     cooldownSeconds: 0.35
     hitDelaySeconds: 0.12
+    hitCount: 1
+    hitIntervalSeconds: 0
     actionDurationSeconds: 0.5
     comboWindowStartSeconds: 0.25
     comboWindowEndSeconds: 0.45
@@ -2846,6 +2270,8 @@ MonoBehaviour:
     damage: 20
     cooldownSeconds: 1.2
     hitDelaySeconds: 0.2
+    hitCount: 1
+    hitIntervalSeconds: 0
     actionDurationSeconds: 0.7
     comboWindowStartSeconds: 0
     comboWindowEndSeconds: 0
@@ -2867,6 +2293,8 @@ MonoBehaviour:
     damage: 30
     cooldownSeconds: 3
     hitDelaySeconds: 0.3
+    hitCount: 1
+    hitIntervalSeconds: 0
     actionDurationSeconds: 1
     comboWindowStartSeconds: 0
     comboWindowEndSeconds: 0
@@ -2888,6 +2316,8 @@ MonoBehaviour:
     damage: 30
     cooldownSeconds: 3
     hitDelaySeconds: 0.3
+    hitCount: 1
+    hitIntervalSeconds: 0
     actionDurationSeconds: 1
     comboWindowStartSeconds: 0
     comboWindowEndSeconds: 0
@@ -2909,6 +2339,8 @@ MonoBehaviour:
     damage: 10
     cooldownSeconds: 3
     hitDelaySeconds: 0.6
+    hitCount: 1
+    hitIntervalSeconds: 0
     actionDurationSeconds: 0.8
     comboWindowStartSeconds: 0
     comboWindowEndSeconds: 0
@@ -2924,6 +2356,29 @@ MonoBehaviour:
     statusTickSeconds: 0
     statusDamagePerTick: 0
     statusMovementMultiplier: 1
+  - id: skill.wolf_blade_fang
+    characterId: wolf
+    animationClip: bladeFang1
+    damage: 10
+    cooldownSeconds: 30
+    hitDelaySeconds: 0.7
+    hitCount: 2
+    hitIntervalSeconds: 0.2
+    actionDurationSeconds: 1.1
+    comboWindowStartSeconds: 0
+    comboWindowEndSeconds: 0
+    comboNextSkillId: 
+    resourceCost: 15
+    range: 4
+    projectileSpeed: 0
+    projectileLifetimeSeconds: 0
+    projectileHomingRadiansPerSecond: 0
+    impactRadius: 0
+    statusEffectId: 
+    statusDurationSeconds: 0
+    statusTickSeconds: 0
+    statusDamagePerTick: 0
+    statusMovementMultiplier: 1
   animationBindings:
   - characterId: wolf
     skillId: skill.basic_slash
@@ -2934,6 +2389,9 @@ MonoBehaviour:
   - characterId: wolf
     skillId: skill.class_special
     clipName: cAttack1
+  - characterId: wolf
+    skillId: skill.wolf_blade_fang
+    clipName: bladeFang1
   - characterId: bison
     skillId: skill.basic_slash
     clipName: nAttack1
@@ -3045,13 +2503,13 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1924985781
+--- !u!114 &1435787334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0abd8822a92879849ba5af1aa4cd770e, type: 3}
@@ -3062,26 +2520,26 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1924985782
+--- !u!114 &1435787335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7196893db70dc604a9e082af8fd86335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PlayerMotor
   speed: 6
---- !u!143 &1924985783
+--- !u!143 &1435787336
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3100,13 +2558,13 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1924985784
+--- !u!23 &1435787337
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -3149,15 +2607,636 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1924985785
+--- !u!33 &1435787338
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924985772}
+  m_GameObject: {fileID: 1435787325}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1945682549
+--- !u!1 &1480435112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480435118}
+  - component: {fileID: 1480435117}
+  - component: {fileID: 1480435116}
+  - component: {fileID: 1480435115}
+  - component: {fileID: 1480435114}
+  - component: {fileID: 1480435113}
+  m_Layer: 0
+  m_Name: group.m101_carrons 10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1480435113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480435112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &1480435114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480435112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &1480435115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480435112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1480435116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480435112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &1480435117
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480435112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1480435118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480435112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.521794, y: 50.251427, z: 5.3628488}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1237621519}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1532052918
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1592362545}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1532052921}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1532052919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1532052918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1532052920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1532052918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1532052921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532052920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1 &1592362539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592362545}
+  - component: {fileID: 1592362544}
+  - component: {fileID: 1592362543}
+  - component: {fileID: 1592362542}
+  - component: {fileID: 1592362541}
+  - component: {fileID: 1592362540}
+  m_Layer: 0
+  m_Name: group.m101_carrons 8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1592362540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592362539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &1592362541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592362539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &1592362542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592362539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1592362543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592362539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &1592362544
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592362539}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1592362545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592362539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.985099, y: 50.251427, z: -9.232304}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1532052919}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1754256736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 582509293}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1754256739}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1754256737 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1754256736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1754256738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1754256736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1754256739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754256738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1 &1778605891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1778605897}
+  - component: {fileID: 1778605896}
+  - component: {fileID: 1778605895}
+  - component: {fileID: 1778605894}
+  - component: {fileID: 1778605893}
+  - component: {fileID: 1778605892}
+  m_Layer: 0
+  m_Name: group.m101_carrons 11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1778605892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778605891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
+  defeatClipName: ko
+  deactivateDelayOverride: 0
+--- !u!114 &1778605893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778605891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 3
+  attackCooldown: 1.2
+  attackDamage: 2
+--- !u!114 &1778605894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778605891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.carron
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1778605895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778605891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 12
+--- !u!143 &1778605896
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778605891}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1778605897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778605891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.7719703, y: 50.251427, z: -12.001584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1960660334}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1960660333
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1778605897}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960660336}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &1960660334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1960660333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1960660335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 1960660333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1960660336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960660335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1001 &1982859010
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3214,132 +3293,89 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7a9df7b49afe84b885fa1321f8fef0, type: 3}
---- !u!1 &1955796843
-GameObject:
+--- !u!1001 &2018966709
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1955796849}
-  - component: {fileID: 1955796848}
-  - component: {fileID: 1955796847}
-  - component: {fileID: 1955796846}
-  - component: {fileID: 1955796845}
-  - component: {fileID: 1955796844}
-  m_Layer: 0
-  m_Name: group.m101_carrons 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1955796844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955796843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f91ab576f498ca1d1bb26e97d5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.DefeatAnimationDriver
-  defeatClipName: ko
-  deactivateDelayOverride: 0
---- !u!114 &1955796845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955796843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
-  detectionRadius: 12
-  attackRange: 1.5
-  moveSpeed: 3
-  attackCooldown: 1.2
-  attackDamage: 2
---- !u!114 &1955796846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955796843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
-  entityId: monster.carron
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
-  protectMission: {fileID: 0}
-  rewardExperience: 0
-  rewardPotions: 0
---- !u!114 &1955796847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955796843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
-  maximum: 12
---- !u!143 &1955796848
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955796843}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1955796849
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955796843}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.54115, y: 50.251427, z: 15.4704895}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1421076101}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2041769131
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 524623907}
+    m_Modifications:
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      propertyPath: m_Name
+      value: Original monster.carron Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2018966712}
+  m_SourcePrefab: {fileID: 100100000, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+--- !u!4 &2018966710 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2016958159836886167, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 2018966709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2018966711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7938016538899676201, guid: 619f985bfd84e784cba8b080c6acadf3, type: 3}
+  m_PrefabInstance: {fileID: 2018966709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2018966712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018966711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027084e0ca2b6874a8d977fb754a72df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.LegacyAnimationDriver
+--- !u!1 &2087092921
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3347,8 +3383,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2041769133}
-  - component: {fileID: 2041769132}
+  - component: {fileID: 2087092923}
+  - component: {fileID: 2087092922}
   m_Layer: 0
   m_Name: mission.m101_carron_hunt HUD
   m_TagString: Untagged
@@ -3356,30 +3392,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2041769132
+--- !u!114 &2087092922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041769131}
+  m_GameObject: {fileID: 2087092921}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cacf3a2a239d36f4aa8b1dd15cdd2926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PrototypeHud
-  quest: {fileID: 1924985775}
-  progress: {fileID: 1924985774}
-  saves: {fileID: 1924985773}
+  quest: {fileID: 1435787328}
+  progress: {fileID: 1435787327}
+  saves: {fileID: 1435787326}
   mupoMission: {fileID: 0}
   protectMission: {fileID: 0}
---- !u!4 &2041769133
+--- !u!4 &2087092923
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041769131}
+  m_GameObject: {fileID: 2087092921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3392,20 +3428,20 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1945682549}
-  - {fileID: 1924985776}
-  - {fileID: 321637095}
-  - {fileID: 1955796849}
-  - {fileID: 474949017}
-  - {fileID: 249427323}
-  - {fileID: 1044065434}
-  - {fileID: 832251386}
-  - {fileID: 1259024754}
-  - {fileID: 186087476}
-  - {fileID: 1852581993}
-  - {fileID: 1247152020}
-  - {fileID: 234464426}
-  - {fileID: 1665190873}
-  - {fileID: 1453211681}
-  - {fileID: 847164131}
-  - {fileID: 2041769133}
+  - {fileID: 1982859010}
+  - {fileID: 1435787329}
+  - {fileID: 558327334}
+  - {fileID: 397732105}
+  - {fileID: 576714982}
+  - {fileID: 227489030}
+  - {fileID: 524623907}
+  - {fileID: 457560937}
+  - {fileID: 786445304}
+  - {fileID: 1592362545}
+  - {fileID: 1067934824}
+  - {fileID: 1480435118}
+  - {fileID: 1778605897}
+  - {fileID: 582509293}
+  - {fileID: 1413900156}
+  - {fileID: 567438276}
+  - {fileID: 2087092923}

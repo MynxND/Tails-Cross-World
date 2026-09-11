@@ -186,7 +186,7 @@ class Authority:
         player.last_attack_at = now
         player.skill_cooldowns[skill.skill_id] = now + skill.cooldown_seconds
         player.resource -= skill.resource_cost
-        lobby.map.monster_hp = max(0, lobby.map.monster_hp - skill.damage)
+        lobby.map.monster_hp = max(0, lobby.map.monster_hp - skill.damage * skill.hit_count)
         if lobby.map.monster_hp == 0:
             for account_id in lobby.members:
                 member = self._players[account_id]

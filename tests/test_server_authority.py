@@ -148,6 +148,19 @@ class ServerAuthorityTests(unittest.TestCase):
         self.assertEqual(state["map"]["monster_hp"], 20)
         self.assertEqual(state["players"][0]["character_id"], "mole")
 
+    def test_wolf_blade_fang_is_restricted_and_applies_both_hits(self) -> None:
+        authority = Authority()
+        session = authority.create_session("blade-fang")
+        lobby = authority.create_lobby(session.token)
+        player = authority._players["blade-fang"]
+
+        with self.assertRaisesRegex(AuthorityError, "unavailable for character"):
+            authority.skill_action(session.token, 1, player.actor_id, "skill.wolf_blade_fang", "monster.training_dummy", [0, 0, 1], "mole")
+
+        state = authority.skill_action(session.token, 2, player.actor_id, "skill.wolf_blade_fang", "monster.training_dummy", [0, 0, 1], "wolf")
+        self.assertEqual(state["map"]["monster_hp"], 10)
+        self.assertEqual(state["players"][0]["character_id"], "wolf")
+
     def test_persistence_and_reconnect(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             store = StateStore(Path(directory) / "state.json")

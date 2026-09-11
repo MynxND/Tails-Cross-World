@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profiles": [
-    {"character_id": "wolf", "skills": [{"skill_id": "skill.basic_slash", "clip_name": "nAttack1"}, {"skill_id": "skill.power_strike", "clip_name": "nAttack2"}, {"skill_id": "skill.class_special", "clip_name": "cAttack1"}]},
+    {"character_id": "wolf", "skills": [{"skill_id": "skill.basic_slash", "clip_name": "nAttack1"}, {"skill_id": "skill.power_strike", "clip_name": "nAttack2"}, {"skill_id": "skill.class_special", "clip_name": "cAttack1"}, {"skill_id": "skill.wolf_blade_fang", "clip_name": "bladeFang1"}]},
     {"character_id": "bison", "skills": [{"skill_id": "skill.basic_slash", "clip_name": "nAttack1"}, {"skill_id": "skill.power_strike", "clip_name": "nAttack2"}, {"skill_id": "skill.class_special", "clip_name": "cAttack1"}]},
     {"character_id": "panda", "skills": [{"skill_id": "skill.basic_slash", "clip_name": "nAttack1"}, {"skill_id": "skill.power_strike", "clip_name": "nAttack2"}, {"skill_id": "skill.class_special", "clip_name": "cAttack1"}]},
     {"character_id": "whale", "skills": [{"skill_id": "skill.basic_slash", "clip_name": "nAttack1"}, {"skill_id": "skill.power_strike", "clip_name": "nAttack2"}, {"skill_id": "skill.class_special", "clip_name": "cAttack1"}]},

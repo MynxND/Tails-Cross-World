@@ -14,6 +14,8 @@ namespace TwelveTails.Gameplay
         public int damage;
         public float cooldownSeconds;
         public float hitDelaySeconds;
+        public int hitCount = 1;
+        public float hitIntervalSeconds;
         public float actionDurationSeconds;
         public float comboWindowStartSeconds;
         public float comboWindowEndSeconds;
@@ -58,6 +60,7 @@ namespace TwelveTails.Gameplay
         private float actionEndsAt;
         private float resourceRegenerationRemainder;
         private bool impactApplied;
+        private int pendingHitCount;
 
         public int Resource => resource;
         public IReadOnlyList<SkillDefinition> Skills => skills;
@@ -101,6 +104,7 @@ namespace TwelveTails.Gameplay
             if (keyboard.digit2Key.wasPressedThisFrame) ExecuteSkill("skill.power_strike");
             if (keyboard.digit3Key.wasPressedThisFrame) ExecuteSkill("skill.class_special");
             if (keyboard.digit4Key.wasPressedThisFrame) ExecuteSkill("skill.mole_stun_grenade");
+            if (keyboard.digit5Key.wasPressedThisFrame) ExecuteSkill("skill.blade_fang");
         }
 
         public int AdvanceResource(float deltaSeconds)
@@ -154,9 +158,15 @@ namespace TwelveTails.Gameplay
             activeSkill = definition;
             actionStartedAt = actionTime;
             pendingHitAt = actionTime + definition.hitDelaySeconds;
+            pendingHitCount = Mathf.Max(1, definition.hitCount);
             actionEndsAt = actionTime + actionDuration;
             impactApplied = definition.hitDelaySeconds <= 0f;
-            if (impactApplied) ApplyDamage(definition);
+            if (impactApplied)
+            {
+                ApplyDamage(definition);
+                pendingHitCount--;
+                pendingHitAt += Mathf.Max(0f, definition.hitIntervalSeconds);
+            }
             return true;
         }
 
@@ -164,10 +174,12 @@ namespace TwelveTails.Gameplay
         {
             if (activeSkill == null) return false;
             var changed = false;
-            if (!impactApplied && actionTime >= pendingHitAt)
+            while (pendingHitCount > 0 && actionTime >= pendingHitAt)
             {
                 impactApplied = true;
-                changed = ApplyDamage(activeSkill);
+                changed = ApplyDamage(activeSkill) || changed;
+                pendingHitCount--;
+                pendingHitAt += Mathf.Max(0.0001f, activeSkill.hitIntervalSeconds);
             }
             if (actionTime < actionEndsAt) return changed;
             var nextSkill = queuedSkill;
@@ -203,6 +215,7 @@ namespace TwelveTails.Gameplay
             pendingHitAt = 0f;
             actionEndsAt = 0f;
             impactApplied = false;
+            pendingHitCount = 0;
             if (completedSkill != null) SkillEnded?.Invoke(completedSkill);
         }
 

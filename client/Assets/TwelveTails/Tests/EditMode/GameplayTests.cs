@@ -639,6 +639,50 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void WolfBladeFangLevelOneAppliesTwoTimedHits()
+        {
+            var playerObject = new GameObject("Wolf Skill User");
+            var targetObject = new GameObject("Blade Fang Target") { transform = { position = Vector3.forward } };
+            try
+            {
+                playerObject.AddComponent<CharacterSelector>().Select("wolf");
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition
+                    {
+                        id = "skill.wolf_blade_fang", characterId = "wolf", damage = 10, range = 4f,
+                        hitDelaySeconds = .7f, hitCount = 2, hitIntervalSeconds = .2f, actionDurationSeconds = 1.1f
+                    }
+                });
+                targetObject.AddComponent<SphereCollider>();
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(30);
+                targetObject.AddComponent<EnemyTarget>();
+                Physics.SyncTransforms();
+
+                Assert.That(executor.ResolveSkillId("skill.blade_fang", "wolf"), Is.EqualTo("skill.wolf_blade_fang"));
+                Assert.That(executor.ExecuteSkill("skill.wolf_blade_fang", 10f), Is.True);
+                Assert.That(executor.AdvanceAction(10.69f), Is.False);
+                Assert.That(health.Current, Is.EqualTo(30));
+                Assert.That(executor.AdvanceAction(10.7f), Is.True);
+                Assert.That(health.Current, Is.EqualTo(20));
+                Assert.That(executor.AdvanceAction(10.89f), Is.False);
+                Assert.That(health.Current, Is.EqualTo(20));
+                Assert.That(executor.AdvanceAction(10.9f), Is.True);
+                Assert.That(health.Current, Is.EqualTo(10));
+                Assert.That(executor.IsActionActive, Is.True);
+                executor.AdvanceAction(11.1f);
+                Assert.That(executor.IsActionActive, Is.False);
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
         public void SkillLifecycleRaisesPresentationHooksAtConfiguredTimes()
         {
             var gameObject = new GameObject("Skill User");

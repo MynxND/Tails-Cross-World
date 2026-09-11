@@ -76,6 +76,8 @@ namespace TwelveTails.EditorTools
             public int damage;
             public float cooldown_seconds;
             public float hit_delay_seconds;
+            public int hit_count;
+            public float hit_interval_seconds;
             public float action_duration_seconds;
             public float combo_window_start_seconds;
             public float combo_window_end_seconds;
@@ -628,6 +630,8 @@ namespace TwelveTails.EditorTools
                 damage = skill.damage,
                 cooldownSeconds = skill.cooldown_seconds,
                 hitDelaySeconds = skill.hit_delay_seconds,
+                hitCount = skill.hit_count,
+                hitIntervalSeconds = skill.hit_interval_seconds,
                 actionDurationSeconds = skill.action_duration_seconds,
                 comboWindowStartSeconds = skill.combo_window_start_seconds,
                 comboWindowEndSeconds = skill.combo_window_end_seconds,

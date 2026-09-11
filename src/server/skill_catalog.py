@@ -13,6 +13,7 @@ class ServerSkill:
     character_id: str
     damage: int
     cooldown_seconds: float
+    hit_count: int
     resource_cost: int
     range: float
     impact_radius: float
@@ -30,6 +31,7 @@ def load_skill_catalog(path: Path | None = None) -> dict[str, ServerSkill]:
             character_id=raw["character_id"],
             damage=raw["damage"],
             cooldown_seconds=raw["cooldown_seconds"],
+            hit_count=raw["hit_count"],
             resource_cost=raw["resource_cost"],
             range=raw["range"],
             impact_radius=raw["impact_radius"],

@@ -144,7 +144,7 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
+    _exact_fields(data, {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
     if data["character_id"]:
         _string(data["character_id"], "data.character_id", identifier=True)
@@ -155,6 +155,8 @@ def _skill(data: dict[str, Any]) -> None:
     _integer(data["damage"], "data.damage", maximum=100000)
     _number(data["cooldown_seconds"], "data.cooldown_seconds", minimum=0.0, maximum=3600.0)
     _number(data["hit_delay_seconds"], "data.hit_delay_seconds", minimum=0.0, maximum=60.0)
+    _integer(data["hit_count"], "data.hit_count", minimum=1, maximum=100)
+    _number(data["hit_interval_seconds"], "data.hit_interval_seconds", minimum=0.0, maximum=60.0)
     _number(data["action_duration_seconds"], "data.action_duration_seconds", minimum=0.0, maximum=60.0)
     _number(data["combo_window_start_seconds"], "data.combo_window_start_seconds", minimum=0.0, maximum=60.0)
     _number(data["combo_window_end_seconds"], "data.combo_window_end_seconds", minimum=0.0, maximum=60.0)
