@@ -71,5 +71,14 @@ namespace TwelveTails.Tests
                 if (Directory.Exists(directory)) Directory.Delete(directory, true);
             }
         }
+
+        [Test]
+        public void CharacterRosterContainsTwelveUniqueCharactersAndClasses()
+        {
+            Assert.That(CharacterRoster.Ids, Has.Length.EqualTo(12));
+            Assert.That(CharacterRoster.Classes, Has.Length.EqualTo(12));
+            Assert.That(new System.Collections.Generic.HashSet<string>(CharacterRoster.Ids).Count, Is.EqualTo(12));
+            Assert.That(new System.Collections.Generic.HashSet<string>(CharacterRoster.Classes).Count, Is.EqualTo(12));
+        }
     }
 }

@@ -59,7 +59,7 @@ Progress:
 - [x] Define the canonical 12-character roster and base classes with prefab addresses.
 - [x] Add the first data-driven chapter, map, quest, item, and 12-variant equipment definitions.
 - [x] Add automated cross-reference and 12-character variant validation.
-- [ ] Generate distinct prototype prefabs and a Unity character-selection screen.
+- [x] Generate 12 distinct procedural prototype avatars and a persistent Unity character-selection screen.
 - [ ] Add portal/spawn/NPC editor tools and production-ready model, rig, animation, armor, and weapon assets.
 
 ## Phase 5 - Private online alpha

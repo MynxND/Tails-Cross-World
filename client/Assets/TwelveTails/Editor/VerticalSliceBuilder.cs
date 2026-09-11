@@ -29,6 +29,7 @@ namespace TwelveTails.EditorTools
             player.AddComponent<PlayerMotor>();
             player.AddComponent<MeleeAttack>();
             player.AddComponent<Health>().Configure(100);
+            player.AddComponent<CharacterSelector>();
             var quest = player.AddComponent<QuestProgress>();
             var progress = player.AddComponent<PlayerProgress>();
             var saves = player.AddComponent<SaveCoordinator>();
