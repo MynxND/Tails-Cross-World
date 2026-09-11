@@ -80,5 +80,15 @@ namespace TwelveTails.Tests
             Assert.That(new System.Collections.Generic.HashSet<string>(CharacterRoster.Ids).Count, Is.EqualTo(12));
             Assert.That(new System.Collections.Generic.HashSet<string>(CharacterRoster.Classes).Count, Is.EqualTo(12));
         }
+
+        [Test]
+        public void EveryCharacterHasALoadablePrefab()
+        {
+            foreach (var id in CharacterRoster.Ids)
+            {
+                var name = char.ToUpperInvariant(id[0]) + id.Substring(1);
+                Assert.That(Resources.Load<GameObject>($"Characters/{name}"), Is.Not.Null, $"Missing prefab for {id}");
+            }
+        }
     }
 }

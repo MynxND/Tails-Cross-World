@@ -37,12 +37,26 @@ def validate(root: Path) -> None:
         raise ContentError("each character must declare a prefab address")
     maps, quests = _ids(chapter["maps"], "maps"), _ids(chapter["quests"], "quests")
     items, equipment = _ids(chapter["items"], "items"), chapter["equipment"]
+    spawns = _ids(chapter["spawns"], "spawns")
+    portals = _ids(chapter["portals"], "portals")
+    npcs = _ids(chapter["npcs"], "npcs")
     definition = chapter["chapter"]
     if set(definition["maps"]) - maps or set(definition["quests"]) - quests:
         raise ContentError("chapter contains unresolved references")
     for quest in chapter["quests"]:
         if quest["map"] not in maps or set(quest["reward_items"]) - items:
             raise ContentError(f"quest {quest['id']} contains unresolved references")
+    for map_definition in chapter["maps"]:
+        if set(map_definition["spawns"]) - spawns or set(map_definition["portals"]) - portals or set(map_definition["npcs"]) - npcs:
+            raise ContentError(f"map {map_definition['id']} contains unresolved references")
+    for portal in chapter["portals"]:
+        if portal["destination_map"] not in maps:
+            raise ContentError(f"portal {portal['id']} has an unresolved destination")
+    for group in (chapter["spawns"], chapter["portals"], chapter["npcs"]):
+        for definition in group:
+            position = definition.get("position")
+            if not isinstance(position, list) or len(position) != 3 or any(not isinstance(value, (int, float)) for value in position):
+                raise ContentError(f"{definition['id']} must have a three-number position")
     for item in equipment:
         if set(item["variants"]) != EXPECTED_CHARACTERS:
             raise ContentError(f"equipment {item['id']} must have all 12 variants")
