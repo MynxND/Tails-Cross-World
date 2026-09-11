@@ -127,7 +127,7 @@ namespace TwelveTails.EditorTools
                 RemoveMissingScripts(instance);
                 ApplyDefaultAppearance(instance, title, materialDestination, textureDestination);
                 AttachDefaultAccessory(instance, title);
-                AttachOriginalAttackClips(instance, title);
+                AttachOriginalAnimationClips(instance, title);
                 ConvertMaterials(instance, title, materialDestination);
                 PrefabUtility.SaveAsPrefabAsset(instance, $"{destination}/{title}.prefab");
                 Object.DestroyImmediate(instance);
@@ -138,13 +138,13 @@ namespace TwelveTails.EditorTools
             AssetDatabase.Refresh();
         }
 
-        private static void AttachOriginalAttackClips(GameObject characterRoot, string character)
+        private static void AttachOriginalAnimationClips(GameObject characterRoot, string character)
         {
             var animation = characterRoot.GetComponentInChildren<Animation>(true);
             if (animation == null) throw new System.Exception($"Original {character} prefab has no Animation component");
             var rigRoot = $"{character}_tri";
             var basicAttack = character == "Rabbit" ? "nAttack" : "nAttack1";
-            foreach (var clipName in new[] { basicAttack, "nAttack2", "cAttack1" })
+            foreach (var clipName in new[] { basicAttack, "nAttack2", "cAttack1", "hit", "ko", "getUp" })
             {
                 var clip = AssetDatabase.FindAssets($"{clipName} t:AnimationClip", new[] { "Assets/TwelveTails/LegacyPrivate/AnimationClip" })
                     .Select(AssetDatabase.GUIDToAssetPath)

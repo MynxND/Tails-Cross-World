@@ -472,6 +472,7 @@ namespace TwelveTails.EditorTools
                             saves,
                             definition.reward.experience,
                             definition.reward.potions);
+                        actor.AddComponent<KnockoutAnimationDriver>();
                     }
                     else
                     {

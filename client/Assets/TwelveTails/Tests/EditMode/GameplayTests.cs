@@ -31,6 +31,41 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void KnockoutAnimationPlaysBeforeRecoveryAnimation()
+        {
+            var target = new GameObject("Knockout Target");
+            var visual = new GameObject("Visual");
+            var knockoutClip = new AnimationClip { legacy = true, name = "ko" };
+            var recoveryClip = new AnimationClip { legacy = true, name = "getUp" };
+            try
+            {
+                visual.transform.SetParent(target.transform);
+                var animation = visual.AddComponent<Animation>();
+                animation.AddClip(knockoutClip, "ko");
+                animation.AddClip(recoveryClip, "getUp");
+                var legacyDriver = visual.AddComponent<LegacyAnimationDriver>();
+                var health = target.AddComponent<Health>();
+                health.Configure(10);
+                var reaction = target.AddComponent<KnockoutAnimationDriver>();
+                reaction.Configure(.5f);
+
+                health.ApplyDamage(10);
+                Assert.That(legacyDriver.LastPlayedClip, Is.EqualTo("ko"));
+
+                reaction.AdvanceRecovery(.49f);
+                Assert.That(legacyDriver.LastPlayedClip, Is.EqualTo("ko"));
+                reaction.AdvanceRecovery(.01f);
+                Assert.That(legacyDriver.LastPlayedClip, Is.EqualTo("getUp"));
+            }
+            finally
+            {
+                Object.DestroyImmediate(knockoutClip);
+                Object.DestroyImmediate(recoveryClip);
+                Object.DestroyImmediate(target);
+            }
+        }
+
+        [Test]
         public void FirstDamageSpawnerCreatesThreeActorsOnlyOnce()
         {
             var nest = new GameObject("Nest");
@@ -615,12 +650,16 @@ namespace TwelveTails.Tests
                 Assert.That(animation, Is.Not.Null, $"{id} is missing its original Animation component");
                 var basicAttack = id == "rabbit" ? "nAttack" : "nAttack1";
                 Assert.That(animation.GetClip(basicAttack), Is.Not.Null, $"{id} is missing original clip {basicAttack}");
+                Assert.That(animation.GetClip("ko"), Is.Not.Null, $"{id} is missing original knockout clip");
+                Assert.That(animation.GetClip("getUp"), Is.Not.Null, $"{id} is missing original recovery clip");
                 Assert.That(prefab.GetComponentInChildren<LegacyAnimationDriver>(true), Is.Not.Null, $"{id} is missing the clean runtime legacy-animation adapter");
                 var instance = Object.Instantiate(prefab);
                 try
                 {
                     var driver = instance.GetComponentInChildren<LegacyAnimationDriver>(true);
                     Assert.That(driver.PlaySkillAnimation(basicAttack), Is.True, $"{id} could not play original clip {basicAttack}");
+                    Assert.That(driver.PlayAnimation("ko"), Is.True, $"{id} could not play original knockout clip");
+                    Assert.That(driver.PlayAnimation("getUp"), Is.True, $"{id} could not play original recovery clip");
                 }
                 finally { Object.DestroyImmediate(instance); }
             }
