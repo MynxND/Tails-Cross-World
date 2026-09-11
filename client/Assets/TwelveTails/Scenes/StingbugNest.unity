@@ -1,0 +1,3580 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 2
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 2
+    m_PVRDenoiserTypeIndirect: 2
+    m_PVRDenoiserTypeAO: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &64197149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 64197154}
+  - component: {fileID: 64197153}
+  - component: {fileID: 64197152}
+  - component: {fileID: 64197151}
+  - component: {fileID: 64197150}
+  m_Layer: 0
+  m_Name: group.m104_nests 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &64197150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64197149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &64197151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64197149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &64197152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64197149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &64197153
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64197149}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &64197154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64197149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53.478127, y: 53.465126, z: -26.421106}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 652262306}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &108675132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108675136}
+  - component: {fileID: 108675144}
+  - component: {fileID: 108675143}
+  - component: {fileID: 108675142}
+  - component: {fileID: 108675141}
+  - component: {fileID: 108675140}
+  - component: {fileID: 108675139}
+  - component: {fileID: 108675138}
+  - component: {fileID: 108675137}
+  - component: {fileID: 108675135}
+  - component: {fileID: 108675134}
+  - component: {fileID: 108675133}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &108675133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593be01dd4ab8df4d838d3a3d19ea834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SaveCoordinator
+  progress: {fileID: 108675134}
+  quest: {fileID: 108675135}
+  mupoMission: {fileID: 0}
+--- !u!114 &108675134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dcfc3e22c438e4f9d8852d146ab372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PlayerProgress
+--- !u!114 &108675135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6f1eeb9dce94a4ea83f1b23229db6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.QuestProgress
+  targetId: monster.stingnest
+  requiredDefeats: 7
+--- !u!4 &108675136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.978305, y: 50.519905, z: -50.956802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108675137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365e27917e0d70145b32970ccaf2274a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.CharacterSelector
+--- !u!114 &108675138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 100
+--- !u!114 &108675139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a080e0b8370f184d870a441928f1b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SkillExecutor
+  skills:
+  - id: skill.basic_slash
+    animationClip: nAttack1
+    damage: 10
+    cooldownSeconds: 0.35
+    resourceCost: 0
+    range: 2.25
+  - id: skill.power_strike
+    animationClip: nAttack2
+    damage: 20
+    cooldownSeconds: 1.2
+    resourceCost: 5
+    range: 2.5
+  - id: skill.class_special
+    animationClip: cAttack1
+    damage: 30
+    cooldownSeconds: 3
+    resourceCost: 15
+    range: 3
+  animationBindings:
+  - characterId: wolf
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: wolf
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: wolf
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: bison
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: bison
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: bison
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: panda
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: panda
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: panda
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: whale
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: whale
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: whale
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: mole
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: mole
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: mole
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: rabbit
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: rabbit
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: rabbit
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: monkey
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: monkey
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: monkey
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: sheep
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: sheep
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: sheep
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: penguin
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: penguin
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: penguin
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: bat
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: bat
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: bat
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: chameleon
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: chameleon
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: chameleon
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: cat
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: cat
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: cat
+    skillId: skill.class_special
+    clipName: cAttack1
+  resource: 100
+  maximumResource: 100
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &108675140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abd8822a92879849ba5af1aa4cd770e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MeleeAttack
+  range: 2.25
+  damage: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &108675141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7196893db70dc604a9e082af8fd86335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PlayerMotor
+  speed: 6
+--- !u!143 &108675142
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &108675143
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &108675144
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108675132}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &128179072
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1599381961}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &128179073 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 128179072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &270140221
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 503166805}
+    m_Modifications:
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.green Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+--- !u!4 &270140222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  m_PrefabInstance: {fileID: 270140221}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &290674034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290674039}
+  - component: {fileID: 290674038}
+  - component: {fileID: 290674037}
+  - component: {fileID: 290674036}
+  - component: {fileID: 290674035}
+  m_Layer: 0
+  m_Name: group.m104_nests 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &290674035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290674034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &290674036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290674034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &290674037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290674034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &290674038
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290674034}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &290674039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290674034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36.81624, y: 52.391674, z: 8.957407}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 454078908}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &341363427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341363432}
+  - component: {fileID: 341363431}
+  - component: {fileID: 341363430}
+  - component: {fileID: 341363429}
+  - component: {fileID: 341363428}
+  m_Layer: 0
+  m_Name: group.m104_nests 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &341363428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341363427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &341363429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341363427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &341363430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341363427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &341363431
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341363427}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &341363432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341363427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.363214, y: 53.468178, z: 59.737514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1478476771}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &370506517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1958532549}
+    m_Modifications:
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.green Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+--- !u!4 &370506518 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  m_PrefabInstance: {fileID: 370506517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &421543846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1420265374}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &421543847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 421543846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &454078907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 290674039}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &454078908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 454078907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &462668728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462668733}
+  - component: {fileID: 462668732}
+  - component: {fileID: 462668731}
+  - component: {fileID: 462668730}
+  - component: {fileID: 462668729}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_green 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &462668729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462668728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.5
+  attackCooldown: 1.2
+  attackDamage: 5
+--- !u!114 &462668730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462668728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.green
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &462668731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462668728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 24
+--- !u!143 &462668732
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462668728}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &462668733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462668728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -45.98433, y: 51.21049, z: 35.41956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1738841367}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &465102896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1684621389}
+    m_Modifications:
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.red Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+--- !u!4 &465102897 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  m_PrefabInstance: {fileID: 465102896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &503166800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503166805}
+  - component: {fileID: 503166804}
+  - component: {fileID: 503166803}
+  - component: {fileID: 503166802}
+  - component: {fileID: 503166801}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_green 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &503166801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503166800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.5
+  attackCooldown: 1.2
+  attackDamage: 5
+--- !u!114 &503166802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503166800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.green
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &503166803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503166800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 24
+--- !u!143 &503166804
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503166800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &503166805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503166800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.36987, y: 51.948383, z: -18.738058}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 270140222}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &521347912
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1390897659}
+    m_Modifications:
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.red Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+--- !u!4 &521347913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  m_PrefabInstance: {fileID: 521347912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &607998229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1082691767}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &607998230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 607998229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &652262305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 64197154}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &652262306 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 652262305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &889622553
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1849740292}
+    m_Modifications:
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.green Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+--- !u!4 &889622554 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  m_PrefabInstance: {fileID: 889622553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1057423283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5039797292690500019, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_Name
+      value: Original mission.m104_stingbug_nest Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561502545950180743, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b6273c2a7e18afc4ba3aebc29b0fb8a6, type: 3}
+--- !u!1 &1078321335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078321340}
+  - component: {fileID: 1078321339}
+  - component: {fileID: 1078321338}
+  - component: {fileID: 1078321337}
+  - component: {fileID: 1078321336}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_green 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1078321336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078321335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.5
+  attackCooldown: 1.2
+  attackDamage: 5
+--- !u!114 &1078321337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078321335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.green
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1078321338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078321335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 24
+--- !u!143 &1078321339
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078321335}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1078321340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078321335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 56.92848, y: 52.816257, z: -37.130196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1772297334}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1082691762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082691767}
+  - component: {fileID: 1082691766}
+  - component: {fileID: 1082691765}
+  - component: {fileID: 1082691764}
+  - component: {fileID: 1082691763}
+  m_Layer: 0
+  m_Name: group.m104_nests 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1082691763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082691762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &1082691764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082691762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1082691765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082691762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &1082691766
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082691762}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1082691767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082691762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.99668, y: 51.95136, z: -7.9675784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 607998230}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1289175605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2024625091}
+    m_Modifications:
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.red Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+--- !u!4 &1289175606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  m_PrefabInstance: {fileID: 1289175605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1390897654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390897659}
+  - component: {fileID: 1390897658}
+  - component: {fileID: 1390897657}
+  - component: {fileID: 1390897656}
+  - component: {fileID: 1390897655}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_red 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1390897655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390897654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 7
+--- !u!114 &1390897656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390897654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.red
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1390897657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390897654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 30
+--- !u!143 &1390897658
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390897654}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1390897659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390897654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.471744, y: 51.95136, z: -12.017631}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 521347913}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1420265369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420265374}
+  - component: {fileID: 1420265373}
+  - component: {fileID: 1420265372}
+  - component: {fileID: 1420265371}
+  - component: {fileID: 1420265370}
+  m_Layer: 0
+  m_Name: group.m104_nests 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420265370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420265369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &1420265371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420265369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1420265372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420265369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &1420265373
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420265369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1420265374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420265369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -48.908512, y: 51.532196, z: 48.567436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 421543847}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1421147992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421147997}
+  - component: {fileID: 1421147996}
+  - component: {fileID: 1421147995}
+  - component: {fileID: 1421147994}
+  - component: {fileID: 1421147993}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_red 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1421147993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421147992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 7
+--- !u!114 &1421147994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421147992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.red
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1421147995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421147992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 30
+--- !u!143 &1421147996
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421147992}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1421147997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421147992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 32.778076, y: 53.615963, z: 68.28088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1725463609}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1478476770
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 341363432}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &1478476771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 1478476770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1599381956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599381961}
+  - component: {fileID: 1599381960}
+  - component: {fileID: 1599381959}
+  - component: {fileID: 1599381958}
+  - component: {fileID: 1599381957}
+  m_Layer: 0
+  m_Name: group.m104_nests 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1599381957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599381956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &1599381958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599381956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1599381959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599381956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &1599381960
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599381956}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1599381961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599381956}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.589146, y: 54.173176, z: -49.47618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 128179073}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1684621384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684621389}
+  - component: {fileID: 1684621388}
+  - component: {fileID: 1684621387}
+  - component: {fileID: 1684621386}
+  - component: {fileID: 1684621385}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_red 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1684621385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684621384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 7
+--- !u!114 &1684621386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684621384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.red
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1684621387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684621384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 30
+--- !u!143 &1684621388
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684621384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1684621389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684621384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.079845, y: 55.619797, z: 58.828114}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 465102897}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1721978787
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1944382475}
+    m_Modifications:
+    - target: {fileID: 717220907040847690, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingnest Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+--- !u!4 &1721978788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1905894640710474567, guid: 5f50a27294eefc3478988deeee135e27, type: 3}
+  m_PrefabInstance: {fileID: 1721978787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1725463608
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1421147997}
+    m_Modifications:
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.red Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+--- !u!4 &1725463609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5838053200981785628, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  m_PrefabInstance: {fileID: 1725463608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1738841366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 462668733}
+    m_Modifications:
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.green Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+--- !u!4 &1738841367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  m_PrefabInstance: {fileID: 1738841366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1754992331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754992335}
+  - component: {fileID: 1754992334}
+  - component: {fileID: 1754992333}
+  - component: {fileID: 1754992332}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1754992332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754992331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb2f0e8b087a9148bfe648353e7947d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.CameraFollow
+  target: {fileID: 108675136}
+  offset: {x: 0, y: 8, z: -10}
+--- !u!81 &1754992333
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754992331}
+  m_Enabled: 1
+--- !u!20 &1754992334
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754992331}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1754992335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754992331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.978305, y: 58.519905, z: -60.956802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1772297333
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1078321340}
+    m_Modifications:
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+      propertyPath: m_Name
+      value: Original monster.stingbug.green Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+--- !u!4 &1772297334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 956565894265173573, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  m_PrefabInstance: {fileID: 1772297333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1849740287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849740292}
+  - component: {fileID: 1849740291}
+  - component: {fileID: 1849740290}
+  - component: {fileID: 1849740289}
+  - component: {fileID: 1849740288}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_green 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1849740288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849740287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.5
+  attackCooldown: 1.2
+  attackDamage: 5
+--- !u!114 &1849740289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849740287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.green
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1849740290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849740287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 24
+--- !u!143 &1849740291
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849740287}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1849740292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849740287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.237867, y: 51.943222, z: 15.433728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 889622554}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1893646705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893646707}
+  - component: {fileID: 1893646706}
+  m_Layer: 0
+  m_Name: Sun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1893646706
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893646705}
+  m_Enabled: 1
+  serializedVersion: 13
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.25
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShapeRadius: 0.025
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &1893646707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893646705}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.10938166, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1904059583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904059585}
+  - component: {fileID: 1904059584}
+  m_Layer: 0
+  m_Name: mission.m104_stingbug_nest HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1904059584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904059583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacf3a2a239d36f4aa8b1dd15cdd2926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PrototypeHud
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  mupoMission: {fileID: 0}
+  protectMission: {fileID: 0}
+--- !u!4 &1904059585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904059583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1944382470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1944382475}
+  - component: {fileID: 1944382474}
+  - component: {fileID: 1944382473}
+  - component: {fileID: 1944382472}
+  - component: {fileID: 1944382471}
+  m_Layer: 0
+  m_Name: group.m104_nests 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1944382471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944382470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60753e58c1eca3a40963c3ee6e7a7481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SpawnOnFirstDamage
+  greenPrefab: {fileID: 8125616433613688773, guid: 421c7d7ecf08b0945a5c959e5d9a1417, type: 3}
+  redPrefab: {fileID: 7556553674073885723, guid: 079c6ea603917db4e94c5cdfdfbf40a1, type: 3}
+  attackTarget: {fileID: 108675136}
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+--- !u!114 &1944382472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944382470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingnest
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1944382473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944382470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 60
+--- !u!143 &1944382474
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944382470}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1944382475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944382470}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 56.292786, y: 55.619797, z: 65.01256}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1721978788}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1958532544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1958532549}
+  - component: {fileID: 1958532548}
+  - component: {fileID: 1958532547}
+  - component: {fileID: 1958532546}
+  - component: {fileID: 1958532545}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_green 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1958532545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958532544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.5
+  attackCooldown: 1.2
+  attackDamage: 5
+--- !u!114 &1958532546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958532544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.green
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1958532547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958532544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 24
+--- !u!143 &1958532548
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958532544}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1958532549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958532544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -37.610012, y: 51.5424, z: -34.63274}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 370506518}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2024625086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2024625091}
+  - component: {fileID: 2024625090}
+  - component: {fileID: 2024625089}
+  - component: {fileID: 2024625088}
+  - component: {fileID: 2024625087}
+  m_Layer: 0
+  m_Name: group.m104_stingbugs_red 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2024625087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024625086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 7
+--- !u!114 &2024625088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024625086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.stingbug.red
+  quest: {fileID: 108675135}
+  progress: {fileID: 108675134}
+  saves: {fileID: 108675133}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &2024625089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024625086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 30
+--- !u!143 &2024625090
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024625086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2024625091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024625086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 63.002834, y: 53.252472, z: -20.966475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1289175606}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1057423283}
+  - {fileID: 108675136}
+  - {fileID: 1420265374}
+  - {fileID: 1599381961}
+  - {fileID: 1082691767}
+  - {fileID: 341363432}
+  - {fileID: 290674039}
+  - {fileID: 64197154}
+  - {fileID: 1944382475}
+  - {fileID: 462668733}
+  - {fileID: 1958532549}
+  - {fileID: 503166805}
+  - {fileID: 1849740292}
+  - {fileID: 1078321340}
+  - {fileID: 1390897659}
+  - {fileID: 1421147997}
+  - {fileID: 1684621389}
+  - {fileID: 2024625091}
+  - {fileID: 1893646707}
+  - {fileID: 1754992335}
+  - {fileID: 1904059585}

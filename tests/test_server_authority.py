@@ -80,6 +80,28 @@ class ServerAuthorityTests(unittest.TestCase):
             restored.import_state(store.load())
             self.assertEqual(restored.create_session("saved").account_id, "saved")
 
+    def test_m102_herd_completion_is_authoritative_and_idempotent(self) -> None:
+        authority = Authority()
+        session = authority.create_session("herder")
+        lobby = authority.create_lobby(session.token, "map.m102_mupo_round_up")
+        for sequence in range(1, 7):
+            state = authority.herd_pen(session.token, sequence, f"mupo-{sequence}")
+        self.assertEqual(state["map"]["penned_mupo_ids"], [f"mupo-{index}" for index in range(1, 7)])
+        self.assertTrue(state["players"][0]["quest_complete"])
+        self.assertEqual(state["players"][0]["experience"], 50)
+        with self.assertRaisesRegex(AuthorityError, "already penned"):
+            authority.herd_pen(session.token, 7, "mupo-1")
+
+    def test_m102_herd_death_fails_mission_without_reward(self) -> None:
+        authority = Authority()
+        session = authority.create_session("herder")
+        authority.create_lobby(session.token, "map.m102_mupo_round_up")
+        state = authority.herd_death(session.token, 1, "mupo-3")
+        self.assertTrue(state["map"]["mupo_failed"])
+        self.assertEqual(state["players"][0]["experience"], 0)
+        with self.assertRaisesRegex(AuthorityError, "mission failed"):
+            authority.herd_pen(session.token, 2, "mupo-1")
+
     def test_two_tcp_clients_complete_integration_flow(self) -> None:
         with LanServer(("127.0.0.1", 0), GameService()) as server:
             thread = Thread(target=server.serve_forever, daemon=True)
@@ -101,4 +123,27 @@ class ServerAuthorityTests(unittest.TestCase):
                 self.assertEqual(len(joined["result"]["players"]), 2)
                 rejected = request(bf, "move", token=two["token"], sequence=1, direction=[99, 0, 0])
                 self.assertFalse(rejected["ok"])
+            server.shutdown()
+
+    def test_tcp_m102_herd_flow_is_server_authoritative(self) -> None:
+        with LanServer(("127.0.0.1", 0), GameService()) as server:
+            thread = Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            with socket.create_connection(server.server_address) as connection:
+                stream = connection.makefile("rwb")
+
+                def request(kind, **values):
+                    payload = {"protocol_version": 1, "kind": kind, **values}
+                    stream.write(json.dumps(payload).encode() + b"\n")
+                    stream.flush()
+                    return json.loads(stream.readline())
+
+                login = request("login", account_id="m102-player")["result"]
+                lobby = request("create_lobby", token=login["token"], map_id="map.m102_mupo_round_up")["result"]
+                self.assertEqual(lobby["map"]["map_id"], "map.m102_mupo_round_up")
+                for sequence in range(1, 7):
+                    response = request("herd_pen", token=login["token"], lobby_id=lobby["lobby_id"], sequence=sequence, mupo_id=f"mupo-{sequence}")
+                    self.assertTrue(response["ok"])
+                self.assertTrue(response["result"]["players"][0]["quest_complete"])
+                self.assertEqual(response["result"]["players"][0]["experience"], 50)
             server.shutdown()

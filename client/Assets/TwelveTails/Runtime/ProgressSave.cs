@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
@@ -15,12 +16,14 @@ namespace TwelveTails.Gameplay
         public int potionCount;
         public bool questComplete;
         public bool rewardClaimed;
+        public string[] mupoPennedIds = Array.Empty<string>();
+        public bool mupoMissionFailed;
         public string checksum = string.Empty;
     }
 
     public static class ProgressSave
     {
-        public const int CurrentSchemaVersion = 1;
+        public const int CurrentSchemaVersion = 2;
 
         public static void Write(string path, ProgressSaveData data)
         {
@@ -49,10 +52,11 @@ namespace TwelveTails.Gameplay
         {
             var data = JsonUtility.FromJson<ProgressSaveData>(File.ReadAllText(path, Encoding.UTF8));
             if (data == null) throw new InvalidDataException("Save file is empty or invalid JSON.");
-            if (data.schemaVersion != CurrentSchemaVersion)
+            if (data.schemaVersion != 1 && data.schemaVersion != CurrentSchemaVersion)
                 throw new InvalidDataException($"Unsupported save schema: {data.schemaVersion}");
+            if (data.mupoPennedIds == null) data.mupoPennedIds = Array.Empty<string>();
             ValidateValues(data);
-            var expected = CalculateChecksum(data);
+            var expected = data.schemaVersion == 1 ? CalculateLegacyChecksum(data) : CalculateChecksum(data);
             if (!string.Equals(expected, data.checksum, StringComparison.OrdinalIgnoreCase))
                 throw new InvalidDataException("Save checksum mismatch.");
             return data;
@@ -60,7 +64,7 @@ namespace TwelveTails.Gameplay
 
         public static string CalculateChecksum(ProgressSaveData data)
         {
-            var canonical = $"{data.schemaVersion}|{data.characterId}|{data.experience}|{data.potionCount}|{data.questComplete}|{data.rewardClaimed}";
+            var canonical = $"{data.schemaVersion}|{data.characterId}|{data.experience}|{data.potionCount}|{data.questComplete}|{data.rewardClaimed}|{string.Join(",", data.mupoPennedIds ?? Array.Empty<string>())}|{data.mupoMissionFailed}";
             using var sha = SHA256.Create();
             var hash = sha.ComputeHash(Encoding.UTF8.GetBytes(canonical));
             var hex = new StringBuilder(hash.Length * 2);
@@ -74,6 +78,18 @@ namespace TwelveTails.Gameplay
                 throw new InvalidDataException("Invalid character ID.");
             if (data.experience < 0 || data.potionCount < 0)
                 throw new InvalidDataException("Progress values cannot be negative.");
+            if (data.mupoPennedIds == null || data.mupoPennedIds.Any(string.IsNullOrWhiteSpace))
+                throw new InvalidDataException("Mupo IDs cannot be empty.");
+        }
+
+        private static string CalculateLegacyChecksum(ProgressSaveData data)
+        {
+            var canonical = $"1|{data.characterId}|{data.experience}|{data.potionCount}|{data.questComplete}|{data.rewardClaimed}";
+            using var sha = SHA256.Create();
+            var hash = sha.ComputeHash(Encoding.UTF8.GetBytes(canonical));
+            var hex = new StringBuilder(hash.Length * 2);
+            foreach (var value in hash) hex.Append(value.ToString("x2"));
+            return hex.ToString();
         }
     }
 }

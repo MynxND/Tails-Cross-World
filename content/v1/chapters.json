@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "chapters": [
+    {"id": "chapter.01", "number": 1, "stage_count": 8, "mission_prefix": "M1", "status": "in_progress", "evidence": "GameCode.txt and imported Chapter 1 scenes"},
+    {"id": "chapter.02", "number": 2, "stage_count": 8, "mission_prefix": "M2", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.03", "number": 3, "stage_count": 8, "mission_prefix": "M3", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.04", "number": 4, "stage_count": 8, "mission_prefix": "M4", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.05", "number": 5, "stage_count": 8, "mission_prefix": "M5", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.06", "number": 6, "stage_count": 8, "mission_prefix": "M6", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.07", "number": 7, "stage_count": 8, "mission_prefix": "M7", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.08", "number": 8, "stage_count": 8, "mission_prefix": "M8", "status": "planned", "evidence": "GameCode.txt mission references"},
+    {"id": "chapter.09", "number": 9, "stage_count": 8, "mission_prefix": "M9", "status": "planned", "evidence": "GameCode.txt mission references; M9xx also contains extra content"},
+    {"id": "chapter.10", "number": 10, "stage_count": 8, "mission_prefix": "M10", "status": "planned", "evidence": "12-chapter roadmap requirement; exact scene mapping pending"},
+    {"id": "chapter.11", "number": 11, "stage_count": 8, "mission_prefix": "M11", "status": "planned", "evidence": "12-chapter roadmap requirement; exact scene mapping pending"},
+    {"id": "chapter.12", "number": 12, "stage_count": 8, "mission_prefix": "M12", "status": "planned", "evidence": "12-chapter roadmap requirement; exact scene mapping pending"}
+  ]
+}

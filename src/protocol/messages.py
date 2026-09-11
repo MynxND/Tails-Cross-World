@@ -80,6 +80,10 @@ def validate_client_message(message: Any) -> dict[str, Any]:
         _integer(payload["destination_slot"], "payload.destination_slot", 0, 255)
         if payload["source_slot"] == payload["destination_slot"]:
             raise MessageError("source_slot and destination_slot must differ")
+    elif kind in {"herd_pen_request", "herd_death_report"}:
+        _exact(payload, {"actor_id", "mupo_id"}, "payload")
+        _id(payload["actor_id"], "payload.actor_id")
+        _id(payload["mupo_id"], "payload.mupo_id")
     else:
         raise MessageError(f"unsupported message kind: {kind!r}")
     return message

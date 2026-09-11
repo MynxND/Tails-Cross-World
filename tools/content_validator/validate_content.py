@@ -8,14 +8,15 @@ import sys
 
 IDENTIFIER = re.compile(r"^[a-z][a-z0-9_.-]{1,63}$")
 EXPECTED_CHARACTERS = {"wolf", "bison", "panda", "whale", "mole", "rabbit", "monkey", "sheep", "penguin", "bat", "chameleon", "cat"}
+MISSION_FIELDS = {"id", "scene_name", "environment_resource", "player_spawn", "objective", "reward", "actors", "interactables", "evidence"}
 
 
 class ContentError(ValueError):
     pass
 
 
-def _ids(values: list[dict], label: str) -> set[str]:
-    result = [value.get("id") for value in values]
+def _ids(values: list[dict], label: str, field: str = "id") -> set[str]:
+    result = [value.get(field) for value in values]
     if any(not isinstance(value, str) or not IDENTIFIER.fullmatch(value) for value in result):
         raise ContentError(f"{label} contains an invalid id")
     if len(result) != len(set(result)):
@@ -23,11 +24,110 @@ def _ids(values: list[dict], label: str) -> set[str]:
     return set(result)
 
 
+def _position(value: object, label: str) -> None:
+    if not isinstance(value, dict) or set(value) != {"x", "y", "z"} or any(not isinstance(value[axis], (int, float)) for axis in ("x", "y", "z")):
+        raise ContentError(f"{label} must have numeric x, y, and z fields")
+
+
+def _mission_catalog(document: dict) -> None:
+    missions = document.get("missions")
+    if not isinstance(missions, list) or not missions:
+            raise ContentError("mission catalog must contain at least one mission with a valid objective")
+    _ids(missions, "missions")
+    for mission in missions:
+        if set(mission) != MISSION_FIELDS:
+            raise ContentError(f"mission {mission.get('id')} has unsupported or missing fields")
+        if not isinstance(mission["scene_name"], str) or not mission["scene_name"]:
+            raise ContentError(f"mission {mission['id']} has an invalid scene name")
+        if not isinstance(mission["environment_resource"], str) or not mission["environment_resource"].startswith("OriginalChapter1Maps/"):
+            raise ContentError(f"mission {mission['id']} has an invalid environment resource")
+        _position(mission["player_spawn"], f"mission {mission['id']} player spawn")
+        objective = mission["objective"]
+        if not isinstance(objective, dict) or set(objective) != {"kind", "target_id", "count"}:
+            raise ContentError(f"mission {mission['id']} has an invalid objective; expected fields: kind, target_id, count")
+        if objective["kind"] not in {"defeat", "interact", "knockout", "duel"} or not isinstance(objective["target_id"], str) or not IDENTIFIER.fullmatch(objective["target_id"]):
+            raise ContentError(f"mission {mission['id']} has an unsupported objective")
+        if not isinstance(objective["count"], int) or not 1 <= objective["count"] <= 9999:
+            raise ContentError(f"mission {mission['id']} has an invalid objective count")
+        reward = mission["reward"]
+        if not isinstance(reward, dict) or set(reward) != {"experience", "potions"}:
+            raise ContentError(f"mission {mission['id']} has an invalid reward")
+        if any(not isinstance(reward[field], int) or reward[field] < 0 for field in reward):
+            raise ContentError(f"mission {mission['id']} has a negative reward")
+        actors = mission["actors"]
+        if not isinstance(actors, list) or (not actors and objective["kind"] != "interact"):
+            raise ContentError(f"mission {mission['id']} has no actors")
+        actor_ids = set()
+        objective_actor_count = 0
+        for actor in actors:
+            required = {"id", "entity_id", "prefab_resource", "health", "move_speed", "attack_damage", "positions", "spawn_on_first_damage"}
+            if not isinstance(actor, dict) or set(actor) != required:
+                raise ContentError(f"mission {mission['id']} has an invalid actor group")
+            if not isinstance(actor["id"], str) or not IDENTIFIER.fullmatch(actor["id"]) or actor["id"] in actor_ids:
+                raise ContentError(f"mission {mission['id']} has an invalid or duplicate actor group id")
+            actor_ids.add(actor["id"])
+            if not isinstance(actor["entity_id"], str) or not IDENTIFIER.fullmatch(actor["entity_id"]):
+                raise ContentError(f"mission {mission['id']} has an invalid actor entity id")
+            if not isinstance(actor["prefab_resource"], str) or not actor["prefab_resource"].startswith(("OriginalMonsters/", "OriginalNpcs/", "OriginalCharacters/")):
+                raise ContentError(f"mission {mission['id']} has an invalid actor resource")
+            if not isinstance(actor["health"], int) or actor["health"] < 1:
+                raise ContentError(f"mission {mission['id']} has invalid actor health")
+            if not isinstance(actor["move_speed"], (int, float)) or actor["move_speed"] < 0:
+                raise ContentError(f"mission {mission['id']} has invalid actor speed")
+            if not isinstance(actor["attack_damage"], int) or actor["attack_damage"] < 0:
+                raise ContentError(f"mission {mission['id']} has invalid actor damage")
+            if not isinstance(actor["positions"], list) or not actor["positions"]:
+                raise ContentError(f"mission {mission['id']} actor group has no positions")
+            for index, position in enumerate(actor["positions"]):
+                _position(position, f"mission {mission['id']} actor position {index}")
+            if actor["entity_id"] == objective["target_id"]:
+                objective_actor_count += len(actor["positions"])
+            spawn = actor["spawn_on_first_damage"]
+            if not isinstance(spawn, dict) or set(spawn) != {"enabled", "green_prefab_resource", "red_prefab_resource"} or not isinstance(spawn["enabled"], bool):
+                raise ContentError(f"mission {mission['id']} has invalid first-damage spawn behavior")
+            if spawn["enabled"]:
+                resource_fields = ("green_prefab_resource", "red_prefab_resource")
+                if any(not isinstance(spawn[field], str) or not spawn[field].startswith("OriginalMonsters/") for field in resource_fields):
+                    raise ContentError(f"mission {mission['id']} has invalid first-damage spawn resources")
+            elif spawn["green_prefab_resource"] or spawn["red_prefab_resource"]:
+                raise ContentError(f"mission {mission['id']} disabled first-damage spawn must not declare resources")
+        interactables = mission["interactables"]
+        if not isinstance(interactables, list):
+            raise ContentError(f"mission {mission['id']} has invalid interactables")
+        interactable_ids = set()
+        objective_interactable_count = 0
+        for interactable in interactables:
+            required = {"id", "target_id", "prefab_resource", "position"}
+            if not isinstance(interactable, dict) or set(interactable) != required:
+                raise ContentError(f"mission {mission['id']} has an invalid interactable")
+            if not isinstance(interactable["id"], str) or not IDENTIFIER.fullmatch(interactable["id"]) or interactable["id"] in interactable_ids:
+                raise ContentError(f"mission {mission['id']} has an invalid or duplicate interactable id")
+            interactable_ids.add(interactable["id"])
+            if not isinstance(interactable["target_id"], str) or not IDENTIFIER.fullmatch(interactable["target_id"]):
+                raise ContentError(f"mission {mission['id']} has an invalid interactable target id")
+            if not isinstance(interactable["prefab_resource"], str) or not interactable["prefab_resource"].startswith("OriginalNpcs/"):
+                raise ContentError(f"mission {mission['id']} has an invalid interactable resource")
+            _position(interactable["position"], f"mission {mission['id']} interactable position")
+            if interactable["target_id"] == objective["target_id"]:
+                objective_interactable_count += 1
+        objective_source_count = objective_interactable_count if objective["kind"] == "interact" else objective_actor_count
+        expected_source_count = 1 if objective["kind"] == "knockout" else objective["count"]
+        if objective_source_count != expected_source_count:
+            raise ContentError(f"mission {mission['id']} objective count does not match actor positions")
+        if not isinstance(mission["evidence"], str) or not mission["evidence"]:
+            raise ContentError(f"mission {mission['id']} is missing evidence")
+
+
 def validate(root: Path) -> None:
     characters = json.loads((root / "characters.json").read_text(encoding="utf-8"))
     chapter = json.loads((root / "training_chapter.json").read_text(encoding="utf-8"))
-    if characters.get("schema_version") != 1 or chapter.get("schema_version") != 1:
+    skills = json.loads((root / "skills.json").read_text(encoding="utf-8"))
+    profiles = json.loads((root / "animation_profiles.json").read_text(encoding="utf-8"))
+    chapters = json.loads((root / "chapters.json").read_text(encoding="utf-8"))
+    missions = json.loads((root / "chapter1_missions.json").read_text(encoding="utf-8"))
+    if any(document.get("schema_version") != 1 for document in (characters, chapter, skills, profiles, chapters, missions)):
         raise ContentError("unsupported schema version")
+    _mission_catalog(missions)
     roster = characters.get("characters")
     if not isinstance(roster, list) or _ids(roster, "characters") != EXPECTED_CHARACTERS:
         raise ContentError("the roster must contain the 12 required characters")
@@ -60,6 +160,47 @@ def validate(root: Path) -> None:
     for item in equipment:
         if set(item["variants"]) != EXPECTED_CHARACTERS:
             raise ContentError(f"equipment {item['id']} must have all 12 variants")
+    skill_ids = _ids(skills.get("skills", []), "skills")
+    if not skill_ids:
+        raise ContentError("skills must contain at least one skill")
+    for skill in skills["skills"]:
+        if not isinstance(skill.get("name_key"), str) or not skill["name_key"]:
+            raise ContentError(f"skill {skill.get('id')} has an invalid name key")
+        if not isinstance(skill.get("animation_clip"), str) or not skill["animation_clip"]:
+            raise ContentError(f"skill {skill.get('id')} has an invalid animation clip")
+        if not isinstance(skill.get("damage"), int) or skill["damage"] < 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid damage")
+        if not isinstance(skill.get("cooldown_seconds"), (int, float)) or skill["cooldown_seconds"] < 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid cooldown")
+        if not isinstance(skill.get("resource_cost"), int) or skill["resource_cost"] < 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid resource cost")
+        if not isinstance(skill.get("range"), (int, float)) or skill["range"] <= 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid range")
+    profile_ids = _ids(profiles.get("profiles", []), "animation profiles", "character_id")
+    if profile_ids != EXPECTED_CHARACTERS:
+        raise ContentError("animation profiles must cover all 12 characters")
+    for profile in profiles["profiles"]:
+        entries = profile.get("skills")
+        if not isinstance(entries, list) or not entries:
+            raise ContentError(f"animation profile {profile.get('id')} has no skills")
+        entry_ids = [entry.get("skill_id") for entry in entries]
+        if len(entry_ids) != len(set(entry_ids)) or set(entry_ids) - skill_ids:
+            raise ContentError(f"animation profile {profile['character_id']} contains unresolved or duplicate skills")
+        if any(not isinstance(entry.get("clip_name"), str) or not entry["clip_name"] for entry in entries):
+            raise ContentError(f"animation profile {profile['character_id']} contains an invalid clip")
+    chapter_entries = chapters.get("chapters")
+    if not isinstance(chapter_entries, list) or len(chapter_entries) != 12:
+        raise ContentError("chapter catalog must contain exactly 12 chapters")
+    chapter_ids = _ids(chapter_entries, "chapters")
+    if {entry.get("number") for entry in chapter_entries} != set(range(1, 13)):
+        raise ContentError("chapter catalog must contain chapter numbers 1 through 12")
+    for entry in chapter_entries:
+        if entry.get("stage_count") != 8:
+            raise ContentError(f"chapter {entry.get('id')} must contain 8 stages")
+        if entry.get("status") not in {"planned", "in_progress", "complete"}:
+            raise ContentError(f"chapter {entry.get('id')} has an invalid status")
+        if not isinstance(entry.get("evidence"), str) or not entry["evidence"]:
+            raise ContentError(f"chapter {entry.get('id')} is missing evidence")
 
 
 def main() -> None:

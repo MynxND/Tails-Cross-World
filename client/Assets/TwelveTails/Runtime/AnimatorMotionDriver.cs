@@ -23,5 +23,13 @@ namespace TwelveTails.Gameplay
         {
             if (animator != null) animator.SetTrigger("Attack");
         }
+
+        public void PlaySkillAnimation(string clipName)
+        {
+            if (animator == null || string.IsNullOrWhiteSpace(clipName)) return;
+            if (animator.HasState(0, Animator.StringToHash(clipName)))
+                animator.CrossFadeInFixedTime(clipName, .05f);
+            else animator.SetTrigger("Attack");
+        }
     }
 }

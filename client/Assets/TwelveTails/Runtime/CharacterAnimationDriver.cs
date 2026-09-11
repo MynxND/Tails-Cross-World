@@ -21,6 +21,11 @@ namespace TwelveTails.Gameplay
 
         public void PlayAttack() => attackUntil = Time.time + .22f;
 
+        public void PlaySkillAnimation(string clipName)
+        {
+            attackUntil = Time.time + (clipName == "cAttack1" ? .45f : .28f);
+        }
+
         private void Update()
         {
             var controller = GetComponentInParent<CharacterController>();

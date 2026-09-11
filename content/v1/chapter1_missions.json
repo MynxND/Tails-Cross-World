@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "missions": [
+    {
+      "id": "mission.m101_carron_hunt",
+      "scene_name": "CarronHarvest",
+      "environment_resource": "OriginalChapter1Maps/M101_CarronHarvest",
+      "player_spawn": {"x": -5.761261, "y": 50.3, "z": 14.603081},
+      "objective": {"kind": "defeat", "target_id": "monster.carron", "count": 12},
+      "reward": {"experience": 0, "potions": 0},
+      "actors": [
+        {
+          "id": "group.m101_carrons",
+          "entity_id": "monster.carron",
+          "prefab_resource": "OriginalMonsters/Carron",
+          "health": 12,
+          "move_speed": 3,
+          "attack_damage": 2,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [
+            {"x": -25.26318, "y": 50.22823, "z": -1.3082161},
+            {"x": 4.54115, "y": 50.228497, "z": 15.4704895},
+            {"x": 3.2876778, "y": 50.228497, "z": 3.530418},
+            {"x": -13.786675, "y": 50.22823, "z": -1.3082161},
+            {"x": -21.828732, "y": 50.280506, "z": 11.094151},
+            {"x": -0.74998474, "y": 50.228497, "z": -10.198425},
+            {"x": 0.7985494, "y": 50.339676, "z": 12.244303},
+            {"x": 5.985099, "y": 50.41652, "z": -9.232304},
+            {"x": -19.381895, "y": 50.369854, "z": -5.2686157},
+            {"x": 9.521794, "y": 50.3476, "z": 5.3628488},
+            {"x": -6.7719703, "y": 50.64301, "z": -12.001584},
+            {"x": -10.88938, "y": 50.365574, "z": 15.7312155}
+          ]
+        }
+      ],
+      "interactables": [],
+      "evidence": "M101 source scene StartPoint1, six initial Carron transforms, and SpawnPoint1-6 transforms. M101_CarronHunt reports Carron Hunt 0/12 and respawns Carron after defeats. Source actor values are hp 12, attack 2, and runSpeed 3. The clean-room local slice materializes both waves so the objective is completable without the unavailable legacy server."
+    },
+    {
+      "id": "mission.m104_stingbug_nest",
+      "scene_name": "StingbugNest",
+      "environment_resource": "OriginalChapter1Maps/M104_StingbugNest",
+      "player_spawn": {"x": 8.978305, "y": 49.65562, "z": -50.956802},
+      "objective": {
+        "kind": "defeat",
+        "target_id": "monster.stingnest",
+        "count": 7
+      },
+      "reward": {
+        "experience": 0,
+        "potions": 0
+      },
+      "actors": [
+        {
+          "id": "group.m104_nests",
+          "entity_id": "monster.stingnest",
+          "prefab_resource": "OriginalMonsters/StingNest",
+          "health": 60,
+          "move_speed": 0,
+          "attack_damage": 0,
+          "spawn_on_first_damage": {
+            "enabled": true,
+            "green_prefab_resource": "OriginalMonsters/StingBug",
+            "red_prefab_resource": "OriginalMonsters/StingBugRed"
+          },
+          "positions": [
+            {"x": -48.908512, "y": 51.400352, "z": 48.567436},
+            {"x": -34.589146, "y": 54.0965, "z": -49.47618},
+            {"x": 4.99668, "y": 51.69859, "z": -7.9675784},
+            {"x": 20.363214, "y": 53.411705, "z": 59.737514},
+            {"x": 36.81624, "y": 52.270023, "z": 8.957407},
+            {"x": 53.478127, "y": 53.316063, "z": -26.421106},
+            {"x": 56.292786, "y": 55.518097, "z": 65.01256}
+          ]
+        },
+        {
+          "id": "group.m104_stingbugs_green",
+          "entity_id": "monster.stingbug.green",
+          "prefab_resource": "OriginalMonsters/StingBug",
+          "health": 24,
+          "move_speed": 1.5,
+          "attack_damage": 5,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [
+            {"x": -45.98433, "y": 52.000782, "z": 35.41956},
+            {"x": -37.610012, "y": 51.543056, "z": -34.63274},
+            {"x": 5.36987, "y": 52.000782, "z": -18.738058},
+            {"x": 20.237867, "y": 51.995358, "z": 15.433728},
+            {"x": 56.92848, "y": 52.865265, "z": -37.130196}
+          ]
+        },
+        {
+          "id": "group.m104_stingbugs_red",
+          "entity_id": "monster.stingbug.red",
+          "prefab_resource": "OriginalMonsters/StingBugRed",
+          "health": 30,
+          "move_speed": 1.7,
+          "attack_damage": 7,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [
+            {"x": 15.471744, "y": 52.49814, "z": -12.017631},
+            {"x": 32.778076, "y": 53.621365, "z": 68.28088},
+            {"x": 50.079845, "y": 55.84703, "z": 58.828114},
+            {"x": 63.002834, "y": 53.50141, "z": -20.966475}
+          ]
+        }
+      ],
+      "interactables": [],
+      "evidence": "M104 source scene positions and M104_StingBugNest.onGameEvent objective 1041: Nest Eliminate 0/7. Reward unavailable because the legacy client receives it from the missing server, so rewards remain zero until authoritative evidence is recovered."
+    },
+    {
+      "id": "mission.m105_needle_cave",
+      "scene_name": "NeedleCave",
+      "environment_resource": "OriginalChapter1Maps/M105_NeedleCave",
+      "player_spawn": {"x": -1.3676695, "y": 50.091904, "z": -122.46838},
+      "objective": {"kind": "interact", "target_id": "npc.minicat", "count": 1},
+      "reward": {"experience": 0, "potions": 0},
+      "actors": [
+        {
+          "id": "group.m105_needlebugs_green", "entity_id": "monster.needlebug.green", "prefab_resource": "OriginalMonsters/NeedleBug_g",
+          "health": 32, "move_speed": 1.6, "attack_damage": 6,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": -21.361938, "y": 43.89777, "z": 57.109276}, {"x": 10.785933, "y": 41.431973, "z": 92.55418}]
+        },
+        {
+          "id": "group.m105_needlebugs_blue", "entity_id": "monster.needlebug.blue", "prefab_resource": "OriginalMonsters/NeedleBug_b",
+          "health": 32, "move_speed": 1.6, "attack_damage": 6,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": -26.942902, "y": 44.599003, "z": -47.416245}, {"x": -3.1775415, "y": 42.912395, "z": 20.013945}]
+        },
+        {
+          "id": "group.m105_needlebugs_red", "entity_id": "monster.needlebug.red", "prefab_resource": "OriginalMonsters/NeedleBug_r",
+          "health": 36, "move_speed": 1.7, "attack_damage": 7,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": 21.276909, "y": 42.929596, "z": -16.089146}, {"x": 35.615723, "y": 42.929596, "z": -47.343124}]
+        },
+        {
+          "id": "group.m105_needlebugs_orange", "entity_id": "monster.needlebug.orange", "prefab_resource": "OriginalMonsters/NeedleBug_o",
+          "health": 34, "move_speed": 1.65, "attack_damage": 6,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": -51.833862, "y": 41.52342, "z": 77.91088}, {"x": 2.3215332, "y": 42.89038, "z": -22.314377}]
+        },
+        {
+          "id": "group.m105_needlebugs_purple", "entity_id": "monster.needlebug.purple", "prefab_resource": "OriginalMonsters/NeedleBug_p",
+          "health": 34, "move_speed": 1.65, "attack_damage": 6,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": 42.3761, "y": 42.89038, "z": 22.612076}]
+        },
+        {
+          "id": "group.m105_needlebugs_black", "entity_id": "monster.needlebug.black", "prefab_resource": "OriginalMonsters/NeedleBug_k",
+          "health": 38, "move_speed": 1.7, "attack_damage": 8,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": 56.696472, "y": 40.38534, "z": 51.47194}]
+        }
+      ],
+      "interactables": [
+        {"id": "interaction.m105_minicat", "target_id": "npc.minicat", "prefab_resource": "OriginalNpcs/MiniCat", "position": {"x": 0.5187683, "y": 42.8, "z": 31.326233}}
+      ],
+      "evidence": "M105 source scene positions and M105_NeedleCave TalkToMiniCat/sendMissionEvent 1051 end-event path. Initial NeedleBug actors use source positions. Replacement-wave timing and unavailable server rewards remain pending."
+    },
+    {
+      "id": "mission.m106_boldas_recruitment",
+      "scene_name": "BoldasRecruitment",
+      "environment_resource": "OriginalChapter1Maps/M106_BoldasRecruitment",
+      "player_spawn": {"x": -11.841713, "y": 49.925858, "z": 1.208953},
+      "objective": {"kind": "knockout", "target_id": "npc.boldas", "count": 3},
+      "reward": {"experience": 0, "potions": 0},
+      "actors": [
+        {
+          "id": "group.m106_boldas",
+          "entity_id": "npc.boldas",
+          "prefab_resource": "OriginalNpcs/Boldas",
+          "health": 30,
+          "move_speed": 5,
+          "attack_damage": 32,
+          "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+          "positions": [{"x": -2.2145486, "y": 49.88534, "z": 0.56151676}]
+        }
+      ],
+      "interactables": [],
+      "evidence": "M106 source scene StartPoint1 and Liger_mallet transforms; CharacterControl data identifies Boldas as Liger_m with KO gauge 30, runSpeed 5, and attack 32. M106_BoldasRecruitment counts event 1061 until Boldas KO reaches 3 and fails on event 1063 if Boldas dies. The local clean-room runtime models the source KO gauge as resettable objective health. Server rewards remain unavailable and therefore zero."
+    },
+    {
+      "id": "mission.m107_request_from_alcacia",
+      "scene_name": "RequestFromAlcacia",
+      "environment_resource": "OriginalChapter1Maps/M107_RequestFromAlcacia",
+      "player_spawn": {"x": 73.261314, "y": 50, "z": 142.40416},
+      "objective": {"kind": "interact", "target_id": "npc.alcacia", "count": 1},
+      "reward": {"experience": 0, "potions": 0},
+      "actors": [],
+      "interactables": [
+        {"id": "interaction.m107_alcacia", "target_id": "npc.alcacia", "prefab_resource": "OriginalNpcs/LightGod", "position": {"x": 0, "y": 67.43713, "z": -8.432761}}
+      ],
+      "evidence": "M107 source scene StartPoint1 and LightGod transforms. TalkToLightGod ends by sending mission event 1071; RedPanda, Falcon, Baboon, Walrus, and Panther conversations do not send completion events. Actor KO/death handlers are empty. The local slice therefore treats the Alcacia interaction as the sole completion objective. Server rewards remain unavailable and therefore zero."
+      },
+      {
+        "id": "mission.m108_one_on_one_bout",
+        "scene_name": "OneOnOneBout",
+        "environment_resource": "OriginalChapter1Maps/M108_OneOnOneBout",
+        "player_spawn": {"x": -17.916296, "y": 50, "z": 1.5257139},
+        "objective": {"kind": "duel", "target_id": "player.opponent", "count": 1},
+        "reward": {"experience": 0, "potions": 0},
+        "actors": [
+          {
+            "id": "group.m108_opponent",
+            "entity_id": "player.opponent",
+            "prefab_resource": "OriginalCharacters/Bison",
+            "health": 100,
+            "move_speed": 4,
+            "attack_damage": 10,
+            "spawn_on_first_damage": {"enabled": false, "green_prefab_resource": "", "red_prefab_resource": ""},
+            "positions": [{"x": 3.598486, "y": 50, "z": 0.5222988}]
+          }
+        ],
+        "interactables": [],
+        "evidence": "M108 source scene StartPoint1/StartPoint2 positions and M108_OneOnOneBout events: 1082 assigns odd/even slots to Team 1/2, -1081 starts the match after both players join, and 1083 reports the defeated team. The local offline slice uses a Bison AI stand-in at StartPoint2, completes when the opponent is defeated, and fails when the player is defeated. Character combat values and server rewards are unavailable, so conservative local values and zero reward are used."
+    }
+  ]
+}

@@ -138,6 +138,41 @@ Completed:
 - M101 terrain, colliders, renderers, materials, fences, gates, and Carron model validated.
 - Original Carron extracted as a reusable monster prefab with three original animation clips.
 - Carron connected to the offline combat/quest/reward/save loop.
+- Original Mupo visual prefab extracted from the M102 source scene with converted URP material.
+- M102 herd-rule state machine added with unique live-Mupo counting and fail-on-death tests.
+- M102 playable prototype scene generated with six original Mupo actors, source-derived spawn positions, pen trigger, flee behavior, reward, save, and HUD objective.
+- M102 herd progress now persists through save schema v2, with schema-v1 read compatibility and checksum coverage.
+- M102 LAN map mode added with server-owned herd completion/failure, reward authority, and Unity client herd event dispatch.
+- M102 lethal Mupo damage now fails the mission through the real Health and melee runtime path.
+- M102 TCP integration test now covers map selection, herd events, and server-owned completion reward.
+- Shared skill content foundation added: three validated skills, animation profiles for all 12 characters, and runtime cooldown/resource/damage execution.
+- Unity scene builders now load skill definitions from `content/v1/skills.json` instead of duplicating combat values in editor code.
+- Unity scene builders also load `content/v1/animation_profiles.json`; `SkillExecutor` resolves each skill clip from the selected character profile with a definition fallback.
+- Canonical 12-chapter catalog added with eight-stage structure, evidence/status fields, and strict validation.
+- M103 source inventory confirmed original `StingBug_green` actors, and reusable `OriginalMonsters/StingBug.prefab` was extracted with one renderer and one converted material.
+- Quest objectives and enemy rewards are now configurable by target ID/count, providing the shared objective path needed by M103-M108 and later chapters.
+- Reusable `MonsterChase` AI added with detection, movement, attack range, cooldown, and damage parameters for StingBug and later monsters.
+- M103 original environment and GoatFarmer prefabs are extracted from separate legacy `SceneObjects` and `Team` hierarchies without executing legacy scripts.
+- M103 Bug Trouble local playable scene generated with the original map, GoatFarmer, five StingBugs, shared chase/attack AI, protect-target failure, defeat objective, reward, save trigger, and HUD state.
+- `DefeatAndProtectMission` owns M103 completion/failure ordering so a defeated protected target cannot later grant mission rewards; focused Unity EditMode tests pass (`15/15`).
+- M104 original `StingNest` and red StingBug actors extracted with reusable fail-closed visual validation.
+- M104 Stingbug Nest is the first manifest-driven mission: source positions define seven nests, five green StingBugs, four red StingBugs, and the player spawn; the validator requires objective count to equal matching actor positions.
+- Source-confirmed StingNest behavior now spawns two green and one red StingBug on first damage, guarded against duplicate spawning. Full Unity EditMode tests pass (`16/16`) and Python/content/policy tests pass (`35/35`).
+- M104 Windows development build completed, reached input-idle, remained responsive, and produced zero matched startup runtime issues.
+- Shared quest runtime now supports both defeat and interaction progress without breaking the existing `RegisterDefeat` API; `QuestInteractionTarget` handles idempotent interaction rewards.
+- M105 Needle Cave local slice is generated from the same mission manifest/builder with the original map, MiniCat, six extracted NeedleBug color prefabs, nine source-positioned enemies, and the source-confirmed TalkToMiniCat completion objective.
+- M105 Windows development build completed, reached input-idle, remained responsive, and produced zero matched startup runtime issues. Full Unity EditMode tests pass (`17/17`) and Python/content/policy tests pass (`35/35`).
+- Shared mission runtime now supports recurrent knockout objectives: `KnockoutObjectiveTarget` restores the same actor after each knockout, counts rounds, grants rewards once, and is reachable through the real melee attack path.
+- M106 Boldas Recruitment local slice is generated from the mission manifest with the original map and extracted Boldas visual. Source-backed values include StartPoint1/Boldas transforms, KO gauge `30`, speed `5`, attack `32`, and the three-knockout objective from event `1061`.
+- M106 Windows development build completed, reached input-idle, remained responsive, and produced zero matched startup runtime issues. Full Unity EditMode tests pass (`19/19`) and Python/content/policy tests pass (`36/36`).
+- Mission manifests now allow actorless interaction missions while still rejecting actorless defeat/knockout missions.
+- M107 Request From Alcacia local slice is generated from the mission manifest with the original Light Palace map, source-positioned player, and extracted LightGod/Alcacia visual. Source code sends the sole completion event `1071` only at the end of `TalkToLightGod`; optional NPC conversations and actor KO/death handlers do not complete the mission.
+- M107 Windows development build completed, reached input-idle, remained responsive, and produced zero matched startup runtime issues. Full Unity EditMode tests pass (`19/19`) and Python/content/policy tests pass (`37/37`).
+- M101 Carron Hunt is now a source-backed manifest mission with the original environment, StartPoint1 player spawn, six initial Carron positions, six replacement spawn positions, objective count 12, and source actor values (HP 12, attack 2, speed 3).
+- The recreated combined Windows build now starts at `ChapterMenu.unity`; its Chapter 1 button loads `CarronHarvest.unity` instead of the prototype `TrainingGround.unity`. The real Windows UI click path was exercised successfully and emitted `Loading Chapter 1: CarronHarvest` with a responsive process and no matched runtime errors.
+- Full Unity EditMode tests pass (`20/20`) and Python/content/policy tests pass (`37/37`) after the M101 routing fix.
+- M108 One On One Bout local slice uses the original arena, source StartPoint1/StartPoint2 positions, an original Bison visual as the offline opponent, and duel semantics derived from team events `1081`/`1082`/`1083`. Defeating the opponent completes the objective; player defeat fails it.
+- M108 scene generation and standalone Windows build completed successfully. The Windows build remained responsive and its fresh startup log contained no matched critical runtime errors. Full Unity tests remain `20/20` and repository checks remain `37/37`.
 - All 211 exported legacy scenes audited without running legacy code.
 - Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
 - Chapter 1 Unity source-scene validation added.
@@ -145,14 +180,23 @@ Completed:
 
 Still incomplete:
 
-- Playable M102-M108 gameplay logic.
+- M108 LAN two-player authority, countdown presentation, exact character combat values, weapon trails, and visual QA. The local slice uses an AI opponent while preserving win/fail semantics.
+- M102 Windows smoke test and visual QA for terrain, pen geometry, Mupo scale, animation, collision, and camera.
+- M102 exact legacy pen geometry comparison.
+- M102 Unity-client smoke test against the LAN server and lobby/map persistence across server restart.
+- M103 LAN authority, protected-target failure persistence, and visual QA for actor scale, material, animation, collision, and camera. The dedicated M103 Windows development build completed, reached input-idle, remained responsive, and produced a startup `Player.log` with zero matched runtime exceptions/errors.
+- M104 LAN authority and visual QA for nest/monster scale, animations, collision, camera, and first-hit spawn timing. Legacy reward values came from the unavailable server, so the manifest intentionally grants zero reward until authoritative evidence is recovered.
+- M105 opening/ending dialogue, Warthog/MiniSheep interactions, replacement NeedleBug waves after kills, LAN authority, visual QA, and server-derived rewards. The local slice currently covers cave traversal, combat, and the source-confirmed MiniCat end interaction.
+- M106 opening/ending dialogue, true KO-gauge and recovery animation fidelity, Boldas combat AI fidelity, LAN authority, visual QA, and server-derived rewards. The local slice models the source KO gauge as resettable objective health and intentionally grants zero reward pending authoritative evidence.
+- M107 full Alcacia dialogue/camera sequence, optional RedPanda/Falcon/Baboon/Walrus/Panther conversations, LAN authority, visual QA, and server-derived rewards. The local slice covers navigation and the source-confirmed Alcacia completion interaction.
 - Mission objectives, NPC dialogue, cutscenes, portals, spawn waves, fail conditions, bosses, drops, and rewards.
 - Monster extraction and runtime AI beyond Carron.
 - Dynamic effects, trails, and particle conversion.
 - Runtime NPC appearance/material assignment.
-- Chapter selector/map graph and transitions.
+- Chapter 2-12 selector routes, campaign map graph, and inter-mission transitions. The combined build now has a working Chapter 1 route.
 - Remaining chapters, towns, lobbies, guild scenes, arenas, events, and multi-part dungeons.
 - Equipment, armor, weapons, animation profiles, VFX, and LOD validation at production scale.
+- Full skill library mapping, character-specific skill animation fidelity, and VFX/audio timing.
 
 ### Phase 5 - Private online alpha
 
@@ -685,25 +729,29 @@ Never restore intentional source edits indiscriminately.
 
 ## 10. Immediate next implementation plan
 
-### Priority 1 - Make M102 playable end to end
+### Priority 1 - Finish M102 verification
 
 M102 is `Mupo Round Up`. The recovered mission text says the player must herd six Mupo into a pen without killing them.
 
-Implement:
+Remaining verification:
 
-1. Add a map/chapter runtime catalog that can load `OriginalChapter1Maps/M102_MupoRoundUp`.
-2. Create a map-selection/debug menu or command-line/default-map option so M101 and M102 can both be launched without editing code.
-3. Extract the original Mupo model, materials, skeleton, and animation clips into `Resources/OriginalMonsters/Mupo.prefab`.
-4. Record source spawn locations and pen/trigger geometry from M102.
-5. Implement authoritative `MupoHerdTarget` behavior in new C#.
-6. Implement a pen trigger that counts six unique live Mupo.
-7. Reject lethal player damage or fail the mission if a Mupo dies, based on observed original behavior.
-8. Add HUD objective progress, completion, fail state, reward, save, and reload.
-9. Mirror mission decisions on the LAN server; the client should request actions while the server owns success/failure/reward.
-10. Add EditMode/domain/server tests for unique counting, death/failure, reward idempotency, and save round-trip.
-11. Build Windows and visually test terrain, pen, fences, Mupo scale, animation, collision, and camera.
+1. Compare the generated pen trigger against the original M102 gates/fences and record the exact geometry.
+2. Connect lethal player damage to Mupo failure and reject client-side damage authority.
+3. Add a Unity-client-to-LAN-server integration test for M102 completion/failure and reconnect.
+4. Build Windows and visually test terrain, pen, fences, Mupo scale, animation, collision, and camera.
 
-### Priority 2 - General map runtime
+After these checks, move to M103 rather than expanding M102 with optional VFX/cutscene parity.
+
+### Priority 2 - Shared combat and animation runtime
+
+The first reusable skill slice now exists. Expand it before duplicating mission-specific combat code:
+
+- Replace builder defaults with generated skill definitions from `content/v1/skills.json`.
+- Generate/import Animator state mappings from `content/v1/animation_profiles.json`.
+- Add resource regeneration, hit timing, combo windows, status effects, and server-side skill validation.
+- Map the recovered legacy skill names to character classes and preserve evidence/confidence for uncertain mappings.
+
+### Priority 3 - General map runtime
 
 Replace the hard-coded training map selection with data-driven definitions containing:
 
@@ -720,11 +768,11 @@ Replace the hard-coded training map selection with data-driven definitions conta
 
 Keep environment assets separate from runtime entities. This separation is already established by the Chapter 1 converter.
 
-### Priority 3 - Chapter 1 missions M103-M108
+### Priority 4 - Chapter 1 missions M103-M108
 
 Work in order after M102 proves the reusable runtime:
 
-- M103 Bug Trouble: protect Carrons/Goat NPC while defeating Stingbugs.
+- M103 Bug Trouble: protect Carrons/Goat NPC while defeating Stingbugs. The original StingBug visual and configurable defeat objective path are ready; actor AI/protection/failure logic remains.
 - M104 Stingbug Nest: enemy spawn/combat mission and nest environment.
 - M105 Needle Cave: cave navigation, enemies, lighting, and objective triggers.
 - M106 Boldas Recruitment: Boldas actor, weapon/trail reconstruction, dialogue/combat logic.

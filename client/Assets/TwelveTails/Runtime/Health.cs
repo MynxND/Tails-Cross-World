@@ -9,6 +9,7 @@ namespace TwelveTails.Gameplay
         public int Maximum => maximum;
         public int Current { get; private set; }
         public bool IsDefeated => Current == 0;
+        public event Action<int> Damaged;
         public event Action Defeated;
 
         private void Awake() => Current = maximum;
@@ -24,6 +25,7 @@ namespace TwelveTails.Gameplay
             if (amount <= 0 || IsDefeated) return 0;
             var applied = Mathf.Min(Current, amount);
             Current -= applied;
+            Damaged?.Invoke(applied);
             if (Current == 0) Defeated?.Invoke();
             return applied;
         }
@@ -35,5 +37,7 @@ namespace TwelveTails.Gameplay
             Current += applied;
             return applied;
         }
+
+        public void RestoreToFull() => Current = maximum;
     }
 }

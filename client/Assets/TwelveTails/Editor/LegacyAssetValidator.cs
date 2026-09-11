@@ -372,6 +372,286 @@ namespace TwelveTails.EditorTools
             ValidateOriginalMapPilot();
         }
 
+        [MenuItem("12 Tails/Generate Original Mupo Prefab")]
+        public static void GenerateOriginalMupoPrefab()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M102_MupoRoundUp.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/MonsterMaterials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string monsterResourceRoot = resourceRoot + "/OriginalMonsters";
+            const string outputPath = monsterResourceRoot + "/Mupo.prefab";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M102 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "MonsterMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalMonsters");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            var candidates = scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                .Where(item => item.name == "Mupo_r" || item.name == "Mupo_g")
+                .Select(item => new { Transform = item, Renderers = item.GetComponentsInChildren<Renderer>(true) })
+                .Where(item => item.Renderers.Length > 0)
+                .OrderBy(item => item.Renderers.Length)
+                .ToArray();
+            if (candidates.Length == 0) throw new System.Exception("No rendered Mupo root was found in M102");
+
+            var instance = Object.Instantiate(candidates[0].Transform.gameObject);
+            instance.name = "Mupo";
+            instance.SetActive(true);
+            instance.transform.SetParent(null, false);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            RemoveMissingScripts(instance);
+            ConvertMaterials(instance, "Mupo", materialRoot);
+            foreach (var collider in instance.GetComponentsInChildren<Collider>(true))
+                Object.DestroyImmediate(collider);
+            PrefabUtility.SaveAsPrefabAsset(instance, outputPath);
+            Object.DestroyImmediate(instance);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath);
+            var renderers = prefab == null ? System.Array.Empty<Renderer>() : prefab.GetComponentsInChildren<Renderer>(true);
+            var materials = renderers.SelectMany(item => item.sharedMaterials).Where(item => item != null).Distinct().ToArray();
+            if (prefab == null || renderers.Length == 0 || materials.Length == 0)
+                throw new System.Exception("Generated Mupo prefab has no usable visual assets");
+            Debug.Log($"Generated {outputPath}: renderers={renderers.Length}, materials={materials.Length}");
+        }
+
+        [MenuItem("12 Tails/Generate Original StingBug Prefab")]
+        public static void GenerateOriginalStingBugPrefab()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M103_BugTrouble.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/MonsterMaterials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string monsterResourceRoot = resourceRoot + "/OriginalMonsters";
+            const string outputPath = monsterResourceRoot + "/StingBug.prefab";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M103 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "MonsterMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalMonsters");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            var candidates = scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                .Where(item => item.name == "StingBug_green")
+                .Select(item => new { Transform = item, Renderers = item.GetComponentsInChildren<Renderer>(true) })
+                .Where(item => item.Renderers.Length > 0)
+                .OrderBy(item => item.Renderers.Length)
+                .ToArray();
+            if (candidates.Length == 0) throw new System.Exception("No rendered StingBug root was found in M103");
+
+            var instance = Object.Instantiate(candidates[0].Transform.gameObject);
+            instance.name = "StingBug";
+            instance.SetActive(true);
+            instance.transform.SetParent(null, false);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            RemoveMissingScripts(instance);
+            ConvertMaterials(instance, "StingBug", materialRoot);
+            foreach (var collider in instance.GetComponentsInChildren<Collider>(true))
+                Object.DestroyImmediate(collider);
+            PrefabUtility.SaveAsPrefabAsset(instance, outputPath);
+            Object.DestroyImmediate(instance);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath);
+            var renderers = prefab == null ? System.Array.Empty<Renderer>() : prefab.GetComponentsInChildren<Renderer>(true);
+            var materials = renderers.SelectMany(item => item.sharedMaterials).Where(item => item != null).Distinct().ToArray();
+            if (prefab == null || renderers.Length == 0 || materials.Length == 0)
+                throw new System.Exception("Generated StingBug prefab has no usable visual assets");
+            Debug.Log($"Generated {outputPath}: renderers={renderers.Length}, materials={materials.Length}");
+        }
+
+        [MenuItem("12 Tails/Generate Original M103 Environment")]
+        public static void GenerateOriginalM103Environment()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M103_BugTrouble.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/M103Materials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string mapResourceRoot = resourceRoot + "/OriginalChapter1Maps";
+            const string npcResourceRoot = resourceRoot + "/OriginalNpcs";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M103 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "M103Materials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalChapter1Maps");
+            EnsureFolder(resourceRoot, "OriginalNpcs");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            var sceneObjects = scene.GetRootGameObjects().FirstOrDefault(item => item.name == "SceneObjects");
+            if (sceneObjects == null) throw new System.Exception("M103 SceneObjects root is missing");
+
+            var goat = scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                .FirstOrDefault(item => item.name == "GoatFarmer");
+            if (goat == null) throw new System.Exception("GoatFarmer was not found in M103");
+            var goatInstance = Object.Instantiate(goat.gameObject);
+            goatInstance.name = "GoatFarmer";
+            goatInstance.SetActive(true);
+            goatInstance.transform.SetParent(null, false);
+            goatInstance.transform.localPosition = Vector3.zero;
+            goatInstance.transform.localRotation = Quaternion.identity;
+            RemoveMissingScripts(goatInstance);
+            ConvertMaterials(goatInstance, "M103_GoatFarmer", materialRoot);
+            foreach (var collider in goatInstance.GetComponentsInChildren<Collider>(true)) Object.DestroyImmediate(collider);
+            var goatOutputPath = npcResourceRoot + "/GoatFarmer.prefab";
+            PrefabUtility.SaveAsPrefabAsset(goatInstance, goatOutputPath);
+            Object.DestroyImmediate(goatInstance);
+
+            var mapInstance = Object.Instantiate(sceneObjects);
+            mapInstance.name = "M103_BugTrouble";
+            RemoveMissingScripts(mapInstance);
+            ConvertMaterials(mapInstance, "M103_Map", materialRoot);
+            var dynamicNames = new[] { "StingBug_green", "GoatFarmer", "Carron" };
+            var dynamicActors = mapInstance.GetComponentsInChildren<Transform>(true)
+                .Where(item => dynamicNames.Contains(item.name))
+                .OrderByDescending(HierarchyDepth)
+                .ToArray();
+            foreach (var actor in dynamicActors) Object.DestroyImmediate(actor.gameObject);
+            PrefabUtility.SaveAsPrefabAsset(mapInstance, mapResourceRoot + "/M103_BugTrouble.prefab");
+            Object.DestroyImmediate(mapInstance);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            var goatPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(goatOutputPath);
+            if (goatPrefab == null || goatPrefab.GetComponentsInChildren<Renderer>(true).Length == 0)
+                throw new System.Exception("Generated GoatFarmer prefab has no usable renderers");
+            Debug.Log("Generated original M103 environment and GoatFarmer prefabs.");
+        }
+
+        [MenuItem("12 Tails/Generate Original M104 Actors")]
+        public static void GenerateOriginalM104Actors()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M104_StingbugNest.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/MonsterMaterials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string monsterResourceRoot = resourceRoot + "/OriginalMonsters";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M104 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "MonsterMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalMonsters");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            ExtractRenderedPrefab(scene, "StingNest", monsterResourceRoot + "/StingNest.prefab", "StingNest", materialRoot);
+            ExtractRenderedPrefab(scene, "StingBug_red", monsterResourceRoot + "/StingBugRed.prefab", "StingBugRed", materialRoot);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log("Generated original M104 StingNest and StingBugRed prefabs.");
+        }
+
+        [MenuItem("12 Tails/Generate Original M105 Actors")]
+        public static void GenerateOriginalM105Actors()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M105_NeedleCave.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/MonsterMaterials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string monsterResourceRoot = resourceRoot + "/OriginalMonsters";
+            const string npcResourceRoot = resourceRoot + "/OriginalNpcs";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M105 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "MonsterMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalMonsters");
+            EnsureFolder(resourceRoot, "OriginalNpcs");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            ExtractRenderedPrefab(scene, "MiniCat", npcResourceRoot + "/MiniCat.prefab", "MiniCat", materialRoot);
+            foreach (var suffix in new[] { "g", "b", "r", "p", "o", "k" })
+            {
+                var sourceName = $"NeedleBug_{suffix}";
+                ExtractRenderedPrefab(scene, sourceName, monsterResourceRoot + $"/NeedleBug_{suffix}.prefab", sourceName, materialRoot);
+            }
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log("Generated original M105 MiniCat and six NeedleBug variant prefabs.");
+        }
+
+        [MenuItem("12 Tails/Generate Original M106 Actors")]
+        public static void GenerateOriginalM106Actors()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M106_BoldasRecruitment.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/NpcMaterials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string npcResourceRoot = resourceRoot + "/OriginalNpcs";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M106 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "NpcMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalNpcs");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            ExtractRenderedPrefab(scene, "Liger_mallet", npcResourceRoot + "/Boldas.prefab", "Boldas", materialRoot);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log("Generated original M106 Boldas prefab.");
+        }
+
+        [MenuItem("12 Tails/Generate Original M107 Actors")]
+        public static void GenerateOriginalM107Actors()
+        {
+            const string sourcePath = "Assets/TwelveTails/LegacyPrivate/Scene/M107_RequestFromAlcacia.unity";
+            const string generatedRoot = "Assets/TwelveTails/LegacyPrivate/Generated";
+            const string materialRoot = generatedRoot + "/NpcMaterials";
+            const string resourceRoot = "Assets/TwelveTails/LegacyPrivate/Resources";
+            const string npcResourceRoot = resourceRoot + "/OriginalNpcs";
+            if (!File.Exists(sourcePath)) throw new FileNotFoundException("Original M107 scene is missing", sourcePath);
+
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Generated");
+            EnsureFolder(generatedRoot, "NpcMaterials");
+            EnsureFolder("Assets/TwelveTails/LegacyPrivate", "Resources");
+            EnsureFolder(resourceRoot, "OriginalNpcs");
+
+            var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+            ExtractRenderedPrefab(scene, "LightGod", npcResourceRoot + "/LightGod.prefab", "LightGod", materialRoot);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log("Generated original M107 LightGod prefab.");
+        }
+
+        private static void ExtractRenderedPrefab(UnityEngine.SceneManagement.Scene scene, string sourceName, string outputPath, string materialPrefix, string materialRoot)
+        {
+            var source = scene.GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                .Where(item => item.name == sourceName)
+                .FirstOrDefault(item => item.GetComponentsInChildren<Renderer>(true).Length > 0);
+            if (source == null) throw new System.Exception($"Rendered {sourceName} was not found");
+
+            var instance = Object.Instantiate(source.gameObject);
+            instance.name = sourceName;
+            instance.SetActive(true);
+            instance.transform.SetParent(null, false);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            RemoveMissingScripts(instance);
+            ConvertMaterials(instance, materialPrefix, materialRoot);
+            foreach (var collider in instance.GetComponentsInChildren<Collider>(true)) Object.DestroyImmediate(collider);
+            PrefabUtility.SaveAsPrefabAsset(instance, outputPath);
+            Object.DestroyImmediate(instance);
+
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath);
+            var renderers = prefab == null ? System.Array.Empty<Renderer>() : prefab.GetComponentsInChildren<Renderer>(true);
+            var materials = renderers.SelectMany(item => item.sharedMaterials).Where(item => item != null).Distinct().ToArray();
+            if (prefab == null || renderers.Length == 0 || materials.Length == 0)
+                throw new System.Exception($"Generated {sourceName} prefab has no usable visual assets");
+        }
+
         [MenuItem("12 Tails/Validate Original M101 Map Pilot")]
         public static void ValidateOriginalMapPilot()
         {

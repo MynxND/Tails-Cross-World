@@ -37,8 +37,12 @@ class Session:
 @dataclass
 class MapInstance:
     instance_id: str
+    map_id: str = "map.training_ground"
     monster_hp: int = 30
     monster_position: list[float] = field(default_factory=lambda: [0.0, 0.0, 3.0])
+    mupo_ids: list[str] = field(default_factory=lambda: [f"mupo-{index}" for index in range(1, 7)])
+    penned_mupo_ids: list[str] = field(default_factory=list)
+    mupo_failed: bool = False
 
 
 @dataclass
@@ -87,11 +91,16 @@ class Authority:
             raise AuthorityError("invalid session")
         return session
 
-    def create_lobby(self, token: str) -> Lobby:
+    def create_lobby(self, token: str, map_id: str = "map.training_ground") -> Lobby:
         account_id = self.require_session(token).account_id
         if self._find_lobby(account_id):
             raise AuthorityError("account is already in a lobby")
+        if map_id not in {"map.training_ground", "map.m102_mupo_round_up"}:
+            raise AuthorityError("unsupported map")
         lobby = Lobby(secrets.token_hex(3), account_id, members=[account_id])
+        lobby.map.map_id = map_id
+        if map_id == "map.m102_mupo_round_up":
+            lobby.map.monster_hp = 0
         self._lobbies[lobby.lobby_id] = lobby
         return lobby
 
@@ -148,6 +157,30 @@ class Authority:
                     member.potions += 1
         return self.snapshot(lobby.lobby_id)
 
+    def herd_pen(self, token: str, sequence: int, mupo_id: str) -> dict:
+        _, lobby = self._context(token, sequence)
+        self._require_mupo_map(lobby)
+        if lobby.map.mupo_failed:
+            raise AuthorityError("M102 mission failed")
+        if mupo_id not in lobby.map.mupo_ids:
+            raise AuthorityError("unknown Mupo")
+        if mupo_id in lobby.map.penned_mupo_ids:
+            raise AuthorityError("Mupo already penned")
+        lobby.map.penned_mupo_ids.append(mupo_id)
+        if len(lobby.map.penned_mupo_ids) == len(lobby.map.mupo_ids):
+            self._complete_mupo_mission(lobby)
+        return self.snapshot(lobby.lobby_id)
+
+    def herd_death(self, token: str, sequence: int, mupo_id: str) -> dict:
+        _, lobby = self._context(token, sequence)
+        self._require_mupo_map(lobby)
+        if mupo_id not in lobby.map.mupo_ids:
+            raise AuthorityError("unknown Mupo")
+        if lobby.map.mupo_failed:
+            raise AuthorityError("M102 mission already failed")
+        lobby.map.mupo_failed = True
+        return self.snapshot(lobby.lobby_id)
+
     def snapshot(self, lobby_id: str) -> dict:
         lobby = self._require_lobby(lobby_id)
         return {"lobby_id": lobby.lobby_id, "host_account_id": lobby.host_account_id,
@@ -190,3 +223,16 @@ class Authority:
             return self._lobbies[lobby_id]
         except KeyError as error:
             raise AuthorityError("lobby not found") from error
+
+    @staticmethod
+    def _require_mupo_map(lobby: Lobby) -> None:
+        if lobby.map.map_id != "map.m102_mupo_round_up":
+            raise AuthorityError("M102 mission is not active")
+
+    def _complete_mupo_mission(self, lobby: Lobby) -> None:
+        for account_id in lobby.members:
+            member = self._players[account_id]
+            if not member.quest_complete:
+                member.quest_complete = True
+                member.experience += 50
+                member.potions += 1

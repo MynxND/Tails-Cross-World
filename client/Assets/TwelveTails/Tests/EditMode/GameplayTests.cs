@@ -8,6 +8,14 @@ namespace TwelveTails.Tests
     public sealed class GameplayTests
     {
         [Test]
+        public void ChapterOneRoutesToCarronHarvestInsteadOfTrainingGround()
+        {
+            Assert.That(ChapterMenu.ChapterScene(1), Is.EqualTo("CarronHarvest"));
+            Assert.That(ChapterMenu.ChapterScene(1), Is.Not.EqualTo("TrainingGround"));
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => ChapterMenu.ChapterScene(2));
+        }
+
+        [Test]
         public void DamageAndHealingAreClamped()
         {
             var gameObject = new GameObject();
@@ -23,6 +31,37 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void FirstDamageSpawnerCreatesThreeActorsOnlyOnce()
+        {
+            var nest = new GameObject("Nest");
+            var target = new GameObject("Target");
+            var greenPrefab = new GameObject("Green Prefab");
+            var redPrefab = new GameObject("Red Prefab");
+            try
+            {
+                var health = nest.AddComponent<Health>();
+                health.Configure(60);
+                var spawner = nest.AddComponent<SpawnOnFirstDamage>();
+                spawner.Configure(greenPrefab, redPrefab, target.transform, null, null, null);
+
+                health.ApplyDamage(1);
+                health.ApplyDamage(1);
+
+                Assert.That(spawner.HasSpawned, Is.True);
+                Assert.That(spawner.SpawnedCount, Is.EqualTo(3));
+            }
+            finally
+            {
+                foreach (var spawned in Object.FindObjectsByType<MonsterChase>(FindObjectsSortMode.None))
+                    Object.DestroyImmediate(spawned.gameObject);
+                Object.DestroyImmediate(redPrefab);
+                Object.DestroyImmediate(greenPrefab);
+                Object.DestroyImmediate(target);
+                Object.DestroyImmediate(nest);
+            }
+        }
+
+        [Test]
         public void QuestOnlyCountsItsConfiguredTargetOnce()
         {
             var gameObject = new GameObject();
@@ -33,6 +72,279 @@ namespace TwelveTails.Tests
                 Assert.That(quest.RegisterDefeat("monster.training_dummy"), Is.True);
                 Assert.That(quest.RegisterDefeat("monster.training_dummy"), Is.False);
                 Assert.That(quest.Defeats, Is.EqualTo(1));
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void QuestObjectiveCanBeConfiguredForAnotherMissionTarget()
+        {
+            var gameObject = new GameObject("Quest");
+            try
+            {
+                var quest = gameObject.AddComponent<QuestProgress>();
+                quest.Configure("monster.stingbug", 3);
+                Assert.That(quest.RegisterDefeat("monster.carron"), Is.False);
+                Assert.That(quest.RegisterDefeat("monster.stingbug"), Is.False);
+                Assert.That(quest.RegisterDefeat("monster.stingbug"), Is.False);
+                Assert.That(quest.RegisterDefeat("monster.stingbug"), Is.True);
+                Assert.That(quest.IsComplete, Is.True);
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void InteractionObjectiveCompletesAndRewardsOnlyOnce()
+        {
+            var missionObject = new GameObject("Interaction Mission");
+            var npcObject = new GameObject("MiniCat");
+            try
+            {
+                var quest = missionObject.AddComponent<QuestProgress>();
+                quest.Configure("npc.minicat", 1, "Talk to");
+                var progress = missionObject.AddComponent<PlayerProgress>();
+                var target = npcObject.AddComponent<QuestInteractionTarget>();
+                target.Configure("npc.minicat", quest, progress, null, 20, 1);
+
+                Assert.That(quest.ObjectiveText, Is.EqualTo("Talk to npc.minicat (0/1)"));
+                Assert.That(target.Interact(), Is.True);
+                Assert.That(target.Interact(), Is.False);
+                Assert.That(progress.Experience, Is.EqualTo(20));
+                Assert.That(progress.PotionCount, Is.EqualTo(1));
+            }
+            finally
+            {
+                Object.DestroyImmediate(npcObject);
+                Object.DestroyImmediate(missionObject);
+            }
+        }
+
+        [Test]
+        public void KnockoutObjectiveRestoresTargetAndRewardsAfterThreeKnockouts()
+        {
+            var missionObject = new GameObject("Knockout Mission");
+            var targetObject = new GameObject("Boldas");
+            try
+            {
+                var quest = missionObject.AddComponent<QuestProgress>();
+                quest.Configure("npc.boldas", 3, "Knock out");
+                var progress = missionObject.AddComponent<PlayerProgress>();
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(20);
+                var target = targetObject.AddComponent<KnockoutObjectiveTarget>();
+                target.Configure("npc.boldas", quest, progress, null, 30, 2);
+
+                for (var knockout = 1; knockout <= 3; knockout++)
+                {
+                    Assert.That(health.ApplyDamage(20), Is.EqualTo(20));
+                    Assert.That(health.Current, Is.EqualTo(20));
+                    Assert.That(quest.Defeats, Is.EqualTo(knockout));
+                }
+
+                Assert.That(quest.IsComplete, Is.True);
+                Assert.That(progress.Experience, Is.EqualTo(30));
+                Assert.That(progress.PotionCount, Is.EqualTo(2));
+                health.ApplyDamage(20);
+                Assert.That(progress.Experience, Is.EqualTo(30));
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(missionObject);
+            }
+        }
+
+        [Test]
+        public void MeleeAttackCanHitKnockoutObjectiveTarget()
+        {
+            var player = new GameObject("Player");
+            var targetObject = new GameObject("Boldas");
+            try
+            {
+                var attack = player.AddComponent<MeleeAttack>();
+                targetObject.transform.position = Vector3.forward;
+                targetObject.AddComponent<CapsuleCollider>();
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(30);
+                var target = targetObject.AddComponent<KnockoutObjectiveTarget>();
+                target.Configure("npc.boldas", null, null, null, 0, 0);
+
+                Assert.That(attack.Attack(), Is.True);
+                Assert.That(health.Current, Is.EqualTo(20));
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(player);
+            }
+        }
+
+        [Test]
+        public void DefeatAndProtectMissionRewardsOnlyAfterRequiredDefeats()
+        {
+            var missionObject = new GameObject("Protect Mission");
+            var protectedObject = new GameObject("Goat Farmer");
+            try
+            {
+                var protectedHealth = protectedObject.AddComponent<Health>();
+                protectedHealth.Configure(50);
+                var quest = missionObject.AddComponent<QuestProgress>();
+                quest.Configure("monster.stingbug", 2);
+                var progress = missionObject.AddComponent<PlayerProgress>();
+                var mission = missionObject.AddComponent<DefeatAndProtectMission>();
+                mission.Configure(protectedHealth, "Goat Farmer", quest, progress, null, 40, 2);
+
+                Assert.That(mission.RegisterDefeat("monster.stingbug"), Is.False);
+                Assert.That(mission.RegisterDefeat("monster.other"), Is.False);
+                Assert.That(mission.RegisterDefeat("monster.stingbug"), Is.True);
+                Assert.That(mission.IsComplete, Is.True);
+                Assert.That(progress.Experience, Is.EqualTo(40));
+                Assert.That(progress.PotionCount, Is.EqualTo(2));
+                Assert.That(mission.RegisterDefeat("monster.stingbug"), Is.False);
+            }
+            finally
+            {
+                Object.DestroyImmediate(protectedObject);
+                Object.DestroyImmediate(missionObject);
+            }
+        }
+
+        [Test]
+        public void DefeatAndProtectMissionFailsWithoutRewardWhenTargetDies()
+        {
+            var missionObject = new GameObject("Protect Mission");
+            var protectedObject = new GameObject("Goat Farmer");
+            try
+            {
+                var protectedHealth = protectedObject.AddComponent<Health>();
+                protectedHealth.Configure(10);
+                var quest = missionObject.AddComponent<QuestProgress>();
+                quest.Configure("monster.stingbug", 1);
+                var progress = missionObject.AddComponent<PlayerProgress>();
+                var mission = missionObject.AddComponent<DefeatAndProtectMission>();
+                mission.Configure(protectedHealth, "Goat Farmer", quest, progress, null, 40, 2);
+
+                protectedHealth.ApplyDamage(10);
+
+                Assert.That(mission.IsFailed, Is.True);
+                Assert.That(mission.RegisterDefeat("monster.stingbug"), Is.False);
+                Assert.That(mission.IsComplete, Is.False);
+                Assert.That(progress.RewardClaimed, Is.False);
+            }
+            finally
+            {
+                Object.DestroyImmediate(protectedObject);
+                Object.DestroyImmediate(missionObject);
+            }
+        }
+
+        [Test]
+        public void MupoHerdRequiresSixUniqueLiveMupo()
+        {
+            var progress = new MupoHerdProgress(6);
+            for (var index = 1; index <= 6; index++)
+            {
+                var id = $"mupo-{index}";
+                Assert.That(progress.RegisterMupo(id), Is.True);
+                Assert.That(progress.RegisterPenEntry(id), Is.EqualTo(index == 6));
+            }
+
+            Assert.That(progress.IsComplete, Is.True);
+            Assert.That(progress.PennedCount, Is.EqualTo(6));
+            Assert.That(progress.RegisterPenEntry("mupo-1"), Is.False);
+        }
+
+        [Test]
+        public void MupoHerdIgnoresDuplicatesAndFailsWhenAMupoDies()
+        {
+            var progress = new MupoHerdProgress(6);
+            Assert.That(progress.RegisterMupo("mupo-1"), Is.True);
+            Assert.That(progress.RegisterMupo("mupo-1"), Is.False);
+            Assert.That(progress.RegisterPenEntry("unknown"), Is.False);
+            Assert.That(progress.RegisterDeath("mupo-1"), Is.True);
+            Assert.That(progress.IsFailed, Is.True);
+            Assert.That(progress.RegisterMupo("mupo-2"), Is.False);
+            Assert.That(progress.RegisterDeath("mupo-1"), Is.False);
+        }
+
+        [Test]
+        public void MupoHerdRejectsInvalidRequiredCount()
+        {
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => new MupoHerdProgress(0));
+        }
+
+        [Test]
+        public void LethalMupoDamageFailsTheMission()
+        {
+            var missionObject = new GameObject("Mupo Mission");
+            var targetObject = new GameObject("Mupo Target");
+            try
+            {
+                var progress = missionObject.AddComponent<PlayerProgress>();
+                var mission = missionObject.AddComponent<MupoHerdMission>();
+                mission.Configure(progress, null, 1);
+                targetObject.AddComponent<Health>().Configure(10);
+                var target = targetObject.AddComponent<MupoHerdTarget>();
+                target.ConfigureId("mupo-1");
+                Assert.That(mission.RegisterTarget(target), Is.True);
+
+                target.Health.ApplyDamage(10);
+
+                Assert.That(mission.IsFailed, Is.True);
+                Assert.That(progress.RewardClaimed, Is.False);
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(missionObject);
+            }
+        }
+
+        [Test]
+        public void SkillExecutorAppliesConfiguredDamageAndCooldown()
+        {
+            var playerObject = new GameObject("Skill User") { transform = { position = Vector3.zero } };
+            var targetObject = new GameObject("Skill Target") { transform = { position = new Vector3(0f, 0f, 1f) } };
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.test", animationClip = "nAttack1", damage = 12, cooldownSeconds = 2f, range = 2f }
+                });
+                targetObject.AddComponent<SphereCollider>().radius = .5f;
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(30);
+                var quest = targetObject.AddComponent<QuestProgress>();
+                var progress = targetObject.AddComponent<PlayerProgress>();
+                var saves = targetObject.AddComponent<SaveCoordinator>();
+                saves.Configure(progress, quest);
+                targetObject.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
+                Physics.SyncTransforms();
+                Assert.That(executor.ExecuteSkill("skill.test"), Is.True);
+                Assert.That(health.Current, Is.EqualTo(18));
+                Assert.That(executor.CanExecute("skill.test"), Is.False);
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
+        public void SkillExecutorRejectsInsufficientResource()
+        {
+            var gameObject = new GameObject("Skill User");
+            try
+            {
+                var executor = gameObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.expensive", animationClip = "cAttack1", damage = 30, resourceCost = 10, range = 2f }
+                }, 5);
+                Assert.That(executor.ExecuteSkill("skill.expensive"), Is.False);
+                Assert.That(executor.Resource, Is.EqualTo(5));
             }
             finally { Object.DestroyImmediate(gameObject); }
         }
@@ -59,10 +371,21 @@ namespace TwelveTails.Tests
             var path = Path.Combine(directory, "save.json");
             try
             {
-                ProgressSave.Write(path, new ProgressSaveData { experience = 25, potionCount = 1, questComplete = true, rewardClaimed = true });
+                ProgressSave.Write(path, new ProgressSaveData
+                {
+                    experience = 25,
+                    potionCount = 1,
+                    questComplete = true,
+                    rewardClaimed = true,
+                    mupoPennedIds = new[] { "mupo-1", "mupo-2" },
+                    mupoMissionFailed = false
+                });
                 var loaded = ProgressSave.Read(path);
                 Assert.That(loaded.experience, Is.EqualTo(25));
                 Assert.That(loaded.questComplete, Is.True);
+                Assert.That(loaded.schemaVersion, Is.EqualTo(2));
+                Assert.That(loaded.mupoPennedIds, Is.EqualTo(new[] { "mupo-1", "mupo-2" }));
+                Assert.That(loaded.mupoMissionFailed, Is.False);
                 File.WriteAllText(path, File.ReadAllText(path).Replace("\"experience\": 25", "\"experience\": 999"));
                 Assert.Throws<InvalidDataException>(() => ProgressSave.Read(path));
             }

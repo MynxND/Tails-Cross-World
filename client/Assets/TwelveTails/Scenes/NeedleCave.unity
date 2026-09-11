@@ -1,0 +1,2672 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 2
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 2
+    m_PVRDenoiserTypeIndirect: 2
+    m_PVRDenoiserTypeAO: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &68733996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68734001}
+  - component: {fileID: 68734000}
+  - component: {fileID: 68733999}
+  - component: {fileID: 68733998}
+  - component: {fileID: 68733997}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_green 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &68733997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68733996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.6
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &68733998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68733996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.green
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &68733999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68733996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 32
+--- !u!143 &68734000
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68733996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &68734001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68733996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.785933, y: 41.431973, z: 92.55418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 861357543}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &107265738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107265743}
+  - component: {fileID: 107265742}
+  - component: {fileID: 107265741}
+  - component: {fileID: 107265740}
+  - component: {fileID: 107265739}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_red 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &107265739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107265738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 7
+--- !u!114 &107265740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107265738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.red
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &107265741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107265738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 36
+--- !u!143 &107265742
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107265738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &107265743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107265738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.276909, y: 42.929596, z: -16.089146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 326644043}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &113120485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2041279777}
+    m_Modifications:
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982688491305799620, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.orange Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+--- !u!4 &113120486 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+  m_PrefabInstance: {fileID: 113120485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &149934576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149934581}
+  - component: {fileID: 149934580}
+  - component: {fileID: 149934579}
+  - component: {fileID: 149934578}
+  - component: {fileID: 149934577}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_purple 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &149934577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149934576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.65
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &149934578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149934576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.purple
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &149934579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149934576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 34
+--- !u!143 &149934580
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149934576}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &149934581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149934576}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.3761, y: 42.89038, z: 22.612076}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 871489844}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &163858638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163858641}
+  - component: {fileID: 163858640}
+  - component: {fileID: 163858639}
+  m_Layer: 0
+  m_Name: interaction.m105_minicat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &163858639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163858638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca585e1d1fb48df4f8fee6a906fe26f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.QuestInteractionTarget
+  targetId: npc.minicat
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!135 &163858640
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163858638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &163858641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163858638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5187683, y: 42.8, z: 31.326233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1508143006}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &326644042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 107265743}
+    m_Modifications:
+    - target: {fileID: 4051124977243516262, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.red Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+--- !u!4 &326644043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+  m_PrefabInstance: {fileID: 326644042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &616904847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616904852}
+  - component: {fileID: 616904851}
+  - component: {fileID: 616904850}
+  - component: {fileID: 616904849}
+  - component: {fileID: 616904848}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_blue 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &616904848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616904847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.6
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &616904849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616904847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.blue
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &616904850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616904847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 32
+--- !u!143 &616904851
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616904847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &616904852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616904847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1775415, y: 42.912395, z: 20.013945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1696012029}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &657039499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657039504}
+  - component: {fileID: 657039503}
+  - component: {fileID: 657039502}
+  - component: {fileID: 657039501}
+  - component: {fileID: 657039500}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_green 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &657039500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657039499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.6
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &657039501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657039499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.green
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &657039502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657039499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 32
+--- !u!143 &657039503
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657039499}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &657039504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657039499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.361938, y: 43.89777, z: 57.109276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1635242152}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &707126689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 707126693}
+  - component: {fileID: 707126701}
+  - component: {fileID: 707126700}
+  - component: {fileID: 707126699}
+  - component: {fileID: 707126698}
+  - component: {fileID: 707126697}
+  - component: {fileID: 707126696}
+  - component: {fileID: 707126695}
+  - component: {fileID: 707126694}
+  - component: {fileID: 707126692}
+  - component: {fileID: 707126691}
+  - component: {fileID: 707126690}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &707126690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593be01dd4ab8df4d838d3a3d19ea834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SaveCoordinator
+  progress: {fileID: 707126691}
+  quest: {fileID: 707126692}
+  mupoMission: {fileID: 0}
+--- !u!114 &707126691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dcfc3e22c438e4f9d8852d146ab372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PlayerProgress
+--- !u!114 &707126692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6f1eeb9dce94a4ea83f1b23229db6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.QuestProgress
+  targetId: npc.minicat
+  objectiveVerb: Talk to
+  requiredDefeats: 1
+--- !u!4 &707126693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3676695, y: 50.091904, z: -122.46838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707126694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365e27917e0d70145b32970ccaf2274a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.CharacterSelector
+--- !u!114 &707126695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 100
+--- !u!114 &707126696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a080e0b8370f184d870a441928f1b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.SkillExecutor
+  skills:
+  - id: skill.basic_slash
+    animationClip: nAttack1
+    damage: 10
+    cooldownSeconds: 0.35
+    resourceCost: 0
+    range: 2.25
+  - id: skill.power_strike
+    animationClip: nAttack2
+    damage: 20
+    cooldownSeconds: 1.2
+    resourceCost: 5
+    range: 2.5
+  - id: skill.class_special
+    animationClip: cAttack1
+    damage: 30
+    cooldownSeconds: 3
+    resourceCost: 15
+    range: 3
+  animationBindings:
+  - characterId: wolf
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: wolf
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: wolf
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: bison
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: bison
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: bison
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: panda
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: panda
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: panda
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: whale
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: whale
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: whale
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: mole
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: mole
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: mole
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: rabbit
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: rabbit
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: rabbit
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: monkey
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: monkey
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: monkey
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: sheep
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: sheep
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: sheep
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: penguin
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: penguin
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: penguin
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: bat
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: bat
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: bat
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: chameleon
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: chameleon
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: chameleon
+    skillId: skill.class_special
+    clipName: cAttack1
+  - characterId: cat
+    skillId: skill.basic_slash
+    clipName: nAttack1
+  - characterId: cat
+    skillId: skill.power_strike
+    clipName: nAttack2
+  - characterId: cat
+    skillId: skill.class_special
+    clipName: cAttack1
+  resource: 100
+  maximumResource: 100
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &707126697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abd8822a92879849ba5af1aa4cd770e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MeleeAttack
+  range: 2.25
+  damage: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &707126698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7196893db70dc604a9e082af8fd86335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PlayerMotor
+  speed: 6
+--- !u!143 &707126699
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &707126700
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &707126701
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707126689}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &800896503
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1886556522}
+    m_Modifications:
+    - target: {fileID: 4051124977243516262, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.red Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+--- !u!4 &800896504 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5068725148418768813, guid: f48d1302a00069b43b65e3bd9cb1da2c, type: 3}
+  m_PrefabInstance: {fileID: 800896503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &861357542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 68734001}
+    m_Modifications:
+    - target: {fileID: 3177798761516550377, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.green Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+--- !u!4 &861357543 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+  m_PrefabInstance: {fileID: 861357542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &871489843
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 149934581}
+    m_Modifications:
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946900205266532330, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.purple Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+--- !u!4 &871489844 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7753074247251131466, guid: 8a0873672a4025543a8dbd32ef7c3e25, type: 3}
+  m_PrefabInstance: {fileID: 871489843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &925769219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925769221}
+  - component: {fileID: 925769220}
+  m_Layer: 0
+  m_Name: mission.m105_needle_cave HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &925769220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925769219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacf3a2a239d36f4aa8b1dd15cdd2926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.PrototypeHud
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  mupoMission: {fileID: 0}
+  protectMission: {fileID: 0}
+--- !u!4 &925769221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925769219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1007327875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305441342953835906, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005396232371692483, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+      propertyPath: m_Name
+      value: Original mission.m105_needle_cave Environment
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 188f74ddaeb2c804f810d30d96d5b400, type: 3}
+--- !u!1 &1054803317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1054803321}
+  - component: {fileID: 1054803320}
+  - component: {fileID: 1054803319}
+  - component: {fileID: 1054803318}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1054803318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054803317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb2f0e8b087a9148bfe648353e7947d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.CameraFollow
+  target: {fileID: 707126693}
+  offset: {x: 0, y: 8, z: -10}
+--- !u!81 &1054803319
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054803317}
+  m_Enabled: 1
+--- !u!20 &1054803320
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054803317}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1054803321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054803317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3676695, y: 58.091904, z: -132.46838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1323143667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323143672}
+  - component: {fileID: 1323143671}
+  - component: {fileID: 1323143670}
+  - component: {fileID: 1323143669}
+  - component: {fileID: 1323143668}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_black 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1323143668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323143667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 8
+--- !u!114 &1323143669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323143667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.black
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1323143670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323143667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 38
+--- !u!143 &1323143671
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323143667}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1323143672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323143667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 56.696472, y: 40.38534, z: 51.47194}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2049254103}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1375916255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375916260}
+  - component: {fileID: 1375916259}
+  - component: {fileID: 1375916258}
+  - component: {fileID: 1375916257}
+  - component: {fileID: 1375916256}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_orange 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1375916256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375916255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.65
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &1375916257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375916255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.orange
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1375916258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375916255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 34
+--- !u!143 &1375916259
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375916255}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1375916260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375916255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -51.833862, y: 41.52342, z: 77.91088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2094799657}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1508143005
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 163858641}
+    m_Modifications:
+    - target: {fileID: 4261314037868239562, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_Name
+      value: Original npc.minicat Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+--- !u!4 &1508143006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9220218481695744905, guid: d123862147e6c9c48ae4367b7e5f0d36, type: 3}
+  m_PrefabInstance: {fileID: 1508143005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1619366112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619366117}
+  - component: {fileID: 1619366116}
+  - component: {fileID: 1619366115}
+  - component: {fileID: 1619366114}
+  - component: {fileID: 1619366113}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_blue 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1619366113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619366112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.6
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &1619366114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619366112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.blue
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1619366115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619366112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 32
+--- !u!143 &1619366116
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619366112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1619366117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619366112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.942902, y: 44.599003, z: -47.416245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2039366702}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1634867425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1634867427}
+  - component: {fileID: 1634867426}
+  m_Layer: 0
+  m_Name: Sun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1634867426
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634867425}
+  m_Enabled: 1
+  serializedVersion: 13
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.25
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShapeRadius: 0.025
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &1634867427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634867425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.10938166, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1635242151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 657039504}
+    m_Modifications:
+    - target: {fileID: 3177798761516550377, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.green Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+--- !u!4 &1635242152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5854191942169019530, guid: 1eea0282d55cecc4ca5a761a832f0e89, type: 3}
+  m_PrefabInstance: {fileID: 1635242151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1696012028
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 616904852}
+    m_Modifications:
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805833995256841413, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.blue Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+--- !u!4 &1696012029 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+  m_PrefabInstance: {fileID: 1696012028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1886556517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1886556522}
+  - component: {fileID: 1886556521}
+  - component: {fileID: 1886556520}
+  - component: {fileID: 1886556519}
+  - component: {fileID: 1886556518}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_red 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1886556518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886556517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.7
+  attackCooldown: 1.2
+  attackDamage: 7
+--- !u!114 &1886556519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886556517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.red
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &1886556520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886556517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 36
+--- !u!143 &1886556521
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886556517}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1886556522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886556517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.615723, y: 42.929596, z: -47.343124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 800896504}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2039366701
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1619366117}
+    m_Modifications:
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805833995256841413, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.blue Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+--- !u!4 &2039366702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6167294257871201738, guid: 7a0e22fb9e6066e428bdffcd3d702d3b, type: 3}
+  m_PrefabInstance: {fileID: 2039366701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2041279772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041279777}
+  - component: {fileID: 2041279776}
+  - component: {fileID: 2041279775}
+  - component: {fileID: 2041279774}
+  - component: {fileID: 2041279773}
+  m_Layer: 0
+  m_Name: group.m105_needlebugs_orange 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2041279773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041279772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd1e54fab623364faa9d84ed09f9e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.MonsterChase
+  detectionRadius: 12
+  attackRange: 1.5
+  moveSpeed: 1.65
+  attackCooldown: 1.2
+  attackDamage: 6
+--- !u!114 &2041279774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041279772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ae8f5b13e26af4e860718605f2bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.EnemyTarget
+  entityId: monster.needlebug.orange
+  quest: {fileID: 707126692}
+  progress: {fileID: 707126691}
+  saves: {fileID: 707126690}
+  protectMission: {fileID: 0}
+  rewardExperience: 0
+  rewardPotions: 0
+--- !u!114 &2041279775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041279772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656d7d7f974cd5f4b8d32f185a91280b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TwelveTails.Gameplay::TwelveTails.Gameplay.Health
+  maximum: 34
+--- !u!143 &2041279776
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041279772}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.2
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2041279777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041279772}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3215332, y: 42.89038, z: -22.314377}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 113120486}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2049254102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1323143672}
+    m_Modifications:
+    - target: {fileID: 7826353510203962668, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.black Visual
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+--- !u!4 &2049254103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9221859620633383758, guid: 56622fb5361189c42adcd090941d640b, type: 3}
+  m_PrefabInstance: {fileID: 2049254102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2094799656
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1375916260}
+    m_Modifications:
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982688491305799620, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+      propertyPath: m_Name
+      value: Original monster.needlebug.orange Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+--- !u!4 &2094799657 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3764016463725196237, guid: 278f46b5283e100468ade9ca5dad3bc4, type: 3}
+  m_PrefabInstance: {fileID: 2094799656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1007327875}
+  - {fileID: 707126693}
+  - {fileID: 657039504}
+  - {fileID: 68734001}
+  - {fileID: 1619366117}
+  - {fileID: 616904852}
+  - {fileID: 107265743}
+  - {fileID: 1886556522}
+  - {fileID: 1375916260}
+  - {fileID: 2041279777}
+  - {fileID: 149934581}
+  - {fileID: 1323143672}
+  - {fileID: 163858641}
+  - {fileID: 1634867427}
+  - {fileID: 1054803321}
+  - {fileID: 925769221}

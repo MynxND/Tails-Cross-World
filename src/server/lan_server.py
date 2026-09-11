@@ -30,7 +30,7 @@ class GameService:
                 session = self.authority.resume_session(request.get("token", ""))
                 result = {"token": session.token, "account_id": session.account_id}
             elif kind == "create_lobby":
-                lobby = self.authority.create_lobby(request.get("token", ""))
+                lobby = self.authority.create_lobby(request.get("token", ""), request.get("map_id", "map.training_ground"))
                 result = self.authority.snapshot(lobby.lobby_id)
             elif kind == "join_lobby":
                 lobby = self.authority.join_lobby(request.get("token", ""), request.get("lobby_id", ""))
@@ -42,6 +42,10 @@ class GameService:
                 result = self.authority.move(request.get("token", ""), request.get("sequence"), request.get("direction"))
             elif kind == "attack":
                 result = self.authority.attack(request.get("token", ""), request.get("sequence"))
+            elif kind == "herd_pen":
+                result = self.authority.herd_pen(request.get("token", ""), request.get("sequence"), request.get("mupo_id", ""))
+            elif kind == "herd_death":
+                result = self.authority.herd_death(request.get("token", ""), request.get("sequence"), request.get("mupo_id", ""))
             else:
                 raise AuthorityError("unsupported request kind")
             if self.store:

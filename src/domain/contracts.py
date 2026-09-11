@@ -143,6 +143,34 @@ def _map(data: dict[str, Any]) -> None:
         _id_list(data[field], f"data.{field}")
 
 
+def _skill(data: dict[str, Any]) -> None:
+    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "resource_cost", "range"}, "data")
+    _string(data["skill_id"], "data.skill_id", identifier=True)
+    _string(data["name_key"], "data.name_key", identifier=True)
+    _string(data["animation_clip"], "data.animation_clip", maximum=128)
+    _integer(data["damage"], "data.damage", maximum=100000)
+    _number(data["cooldown_seconds"], "data.cooldown_seconds", minimum=0.0, maximum=3600.0)
+    _integer(data["resource_cost"], "data.resource_cost", maximum=100000)
+    _number(data["range"], "data.range", minimum=0.1, maximum=100.0)
+
+
+def _animation_profile(data: dict[str, Any]) -> None:
+    _exact_fields(data, {"character_id", "skills"}, "data")
+    _string(data["character_id"], "data.character_id", identifier=True)
+    skills = data["skills"]
+    if not isinstance(skills, list) or not skills:
+        raise ContractError("data.skills must contain at least one entry")
+    seen: set[str] = set()
+    for index, entry in enumerate(skills):
+        obj = _object(entry, f"data.skills[{index}]")
+        _exact_fields(obj, {"skill_id", "clip_name"}, f"data.skills[{index}]")
+        skill_id = _string(obj["skill_id"], f"data.skills[{index}].skill_id", identifier=True)
+        if skill_id in seen:
+            raise ContractError(f"data.skills contains duplicate skill: {skill_id}")
+        seen.add(skill_id)
+        _string(obj["clip_name"], f"data.skills[{index}].clip_name", maximum=128)
+
+
 VALIDATORS: dict[str, Callable[[dict[str, Any]], None]] = {
     "account": _account,
     "character": _character,
@@ -151,6 +179,8 @@ VALIDATORS: dict[str, Callable[[dict[str, Any]], None]] = {
     "quest": _quest,
     "monster": _monster,
     "map": _map,
+    "skill": _skill,
+    "animation_profile": _animation_profile,
 }
 
 

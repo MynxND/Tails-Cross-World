@@ -21,9 +21,22 @@ namespace TwelveTails.Gameplay
             var center = transform.position + transform.forward * (range * 0.6f);
             foreach (var collider in Physics.OverlapSphere(center, range, targetMask, QueryTriggerInteraction.Collide))
             {
-                if (!collider.TryGetComponent<EnemyTarget>(out var enemy) || enemy.Health.IsDefeated) continue;
-                enemy.TakeHit(damage);
-                return true;
+                if (collider.TryGetComponent<EnemyTarget>(out var enemy) && !enemy.Health.IsDefeated)
+                {
+                    enemy.TakeHit(damage);
+                    return true;
+                }
+                if (collider.TryGetComponent<KnockoutObjectiveTarget>(out var knockoutTarget) && !knockoutTarget.Health.IsDefeated)
+                {
+                    knockoutTarget.TakeHit(damage);
+                    return true;
+                }
+                var mupo = collider.GetComponentInParent<MupoHerdTarget>();
+                if (mupo != null && !mupo.Health.IsDefeated)
+                {
+                    mupo.Health.ApplyDamage(damage);
+                    return true;
+                }
             }
             return false;
         }

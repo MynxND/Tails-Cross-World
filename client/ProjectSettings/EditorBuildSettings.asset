@@ -6,7 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TwelveTails/Scenes/TrainingGround.unity
-    guid: bf8c78448176b6b41a97c6ee941057e8
+    path: Assets/TwelveTails/Scenes/ChapterMenu.unity
+    guid: d2e357f3dd0887649bdf14581105b1b3
+  - enabled: 1
+    path: Assets/TwelveTails/Scenes/CarronHarvest.unity
+    guid: 6c6a0d3b2c927484ca75c03580bdbbd3
+  - enabled: 1
+    path: Assets/TwelveTails/Scenes/OneOnOneBout.unity
+    guid: fbace238706570640b8fe9e1a87004d1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

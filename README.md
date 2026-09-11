@@ -35,9 +35,11 @@ The .NET metadata inspector reads CLI metadata without loading or executing lega
 pwsh tools/assembly_inspector/Inspect-Assemblies.ps1 -ManagedDirectory "D:\path\to\Game_Data\Managed" -OutputPath "D:\private-reports\assembly-inventory.json"
 ```
 
-## Phase 2 playable prototype
+## Playable recreated build
 
-Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Scenes/TrainingGround.unity`, and press Play. Use WASD to move, Space to attack the Carron, F5 to save, and F9 to load. Completing the quest grants 25 EXP and one potion, then saves automatically. Run Unity tests with:
+Launch `client\Builds\Windows\TwelveTailsPrototype.exe`, choose Chapter 1, and the recreated game loads the source-backed M101 Carron Hunt rather than the prototype Training Ground. Use WASD to move, Space to attack, F5 to save, and F9 to load.
+
+For prototype-only development, open the `client` directory with Unity `6000.6.0f1` and load `Assets/TwelveTails/Scenes/TrainingGround.unity`. Run Unity tests with:
 
 Use the character panel at the bottom of the game window to switch between all 12 procedural prototype characters. The selected character is retained for the next run.
 
@@ -65,7 +67,7 @@ Regenerate all original Blender character sources and Unity FBX imports with:
 .\scripts\test-unity.ps1
 ```
 
-After a Windows build has been generated locally, launch `client\Builds\Windows\TwelveTailsPrototype.exe` directly.
+Generate the combined Windows build with `12 Tails > Build Windows`. The build includes the Chapter menu and Chapter 1 mission scenes.
 
 When the private original-asset import is present, the build uses the original 12 character models and the M101 Carron Harvest environment. Those assets remain under `client/Assets/TwelveTails/LegacyPrivate/` and are intentionally excluded from Git. The editor builder falls back to the generated prototype art when the private import is unavailable.
 

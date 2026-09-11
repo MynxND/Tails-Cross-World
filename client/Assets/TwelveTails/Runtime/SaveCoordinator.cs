@@ -8,13 +8,15 @@ namespace TwelveTails.Gameplay
     {
         [SerializeField] private PlayerProgress progress = null!;
         [SerializeField] private QuestProgress quest = null!;
+        [SerializeField] private MupoHerdMission mupoMission = null!;
         public string LastStatus { get; private set; } = "No save loaded";
         public string SavePath => Path.Combine(Application.persistentDataPath, "prototype-save-v1.json");
 
-        public void Configure(PlayerProgress playerProgress, QuestProgress questProgress)
+        public void Configure(PlayerProgress playerProgress, QuestProgress questProgress, MupoHerdMission herdMission = null)
         {
             progress = playerProgress;
             quest = questProgress;
+            mupoMission = herdMission;
         }
 
         private void Start()
@@ -35,7 +37,9 @@ namespace TwelveTails.Gameplay
                 experience = progress.Experience,
                 potionCount = progress.PotionCount,
                 questComplete = quest.IsComplete,
-                rewardClaimed = progress.RewardClaimed
+                rewardClaimed = progress.RewardClaimed,
+                mupoPennedIds = mupoMission == null ? System.Array.Empty<string>() : new System.Collections.Generic.List<string>(mupoMission.PennedIds).ToArray(),
+                mupoMissionFailed = mupoMission != null && mupoMission.IsFailed
             });
             LastStatus = "Saved";
         }
@@ -47,6 +51,7 @@ namespace TwelveTails.Gameplay
                 var data = ProgressSave.Read(SavePath);
                 progress.Restore(data.experience, data.potionCount, data.rewardClaimed);
                 quest.Restore(data.questComplete);
+                mupoMission?.Restore(data.mupoPennedIds, data.mupoMissionFailed);
                 LastStatus = "Loaded";
             }
             catch (System.Exception exception)

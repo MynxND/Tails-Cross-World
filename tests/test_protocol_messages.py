@@ -17,6 +17,8 @@ class ProtocolMessageTests(unittest.TestCase):
             message("action_request", {"actor_id": "actor.cat", "skill_id": "skill.basic", "target_id": "monster.slime", "aim": [0, 0, 1]}),
             message("revive_request", {"actor_id": "actor.cat", "target_id": "actor.mole"}),
             message("inventory_swap_request", {"actor_id": "actor.cat", "source_slot": 0, "destination_slot": 1}),
+            message("herd_pen_request", {"actor_id": "actor.cat", "mupo_id": "mupo-1"}),
+            message("herd_death_report", {"actor_id": "actor.cat", "mupo_id": "mupo-1"}),
         ]
         for value in messages:
             with self.subTest(kind=value["kind"]):

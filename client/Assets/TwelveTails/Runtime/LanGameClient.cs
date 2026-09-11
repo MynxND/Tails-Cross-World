@@ -18,6 +18,8 @@ namespace TwelveTails.Gameplay
             public string account_id = string.Empty;
             public string token = string.Empty;
             public string lobby_id = string.Empty;
+            public string map_id = string.Empty;
+            public string mupo_id = string.Empty;
             public int sequence;
             public float[] direction = Array.Empty<float>();
         }
@@ -31,7 +33,13 @@ namespace TwelveTails.Gameplay
             public MapState map = null!;
             public PlayerState[] players = Array.Empty<PlayerState>();
         }
-        [Serializable] private sealed class MapState { public int monster_hp; }
+        [Serializable] private sealed class MapState
+        {
+            public string map_id = string.Empty;
+            public int monster_hp;
+            public string[] penned_mupo_ids = Array.Empty<string>();
+            public bool mupo_failed;
+        }
         [Serializable] private sealed class PlayerState
         {
             public string account_id = string.Empty;
@@ -51,6 +59,21 @@ namespace TwelveTails.Gameplay
         private bool inFlight;
         private float nextSync;
         private GameObject? remotePlayer;
+        [SerializeField] private string mapId = "map.training_ground";
+
+        public void ConfigureMap(string selectedMapId) => mapId = selectedMapId;
+
+        public void SendMupoPen(string mupoId)
+        {
+            if (mapId == "map.m102_mupo_round_up" && !string.IsNullOrEmpty(token))
+                Send(new Request { kind = "herd_pen", token = token, lobby_id = lobbyId, mupo_id = mupoId, sequence = ++sequence });
+        }
+
+        public void SendMupoDeath(string mupoId)
+        {
+            if (mapId == "map.m102_mupo_round_up" && !string.IsNullOrEmpty(token))
+                Send(new Request { kind = "herd_death", token = token, lobby_id = lobbyId, mupo_id = mupoId, sequence = ++sequence });
+        }
 
         private void Update()
         {
@@ -76,7 +99,7 @@ namespace TwelveTails.Gameplay
             account = GUILayout.TextField(account);
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Login")) Send(new Request { kind = "login", account_id = account });
-            if (GUILayout.Button("Create Lobby") && !string.IsNullOrEmpty(token)) Send(new Request { kind = "create_lobby", token = token });
+            if (GUILayout.Button("Create Lobby") && !string.IsNullOrEmpty(token)) Send(new Request { kind = "create_lobby", token = token, map_id = mapId });
             GUILayout.EndHorizontal();
             joinCode = GUILayout.TextField(joinCode);
             if (GUILayout.Button("Join Lobby") && !string.IsNullOrEmpty(token))
@@ -123,6 +146,9 @@ namespace TwelveTails.Gameplay
                 var enemy = FindFirstObjectByType<EnemyTarget>(FindObjectsInactive.Include);
                 if (enemy != null) enemy.gameObject.SetActive(response.result.map.monster_hp > 0);
                 ApplyPlayers(response.result.players);
+                var mission = FindAnyObjectByType<MupoHerdMission>();
+                if (mission != null && response.result.map.map_id == "map.m102_mupo_round_up")
+                    mission.Restore(response.result.map.penned_mupo_ids, response.result.map.mupo_failed);
             }
         }
 
