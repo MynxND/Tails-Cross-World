@@ -23,6 +23,7 @@ namespace TwelveTails.Gameplay
         public float projectileSpeed;
         public float projectileLifetimeSeconds;
         public float projectileHomingRadiansPerSecond;
+        public float impactRadius;
         public string statusEffectId = string.Empty;
         public float statusDurationSeconds;
         public float statusTickSeconds;
@@ -99,6 +100,7 @@ namespace TwelveTails.Gameplay
             if (keyboard.digit1Key.wasPressedThisFrame) ExecuteSkill("skill.basic_slash");
             if (keyboard.digit2Key.wasPressedThisFrame) ExecuteSkill("skill.power_strike");
             if (keyboard.digit3Key.wasPressedThisFrame) ExecuteSkill("skill.class_special");
+            if (keyboard.digit4Key.wasPressedThisFrame) ExecuteSkill("skill.mole_stun_grenade");
         }
 
         public int AdvanceResource(float deltaSeconds)

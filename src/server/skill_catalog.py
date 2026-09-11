@@ -15,6 +15,7 @@ class ServerSkill:
     cooldown_seconds: float
     resource_cost: int
     range: float
+    impact_radius: float
 
 
 def load_skill_catalog(path: Path | None = None) -> dict[str, ServerSkill]:
@@ -31,6 +32,7 @@ def load_skill_catalog(path: Path | None = None) -> dict[str, ServerSkill]:
             cooldown_seconds=raw["cooldown_seconds"],
             resource_cost=raw["resource_cost"],
             range=raw["range"],
+            impact_radius=raw["impact_radius"],
         )
         if skill.skill_id in catalog:
             raise ValueError(f"duplicate skill: {skill.skill_id}")

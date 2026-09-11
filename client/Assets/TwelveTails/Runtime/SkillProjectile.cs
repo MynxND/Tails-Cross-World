@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TwelveTails.Gameplay
@@ -47,8 +48,8 @@ namespace TwelveTails.Gameplay
             if (HasImpacted || collider == null || (targetMask.value & (1 << collider.gameObject.layer)) == 0) return false;
             var health = ResolveTargetHealth(collider);
             if (health == null || health.IsDefeated) return false;
-            health.ApplyDamage(damage);
-            ApplyStatus(health);
+            if (definition.impactRadius > 0f) ApplyAreaImpact(collider.bounds.center, health);
+            else ApplyImpact(health);
             HasImpacted = true;
             Despawn();
             return true;
@@ -64,6 +65,23 @@ namespace TwelveTails.Gameplay
             if (knockout != null) return knockout.Health;
             var mupo = collider.GetComponentInParent<MupoHerdTarget>();
             return mupo == null ? null : mupo.Health;
+        }
+
+        private void ApplyAreaImpact(Vector3 center, Health directTarget)
+        {
+            var affected = new HashSet<Health> { directTarget };
+            foreach (var collider in Physics.OverlapSphere(center, definition.impactRadius, targetMask, QueryTriggerInteraction.Collide))
+            {
+                var health = ResolveTargetHealth(collider);
+                if (health != null && !health.IsDefeated) affected.Add(health);
+            }
+            foreach (var health in affected) ApplyImpact(health);
+        }
+
+        private void ApplyImpact(Health health)
+        {
+            health.ApplyDamage(damage);
+            ApplyStatus(health);
         }
 
         private void ApplyStatus(Health health)

@@ -95,6 +95,7 @@ namespace TwelveTails.Gameplay
             if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame) SendSkill("skill.basic_slash");
             else if (keyboard != null && keyboard.digit2Key.wasPressedThisFrame) SendSkill("skill.power_strike");
             else if (keyboard != null && keyboard.digit3Key.wasPressedThisFrame) SendSkill("skill.class_special");
+            else if (keyboard != null && keyboard.digit4Key.wasPressedThisFrame) SendSkill("skill.mole_stun_grenade");
             else if (direction.sqrMagnitude > 0)
                 Send(new Request { kind = "move", token = token, sequence = ++sequence, direction = new[] { direction.x, direction.y, direction.z } });
             else Send(new Request { kind = "state", token = token, lobby_id = lobbyId });
@@ -105,6 +106,7 @@ namespace TwelveTails.Gameplay
             var selector = GetComponent<CharacterSelector>();
             var skills = GetComponent<SkillExecutor>();
             var characterId = selector == null ? "wolf" : selector.SelectedId;
+            if (inputSkillId == "skill.mole_stun_grenade" && characterId != "mole") return;
             Send(new Request
             {
                 kind = "action_request",

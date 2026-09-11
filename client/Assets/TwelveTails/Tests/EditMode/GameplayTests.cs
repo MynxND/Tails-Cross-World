@@ -593,6 +593,52 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void MoleGrenadeDamagesEachTargetOnceInsideSourceRadius()
+        {
+            var projectileObject = new GameObject("Mole Grenade");
+            var directObject = new GameObject("Direct Target") { transform = { position = new Vector3(0f, 0f, 1f) } };
+            var nearbyObject = new GameObject("Nearby Target") { transform = { position = new Vector3(3f, 0f, 1f) } };
+            var distantObject = new GameObject("Distant Target") { transform = { position = new Vector3(7f, 0f, 1f) } };
+            try
+            {
+                var directCollider = directObject.AddComponent<SphereCollider>();
+                var directHealth = directObject.AddComponent<Health>();
+                directHealth.Configure(20);
+                directObject.AddComponent<EnemyTarget>();
+                var nearbyHealth = nearbyObject.AddComponent<Health>();
+                nearbyHealth.Configure(20);
+                nearbyObject.AddComponent<SphereCollider>();
+                nearbyObject.AddComponent<BoxCollider>();
+                nearbyObject.AddComponent<EnemyTarget>();
+                var distantHealth = distantObject.AddComponent<Health>();
+                distantHealth.Configure(20);
+                distantObject.AddComponent<SphereCollider>();
+                distantObject.AddComponent<EnemyTarget>();
+                Physics.SyncTransforms();
+
+                var skill = new SkillDefinition
+                {
+                    id = "skill.mole_stun_grenade", characterId = "mole", damage = 10, range = 12f,
+                    projectileSpeed = 15f, projectileLifetimeSeconds = 3f, impactRadius = 6f
+                };
+                var projectile = projectileObject.AddComponent<SkillProjectile>();
+                projectile.Configure(Vector3.forward, skill, ~0);
+
+                Assert.That(projectile.TryImpact(directCollider), Is.True);
+                Assert.That(directHealth.Current, Is.EqualTo(10));
+                Assert.That(nearbyHealth.Current, Is.EqualTo(10));
+                Assert.That(distantHealth.Current, Is.EqualTo(20));
+            }
+            finally
+            {
+                Object.DestroyImmediate(projectileObject);
+                Object.DestroyImmediate(directObject);
+                Object.DestroyImmediate(nearbyObject);
+                Object.DestroyImmediate(distantObject);
+            }
+        }
+
+        [Test]
         public void SkillLifecycleRaisesPresentationHooksAtConfiguredTimes()
         {
             var gameObject = new GameObject("Skill User");
