@@ -70,18 +70,23 @@ def dependency_closure(entry: Path, guid_index: dict[str, Path]) -> tuple[set[Pa
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--export-project", type=Path, required=True)
-    parser.add_argument("--entry", required=True, help="Path relative to exported Assets")
+    parser.add_argument("--entry", action="append", required=True,
+                        help="Path relative to exported Assets; repeat for multiple roots")
     parser.add_argument("--destination-assets", type=Path, required=True)
     parser.add_argument("--copy", action="store_true", help="Copy after reporting the closure")
     args = parser.parse_args()
 
     source_assets = (args.export_project / "Assets").resolve()
-    entry = (source_assets / args.entry).resolve()
-    if not entry.is_file() or source_assets not in entry.parents:
-        raise SystemExit(f"Entry is not a file inside exported Assets: {entry}")
-
     index = build_guid_index(source_assets)
-    assets, missing = dependency_closure(entry, index)
+    assets: set[Path] = set()
+    missing: set[str] = set()
+    for relative_entry in args.entry:
+        entry = (source_assets / relative_entry).resolve()
+        if not entry.is_file() or source_assets not in entry.parents:
+            raise SystemExit(f"Entry is not a file inside exported Assets: {entry}")
+        entry_assets, entry_missing = dependency_closure(entry, index)
+        assets.update(entry_assets)
+        missing.update(entry_missing)
     total_bytes = sum(p.stat().st_size for p in assets)
     print(f"Indexed GUIDs: {len(index)}")
     print(f"Dependency assets: {len(assets)}")
