@@ -124,6 +124,7 @@ namespace TwelveTails.EditorTools
                 instance.transform.localRotation = Quaternion.identity;
                 RemoveMissingScripts(instance);
                 ApplyDefaultAppearance(instance, title, materialDestination, textureDestination);
+                AttachDefaultAccessory(instance, title);
                 ConvertMaterials(instance, title, materialDestination);
                 PrefabUtility.SaveAsPrefabAsset(instance, $"{destination}/{title}.prefab");
                 Object.DestroyImmediate(instance);
@@ -132,6 +133,23 @@ namespace TwelveTails.EditorTools
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        private static void AttachDefaultAccessory(GameObject characterRoot, string character)
+        {
+            if (character != "Cat") return;
+            const string path = "Assets/TwelveTails/LegacyPrivate/Resources/gameassets/characters/heroes/cat/accessories/default.prefab";
+            var source = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if (source == null) throw new System.Exception("Cat default hair accessory is missing");
+            var head = characterRoot.GetComponentsInChildren<Transform>(true).FirstOrDefault(item => item.name == "Head");
+            if (head == null) throw new System.Exception("Cat Head bone is missing");
+            var accessory = Object.Instantiate(source, head);
+            accessory.name = "Default Hair";
+            accessory.transform.localPosition = Vector3.zero;
+            accessory.transform.localRotation = Quaternion.Euler(0f, 270f, 90f);
+            accessory.transform.localScale = Vector3.one;
+            accessory.SetActive(true);
+            RemoveMissingScripts(accessory);
         }
 
         private static void ApplyDefaultAppearance(GameObject root, string character, string materials, string textures)
