@@ -75,6 +75,10 @@ namespace TwelveTails.EditorTools
             public int damage;
             public float cooldown_seconds;
             public float hit_delay_seconds;
+            public float action_duration_seconds;
+            public float combo_window_start_seconds;
+            public float combo_window_end_seconds;
+            public string combo_next_skill_id = string.Empty;
             public int resource_cost;
             public float range;
         }
@@ -601,6 +605,10 @@ namespace TwelveTails.EditorTools
                 damage = skill.damage,
                 cooldownSeconds = skill.cooldown_seconds,
                 hitDelaySeconds = skill.hit_delay_seconds,
+                actionDurationSeconds = skill.action_duration_seconds,
+                comboWindowStartSeconds = skill.combo_window_start_seconds,
+                comboWindowEndSeconds = skill.combo_window_end_seconds,
+                comboNextSkillId = skill.combo_next_skill_id,
                 resourceCost = skill.resource_cost,
                 range = skill.range
             }).ToArray();

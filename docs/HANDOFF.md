@@ -174,6 +174,7 @@ Completed:
 - M108 One On One Bout local slice uses the original arena, source StartPoint1/StartPoint2 positions, an original Bison visual as the offline opponent, and duel semantics derived from team events `1081`/`1082`/`1083`. Defeating the opponent completes the objective; player defeat fails it.
 - M108 scene generation and standalone Windows build completed successfully. The Windows build remained responsive and its fresh startup log contained no matched critical runtime errors. Full Unity tests remain `20/20` and repository checks remain `37/37`.
 - Phase 4B animation-driven combat has started. Skill definitions now carry strict `hit_delay_seconds` timing; `SkillExecutor` starts the animation immediately, applies damage only at the configured impact time, blocks overlapping wind-ups, and supports normal, Mupo, and recurrent-knockout targets through the timed path.
+- Phase 4B action recovery and combo windows are complete. Skills now declare strict action duration and combo timing/reference fields; movement remains locked through recovery, one valid follow-up may queue during its configured window, and normal melee input uses the same timed `skill.basic_slash` path instead of applying immediate damage. Unity gameplay tests pass (`25/25`) and repository checks pass (`39/39`).
 - All 211 exported legacy scenes audited without running legacy code.
 - Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
 - Chapter 1 Unity source-scene validation added.
@@ -747,9 +748,9 @@ After these checks, move to M103 rather than expanding M102 with optional VFX/cu
 
 The first reusable skill slice now exists. Expand it before duplicating mission-specific combat code:
 
-- Replace builder defaults with generated skill definitions from `content/v1/skills.json`.
 - Generate/import Animator state mappings from `content/v1/animation_profiles.json`.
-- Add resource regeneration, hit timing, combo windows, status effects, and server-side skill validation.
+- Add an animation-event or normalized-time impact adapter while preserving deterministic timing fallback for clips without events.
+- Add resource regeneration, status effects, hit reactions, knockout/death states, projectiles, VFX/audio hooks, and server-side skill validation.
 - Map the recovered legacy skill names to character classes and preserve evidence/confidence for uncertain mappings.
 
 ### Priority 3 - General map runtime

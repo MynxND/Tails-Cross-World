@@ -174,6 +174,18 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has invalid cooldown")
         if not isinstance(skill.get("hit_delay_seconds"), (int, float)) or not 0 <= skill["hit_delay_seconds"] <= skill["cooldown_seconds"]:
             raise ContentError(f"skill {skill.get('id')} has invalid hit delay")
+        duration = skill.get("action_duration_seconds")
+        combo_start = skill.get("combo_window_start_seconds")
+        combo_end = skill.get("combo_window_end_seconds")
+        combo_next = skill.get("combo_next_skill_id")
+        if not isinstance(duration, (int, float)) or duration < skill["hit_delay_seconds"]:
+            raise ContentError(f"skill {skill.get('id')} has invalid action duration")
+        if not isinstance(combo_start, (int, float)) or not isinstance(combo_end, (int, float)) or not 0 <= combo_start <= combo_end <= duration:
+            raise ContentError(f"skill {skill.get('id')} has invalid combo window")
+        if not isinstance(combo_next, str) or (combo_next and combo_next not in skill_ids):
+            raise ContentError(f"skill {skill.get('id')} has an unresolved combo skill")
+        if not combo_next and (combo_start != 0 or combo_end != 0):
+            raise ContentError(f"skill {skill.get('id')} has a combo window without a next skill")
         if not isinstance(skill.get("resource_cost"), int) or skill["resource_cost"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid resource cost")
         if not isinstance(skill.get("range"), (int, float)) or skill["range"] <= 0:

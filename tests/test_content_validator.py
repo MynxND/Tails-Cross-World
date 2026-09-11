@@ -34,6 +34,28 @@ class ContentValidatorTests(unittest.TestCase):
             with self.assertRaisesRegex(ContentError, "unresolved"):
                 validate(root)
 
+    def test_missing_combo_skill_reference_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in self.CONTENT_FILES:
+                data = json.loads((Path("content/v1") / name).read_text(encoding="utf-8"))
+                if name == "skills.json":
+                    data["skills"][0]["combo_next_skill_id"] = "skill.missing"
+                (root / name).write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaisesRegex(ContentError, "unresolved combo skill"):
+                validate(root)
+
+    def test_combo_window_must_fit_action_duration(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in self.CONTENT_FILES:
+                data = json.loads((Path("content/v1") / name).read_text(encoding="utf-8"))
+                if name == "skills.json":
+                    data["skills"][0]["combo_window_end_seconds"] = data["skills"][0]["action_duration_seconds"] + 0.1
+                (root / name).write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaisesRegex(ContentError, "invalid combo window"):
+                validate(root)
+
     def test_mission_objective_count_must_match_actor_positions(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

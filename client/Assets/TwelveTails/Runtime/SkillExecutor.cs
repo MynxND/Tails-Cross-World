@@ -13,6 +13,10 @@ namespace TwelveTails.Gameplay
         public int damage;
         public float cooldownSeconds;
         public float hitDelaySeconds;
+        public float actionDurationSeconds;
+        public float comboWindowStartSeconds;
+        public float comboWindowEndSeconds;
+        public string comboNextSkillId = string.Empty;
         public int resourceCost;
         public float range;
     }
@@ -35,12 +39,18 @@ namespace TwelveTails.Gameplay
         private readonly Dictionary<string, float> cooldowns = new();
         private CharacterAnimationDriver proceduralAnimation = null!;
         private AnimatorMotionDriver animatorMotion = null!;
-        private SkillDefinition pendingSkill = null!;
+        private SkillDefinition activeSkill = null!;
+        private SkillDefinition queuedSkill = null!;
+        private float actionStartedAt;
         private float pendingHitAt;
+        private float actionEndsAt;
+        private bool impactApplied;
 
         public int Resource => resource;
         public IReadOnlyList<SkillDefinition> Skills => skills;
-        public bool IsWindingUp => pendingSkill != null;
+        public bool IsWindingUp => activeSkill != null && !impactApplied;
+        public bool IsActionActive => activeSkill != null;
+        public string ActiveSkillId => activeSkill?.id ?? string.Empty;
 
         public void Configure(IEnumerable<SkillDefinition> definitions, int initialResource = 100)
         {
@@ -48,7 +58,7 @@ namespace TwelveTails.Gameplay
             maximumResource = Mathf.Max(0, initialResource);
             resource = maximumResource;
             cooldowns.Clear();
-            pendingSkill = null;
+            ClearAction();
         }
 
         public void ConfigureAnimations(IEnumerable<SkillAnimationBinding> bindings)
@@ -77,37 +87,74 @@ namespace TwelveTails.Gameplay
         public bool ExecuteSkill(string skillId, float actionTime)
         {
             var definition = FindSkill(skillId);
-            if (pendingSkill != null || definition == null || definition.damage < 0 || definition.range <= 0f) return false;
+            if (definition == null || definition.damage < 0 || definition.range <= 0f) return false;
+            if (activeSkill != null) return QueueCombo(definition, actionTime);
+            return StartAction(definition, actionTime);
+        }
+
+        private bool StartAction(SkillDefinition definition, float actionTime)
+        {
             if (resource < definition.resourceCost) return false;
-            if (cooldowns.TryGetValue(skillId, out var readyAt) && actionTime < readyAt) return false;
+            if (cooldowns.TryGetValue(definition.id, out var readyAt) && actionTime < readyAt) return false;
 
             var clipName = ResolveAnimationClip(definition);
             proceduralAnimation?.PlaySkillAnimation(clipName);
             animatorMotion?.PlaySkillAnimation(clipName);
             resource -= definition.resourceCost;
-            cooldowns[skillId] = actionTime + Mathf.Max(0f, definition.cooldownSeconds);
-            if (definition.hitDelaySeconds <= 0f) return ApplyDamage(definition);
-            pendingSkill = definition;
+            cooldowns[definition.id] = actionTime + Mathf.Max(0f, definition.cooldownSeconds);
+            var actionDuration = Mathf.Max(definition.actionDurationSeconds, definition.hitDelaySeconds);
+            if (actionDuration <= 0f) return ApplyDamage(definition);
+            activeSkill = definition;
+            actionStartedAt = actionTime;
             pendingHitAt = actionTime + definition.hitDelaySeconds;
+            actionEndsAt = actionTime + actionDuration;
+            impactApplied = definition.hitDelaySeconds <= 0f;
+            if (impactApplied) ApplyDamage(definition);
             return true;
         }
 
         public bool AdvanceAction(float actionTime)
         {
-            if (pendingSkill == null || actionTime < pendingHitAt) return false;
-            var definition = pendingSkill;
-            pendingSkill = null;
-            return ApplyDamage(definition);
+            if (activeSkill == null) return false;
+            var changed = false;
+            if (!impactApplied && actionTime >= pendingHitAt)
+            {
+                impactApplied = true;
+                changed = ApplyDamage(activeSkill);
+            }
+            if (actionTime < actionEndsAt) return changed;
+            var nextSkill = queuedSkill;
+            ClearAction();
+            return nextSkill == null ? changed : StartAction(nextSkill, actionTime) || changed;
         }
 
         public bool CanExecute(string skillId)
         {
             var definition = FindSkill(skillId);
-            return pendingSkill == null && definition != null && resource >= definition.resourceCost &&
+            return activeSkill == null && definition != null && resource >= definition.resourceCost &&
                 (!cooldowns.TryGetValue(skillId, out var readyAt) || Time.time >= readyAt);
         }
 
-        private void OnDisable() => pendingSkill = null;
+        private bool QueueCombo(SkillDefinition definition, float actionTime)
+        {
+            if (queuedSkill != null || activeSkill.comboNextSkillId != definition.id) return false;
+            var elapsed = actionTime - actionStartedAt;
+            if (elapsed < activeSkill.comboWindowStartSeconds || elapsed > activeSkill.comboWindowEndSeconds) return false;
+            queuedSkill = definition;
+            return true;
+        }
+
+        private void OnDisable() => ClearAction();
+
+        private void ClearAction()
+        {
+            activeSkill = null;
+            queuedSkill = null;
+            actionStartedAt = 0f;
+            pendingHitAt = 0f;
+            actionEndsAt = 0f;
+            impactApplied = false;
+        }
 
         private SkillDefinition FindSkill(string skillId)
         {

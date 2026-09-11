@@ -14,7 +14,7 @@ VALID_DOCUMENTS = {
     "quest": {"quest_id": "quest.first_hunt", "prerequisites": [], "objectives": [{"kind": "defeat", "target_id": "monster.slime", "count": 1}], "reward_item_ids": ["item.potion"], "reward_experience": 10},
     "monster": {"monster_id": "monster.slime", "level": 1, "stats": {"hp": 20, "attack": 2}, "ai_profile_id": "ai.melee", "skill_ids": [], "drop_table_id": "drop.slime"},
     "map": {"map_id": "map.training", "scene_id": "scene.training", "spawn_ids": ["spawn.start"], "portal_ids": [], "npc_ids": ["npc.guide"], "monster_group_ids": ["group.slime"], "safe_zone_ids": ["zone.start"]},
-    "skill": {"skill_id": "skill.basic_slash", "name_key": "skill.basic_slash.name", "animation_clip": "nAttack1", "damage": 10, "cooldown_seconds": 0.35, "hit_delay_seconds": 0.12, "resource_cost": 0, "range": 2.25},
+    "skill": {"skill_id": "skill.basic_slash", "name_key": "skill.basic_slash.name", "animation_clip": "nAttack1", "damage": 10, "cooldown_seconds": 0.35, "hit_delay_seconds": 0.12, "action_duration_seconds": 0.5, "combo_window_start_seconds": 0.25, "combo_window_end_seconds": 0.45, "combo_next_skill_id": "skill.power_strike", "resource_cost": 0, "range": 2.25},
     "animation_profile": {"character_id": "cat", "skills": [{"skill_id": "skill.basic_slash", "clip_name": "nAttack1"}]},
 }
 

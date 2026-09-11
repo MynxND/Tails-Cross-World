@@ -144,13 +144,20 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "resource_cost", "range"}, "data")
+    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range"}, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
     _string(data["name_key"], "data.name_key", identifier=True)
     _string(data["animation_clip"], "data.animation_clip", maximum=128)
     _integer(data["damage"], "data.damage", maximum=100000)
     _number(data["cooldown_seconds"], "data.cooldown_seconds", minimum=0.0, maximum=3600.0)
     _number(data["hit_delay_seconds"], "data.hit_delay_seconds", minimum=0.0, maximum=60.0)
+    _number(data["action_duration_seconds"], "data.action_duration_seconds", minimum=0.0, maximum=60.0)
+    _number(data["combo_window_start_seconds"], "data.combo_window_start_seconds", minimum=0.0, maximum=60.0)
+    _number(data["combo_window_end_seconds"], "data.combo_window_end_seconds", minimum=0.0, maximum=60.0)
+    if data["combo_next_skill_id"]:
+        _string(data["combo_next_skill_id"], "data.combo_next_skill_id", identifier=True)
+    elif data["combo_next_skill_id"] != "":
+        raise ContractError("data.combo_next_skill_id must be a string")
     _integer(data["resource_cost"], "data.resource_cost", maximum=100000)
     _number(data["range"], "data.range", minimum=0.1, maximum=100.0)
 

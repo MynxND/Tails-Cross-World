@@ -16,6 +16,9 @@ namespace TwelveTails.Gameplay
 
         public bool Attack()
         {
+            var skills = GetComponent<SkillExecutor>();
+            if (skills != null && skills.Skills.Count > 0)
+                return skills.ExecuteSkill("skill.basic_slash");
             GetComponentInChildren<CharacterAnimationDriver>()?.PlayAttack();
             GetComponentInChildren<AnimatorMotionDriver>()?.PlayAttack();
             var center = transform.position + transform.forward * (range * 0.6f);
