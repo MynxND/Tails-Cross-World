@@ -65,8 +65,8 @@ def validate_client_message(message: Any) -> dict[str, Any]:
         _vector(payload["direction"], "payload.direction", 1.0)
         _integer(payload["client_tick"], "payload.client_tick", 0, 2_147_483_647)
     elif kind == "action_request":
-        _exact(payload, {"actor_id", "skill_id", "target_id", "aim"}, "payload")
-        for field in ("actor_id", "skill_id", "target_id"):
+        _exact(payload, {"actor_id", "character_id", "skill_id", "target_id", "aim"}, "payload")
+        for field in ("actor_id", "character_id", "skill_id", "target_id"):
             _id(payload[field], f"payload.{field}")
         _vector(payload["aim"], "payload.aim", 1.0)
     elif kind == "revive_request":

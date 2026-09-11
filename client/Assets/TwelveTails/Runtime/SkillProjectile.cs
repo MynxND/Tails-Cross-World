@@ -8,17 +8,21 @@ namespace TwelveTails.Gameplay
         private float speed;
         private float remainingLifetime;
         private int damage;
+        private float homingRadiansPerSecond;
+        private Transform target = null!;
         private LayerMask targetMask;
         private SkillDefinition definition = null!;
         public bool HasImpacted { get; private set; }
 
-        public void Configure(Vector3 travelDirection, SkillDefinition skill, LayerMask mask)
+        public void Configure(Vector3 travelDirection, SkillDefinition skill, LayerMask mask, Transform homingTarget = null)
         {
             direction = travelDirection.sqrMagnitude > 0f ? travelDirection.normalized : Vector3.forward;
             definition = skill;
             speed = Mathf.Max(0f, skill.projectileSpeed);
             remainingLifetime = Mathf.Max(.01f, skill.projectileLifetimeSeconds);
             damage = Mathf.Max(0, skill.damage);
+            homingRadiansPerSecond = Mathf.Max(0f, skill.projectileHomingRadiansPerSecond);
+            target = homingTarget;
             targetMask = mask;
         }
 
@@ -27,6 +31,12 @@ namespace TwelveTails.Gameplay
         public void Advance(float deltaSeconds)
         {
             if (HasImpacted || deltaSeconds <= 0f) return;
+            if (target != null && homingRadiansPerSecond > 0f)
+            {
+                var targetDirection = target.position - transform.position;
+                if (targetDirection.sqrMagnitude > 0f)
+                    direction = Vector3.RotateTowards(direction, targetDirection.normalized, homingRadiansPerSecond * deltaSeconds, 0f).normalized;
+            }
             transform.position += direction * (speed * deltaSeconds);
             remainingLifetime -= deltaSeconds;
             if (remainingLifetime <= 0f) Despawn();

@@ -9,6 +9,7 @@ namespace TwelveTails.Gameplay
     public sealed class SkillDefinition
     {
         public string id = string.Empty;
+        public string characterId = string.Empty;
         public string animationClip = string.Empty;
         public int damage;
         public float cooldownSeconds;
@@ -21,6 +22,7 @@ namespace TwelveTails.Gameplay
         public float range;
         public float projectileSpeed;
         public float projectileLifetimeSeconds;
+        public float projectileHomingRadiansPerSecond;
         public string statusEffectId = string.Empty;
         public float statusDurationSeconds;
         public float statusTickSeconds;
@@ -121,7 +123,7 @@ namespace TwelveTails.Gameplay
 
         public bool ExecuteSkill(string skillId, float actionTime)
         {
-            var definition = FindSkill(skillId);
+            var definition = FindSkill(ResolveSkillId(skillId));
             if (definition == null || definition.damage < 0 || definition.range <= 0f) return false;
             if (activeSkill != null) return QueueCombo(definition, actionTime);
             return StartAction(definition, actionTime);
@@ -173,6 +175,7 @@ namespace TwelveTails.Gameplay
 
         public bool CanExecute(string skillId)
         {
+            skillId = ResolveSkillId(skillId);
             var definition = FindSkill(skillId);
             return activeSkill == null && definition != null && resource >= definition.resourceCost &&
                 (!cooldowns.TryGetValue(skillId, out var readyAt) || Time.time >= readyAt);
@@ -203,9 +206,26 @@ namespace TwelveTails.Gameplay
 
         private SkillDefinition FindSkill(string skillId)
         {
+            var selector = GetComponent<CharacterSelector>();
+            var characterId = selector == null ? string.Empty : selector.SelectedId;
             foreach (var skill in skills)
-                if (skill != null && skill.id == skillId) return skill;
+                if (skill != null && skill.id == skillId && (string.IsNullOrEmpty(skill.characterId) || skill.characterId == characterId)) return skill;
             return null;
+        }
+
+        public string ResolveSkillId(string inputSkillId)
+        {
+            var selector = GetComponent<CharacterSelector>();
+            return ResolveSkillId(inputSkillId, selector == null ? string.Empty : selector.SelectedId);
+        }
+
+        public string ResolveSkillId(string inputSkillId, string characterId)
+        {
+            if (string.IsNullOrEmpty(characterId) || !inputSkillId.StartsWith("skill.")) return inputSkillId;
+            var variantId = $"skill.{characterId}_{inputSkillId.Substring(6)}";
+            foreach (var skill in skills)
+                if (skill != null && skill.id == variantId && skill.characterId == characterId) return variantId;
+            return inputSkillId;
         }
 
         private string ResolveAnimationClip(SkillDefinition definition)
@@ -261,8 +281,23 @@ namespace TwelveTails.Gameplay
             var body = projectileObject.AddComponent<Rigidbody>();
             body.isKinematic = true;
             body.useGravity = false;
-            projectileObject.AddComponent<SkillProjectile>().Configure(transform.forward, definition, targetMask);
+            projectileObject.AddComponent<SkillProjectile>().Configure(transform.forward, definition, targetMask, FindNearestTarget(definition.range));
             return true;
+        }
+
+        private Transform FindNearestTarget(float radius)
+        {
+            Transform nearest = null;
+            var nearestDistance = float.PositiveInfinity;
+            foreach (var collider in Physics.OverlapSphere(transform.position, radius, targetMask, QueryTriggerInteraction.Collide))
+            {
+                if (collider.GetComponentInParent<EnemyTarget>() == null && collider.GetComponentInParent<KnockoutObjectiveTarget>() == null && collider.GetComponentInParent<MupoHerdTarget>() == null) continue;
+                var distance = (collider.bounds.center - transform.position).sqrMagnitude;
+                if (distance >= nearestDistance) continue;
+                nearest = collider.transform;
+                nearestDistance = distance;
+            }
+            return nearest;
         }
 
         private static void ApplyStatus(Health health, SkillDefinition definition)

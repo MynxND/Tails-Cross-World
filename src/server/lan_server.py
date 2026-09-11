@@ -45,7 +45,8 @@ class GameService:
             elif kind == "action_request":
                 result = self.authority.skill_action(
                     request.get("token", ""), request.get("sequence"), request.get("actor_id", ""),
-                    request.get("skill_id", ""), request.get("target_id", ""), request.get("aim"))
+                    request.get("skill_id", ""), request.get("target_id", ""), request.get("aim"),
+                    request.get("character_id", "wolf"))
             elif kind == "herd_pen":
                 result = self.authority.herd_pen(request.get("token", ""), request.get("sequence"), request.get("mupo_id", ""))
             elif kind == "herd_death":

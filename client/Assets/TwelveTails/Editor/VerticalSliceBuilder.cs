@@ -71,6 +71,7 @@ namespace TwelveTails.EditorTools
         [Serializable] private sealed class SkillJson
         {
             public string id = string.Empty;
+            public string character_id = string.Empty;
             public string animation_clip = string.Empty;
             public int damage;
             public float cooldown_seconds;
@@ -83,6 +84,7 @@ namespace TwelveTails.EditorTools
             public float range;
             public float projectile_speed;
             public float projectile_lifetime_seconds;
+            public float projectile_homing_radians_per_second;
             public string status_effect_id = string.Empty;
             public float status_duration_seconds;
             public float status_tick_seconds;
@@ -620,6 +622,7 @@ namespace TwelveTails.EditorTools
             return catalog.skills.Select(skill => new SkillDefinition
             {
                 id = skill.id,
+                characterId = skill.character_id,
                 animationClip = skill.animation_clip,
                 damage = skill.damage,
                 cooldownSeconds = skill.cooldown_seconds,
@@ -632,6 +635,7 @@ namespace TwelveTails.EditorTools
                 range = skill.range,
                 projectileSpeed = skill.projectile_speed,
                 projectileLifetimeSeconds = skill.projectile_lifetime_seconds,
+                projectileHomingRadiansPerSecond = skill.projectile_homing_radians_per_second,
                 statusEffectId = skill.status_effect_id,
                 statusDurationSeconds = skill.status_duration_seconds,
                 statusTickSeconds = skill.status_tick_seconds,

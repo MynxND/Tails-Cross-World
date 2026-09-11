@@ -560,6 +560,39 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void SheepClassSpecialResolvesAndHomesUsingSourceValues()
+        {
+            var playerObject = new GameObject("Sheep Skill User");
+            var targetObject = new GameObject("Homing Target") { transform = { position = new Vector3(4f, 0f, 4f) } };
+            var projectileObject = new GameObject("Projectile");
+            try
+            {
+                var generic = new SkillDefinition { id = "skill.class_special", range = 3f };
+                var sheep = new SkillDefinition
+                {
+                    id = "skill.sheep_class_special", characterId = "sheep", range = 40f,
+                    projectileSpeed = 8f, projectileLifetimeSeconds = 5f, projectileHomingRadiansPerSecond = 1f
+                };
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[] { generic, sheep });
+                Assert.That(executor.ResolveSkillId("skill.class_special", "sheep"), Is.EqualTo("skill.sheep_class_special"));
+                Assert.That(executor.ResolveSkillId("skill.class_special", "wolf"), Is.EqualTo("skill.class_special"));
+
+                var projectile = projectileObject.AddComponent<SkillProjectile>();
+                projectile.Configure(Vector3.forward, sheep, ~0, targetObject.transform);
+                projectile.Advance(.5f);
+                Assert.That(projectileObject.transform.position.x, Is.GreaterThan(0f));
+                Assert.That(projectileObject.transform.position.magnitude, Is.EqualTo(4f).Within(.001f));
+            }
+            finally
+            {
+                Object.DestroyImmediate(projectileObject);
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
         public void SkillLifecycleRaisesPresentationHooksAtConfiguredTimes()
         {
             var gameObject = new GameObject("Skill User");

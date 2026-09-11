@@ -19,6 +19,7 @@ class AuthorityError(ValueError):
 class PlayerState:
     account_id: str
     actor_id: str
+    character_id: str = "wolf"
     position: list[float] = field(default_factory=lambda: [0.0, 0.0, 0.0])
     hp: int = 100
     experience: int = 0
@@ -151,13 +152,18 @@ class Authority:
         player, lobby = self._context(token, sequence)
         return self._apply_skill(player, lobby, self._skills["skill.basic_slash"])
 
-    def skill_action(self, token: str, sequence: int, actor_id: str, skill_id: str, target_id: str, aim: list[float]) -> dict:
+    def skill_action(self, token: str, sequence: int, actor_id: str, skill_id: str, target_id: str, aim: list[float], character_id: str = "wolf") -> dict:
         player, lobby = self._context(token, sequence)
         if actor_id != player.actor_id:
             raise AuthorityError("actor is not owned by session")
         skill = self._skills.get(skill_id)
         if skill is None:
             raise AuthorityError("unknown skill")
+        if character_id not in {"wolf", "bison", "panda", "whale", "mole", "rabbit", "monkey", "sheep", "penguin", "bat", "chameleon", "cat"}:
+            raise AuthorityError("unknown character")
+        if skill.character_id and skill.character_id != character_id:
+            raise AuthorityError("skill unavailable for character")
+        player.character_id = character_id
         if target_id != self.DEFAULT_TARGET_ID:
             raise AuthorityError("unknown target")
         if len(aim) != 3 or any(isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x) for x in aim):

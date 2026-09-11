@@ -14,7 +14,7 @@ class ProtocolMessageTests(unittest.TestCase):
     def test_accepts_intent_messages(self) -> None:
         messages = [
             message("movement_input", {"actor_id": "actor.cat", "direction": [0.0, 0.0, 1.0], "client_tick": 12}),
-            message("action_request", {"actor_id": "actor.cat", "skill_id": "skill.basic", "target_id": "monster.slime", "aim": [0, 0, 1]}),
+            message("action_request", {"actor_id": "actor.cat", "character_id": "cat", "skill_id": "skill.basic", "target_id": "monster.slime", "aim": [0, 0, 1]}),
             message("revive_request", {"actor_id": "actor.cat", "target_id": "actor.mole"}),
             message("inventory_swap_request", {"actor_id": "actor.cat", "source_slot": 0, "destination_slot": 1}),
             message("herd_pen_request", {"actor_id": "actor.cat", "mupo_id": "mupo-1"}),
@@ -25,7 +25,7 @@ class ProtocolMessageTests(unittest.TestCase):
                 self.assertIs(validate_client_message(value), value)
 
     def test_client_cannot_supply_damage_or_rewards(self) -> None:
-        value = message("action_request", {"actor_id": "actor.cat", "skill_id": "skill.basic", "target_id": "monster.slime", "aim": [0, 0, 1], "damage": 999999})
+        value = message("action_request", {"actor_id": "actor.cat", "character_id": "cat", "skill_id": "skill.basic", "target_id": "monster.slime", "aim": [0, 0, 1], "damage": 999999})
         with self.assertRaisesRegex(MessageError, "server-owned fields: damage"):
             validate_client_message(value)
 

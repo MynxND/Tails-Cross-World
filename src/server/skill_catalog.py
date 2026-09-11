@@ -10,6 +10,7 @@ from pathlib import Path
 @dataclass(frozen=True)
 class ServerSkill:
     skill_id: str
+    character_id: str
     damage: int
     cooldown_seconds: float
     resource_cost: int
@@ -25,6 +26,7 @@ def load_skill_catalog(path: Path | None = None) -> dict[str, ServerSkill]:
     for raw in document["skills"]:
         skill = ServerSkill(
             skill_id=raw["id"],
+            character_id=raw["character_id"],
             damage=raw["damage"],
             cooldown_seconds=raw["cooldown_seconds"],
             resource_cost=raw["resource_cost"],

@@ -144,8 +144,12 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
+    _exact_fields(data, {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
+    if data["character_id"]:
+        _string(data["character_id"], "data.character_id", identifier=True)
+    elif data["character_id"] != "":
+        raise ContractError("data.character_id must be a string")
     _string(data["name_key"], "data.name_key", identifier=True)
     _string(data["animation_clip"], "data.animation_clip", maximum=128)
     _integer(data["damage"], "data.damage", maximum=100000)
@@ -162,6 +166,7 @@ def _skill(data: dict[str, Any]) -> None:
     _number(data["range"], "data.range", minimum=0.1, maximum=100.0)
     _number(data["projectile_speed"], "data.projectile_speed", minimum=0.0, maximum=1000.0)
     _number(data["projectile_lifetime_seconds"], "data.projectile_lifetime_seconds", minimum=0.0, maximum=60.0)
+    _number(data["projectile_homing_radians_per_second"], "data.projectile_homing_radians_per_second", minimum=0.0, maximum=100.0)
     if data["status_effect_id"]:
         _string(data["status_effect_id"], "data.status_effect_id", identifier=True)
     elif data["status_effect_id"] != "":

@@ -21,6 +21,7 @@ namespace TwelveTails.Gameplay
             public string map_id = string.Empty;
             public string mupo_id = string.Empty;
             public string actor_id = string.Empty;
+            public string character_id = string.Empty;
             public string skill_id = string.Empty;
             public string target_id = string.Empty;
             public int sequence;
@@ -91,20 +92,30 @@ namespace TwelveTails.Gameplay
             var direction = keyboard == null ? Vector3.zero : new Vector3(
                 (keyboard.dKey.isPressed ? 1 : 0) - (keyboard.aKey.isPressed ? 1 : 0), 0,
                 (keyboard.wKey.isPressed ? 1 : 0) - (keyboard.sKey.isPressed ? 1 : 0)).normalized;
-            if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame)
-                Send(new Request
-                {
-                    kind = "action_request",
-                    token = token,
-                    actor_id = actorId,
-                    skill_id = "skill.basic_slash",
-                    target_id = "monster.training_dummy",
-                    aim = new[] { transform.forward.x, transform.forward.y, transform.forward.z },
-                    sequence = ++sequence
-                });
+            if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame) SendSkill("skill.basic_slash");
+            else if (keyboard != null && keyboard.digit2Key.wasPressedThisFrame) SendSkill("skill.power_strike");
+            else if (keyboard != null && keyboard.digit3Key.wasPressedThisFrame) SendSkill("skill.class_special");
             else if (direction.sqrMagnitude > 0)
                 Send(new Request { kind = "move", token = token, sequence = ++sequence, direction = new[] { direction.x, direction.y, direction.z } });
             else Send(new Request { kind = "state", token = token, lobby_id = lobbyId });
+        }
+
+        private void SendSkill(string inputSkillId)
+        {
+            var selector = GetComponent<CharacterSelector>();
+            var skills = GetComponent<SkillExecutor>();
+            var characterId = selector == null ? "wolf" : selector.SelectedId;
+            Send(new Request
+            {
+                kind = "action_request",
+                token = token,
+                actor_id = actorId,
+                character_id = characterId,
+                skill_id = skills == null ? inputSkillId : skills.ResolveSkillId(inputSkillId),
+                target_id = "monster.training_dummy",
+                aim = new[] { transform.forward.x, transform.forward.y, transform.forward.z },
+                sequence = ++sequence
+            });
         }
 
         private void OnGUI()
