@@ -752,7 +752,7 @@ After these checks, move to M103 rather than expanding M102 with optional VFX/cu
 The first reusable skill slice now exists. Expand it before duplicating mission-specific combat code:
 
 - Generate/import Animator state mappings from `content/v1/animation_profiles.json`.
-- Retarget original per-character attack clips to the clean-room rigs; do not directly attach legacy clips whose transform paths target another character rig.
+- Keep original per-character clips on their matching original rigs through `LegacyAnimationDriver`; retarget only when a clip must run on a generated rig, and never attach clips whose transform paths target a different character rig.
 - Add a PlayMode-validated animation-event or normalized-time impact adapter while preserving deterministic timing fallback for clips without events. EditMode does not reliably advance crossfaded Animator state progress.
 - Add resource regeneration, status effects, hit reactions, knockout/death states, projectiles, VFX/audio hooks, and server-side skill validation.
 - Map the recovered legacy skill names to character classes and preserve evidence/confidence for uncertain mappings.
