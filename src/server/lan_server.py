@@ -42,6 +42,10 @@ class GameService:
                 result = self.authority.move(request.get("token", ""), request.get("sequence"), request.get("direction"))
             elif kind == "attack":
                 result = self.authority.attack(request.get("token", ""), request.get("sequence"))
+            elif kind == "action_request":
+                result = self.authority.skill_action(
+                    request.get("token", ""), request.get("sequence"), request.get("actor_id", ""),
+                    request.get("skill_id", ""), request.get("target_id", ""), request.get("aim"))
             elif kind == "herd_pen":
                 result = self.authority.herd_pen(request.get("token", ""), request.get("sequence"), request.get("mupo_id", ""))
             elif kind == "herd_death":

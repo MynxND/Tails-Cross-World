@@ -144,7 +144,7 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range"}, "data")
+    _exact_fields(data, {"skill_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
     _string(data["name_key"], "data.name_key", identifier=True)
     _string(data["animation_clip"], "data.animation_clip", maximum=128)
@@ -160,6 +160,16 @@ def _skill(data: dict[str, Any]) -> None:
         raise ContractError("data.combo_next_skill_id must be a string")
     _integer(data["resource_cost"], "data.resource_cost", maximum=100000)
     _number(data["range"], "data.range", minimum=0.1, maximum=100.0)
+    _number(data["projectile_speed"], "data.projectile_speed", minimum=0.0, maximum=1000.0)
+    _number(data["projectile_lifetime_seconds"], "data.projectile_lifetime_seconds", minimum=0.0, maximum=60.0)
+    if data["status_effect_id"]:
+        _string(data["status_effect_id"], "data.status_effect_id", identifier=True)
+    elif data["status_effect_id"] != "":
+        raise ContractError("data.status_effect_id must be a string")
+    _number(data["status_duration_seconds"], "data.status_duration_seconds", minimum=0.0, maximum=3600.0)
+    _number(data["status_tick_seconds"], "data.status_tick_seconds", minimum=0.0, maximum=3600.0)
+    _integer(data["status_damage_per_tick"], "data.status_damage_per_tick", maximum=100000)
+    _number(data["status_movement_multiplier"], "data.status_movement_multiplier", minimum=0.0, maximum=10.0)
 
 
 def _animation_profile(data: dict[str, Any]) -> None:

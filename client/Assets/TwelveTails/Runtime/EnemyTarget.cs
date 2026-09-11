@@ -22,7 +22,7 @@ namespace TwelveTails.Gameplay
 
         private void Awake()
         {
-            Health.Defeated += OnDefeated;
+            AttachHealth();
         }
 
         public void Configure(QuestProgress questProgress, PlayerProgress playerProgress, SaveCoordinator saveCoordinator)
@@ -30,6 +30,7 @@ namespace TwelveTails.Gameplay
             quest = questProgress;
             progress = playerProgress;
             saves = saveCoordinator;
+            AttachHealth();
         }
 
         public void ConfigureEntity(string id, QuestProgress questProgress, PlayerProgress playerProgress, SaveCoordinator saveCoordinator, int experienceReward = 25, int potionReward = 1)
@@ -41,6 +42,7 @@ namespace TwelveTails.Gameplay
             saves = saveCoordinator;
             rewardExperience = Mathf.Max(0, experienceReward);
             rewardPotions = Mathf.Max(0, potionReward);
+            AttachHealth();
         }
 
         public void ConfigureForMission(string id, DefeatAndProtectMission mission)
@@ -49,6 +51,7 @@ namespace TwelveTails.Gameplay
             if (mission == null) throw new System.ArgumentNullException(nameof(mission));
             entityId = id;
             protectMission = mission;
+            AttachHealth();
         }
 
         [SerializeField, Min(0)] private int rewardExperience = 25;
@@ -66,7 +69,15 @@ namespace TwelveTails.Gameplay
                 progress?.GrantQuestReward(rewardExperience, rewardPotions);
                 saves?.Save();
             }
-            gameObject.SetActive(false);
+            var presentation = GetComponent<DefeatAnimationDriver>();
+            if (presentation == null || !presentation.PlayAndDeactivate()) gameObject.SetActive(false);
+        }
+
+        private void AttachHealth()
+        {
+            health = Health;
+            health.Defeated -= OnDefeated;
+            health.Defeated += OnDefeated;
         }
 
         private void OnDestroy()

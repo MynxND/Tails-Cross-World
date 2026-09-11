@@ -13,6 +13,7 @@ namespace TwelveTails.Gameplay
         private Transform target = null!;
         private CharacterController controller = null!;
         private Health health = null!;
+        private StatusEffectController statusEffects = null!;
         private float nextAttackAt;
 
         public void Configure(Transform chaseTarget, float speed = 1.8f, int damage = 5)
@@ -26,12 +27,15 @@ namespace TwelveTails.Gameplay
         {
             health = GetComponent<Health>();
             controller = GetComponent<CharacterController>();
+            statusEffects = GetComponent<StatusEffectController>();
             if (target == null) target = GameObject.FindWithTag("Player")?.transform;
         }
 
         private void Update()
         {
             if (health != null && health.IsDefeated) return;
+            if (statusEffects == null) statusEffects = GetComponent<StatusEffectController>();
+            if (statusEffects != null && statusEffects.IsStunned) return;
             if (target == null) return;
             var offset = target.position - transform.position;
             offset.y = 0f;
@@ -41,7 +45,8 @@ namespace TwelveTails.Gameplay
             transform.forward = Vector3.Slerp(transform.forward, direction, Time.deltaTime * 8f);
             if (distance > attackRange)
             {
-                var motion = direction * (moveSpeed * Time.deltaTime);
+                var movementMultiplier = statusEffects == null ? 1f : statusEffects.MovementMultiplier;
+                var motion = direction * (moveSpeed * movementMultiplier * Time.deltaTime);
                 if (controller != null) controller.Move(motion);
                 else transform.position += motion;
                 return;

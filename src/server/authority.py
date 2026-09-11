@@ -8,6 +8,8 @@ import secrets
 import time
 from typing import Callable
 
+from .skill_catalog import ServerSkill, load_skill_catalog
+
 
 class AuthorityError(ValueError):
     pass
@@ -24,6 +26,9 @@ class PlayerState:
     quest_complete: bool = False
     last_sequence: int = -1
     last_attack_at: float = -10.0
+    resource: float = 100.0
+    last_resource_at: float = 0.0
+    skill_cooldowns: dict[str, float] = field(default_factory=dict)
 
 
 @dataclass
@@ -59,9 +64,13 @@ class Authority:
     ATTACK_RANGE = 2.25
     ATTACK_COOLDOWN = 0.35
     ATTACK_DAMAGE = 10
+    MAXIMUM_RESOURCE = 100.0
+    RESOURCE_REGENERATION_PER_SECOND = 5.0
+    DEFAULT_TARGET_ID = "monster.training_dummy"
 
     def __init__(self, clock: Callable[[], float] = time.monotonic) -> None:
         self._clock = clock
+        self._skills = load_skill_catalog()
         self._sessions: dict[str, Session] = {}
         self._players: dict[str, PlayerState] = {}
         self._lobbies: dict[str, Lobby] = {}
@@ -71,7 +80,8 @@ class Authority:
             raise AuthorityError("invalid account_id")
         session = Session(secrets.token_urlsafe(32), account_id)
         self._sessions[session.token] = session
-        self._players.setdefault(account_id, PlayerState(account_id, f"actor.{account_id}"))
+        if account_id not in self._players:
+            self._players[account_id] = PlayerState(account_id, f"actor.{account_id}", last_resource_at=self._clock())
         return session
 
     def resume_session(self, token: str) -> Session:
@@ -139,15 +149,38 @@ class Authority:
 
     def attack(self, token: str, sequence: int) -> dict:
         player, lobby = self._context(token, sequence)
+        return self._apply_skill(player, lobby, self._skills["skill.basic_slash"])
+
+    def skill_action(self, token: str, sequence: int, actor_id: str, skill_id: str, target_id: str, aim: list[float]) -> dict:
+        player, lobby = self._context(token, sequence)
+        if actor_id != player.actor_id:
+            raise AuthorityError("actor is not owned by session")
+        skill = self._skills.get(skill_id)
+        if skill is None:
+            raise AuthorityError("unknown skill")
+        if target_id != self.DEFAULT_TARGET_ID:
+            raise AuthorityError("unknown target")
+        if len(aim) != 3 or any(isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x) for x in aim):
+            raise AuthorityError("invalid aim")
+        if math.sqrt(sum(float(x) ** 2 for x in aim)) > 1.001:
+            raise AuthorityError("aim exceeds unit length")
+        return self._apply_skill(player, lobby, skill)
+
+    def _apply_skill(self, player: PlayerState, lobby: Lobby, skill: ServerSkill) -> dict:
         now = self._clock()
-        if now - player.last_attack_at < self.ATTACK_COOLDOWN:
-            raise AuthorityError("attack cooldown")
-        if math.dist(player.position, lobby.map.monster_position) > self.ATTACK_RANGE:
+        self._regenerate_resource(player, now)
+        if now < player.skill_cooldowns.get(skill.skill_id, -math.inf):
+            raise AuthorityError("skill cooldown")
+        if player.resource < skill.resource_cost:
+            raise AuthorityError("insufficient resource")
+        if math.dist(player.position, lobby.map.monster_position) > skill.range:
             raise AuthorityError("target out of range")
-        player.last_attack_at = now
         if lobby.map.monster_hp <= 0:
             raise AuthorityError("target already defeated")
-        lobby.map.monster_hp = max(0, lobby.map.monster_hp - self.ATTACK_DAMAGE)
+        player.last_attack_at = now
+        player.skill_cooldowns[skill.skill_id] = now + skill.cooldown_seconds
+        player.resource -= skill.resource_cost
+        lobby.map.monster_hp = max(0, lobby.map.monster_hp - skill.damage)
         if lobby.map.monster_hp == 0:
             for account_id in lobby.members:
                 member = self._players[account_id]
@@ -156,6 +189,11 @@ class Authority:
                     member.experience += 25
                     member.potions += 1
         return self.snapshot(lobby.lobby_id)
+
+    def _regenerate_resource(self, player: PlayerState, now: float) -> None:
+        elapsed = max(0.0, now - player.last_resource_at)
+        player.resource = min(self.MAXIMUM_RESOURCE, player.resource + elapsed * self.RESOURCE_REGENERATION_PER_SECOND)
+        player.last_resource_at = now
 
     def herd_pen(self, token: str, sequence: int, mupo_id: str) -> dict:
         _, lobby = self._context(token, sequence)
@@ -190,7 +228,7 @@ class Authority:
         return {"schema_version": 1, "players": [{
             "account_id": x.account_id, "actor_id": x.actor_id, "position": x.position,
             "hp": x.hp, "experience": x.experience, "potions": x.potions,
-            "quest_complete": x.quest_complete,
+            "quest_complete": x.quest_complete, "resource": x.resource,
         } for x in self._players.values()]}
 
     def import_state(self, state: dict) -> None:
@@ -201,6 +239,7 @@ class Authority:
             player = PlayerState(**raw)
             if player.hp < 0 or player.experience < 0 or player.potions < 0:
                 raise AuthorityError("invalid persisted player")
+            player.last_resource_at = self._clock()
             players[player.account_id] = player
         self._players = players
 

@@ -20,8 +20,12 @@ namespace TwelveTails.Gameplay
             public string lobby_id = string.Empty;
             public string map_id = string.Empty;
             public string mupo_id = string.Empty;
+            public string actor_id = string.Empty;
+            public string skill_id = string.Empty;
+            public string target_id = string.Empty;
             public int sequence;
             public float[] direction = Array.Empty<float>();
+            public float[] aim = Array.Empty<float>();
         }
         [Serializable] private sealed class Response { public bool ok; public string error = string.Empty; public Result result = null!; }
         [Serializable] private sealed class Result
@@ -43,9 +47,11 @@ namespace TwelveTails.Gameplay
         [Serializable] private sealed class PlayerState
         {
             public string account_id = string.Empty;
+            public string actor_id = string.Empty;
             public float[] position = Array.Empty<float>();
             public int experience;
             public int potions;
+            public float resource;
         }
 
         private readonly ConcurrentQueue<Action> mainThread = new();
@@ -54,6 +60,7 @@ namespace TwelveTails.Gameplay
         private string joinCode = string.Empty;
         private string token = string.Empty;
         private string lobbyId = string.Empty;
+        private string actorId = string.Empty;
         private string status = "Offline";
         private int sequence;
         private bool inFlight;
@@ -85,7 +92,16 @@ namespace TwelveTails.Gameplay
                 (keyboard.dKey.isPressed ? 1 : 0) - (keyboard.aKey.isPressed ? 1 : 0), 0,
                 (keyboard.wKey.isPressed ? 1 : 0) - (keyboard.sKey.isPressed ? 1 : 0)).normalized;
             if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame)
-                Send(new Request { kind = "attack", token = token, sequence = ++sequence });
+                Send(new Request
+                {
+                    kind = "action_request",
+                    token = token,
+                    actor_id = actorId,
+                    skill_id = "skill.basic_slash",
+                    target_id = "monster.training_dummy",
+                    aim = new[] { transform.forward.x, transform.forward.y, transform.forward.z },
+                    sequence = ++sequence
+                });
             else if (direction.sqrMagnitude > 0)
                 Send(new Request { kind = "move", token = token, sequence = ++sequence, direction = new[] { direction.x, direction.y, direction.z } });
             else Send(new Request { kind = "state", token = token, lobby_id = lobbyId });
@@ -143,6 +159,8 @@ namespace TwelveTails.Gameplay
                 status = $"Online | Monster HP {response.result.map.monster_hp}";
                 var localAttack = GetComponent<MeleeAttack>();
                 if (localAttack != null) localAttack.enabled = false;
+                var localSkills = GetComponent<SkillExecutor>();
+                if (localSkills != null) localSkills.enabled = false;
                 var enemy = FindFirstObjectByType<EnemyTarget>(FindObjectsInactive.Include);
                 if (enemy != null) enemy.gameObject.SetActive(response.result.map.monster_hp > 0);
                 ApplyPlayers(response.result.players);
@@ -160,11 +178,14 @@ namespace TwelveTails.Gameplay
                 var position = new Vector3(player.position[0], player.position[1] + 1f, player.position[2]);
                 if (player.account_id == account)
                 {
+                    actorId = player.actor_id;
                     transform.position = position;
                     var progress = GetComponent<PlayerProgress>();
                     if (progress != null) progress.Restore(player.experience, player.potions, player.experience > 0);
                     var quest = GetComponent<QuestProgress>();
                     if (quest != null) quest.Restore(player.experience > 0);
+                    var skills = GetComponent<SkillExecutor>();
+                    if (skills != null) skills.ApplyAuthoritativeResource(player.resource);
                 }
                 else
                 {

@@ -19,6 +19,13 @@ namespace TwelveTails.Gameplay
         public string comboNextSkillId = string.Empty;
         public int resourceCost;
         public float range;
+        public float projectileSpeed;
+        public float projectileLifetimeSeconds;
+        public string statusEffectId = string.Empty;
+        public float statusDurationSeconds;
+        public float statusTickSeconds;
+        public int statusDamagePerTick;
+        public float statusMovementMultiplier = 1f;
     }
 
     [Serializable]
@@ -35,6 +42,7 @@ namespace TwelveTails.Gameplay
         [SerializeField] private SkillAnimationBinding[] animationBindings = Array.Empty<SkillAnimationBinding>();
         [SerializeField, Min(0)] private int resource = 100;
         [SerializeField, Min(0)] private int maximumResource = 100;
+        [SerializeField, Min(0f)] private float resourceRegenerationPerSecond = 5f;
         [SerializeField] private LayerMask targetMask = ~0;
         private readonly Dictionary<string, float> cooldowns = new();
         private CharacterAnimationDriver proceduralAnimation = null!;
@@ -45,6 +53,7 @@ namespace TwelveTails.Gameplay
         private float actionStartedAt;
         private float pendingHitAt;
         private float actionEndsAt;
+        private float resourceRegenerationRemainder;
         private bool impactApplied;
 
         public int Resource => resource;
@@ -52,12 +61,17 @@ namespace TwelveTails.Gameplay
         public bool IsWindingUp => activeSkill != null && !impactApplied;
         public bool IsActionActive => activeSkill != null;
         public string ActiveSkillId => activeSkill?.id ?? string.Empty;
+        public event Action<SkillDefinition> SkillStarted;
+        public event Action<SkillDefinition> SkillReleased;
+        public event Action<SkillDefinition> SkillEnded;
 
-        public void Configure(IEnumerable<SkillDefinition> definitions, int initialResource = 100)
+        public void Configure(IEnumerable<SkillDefinition> definitions, int initialResource = 100, float regenerationPerSecond = 5f)
         {
             skills = definitions == null ? Array.Empty<SkillDefinition>() : new List<SkillDefinition>(definitions).ToArray();
             maximumResource = Mathf.Max(0, initialResource);
             resource = maximumResource;
+            resourceRegenerationPerSecond = Mathf.Max(0f, regenerationPerSecond);
+            resourceRegenerationRemainder = 0f;
             cooldowns.Clear();
             ClearAction();
         }
@@ -76,12 +90,31 @@ namespace TwelveTails.Gameplay
 
         private void Update()
         {
+            AdvanceResource(Time.deltaTime);
             AdvanceAction(Time.time);
             var keyboard = Keyboard.current;
             if (keyboard == null) return;
             if (keyboard.digit1Key.wasPressedThisFrame) ExecuteSkill("skill.basic_slash");
             if (keyboard.digit2Key.wasPressedThisFrame) ExecuteSkill("skill.power_strike");
             if (keyboard.digit3Key.wasPressedThisFrame) ExecuteSkill("skill.class_special");
+        }
+
+        public int AdvanceResource(float deltaSeconds)
+        {
+            if (deltaSeconds <= 0f || resource >= maximumResource || resourceRegenerationPerSecond <= 0f) return 0;
+            resourceRegenerationRemainder += deltaSeconds * resourceRegenerationPerSecond;
+            var restored = Mathf.Min(maximumResource - resource, Mathf.FloorToInt(resourceRegenerationRemainder));
+            if (restored <= 0) return 0;
+            resource += restored;
+            resourceRegenerationRemainder -= restored;
+            if (resource == maximumResource) resourceRegenerationRemainder = 0f;
+            return restored;
+        }
+
+        public void ApplyAuthoritativeResource(float value)
+        {
+            resource = Mathf.Clamp(Mathf.FloorToInt(value), 0, maximumResource);
+            resourceRegenerationRemainder = 0f;
         }
 
         public bool ExecuteSkill(string skillId) => ExecuteSkill(skillId, Time.time);
@@ -106,8 +139,14 @@ namespace TwelveTails.Gameplay
             animatorMotion?.PlaySkillAnimation(clipName);
             resource -= definition.resourceCost;
             cooldowns[definition.id] = actionTime + Mathf.Max(0f, definition.cooldownSeconds);
+            SkillStarted?.Invoke(definition);
             var actionDuration = Mathf.Max(definition.actionDurationSeconds, definition.hitDelaySeconds);
-            if (actionDuration <= 0f) return ApplyDamage(definition);
+            if (actionDuration <= 0f)
+            {
+                var changed = ApplyDamage(definition);
+                SkillEnded?.Invoke(definition);
+                return changed;
+            }
             activeSkill = definition;
             actionStartedAt = actionTime;
             pendingHitAt = actionTime + definition.hitDelaySeconds;
@@ -152,12 +191,14 @@ namespace TwelveTails.Gameplay
 
         private void ClearAction()
         {
+            var completedSkill = activeSkill;
             activeSkill = null;
             queuedSkill = null;
             actionStartedAt = 0f;
             pendingHitAt = 0f;
             actionEndsAt = 0f;
             impactApplied = false;
+            if (completedSkill != null) SkillEnded?.Invoke(completedSkill);
         }
 
         private SkillDefinition FindSkill(string skillId)
@@ -179,6 +220,8 @@ namespace TwelveTails.Gameplay
 
         private bool ApplyDamage(SkillDefinition definition)
         {
+            SkillReleased?.Invoke(definition);
+            if (definition.projectileSpeed > 0f) return SpawnProjectile(definition);
             var center = transform.position + transform.forward * (definition.range * .6f);
             foreach (var collider in Physics.OverlapSphere(center, definition.range, targetMask, QueryTriggerInteraction.Collide))
             {
@@ -186,22 +229,49 @@ namespace TwelveTails.Gameplay
                 if (enemy != null && !enemy.Health.IsDefeated)
                 {
                     enemy.TakeHit(definition.damage);
+                    ApplyStatus(enemy.Health, definition);
                     return true;
                 }
                 var knockout = collider.GetComponentInParent<KnockoutObjectiveTarget>();
                 if (knockout != null && !knockout.Health.IsDefeated)
                 {
                     knockout.TakeHit(definition.damage);
+                    ApplyStatus(knockout.Health, definition);
                     return true;
                 }
                 var mupo = collider.GetComponentInParent<MupoHerdTarget>();
                 if (mupo != null && !mupo.Health.IsDefeated)
                 {
                     mupo.Health.ApplyDamage(definition.damage);
+                    ApplyStatus(mupo.Health, definition);
                     return true;
                 }
             }
             return false;
+        }
+
+        private bool SpawnProjectile(SkillDefinition definition)
+        {
+            var projectileObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            projectileObject.name = $"Projectile {definition.id}";
+            projectileObject.transform.SetPositionAndRotation(transform.position + transform.forward * .75f, transform.rotation);
+            projectileObject.transform.localScale = Vector3.one * .2f;
+            var collider = projectileObject.GetComponent<SphereCollider>();
+            collider.isTrigger = true;
+            var body = projectileObject.AddComponent<Rigidbody>();
+            body.isKinematic = true;
+            body.useGravity = false;
+            projectileObject.AddComponent<SkillProjectile>().Configure(transform.forward, definition, targetMask);
+            return true;
+        }
+
+        private static void ApplyStatus(Health health, SkillDefinition definition)
+        {
+            if (string.IsNullOrWhiteSpace(definition.statusEffectId) || definition.statusDurationSeconds <= 0f) return;
+            var effects = health.GetComponent<StatusEffectController>();
+            if (effects == null) effects = health.gameObject.AddComponent<StatusEffectController>();
+            effects.ApplyStatus(definition.statusEffectId, definition.statusDurationSeconds, definition.statusTickSeconds,
+                definition.statusDamagePerTick, definition.statusMovementMultiplier);
         }
     }
 }

@@ -81,6 +81,13 @@ namespace TwelveTails.EditorTools
             public string combo_next_skill_id = string.Empty;
             public int resource_cost;
             public float range;
+            public float projectile_speed;
+            public float projectile_lifetime_seconds;
+            public string status_effect_id = string.Empty;
+            public float status_duration_seconds;
+            public float status_tick_seconds;
+            public int status_damage_per_tick;
+            public float status_movement_multiplier = 1f;
         }
         [Serializable] private sealed class Spawn { public string id = string.Empty; public float[] position = Array.Empty<float>(); }
         [Serializable] private sealed class Portal { public string id = string.Empty; public string destination_map = string.Empty; public float[] position = Array.Empty<float>(); }
@@ -121,6 +128,7 @@ namespace TwelveTails.EditorTools
             var playerHealth = player.AddComponent<Health>();
             playerHealth.Configure(100);
             player.AddComponent<CharacterSelector>();
+            player.AddComponent<DefeatAnimationDriver>().ObserveHealth(false);
             var quest = player.AddComponent<QuestProgress>();
             var progress = player.AddComponent<PlayerProgress>();
             var saves = player.AddComponent<SaveCoordinator>();
@@ -150,6 +158,7 @@ namespace TwelveTails.EditorTools
             }
             enemy.AddComponent<Health>().Configure(30);
             enemy.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
+            enemy.AddComponent<DefeatAnimationDriver>();
 
             var npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
             npc.name = "Guide NPC";
@@ -211,6 +220,7 @@ namespace TwelveTails.EditorTools
             var playerHealth = player.AddComponent<Health>();
             playerHealth.Configure(100);
             player.AddComponent<CharacterSelector>();
+            player.AddComponent<DefeatAnimationDriver>().ObserveHealth(false);
             var quest = player.AddComponent<QuestProgress>();
             var progress = player.AddComponent<PlayerProgress>();
             var saves = player.AddComponent<SaveCoordinator>();
@@ -314,6 +324,7 @@ namespace TwelveTails.EditorTools
             skills.ConfigureAnimations(LoadAnimationBindings());
             player.AddComponent<Health>().Configure(100);
             player.AddComponent<CharacterSelector>();
+            player.AddComponent<DefeatAnimationDriver>().ObserveHealth(false);
             var quest = player.AddComponent<QuestProgress>();
             quest.Configure("monster.stingbug", 5);
             var progress = player.AddComponent<PlayerProgress>();
@@ -352,6 +363,7 @@ namespace TwelveTails.EditorTools
                 controller.radius = .55f;
                 enemy.AddComponent<Health>().Configure(24);
                 enemy.AddComponent<EnemyTarget>().ConfigureForMission("monster.stingbug", mission);
+                enemy.AddComponent<DefeatAnimationDriver>();
                 enemy.AddComponent<MonsterChase>().Configure(protectedActor.transform, 1.5f, 5);
                 var visual = (GameObject)PrefabUtility.InstantiatePrefab(stingBugPrefab, enemy.transform);
                 visual.name = "Original StingBug Visual";
@@ -427,6 +439,7 @@ namespace TwelveTails.EditorTools
             var playerHealth = player.AddComponent<Health>();
             playerHealth.Configure(100);
             player.AddComponent<CharacterSelector>();
+            player.AddComponent<DefeatAnimationDriver>().ObserveHealth(false);
             var quest = player.AddComponent<QuestProgress>();
             var objectiveVerb = definition.objective.kind == "interact" ? "Talk to" : definition.objective.kind == "knockout" ? "Knock out" : "Defeat";
             quest.Configure(definition.objective.target_id, definition.objective.count, objectiveVerb);
@@ -498,6 +511,11 @@ namespace TwelveTails.EditorTools
                     visual.name = $"Original {group.entity_id} Visual";
                     visual.transform.localPosition = Vector3.zero;
                     visual.transform.localRotation = Quaternion.identity;
+                    if (actor.GetComponent<EnemyTarget>() != null)
+                        actor.AddComponent<DefeatAnimationDriver>();
+                    var animation = visual.GetComponentInChildren<Animation>(true);
+                    if (animation != null && animation.GetComponent<LegacyAnimationDriver>() == null)
+                        animation.gameObject.AddComponent<LegacyAnimationDriver>();
                 }
             }
 
@@ -611,7 +629,14 @@ namespace TwelveTails.EditorTools
                 comboWindowEndSeconds = skill.combo_window_end_seconds,
                 comboNextSkillId = skill.combo_next_skill_id,
                 resourceCost = skill.resource_cost,
-                range = skill.range
+                range = skill.range,
+                projectileSpeed = skill.projectile_speed,
+                projectileLifetimeSeconds = skill.projectile_lifetime_seconds,
+                statusEffectId = skill.status_effect_id,
+                statusDurationSeconds = skill.status_duration_seconds,
+                statusTickSeconds = skill.status_tick_seconds,
+                statusDamagePerTick = skill.status_damage_per_tick,
+                statusMovementMultiplier = skill.status_movement_multiplier
             }).ToArray();
         }
 

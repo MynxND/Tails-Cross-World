@@ -31,6 +31,78 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void EnemyDefeatRewardsImmediatelyThenDeactivatesAfterSourcePresentation()
+        {
+            var target = new GameObject("Enemy");
+            var visual = new GameObject("Visual");
+            var knockoutClip = new AnimationClip { legacy = true, name = "ko" };
+            try
+            {
+                visual.transform.SetParent(target.transform);
+                var targetCollider = target.AddComponent<BoxCollider>();
+                var animation = visual.AddComponent<Animation>();
+                animation.AddClip(knockoutClip, "ko");
+                var legacyDriver = visual.AddComponent<LegacyAnimationDriver>();
+                var health = target.AddComponent<Health>();
+                health.Configure(10);
+                var quest = target.AddComponent<QuestProgress>();
+                var progress = target.AddComponent<PlayerProgress>();
+                var saves = target.AddComponent<SaveCoordinator>();
+                saves.Configure(progress, quest);
+                target.AddComponent<EnemyTarget>().Configure(quest, progress, saves);
+                var presentation = target.AddComponent<DefeatAnimationDriver>();
+                presentation.Configure(.5f);
+
+                health.ApplyDamage(10);
+                Assert.That(quest.IsComplete, Is.True);
+                Assert.That(target.activeSelf, Is.True);
+                Assert.That(targetCollider.enabled, Is.False);
+                Assert.That(legacyDriver.LastPlayedClip, Is.EqualTo("ko"));
+                presentation.Advance(.49f);
+                Assert.That(target.activeSelf, Is.True);
+                presentation.Advance(.01f);
+                Assert.That(target.activeSelf, Is.False);
+            }
+            finally
+            {
+                Object.DestroyImmediate(knockoutClip);
+                Object.DestroyImmediate(target);
+            }
+        }
+
+        [Test]
+        public void PlayerDefeatPresentationDoesNotDeactivatePlayerRoot()
+        {
+            var player = new GameObject("Player");
+            var visual = new GameObject("Visual");
+            var knockoutClip = new AnimationClip { legacy = true, name = "ko" };
+            try
+            {
+                visual.transform.SetParent(player.transform);
+                player.AddComponent<CharacterController>();
+                var motor = player.AddComponent<PlayerMotor>();
+                var animation = visual.AddComponent<Animation>();
+                animation.AddClip(knockoutClip, "ko");
+                var health = player.AddComponent<Health>();
+                health.Configure(10);
+                var presentation = player.AddComponent<DefeatAnimationDriver>();
+                presentation.Configure(.1f);
+                presentation.ObserveHealth(false);
+
+                health.ApplyDamage(10);
+                presentation.Advance(.1f);
+                Assert.That(player.activeSelf, Is.True);
+                Assert.That(motor.enabled, Is.False);
+                Assert.That(visual.GetComponent<LegacyAnimationDriver>().LastPlayedClip, Is.EqualTo("ko"));
+            }
+            finally
+            {
+                Object.DestroyImmediate(knockoutClip);
+                Object.DestroyImmediate(player);
+            }
+        }
+
+        [Test]
         public void KnockoutAnimationPlaysBeforeRecoveryAnimation()
         {
             var target = new GameObject("Knockout Target");
@@ -385,6 +457,135 @@ namespace TwelveTails.Tests
         }
 
         [Test]
+        public void SkillExecutorRegeneratesResourceWithoutFrameRateLoss()
+        {
+            var gameObject = new GameObject("Skill User");
+            try
+            {
+                var executor = gameObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.expensive", damage = 1, actionDurationSeconds = .1f, resourceCost = 10, range = 2f }
+                }, 20, 5f);
+                Assert.That(executor.ExecuteSkill("skill.expensive", 1f), Is.True);
+                Assert.That(executor.Resource, Is.EqualTo(10));
+
+                Assert.That(executor.AdvanceResource(.1f), Is.Zero);
+                Assert.That(executor.AdvanceResource(.1f), Is.EqualTo(1));
+                Assert.That(executor.AdvanceResource(2f), Is.EqualTo(9));
+                Assert.That(executor.Resource, Is.EqualTo(20));
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void AuthoritativeResourceSnapshotClampsWithoutOverstatingFractionalResource()
+        {
+            var gameObject = new GameObject("Skill User");
+            try
+            {
+                var executor = gameObject.AddComponent<SkillExecutor>();
+                executor.Configure(new SkillDefinition[0], 100);
+                executor.ApplyAuthoritativeResource(37.9f);
+                Assert.That(executor.Resource, Is.EqualTo(37));
+                executor.ApplyAuthoritativeResource(120f);
+                Assert.That(executor.Resource, Is.EqualTo(100));
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void StatusEffectTicksExpiresAndClearsOnDefeat()
+        {
+            var gameObject = new GameObject("Status Target");
+            try
+            {
+                var health = gameObject.AddComponent<Health>();
+                health.Configure(20);
+                var effects = gameObject.AddComponent<StatusEffectController>();
+                Assert.That(effects.ApplyStatus("status.poison", 1f, .5f, 3, .5f), Is.True);
+                Assert.That(effects.MovementMultiplier, Is.EqualTo(.5f));
+
+                effects.Advance(.5f);
+                Assert.That(health.Current, Is.EqualTo(17));
+                effects.Advance(.5f);
+                Assert.That(health.Current, Is.EqualTo(14));
+                Assert.That(effects.ActiveCount, Is.Zero);
+
+                effects.ApplyStatus("status.stun", 2f, 0f, 0, 0f);
+                Assert.That(effects.IsStunned, Is.True);
+                health.ApplyDamage(health.Current);
+                Assert.That(effects.ActiveCount, Is.Zero);
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
+        public void ProjectileAppliesDamageAndStatusOnlyOnImpact()
+        {
+            var playerObject = new GameObject("Projectile User");
+            var targetObject = new GameObject("Projectile Target") { transform = { position = new Vector3(0f, 0f, 1f) } };
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition
+                    {
+                        id = "skill.projectile", damage = 4, range = 3f, projectileSpeed = 8f, projectileLifetimeSeconds = 2f,
+                        statusEffectId = "status.poison", statusDurationSeconds = 1f, statusTickSeconds = .5f,
+                        statusDamagePerTick = 2, statusMovementMultiplier = .75f
+                    }
+                });
+                var collider = targetObject.AddComponent<SphereCollider>();
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(20);
+                targetObject.AddComponent<EnemyTarget>();
+
+                Assert.That(executor.ExecuteSkill("skill.projectile", 1f), Is.True);
+                Assert.That(health.Current, Is.EqualTo(20));
+                var projectile = Object.FindFirstObjectByType<SkillProjectile>();
+                Assert.That(projectile, Is.Not.Null);
+                Assert.That(projectile.TryImpact(collider), Is.True);
+                Assert.That(health.Current, Is.EqualTo(16));
+                Assert.That(targetObject.GetComponent<StatusEffectController>().ActiveCount, Is.EqualTo(1));
+            }
+            finally
+            {
+                foreach (var projectile in Object.FindObjectsByType<SkillProjectile>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+                    Object.DestroyImmediate(projectile.gameObject);
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
+        public void SkillLifecycleRaisesPresentationHooksAtConfiguredTimes()
+        {
+            var gameObject = new GameObject("Skill User");
+            try
+            {
+                var executor = gameObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.hooked", damage = 1, hitDelaySeconds = .2f, actionDurationSeconds = .5f, range = 2f }
+                });
+                var events = new System.Collections.Generic.List<string>();
+                executor.SkillStarted += skill => events.Add($"start:{skill.id}");
+                executor.SkillReleased += skill => events.Add($"release:{skill.id}");
+                executor.SkillEnded += skill => events.Add($"end:{skill.id}");
+
+                Assert.That(executor.ExecuteSkill("skill.hooked", 10f), Is.True);
+                Assert.That(events, Is.EqualTo(new[] { "start:skill.hooked" }));
+                executor.AdvanceAction(10.2f);
+                Assert.That(events, Is.EqualTo(new[] { "start:skill.hooked", "release:skill.hooked" }));
+                executor.AdvanceAction(10.5f);
+                Assert.That(events, Is.EqualTo(new[] { "start:skill.hooked", "release:skill.hooked", "end:skill.hooked" }));
+            }
+            finally { Object.DestroyImmediate(gameObject); }
+        }
+
+        [Test]
         public void SkillExecutorAppliesDamageOnlyAtConfiguredHitTime()
         {
             var playerObject = new GameObject("Skill User") { transform = { position = Vector3.zero } };
@@ -475,6 +676,25 @@ namespace TwelveTails.Tests
                 Assert.That(executor.IsWindingUp, Is.False);
                 Assert.That(motor.CanMove, Is.False);
                 executor.AdvanceAction(10.6f);
+                Assert.That(motor.CanMove, Is.True);
+            }
+            finally { Object.DestroyImmediate(playerObject); }
+        }
+
+        [Test]
+        public void StunStatusLocksPlayerMovementUntilItExpires()
+        {
+            var playerObject = new GameObject("Status Player");
+            try
+            {
+                playerObject.AddComponent<CharacterController>();
+                playerObject.AddComponent<Health>().Configure(20);
+                var effects = playerObject.AddComponent<StatusEffectController>();
+                var motor = playerObject.AddComponent<PlayerMotor>();
+
+                effects.ApplyStatus("status.stun", .5f, 0f, 0, 0f);
+                Assert.That(motor.CanMove, Is.False);
+                effects.Advance(.5f);
                 Assert.That(motor.CanMove, Is.True);
             }
             finally { Object.DestroyImmediate(playerObject); }

@@ -179,6 +179,9 @@ Completed:
 - The engineering boundary is now documented as controlled compatibility reconstruction rather than a claim of strict legal clean-room independence. Authorized original assets and static/decompiled behavior evidence may be used privately for fidelity, but extracted scripts still never execute, private payloads remain untracked, and the new server remains authoritative.
 - Original character prefabs now receive a clean `LegacyAnimationDriver` and rig-matched legacy clips during private import. All 12 original characters play their source primary attack through Unity's legacy `Animation` component; Rabbit correctly maps its basic attack to `nAttack` rather than the generic `nAttack1`. Missing optional source clips currently use deterministic fallback: Chameleon `nAttack2`, Rabbit `nAttack2`, and Mole `cAttack1`. Full Unity gameplay tests pass (`27/27`), repository checks pass (`39/39`), and the rebuilt Windows player remained responsive with no matched critical runtime errors.
 - All 12 original character rigs now import source `ko` and `getUp` clips. `KnockoutAnimationDriver` plays the knockout clip and starts recovery after that clip's real duration without delaying health restoration, objective progress, or rewards. M106 attaches this presentation layer to Boldas; Unity gameplay tests pass (`28/28`), repository checks pass (`39/39`), and the dedicated M106 Windows player remained responsive with no matched critical runtime errors. No compatible `hit` clip was found for any of the 12 character rigs, so nonlethal hit reactions remain intentionally unimplemented rather than using the wrong animation.
+- Phase 4B.3 defeat presentation now covers normal enemies and players. `DefeatAnimationDriver` resolves the original legacy `ko` clip already attached to the visual (`ko_115` for Carron and `ko_93` for StingBug), disables movement/AI/collision immediately, preserves immediate mission/reward authority, and delays only visual deactivation for the real clip duration. Player KO keeps the root active for a later recovery flow. Missing enemy clips fail closed to immediate deactivation. Mupo still deactivates immediately because no compatible source-backed Mupo KO clip has been established.
+- Phase 4B.4 skill runtime now includes deterministic resource regeneration, cooldown/action/combo lifecycle events, reusable projectile delivery, status duration/tick/slow/stun handling, movement integration, and strict schema validation. The Python server loads the shared skill catalog and validates actor ownership, skill ID, cooldown, resource, target, range, and aim before applying authoritative damage/rewards. LAN clients send intent-only `action_request` messages, consume authoritative resource snapshots, and disable local damage execution while online. Current content keeps projectile/status fields neutral until class-specific source evidence is mapped.
+- Phase 4B.3/4B.4 validation passes: Unity gameplay EditMode tests `36/36`, repository Python/content/protocol/policy tests `41/41`, and C# diagnostics report no errors. Combined M101 and dedicated M103 Windows builds complete successfully; both executables reached responsive input-idle in a short smoke launch. The custom player log files were not emitted during that short launch, so runtime log scanning remains to be repeated during visual QA.
 - All 211 exported legacy scenes audited without running legacy code.
 - Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
 - Chapter 1 Unity source-scene validation added.
@@ -750,13 +753,14 @@ After these checks, move to M103 rather than expanding M102 with optional VFX/cu
 
 ### Priority 2 - Shared combat and animation runtime
 
-The first reusable skill slice now exists. Expand it before duplicating mission-specific combat code:
+The reusable skill runtime and defeat presentation foundation now exist. Continue with evidence-backed content and presentation fidelity:
 
-- Generate/import Animator state mappings from `content/v1/animation_profiles.json`.
 - Keep original per-character clips on their matching original rigs through `LegacyAnimationDriver`; retarget only when a clip must run on a generated rig, and never attach clips whose transform paths target a different character rig.
 - Add a PlayMode-validated animation-event or normalized-time impact adapter while preserving deterministic timing fallback for clips without events. EditMode does not reliably advance crossfaded Animator state progress.
-- Add resource regeneration, status effects, evidence-backed nonlethal hit reactions, death states, projectiles, VFX/audio hooks, and server-side skill validation. Basic source-backed knockout/recovery playback is complete for M106.
-- Map the recovered legacy skill names to character classes and preserve evidence/confidence for uncertain mappings.
+- Map recovered class skills to projectile/status values only where source evidence supports them; keep neutral defaults otherwise.
+- Bind `SkillStarted`, `SkillReleased`, and `SkillEnded` to source-backed VFX/audio assets and timing.
+- Add evidence-backed nonlethal hit reactions where rig-compatible clips exist, and complete player recovery/game-over presentation after KO.
+- Add LAN tests for client resource reconciliation and multiple skill types beyond `skill.basic_slash`.
 
 ### Priority 3 - General map runtime
 

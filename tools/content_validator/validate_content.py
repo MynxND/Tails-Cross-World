@@ -172,6 +172,17 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has invalid damage")
         if not isinstance(skill.get("cooldown_seconds"), (int, float)) or skill["cooldown_seconds"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid cooldown")
+        expected_fields = {"id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}
+        if set(skill) != expected_fields:
+            raise ContentError(f"skill {skill.get('id')} has unsupported or missing fields")
+        if not isinstance(skill["projectile_speed"], (int, float)) or skill["projectile_speed"] < 0 or not isinstance(skill["projectile_lifetime_seconds"], (int, float)) or skill["projectile_lifetime_seconds"] < 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid projectile configuration")
+        if (skill["projectile_speed"] == 0) != (skill["projectile_lifetime_seconds"] == 0):
+            raise ContentError(f"skill {skill.get('id')} has incomplete projectile configuration")
+        if not isinstance(skill["status_effect_id"], str) or not isinstance(skill["status_duration_seconds"], (int, float)) or skill["status_duration_seconds"] < 0 or not isinstance(skill["status_tick_seconds"], (int, float)) or skill["status_tick_seconds"] < 0 or not isinstance(skill["status_damage_per_tick"], int) or skill["status_damage_per_tick"] < 0 or not isinstance(skill["status_movement_multiplier"], (int, float)) or skill["status_movement_multiplier"] < 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid status configuration")
+        if bool(skill["status_effect_id"]) != (skill["status_duration_seconds"] > 0):
+            raise ContentError(f"skill {skill.get('id')} has incomplete status configuration")
         if not isinstance(skill.get("hit_delay_seconds"), (int, float)) or not 0 <= skill["hit_delay_seconds"] <= skill["cooldown_seconds"]:
             raise ContentError(f"skill {skill.get('id')} has invalid hit delay")
         duration = skill.get("action_duration_seconds")

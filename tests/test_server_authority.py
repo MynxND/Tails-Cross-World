@@ -68,6 +68,60 @@ class ServerAuthorityTests(unittest.TestCase):
         self.assertEqual(state["map"]["monster_hp"], 0)
         self.assertTrue(all(x["experience"] == 25 and x["potions"] == 1 for x in state["players"]))
 
+    def test_server_validates_skill_actor_cooldown_resource_and_range(self) -> None:
+        now = [10.0]
+        authority = Authority(lambda: now[0])
+        session = authority.create_session("skilled")
+        lobby = authority.create_lobby(session.token)
+        player = authority._players["skilled"]
+        player.position = [0.0, 0.0, 1.0]
+
+        with self.assertRaisesRegex(AuthorityError, "owned"):
+            authority.skill_action(session.token, 1, "actor.other", "skill.power_strike", "monster.training_dummy", [0, 0, 1])
+        with self.assertRaisesRegex(AuthorityError, "unknown skill"):
+            authority.skill_action(session.token, 2, player.actor_id, "skill.missing", "monster.training_dummy", [0, 0, 1])
+
+        state = authority.skill_action(session.token, 3, player.actor_id, "skill.power_strike", "monster.training_dummy", [0, 0, 1])
+        self.assertEqual(state["map"]["monster_hp"], 10)
+        self.assertEqual(state["players"][0]["resource"], 95.0)
+        with self.assertRaisesRegex(AuthorityError, "cooldown"):
+            authority.skill_action(session.token, 4, player.actor_id, "skill.power_strike", "monster.training_dummy", [0, 0, 1])
+
+        player.resource = 0.0
+        now[0] += 1.2
+        state = authority.skill_action(session.token, 5, player.actor_id, "skill.power_strike", "monster.training_dummy", [0, 0, 1])
+        self.assertAlmostEqual(state["players"][0]["resource"], 1.0)
+
+        lobby.map.monster_hp = 30
+        player.position = [0.0, 0.0, 0.0]
+        now[0] += 2.0
+        with self.assertRaisesRegex(AuthorityError, "range"):
+            authority.skill_action(session.token, 6, player.actor_id, "skill.power_strike", "monster.training_dummy", [0, 0, 1])
+
+    def test_tcp_action_request_uses_authoritative_skill_values(self) -> None:
+        with LanServer(("127.0.0.1", 0), GameService()) as server:
+            thread = Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            with socket.create_connection(server.server_address) as connection:
+                stream = connection.makefile("rwb")
+
+                def request(kind, **values):
+                    payload = {"protocol_version": 1, "kind": kind, **values}
+                    stream.write(json.dumps(payload).encode() + b"\n")
+                    stream.flush()
+                    return json.loads(stream.readline())
+
+                login = request("login", account_id="skill-player")["result"]
+                lobby = request("create_lobby", token=login["token"])["result"]
+                actor_id = lobby["players"][0]["actor_id"]
+                response = request(
+                    "action_request", token=login["token"], sequence=1, actor_id=actor_id,
+                    skill_id="skill.class_special", target_id="monster.training_dummy", aim=[0, 0, 1])
+                self.assertTrue(response["ok"])
+                self.assertEqual(response["result"]["map"]["monster_hp"], 0)
+                self.assertEqual(response["result"]["players"][0]["resource"], 85.0)
+            server.shutdown()
+
     def test_persistence_and_reconnect(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             store = StateStore(Path(directory) / "state.json")
