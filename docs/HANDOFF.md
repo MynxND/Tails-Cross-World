@@ -2,7 +2,7 @@
 
 Last updated: 2026-09-11 (Asia/Bangkok)  
 Repository branch: `develop`  
-Latest implementation commit at handoff: `eee9585 Generate Chapter 1 environment prefabs`
+Latest implementation commit at handoff: `9ad55c0 Add Wolf Blade Fang skill`
 
 ## 1. Objective and non-negotiable requirements
 
@@ -185,6 +185,7 @@ Completed:
 - Phase 4B.5 has its first evidence-backed class skill: Sheep `cAttack` resolves from the shared class-special input to `skill.sheep_class_special`. Legacy evidence establishes projectile speed `8`, life `5 * rangeMod` (baseline `5s`), and homing rotation `0.1` radians every `0.1s` (`1 rad/s`). The server persists the selected character and rejects class skills used by another character; LAN action intents now include character ID and support power/class-special inputs. Damage, cooldown, resource cost, and action timing remain prototype tuning until stronger source evidence is mapped. Unity gameplay tests pass (`37/37`), repository checks pass (`42/42`), and the combined Windows build completes successfully.
 - Phase 4B.5 now includes Mole `stunGrenade` on input `4` as `skill.mole_stun_grenade`. Source-backed values are animation `grenade`, fire delay `0.6s`, recovery `0.8s`, speed `15`, lifetime `3 * rangeMod` (baseline `3s`), fallback range `12`, AoE radius `6 * rangeMod` (baseline `6`), and base damage `10 * level` (level-one baseline `10`). The reusable projectile runtime deduplicates multiple colliders per target and damages every valid target inside the impact radius. The base skill intentionally applies no stun because legacy source grants status `264` for `30s` only when the Smart Shell passive is active; passive/loadout state is not implemented yet. The private Mole prefab now includes the rig-compatible original `grenade.anim`; the projectile keeps the generic visual fallback because no imported `stunGrenade` effect prefab was found. Both client and authoritative server restrict the skill to Mole. Unity gameplay tests pass (`38/38`), repository checks pass (`43/43`), C# diagnostics report no errors, and the combined Windows build completes successfully.
 - Phase 4B.5 now includes Wolf Blade Fang level 1 on input `5` as `skill.wolf_blade_fang`. The shared runtime supports validated multi-hit sequences; source timing produces two damage pulses at `0.7s` and `0.9s` with recovery ending at `1.1s`. The authoritative server owns both hits and rejects the skill for non-Wolf characters. The private Wolf prefab includes the rig-compatible original `bladeFang1`, `bladeFang2`, and `bladeFang3` clips, while current presentation starts with `bladeFang1`. Damage/resource/cooldown remain prototype values until the character ATK, talent adjustment, skill cost, and Double Art timeout models exist. The source dash, rectangular hit volume, alternating knockback, SP gain, later animation transitions, effects/audio, and Blood Fang passive 403 remain intentionally deferred rather than approximated as complete. Unity gameplay tests pass (`39/39`), repository checks pass (`45/45`), C# diagnostics report no errors, and the combined Windows build completes successfully.
+- Character-skill development now uses the repository-wide batch process in `docs/SKILL_BATCH_WORKFLOW.md`. Future sessions should audit the remaining nine characters in parallel, build a normalized evidence catalog, implement shared runtime primitives, and perform one integration/build/commit per batch instead of repeating the full workflow for each skill.
 - All 211 exported legacy scenes audited without running legacy code.
 - Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
 - Chapter 1 Unity source-scene validation added.
@@ -693,7 +694,7 @@ Run Python tests, public-tree policy, and content validation:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test.ps1
 ```
 
-Latest Python unit-test result during this handoff: 30 tests passed.
+Latest repository validation result during this handoff: 45 tests passed, followed by public-tree and content validation.
 
 Run Unity EditMode tests:
 
@@ -701,7 +702,7 @@ Run Unity EditMode tests:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-unity.ps1
 ```
 
-Latest known Unity result before the Chapter 1 converter work: 6 EditMode tests passed. Re-run after any runtime/editor code change when the Unity Editor is closed.
+Latest Unity gameplay result during this handoff: 39 EditMode tests passed. Re-run after any runtime/editor code change when the Unity Editor is closed.
 
 Run the LAN server:
 
@@ -740,6 +741,8 @@ git restore -- 'client/Assets/TwelveTails/Generated/Controllers' 'client/Assets/
 Never restore intentional source edits indiscriminately.
 
 ## 10. Immediate next implementation plan
+
+For character skills, `docs/SKILL_BATCH_WORKFLOW.md` overrides the older one-skill-at-a-time sequencing below. Resume with Batch A for the remaining nine characters; do not re-audit Sheep, Mole, or Wolf unless a required field is missing or contradictory.
 
 ### Priority 1 - Finish M102 verification
 
