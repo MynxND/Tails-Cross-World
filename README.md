@@ -39,6 +39,16 @@ Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Sc
 
 Use the character panel at the bottom of the game window to switch between all 12 procedural prototype characters. The selected character is retained for the next run.
 
+## Legacy scene migration audit
+
+Audit every AssetRipper-exported scene without executing legacy scripts:
+
+```powershell
+python tools/audit_legacy_scenes.py --export-project "D:\path\to\ExportedProject" --output-json artifacts/legacy-scene-audit.json --output-csv artifacts/legacy-scene-audit.csv --output-markdown artifacts/legacy-scene-migration-audit.md --level-file-count 271
+```
+
+The audit reports scene coverage, dependency integrity, legacy static batching, terrain, lightmaps, runtime scripts, animations, particles, audio, and structure-visibility risks. Use its per-scene CSV as the migration checklist before generating Unity 6 prefabs.
+
 Regenerate all original Blender character sources and Unity FBX imports with:
 
 ```powershell
