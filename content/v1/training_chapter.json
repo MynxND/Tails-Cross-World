@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "chapter": {"id": "chapter.training", "maps": ["map.training_ground"], "quests": ["quest.first_hunt"]},
+  "maps": [{"id": "map.training_ground", "scene": "TrainingGround", "spawns": ["spawn.player", "spawn.dummy"], "portals": [], "npcs": ["npc.guide"]}],
+  "quests": [{"id": "quest.first_hunt", "map": "map.training_ground", "target": "monster.training_dummy", "count": 1, "reward_experience": 25, "reward_items": ["item.potion"]}],
+  "items": [{"id": "item.potion", "kind": "consumable", "max_stack": 99}],
+  "equipment": [{"id": "equipment.training_sword", "slot": "weapon", "variants": ["wolf", "bison", "panda", "whale", "mole", "rabbit", "monkey", "sheep", "penguin", "bat", "chameleon", "cat"]}]
+}

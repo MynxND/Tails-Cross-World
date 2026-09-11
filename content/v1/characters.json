@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "characters": [
+    {"id": "wolf", "species": "wolf", "class": "swordmaster", "prefab": "Characters/Wolf"},
+    {"id": "bison", "species": "bison", "class": "berserker", "prefab": "Characters/Bison"},
+    {"id": "panda", "species": "panda", "class": "martial_artist", "prefab": "Characters/Panda"},
+    {"id": "whale", "species": "whale", "class": "guardian", "prefab": "Characters/Whale"},
+    {"id": "mole", "species": "mole", "class": "bomber", "prefab": "Characters/Mole"},
+    {"id": "rabbit", "species": "rabbit", "class": "alchemist", "prefab": "Characters/Rabbit"},
+    {"id": "monkey", "species": "monkey", "class": "summoner", "prefab": "Characters/Monkey"},
+    {"id": "sheep", "species": "sheep", "class": "priest", "prefab": "Characters/Sheep"},
+    {"id": "penguin", "species": "penguin", "class": "ice_wizard", "prefab": "Characters/Penguin"},
+    {"id": "bat", "species": "bat", "class": "night_mage", "prefab": "Characters/Bat"},
+    {"id": "chameleon", "species": "chameleon", "class": "archer", "prefab": "Characters/Chameleon"},
+    {"id": "cat", "species": "cat", "class": "treasure_hunter", "prefab": "Characters/Cat"}
+  ]
+}

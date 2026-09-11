@@ -20,6 +20,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Unit tests failed.' }
     & $pythonPath tools/check_public_tree.py
     if ($LASTEXITCODE -ne 0) { throw 'Public-tree policy failed.' }
+    & $pythonPath tools/content_validator/validate_content.py content/v1
+    if ($LASTEXITCODE -ne 0) { throw 'Content validation failed.' }
     Write-Host 'All Python and public-tree checks passed.' -ForegroundColor Green
 }
 finally {

@@ -54,6 +54,14 @@ Progress:
 
 Add data-driven maps, portals, spawns, NPCs, chapters, quests, armor, and weapons with editor validation and character-specific visual variants.
 
+Progress:
+
+- [x] Define the canonical 12-character roster and base classes with prefab addresses.
+- [x] Add the first data-driven chapter, map, quest, item, and 12-variant equipment definitions.
+- [x] Add automated cross-reference and 12-character variant validation.
+- [ ] Generate distinct prototype prefabs and a Unity character-selection screen.
+- [ ] Add portal/spawn/NPC editor tools and production-ready model, rig, animation, armor, and weapon assets.
+
 ## Phase 5 - Private online alpha
 
 Operate separate environments with TLS, secrets management, metrics, backups, restore drills, launcher version checks, moderation, load tests, and hostile-request tests.

@@ -16,6 +16,8 @@
 !src/**
 !scripts/
 !scripts/**
+!content/
+!content/**
 !client/
 !client/Assets/
 !client/Assets/**
