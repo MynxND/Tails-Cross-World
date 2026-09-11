@@ -89,9 +89,14 @@ namespace TwelveTails.Tests
                 var name = char.ToUpperInvariant(id[0]) + id.Substring(1);
                 var prefab = Resources.Load<GameObject>($"Characters/{name}");
                 Assert.That(prefab, Is.Not.Null, $"Missing prefab for {id}");
-                Assert.That(prefab.transform.Find("Rig/Armor"), Is.Not.Null, $"Missing armor variant for {id}");
-                Assert.That(prefab.transform.Find("Rig/RightArm/WeaponSocket/Weapon"), Is.Not.Null, $"Missing weapon for {id}");
-                Assert.That(prefab.GetComponent<CharacterAnimationDriver>(), Is.Not.Null, $"Missing animation driver for {id}");
+                var names = new System.Collections.Generic.HashSet<string>();
+                foreach (var child in prefab.GetComponentsInChildren<Transform>(true)) names.Add(child.name);
+                Assert.That(names, Does.Contain("Armor"), $"Missing armor variant for {id}");
+                Assert.That(names, Does.Contain("WeaponSocket"), $"Missing weapon socket for {id}");
+                Assert.That(prefab.GetComponent<CharacterAnimationDriver>() != null || prefab.GetComponent<AnimatorMotionDriver>() != null, Is.True, $"Missing animation driver for {id}");
+                var animator = prefab.GetComponent<Animator>();
+                if (prefab.GetComponent<AnimatorMotionDriver>() != null)
+                    Assert.That(animator != null && animator.runtimeAnimatorController != null, Is.True, $"Missing Animator Controller for {id}");
             }
         }
     }

@@ -39,6 +39,12 @@ Open the `client` directory with Unity `6000.6.0f1`, load `Assets/TwelveTails/Sc
 
 Use the character panel at the bottom of the game window to switch between all 12 procedural prototype characters. The selected character is retained for the next run.
 
+Regenerate all original Blender character sources and Unity FBX imports with:
+
+```powershell
+.\scripts\generate-character-art.ps1
+```
+
 ```powershell
 .\scripts\test-unity.ps1
 ```

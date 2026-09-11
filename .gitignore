@@ -18,6 +18,8 @@
 !scripts/**
 !content/
 !content/**
+!art-source/
+!art-source/**
 !client/
 !client/Assets/
 !client/Assets/**

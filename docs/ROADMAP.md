@@ -62,6 +62,7 @@ Progress:
 - [x] Generate 12 distinct, addressable Unity prefabs and a persistent character-selection screen.
 - [x] Drive player/monster spawns, NPC placement, and portal markers from validated chapter data.
 - [x] Add an original Unity-native low-poly rig, idle/run/attack motion, weapon socket, armor shell, and class prop to every character prefab.
+- [x] Generate reproducible Blender source and FBX exports for all 12 characters, with armatures and Idle/Run/Attack actions wired to Unity Animator Controllers.
 - [ ] Replace low-poly geometry with final art-directed meshes, authored skin weights, animation clips, textures, VFX, and LODs.
 
 ## Phase 5 - Private online alpha

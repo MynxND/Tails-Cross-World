@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using Object = UnityEngine.Object;
+using System.Linq;
+using UnityEditor.Animations;
 
 namespace TwelveTails.EditorTools
 {
@@ -115,10 +117,48 @@ namespace TwelveTails.EditorTools
         {
             const string prefabDirectory = "Assets/TwelveTails/Resources/Characters";
             const string materialDirectory = "Assets/TwelveTails/Generated/Materials";
+            const string controllerDirectory = "Assets/TwelveTails/Generated/Controllers";
             Directory.CreateDirectory(prefabDirectory);
             Directory.CreateDirectory(materialDirectory);
+            Directory.CreateDirectory(controllerDirectory);
             foreach (var id in CharacterRoster.Ids)
             {
+                var title = char.ToUpperInvariant(id[0]) + id.Substring(1);
+                var fbxPath = $"Assets/TwelveTails/Art/Characters/{title}.fbx";
+                var model = AssetDatabase.LoadAssetAtPath<GameObject>(fbxPath);
+                if (model != null)
+                {
+                    var instance = (GameObject)PrefabUtility.InstantiatePrefab(model);
+                    instance.name = title;
+                    var clips = AssetDatabase.LoadAllAssetsAtPath(fbxPath).OfType<AnimationClip>()
+                        .Where(clip => !clip.name.StartsWith("__preview__")).ToArray();
+                    var idle = clips.FirstOrDefault(clip => clip.name.Contains("Idle"));
+                    var run = clips.FirstOrDefault(clip => clip.name.Contains("Run"));
+                    var attack = clips.FirstOrDefault(clip => clip.name.Contains("Attack"));
+                    if (idle == null || run == null || attack == null)
+                        throw new InvalidDataException($"{title}.fbx must contain Idle, Run, and Attack clips.");
+                    var controllerPath = $"{controllerDirectory}/{title}.controller";
+                    AssetDatabase.DeleteAsset(controllerPath);
+                    var controller = AnimatorController.CreateAnimatorControllerAtPath(controllerPath);
+                    controller.AddParameter("Speed", AnimatorControllerParameterType.Float);
+                    controller.AddParameter("Attack", AnimatorControllerParameterType.Trigger);
+                    var machine = controller.layers[0].stateMachine;
+                    var idleState = machine.AddState("Idle"); idleState.motion = idle;
+                    var runState = machine.AddState("Run"); runState.motion = run;
+                    var attackState = machine.AddState("Attack"); attackState.motion = attack;
+                    machine.defaultState = idleState;
+                    var toRun = idleState.AddTransition(runState); toRun.hasExitTime = false; toRun.AddCondition(AnimatorConditionMode.Greater, .1f, "Speed");
+                    var toIdle = runState.AddTransition(idleState); toIdle.hasExitTime = false; toIdle.AddCondition(AnimatorConditionMode.Less, .1f, "Speed");
+                    var toAttack = machine.AddAnyStateTransition(attackState); toAttack.hasExitTime = false; toAttack.AddCondition(AnimatorConditionMode.If, 0, "Attack");
+                    var attackDone = attackState.AddTransition(idleState); attackDone.hasExitTime = true; attackDone.exitTime = .9f;
+                    var animator = instance.GetComponent<Animator>();
+                    if (animator == null) animator = instance.AddComponent<Animator>();
+                    animator.runtimeAnimatorController = controller;
+                    instance.AddComponent<AnimatorMotionDriver>();
+                    PrefabUtility.SaveAsPrefabAsset(instance, $"{prefabDirectory}/{title}.prefab");
+                    Object.DestroyImmediate(instance);
+                    continue;
+                }
                 var temporary = new GameObject($"{id} prefab source");
                 var visual = ProceduralCharacter.Create(id, temporary.transform);
                 foreach (var renderer in visual.GetComponentsInChildren<Renderer>())
@@ -136,7 +176,7 @@ namespace TwelveTails.EditorTools
                     renderer.sharedMaterial = material;
                 }
                 visual.transform.SetParent(null, false);
-                visual.name = char.ToUpperInvariant(id[0]) + id.Substring(1);
+                visual.name = title;
                 PrefabUtility.SaveAsPrefabAsset(visual, $"{prefabDirectory}/{visual.name}.prefab");
                 Object.DestroyImmediate(visual);
                 Object.DestroyImmediate(temporary);

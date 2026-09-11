@@ -2,6 +2,8 @@
 *.asset whitespace=-blank-at-eol
 *.meta whitespace=-blank-at-eol
 *.unity whitespace=-blank-at-eol
+*.prefab whitespace=-blank-at-eol
+*.controller whitespace=-blank-at-eol
 
 # Keep source and configuration text normalized in Git.
 *.cs text eol=lf
