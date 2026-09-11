@@ -21,7 +21,9 @@ namespace TwelveTails.Gameplay
         {
             selected = CharacterRoster.IndexOf(characterId);
             if (visual != null) Destroy(visual);
-            var prefab = Resources.Load<GameObject>($"Characters/{ToTitleCase(CharacterRoster.Ids[selected])}");
+            var title = ToTitleCase(CharacterRoster.Ids[selected]);
+            var prefab = Resources.Load<GameObject>($"OriginalCharacters/{title}");
+            if (prefab == null) prefab = Resources.Load<GameObject>($"Characters/{title}");
             visual = prefab != null ? Instantiate(prefab, transform) : ProceduralCharacter.Create(CharacterRoster.Ids[selected], transform);
             visual.name = "Character Visual";
             PlayerPrefs.SetString(PreferenceKey, CharacterRoster.Ids[selected]);

@@ -55,3 +55,8 @@ client/Assets/Readme.asset
 client/Assets/Readme.asset.meta
 client/Assets/InputSystem_Actions.inputactions
 client/Assets/InputSystem_Actions.inputactions.meta
+
+# Locally imported assets from the user's original Twelve Tails installation.
+# These are required for visual parity but must never be committed or published.
+client/Assets/TwelveTails/LegacyPrivate/
+client/Assets/TwelveTails/LegacyPrivate.meta

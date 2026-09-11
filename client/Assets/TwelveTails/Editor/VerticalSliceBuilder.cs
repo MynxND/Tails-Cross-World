@@ -23,6 +23,7 @@ namespace TwelveTails.EditorTools
         [MenuItem("12 Tails/Build Training Ground")]
         public static void Build()
         {
+            LegacyAssetValidator.GenerateOriginalCharacterPrefabsIfAvailable();
             GenerateCharacterPrefabs();
             var catalog = LoadCatalog();
             Directory.CreateDirectory("Assets/TwelveTails/Scenes");
