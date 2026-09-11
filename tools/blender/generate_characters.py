@@ -37,9 +37,14 @@ def part(name, primitive, location, scale, mat, parent, bone=None, rotation=(0, 
     obj.data.materials.append(mat)
     obj.parent = parent
     if bone:
-        obj.parent_type = 'BONE'
-        obj.parent_bone = bone
+        # Deform the whole low-poly part with one bone. Bone parenting plus an
+        # inherited world transform caused Unity to apply the rest offset twice.
+        obj.parent_type = 'OBJECT'
         obj.matrix_parent_inverse = parent.matrix_world.inverted()
+        group = obj.vertex_groups.new(name=bone)
+        group.add(range(len(obj.data.vertices)), 1.0, 'REPLACE')
+        modifier = obj.modifiers.new(name="Armature", type='ARMATURE')
+        modifier.object = parent
     return obj
 
 
