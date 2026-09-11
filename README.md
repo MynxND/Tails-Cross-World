@@ -2,9 +2,9 @@
 
 See [`docs/HANDOFF.md`](docs/HANDOFF.md) for the current implementation status, local asset locations, validation results, and ordered continuation plan.
 
-Clean-room development workspace for a new game inspired by observed behavior of a privately held legacy reference build.
+Controlled compatibility-reconstruction workspace for a maintainable game based on a privately held legacy reference build. New runtime/server code remains independently maintained, while authorized original assets and static behavior evidence may be used locally to maximize fidelity.
 
-The legacy executable, Unity data, saves, logs, extracted assets, and decompiler output are private evidence. They must never be committed. This repository starts with a deny-by-default `.gitignore`; only the clean-room documentation, inspector source, tests, and CI configuration are allowed.
+The legacy executable, Unity data, saves, logs, extracted assets, and decompiler output are private evidence. They must never be committed or redistributed without established rights. Extracted legacy scripts are never executed in the reconstructed project; reviewed replacement code consumes imported assets and translated data. The repository retains a deny-by-default `.gitignore` and public-tree policy.
 
 ## Phase 0 quick start
 
@@ -25,7 +25,7 @@ Run all current checks from PowerShell with:
 
 The tests cover the read-only reference inventory, public Git boundary, versioned domain contracts, and safe `.zrData` format classification. A playable clean-room game begins in Phase 2.
 
-See [the roadmap](docs/ROADMAP.md) and [clean-room boundary](docs/architecture/0001-clean-room-boundary.md).
+See [the roadmap](docs/ROADMAP.md) and [controlled compatibility boundary](docs/architecture/0001-clean-room-boundary.md).
 
 ## Phase 1 assembly inventory
 

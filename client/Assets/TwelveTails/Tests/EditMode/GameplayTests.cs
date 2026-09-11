@@ -594,8 +594,33 @@ namespace TwelveTails.Tests
                 {
                     var animator = instance.GetComponent<Animator>();
                     animator.Update(0f);
-                    foreach (var state in new[] { "nAttack1", "nAttack2", "cAttack1" })
+                    var basicAttack = id == "rabbit" ? "nAttack" : "nAttack1";
+                    foreach (var state in new[] { basicAttack, "nAttack2", "cAttack1" })
                         Assert.That(animator.HasState(0, AnimatorMotionDriver.StateHash(state)), Is.True, $"{id} is missing Animator state {state}");
+                }
+                finally { Object.DestroyImmediate(instance); }
+            }
+        }
+
+        [Test]
+        public void PrivateOriginalCharactersContainMappedAttackClipsWhenAvailable()
+        {
+            var firstPrefab = Resources.Load<GameObject>("OriginalCharacters/Wolf");
+            if (firstPrefab == null) Assert.Ignore("Private original character assets are not installed.");
+            foreach (var id in CharacterRoster.Ids)
+            {
+                var name = char.ToUpperInvariant(id[0]) + id.Substring(1);
+                var prefab = Resources.Load<GameObject>($"OriginalCharacters/{name}");
+                var animation = prefab.GetComponentInChildren<Animation>(true);
+                Assert.That(animation, Is.Not.Null, $"{id} is missing its original Animation component");
+                var basicAttack = id == "rabbit" ? "nAttack" : "nAttack1";
+                Assert.That(animation.GetClip(basicAttack), Is.Not.Null, $"{id} is missing original clip {basicAttack}");
+                Assert.That(prefab.GetComponentInChildren<LegacyAnimationDriver>(true), Is.Not.Null, $"{id} is missing the clean runtime legacy-animation adapter");
+                var instance = Object.Instantiate(prefab);
+                try
+                {
+                    var driver = instance.GetComponentInChildren<LegacyAnimationDriver>(true);
+                    Assert.That(driver.PlaySkillAnimation(basicAttack), Is.True, $"{id} could not play original clip {basicAttack}");
                 }
                 finally { Object.DestroyImmediate(instance); }
             }

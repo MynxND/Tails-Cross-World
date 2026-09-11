@@ -39,6 +39,7 @@ namespace TwelveTails.Gameplay
         private readonly Dictionary<string, float> cooldowns = new();
         private CharacterAnimationDriver proceduralAnimation = null!;
         private AnimatorMotionDriver animatorMotion = null!;
+        private LegacyAnimationDriver legacyAnimation = null!;
         private SkillDefinition activeSkill = null!;
         private SkillDefinition queuedSkill = null!;
         private float actionStartedAt;
@@ -70,6 +71,7 @@ namespace TwelveTails.Gameplay
         {
             proceduralAnimation = GetComponentInChildren<CharacterAnimationDriver>();
             animatorMotion = GetComponentInChildren<AnimatorMotionDriver>();
+            legacyAnimation = GetComponentInChildren<LegacyAnimationDriver>();
         }
 
         private void Update()
@@ -98,6 +100,8 @@ namespace TwelveTails.Gameplay
             if (cooldowns.TryGetValue(definition.id, out var readyAt) && actionTime < readyAt) return false;
 
             var clipName = ResolveAnimationClip(definition);
+            if (legacyAnimation == null) legacyAnimation = GetComponentInChildren<LegacyAnimationDriver>();
+            legacyAnimation?.PlaySkillAnimation(clipName);
             proceduralAnimation?.PlaySkillAnimation(clipName);
             animatorMotion?.PlaySkillAnimation(clipName);
             resource -= definition.resourceCost;

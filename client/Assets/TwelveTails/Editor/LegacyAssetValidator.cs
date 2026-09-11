@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using TwelveTails.Gameplay;
 
 namespace TwelveTails.EditorTools
 {
@@ -126,6 +127,7 @@ namespace TwelveTails.EditorTools
                 RemoveMissingScripts(instance);
                 ApplyDefaultAppearance(instance, title, materialDestination, textureDestination);
                 AttachDefaultAccessory(instance, title);
+                AttachOriginalAttackClips(instance, title);
                 ConvertMaterials(instance, title, materialDestination);
                 PrefabUtility.SaveAsPrefabAsset(instance, $"{destination}/{title}.prefab");
                 Object.DestroyImmediate(instance);
@@ -134,6 +136,33 @@ namespace TwelveTails.EditorTools
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        private static void AttachOriginalAttackClips(GameObject characterRoot, string character)
+        {
+            var animation = characterRoot.GetComponentInChildren<Animation>(true);
+            if (animation == null) throw new System.Exception($"Original {character} prefab has no Animation component");
+            var rigRoot = $"{character}_tri";
+            var basicAttack = character == "Rabbit" ? "nAttack" : "nAttack1";
+            foreach (var clipName in new[] { basicAttack, "nAttack2", "cAttack1" })
+            {
+                var clip = AssetDatabase.FindAssets($"{clipName} t:AnimationClip", new[] { "Assets/TwelveTails/LegacyPrivate/AnimationClip" })
+                    .Select(AssetDatabase.GUIDToAssetPath)
+                    .Select(AssetDatabase.LoadAssetAtPath<AnimationClip>)
+                    .FirstOrDefault(candidate => candidate != null && candidate.name == clipName &&
+                        AnimationUtility.GetCurveBindings(candidate).Any(binding =>
+                            binding.path.Equals(rigRoot, System.StringComparison.OrdinalIgnoreCase) ||
+                            binding.path.StartsWith(rigRoot + "/", System.StringComparison.OrdinalIgnoreCase)));
+                if (clip == null)
+                {
+                    Debug.LogWarning($"Original {character} clip {clipName} was not found for rig {rigRoot}; runtime fallback remains enabled.");
+                    continue;
+                }
+                animation.RemoveClip(clipName);
+                animation.AddClip(clip, clipName);
+            }
+            if (characterRoot.GetComponentInChildren<LegacyAnimationDriver>(true) == null)
+                animation.gameObject.AddComponent<LegacyAnimationDriver>();
         }
 
         private static void AttachDefaultAccessory(GameObject characterRoot, string character)

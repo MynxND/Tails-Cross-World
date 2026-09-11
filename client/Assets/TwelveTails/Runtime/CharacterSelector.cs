@@ -26,6 +26,9 @@ namespace TwelveTails.Gameplay
             if (prefab == null) prefab = Resources.Load<GameObject>($"Characters/{title}");
             visual = prefab != null ? Instantiate(prefab, transform) : ProceduralCharacter.Create(CharacterRoster.Ids[selected], transform);
             visual.name = "Character Visual";
+            var legacyAnimation = visual.GetComponentInChildren<Animation>(true);
+            if (legacyAnimation != null && legacyAnimation.GetComponent<LegacyAnimationDriver>() == null)
+                legacyAnimation.gameObject.AddComponent<LegacyAnimationDriver>();
             PlayerPrefs.SetString(PreferenceKey, CharacterRoster.Ids[selected]);
             PlayerPrefs.Save();
         }
