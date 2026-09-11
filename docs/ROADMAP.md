@@ -68,6 +68,7 @@ Progress:
 - [x] Import, convert, and validate the original M101 Carron Harvest map pilot, including terrain, colliders, and scene meshes.
 - [x] Repair M101's legacy static-batched gate and fence renderers with their original individual meshes for Unity 6.
 - [x] Audit all 211 exported legacy scenes and classify Unity 6 migration risks per scene, including the 60-file gap against the 271 original player levels.
+- [x] Add batch scene/glob imports with static-batch mesh recovery and import the complete Chapter 1 dependency closure for Unity validation.
 - [x] Extract the original Carron as a reusable monster prefab and wire it into the playable combat, quest reward, and save loop without duplicate scene monsters.
 - [ ] Expand the private production-asset migration to the remaining maps, monsters, equipment variants, animation clips, VFX, and LODs.
 

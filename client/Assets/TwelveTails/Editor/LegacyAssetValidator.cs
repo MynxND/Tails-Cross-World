@@ -510,5 +510,107 @@ namespace TwelveTails.EditorTools
             }
             return depth;
         }
+
+        [MenuItem("12 Tails/Validate Imported Chapter 1 Scenes")]
+        public static void ValidateImportedChapterOneScenes()
+        {
+            const string folder = "Assets/TwelveTails/LegacyPrivate/Scene";
+            var scenePaths = AssetDatabase.FindAssets("t:Scene", new[] { folder })
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(path => Path.GetFileName(path).StartsWith("M1", System.StringComparison.OrdinalIgnoreCase))
+                .OrderBy(path => path)
+                .ToArray();
+            var report = new List<string>
+            {
+                "Twelve Tails imported Chapter 1 scene validation",
+                $"Unity: {Application.unityVersion}",
+                $"scenes={scenePaths.Length}"
+            };
+            var failures = 0;
+            foreach (var path in scenePaths)
+            {
+                var scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
+                var roots = scene.GetRootGameObjects();
+                var filters = roots.SelectMany(root => root.GetComponentsInChildren<MeshFilter>(true)).ToArray();
+                var skinned = roots.SelectMany(root => root.GetComponentsInChildren<SkinnedMeshRenderer>(true)).ToArray();
+                var renderers = roots.SelectMany(root => root.GetComponentsInChildren<Renderer>(true)).ToArray();
+                var materials = renderers.SelectMany(renderer => renderer.sharedMaterials)
+                    .Where(material => material != null).Distinct().ToArray();
+                var missingMeshComponents = filters.Where(filter => filter.sharedMesh == null).Cast<Component>()
+                    .Concat(skinned.Where(renderer => renderer.sharedMesh == null)).ToArray();
+                var missingMeshes = missingMeshComponents.Length;
+                var expectedDynamicMeshes = missingMeshComponents.Count(component => IsExpectedDynamicMesh(component.transform));
+                var unexplainedMissingMeshes = missingMeshes - expectedDynamicMeshes;
+                var missingMaterialRenderers = renderers
+                    .Where(renderer => renderer.sharedMaterials.Any(material => material == null)).ToArray();
+                var missingMaterialSlots = missingMaterialRenderers.Sum(renderer =>
+                    renderer.sharedMaterials.Count(material => material == null));
+                var runtimeMaterialSlots = missingMaterialRenderers
+                    .Where(renderer => IsRuntimeAssignedCharacterMaterial(renderer.transform))
+                    .Sum(renderer => renderer.sharedMaterials.Count(material => material == null));
+                var unexplainedMaterialSlots = missingMaterialSlots - runtimeMaterialSlots;
+                var unsupportedMaterials = materials.Count(material => material.shader == null ||
+                    material.shader.name == "Hidden/InternalErrorShader" || !material.shader.isSupported);
+                var missingScripts = roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true))
+                    .Sum(transform => GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(transform.gameObject));
+                var terrains = roots.SelectMany(root => root.GetComponentsInChildren<Terrain>(true)).Count();
+                var hasExpectedRepairs = expectedDynamicMeshes > 0 || runtimeMaterialSlots > 0 ||
+                                         missingScripts > 0 || unsupportedMaterials > 0;
+                var status = unexplainedMissingMeshes == 0 && unexplainedMaterialSlots == 0
+                    ? (hasExpectedRepairs ? "PASS_WITH_REPAIRS" : "PASS")
+                    : "FAIL";
+                if (status == "FAIL") failures++;
+                report.Add($"{status} {Path.GetFileName(path)}: roots={roots.Length}, renderers={renderers.Length}, " +
+                           $"meshes={filters.Length + skinned.Length}, missingMeshes={missingMeshes}, " +
+                           $"expectedDynamicMeshes={expectedDynamicMeshes}, unexplainedMissingMeshes={unexplainedMissingMeshes}, " +
+                           $"materials={materials.Length}, missingMaterialSlots={missingMaterialSlots}, " +
+                           $"runtimeMaterialSlots={runtimeMaterialSlots}, unexplainedMaterialSlots={unexplainedMaterialSlots}, " +
+                           $"unsupportedMaterials={unsupportedMaterials}, missingScripts={missingScripts}, terrains={terrains}");
+                foreach (var filter in filters.Where(filter => filter.sharedMesh == null))
+                    report.Add($"  {(IsExpectedDynamicMesh(filter.transform) ? "DYNAMIC_MESH_REBUILD" : "MISSING_MESH")} " +
+                               $"{HierarchyPath(filter.transform)} (MeshFilter)");
+                foreach (var renderer in skinned.Where(renderer => renderer.sharedMesh == null))
+                    report.Add($"  {(IsExpectedDynamicMesh(renderer.transform) ? "DYNAMIC_MESH_REBUILD" : "MISSING_MESH")} " +
+                               $"{HierarchyPath(renderer.transform)} (SkinnedMeshRenderer)");
+                foreach (var renderer in missingMaterialRenderers)
+                    report.Add($"  {(IsRuntimeAssignedCharacterMaterial(renderer.transform) ? "RUNTIME_CHARACTER_MATERIAL" : "MISSING_MATERIAL")} " +
+                               $"{HierarchyPath(renderer.transform)} " +
+                               $"slots={renderer.sharedMaterials.Count(material => material == null)}");
+            }
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            var repositoryRoot = Directory.GetParent(Application.dataPath)?.Parent?.FullName ?? ".";
+            var artifactDirectory = Path.Combine(repositoryRoot, "artifacts");
+            Directory.CreateDirectory(artifactDirectory);
+            var reportPath = Path.Combine(artifactDirectory, "legacy-chapter-1-unity-validation.txt");
+            File.WriteAllLines(reportPath, report);
+            Debug.Log(string.Join("\n", report));
+            if (scenePaths.Length != 11 || failures > 0)
+                throw new System.Exception($"Imported Chapter 1 validation failed. See {reportPath}");
+        }
+
+        private static string HierarchyPath(Transform transform)
+        {
+            var parts = new List<string>();
+            while (transform != null)
+            {
+                parts.Add(transform.name);
+                transform = transform.parent;
+            }
+            parts.Reverse();
+            return string.Join("/", parts);
+        }
+
+        private static bool IsExpectedDynamicMesh(Transform transform)
+        {
+            return transform.name == "LineEmitter" || transform.name == "ImageEmitter" ||
+                   transform.name == "TrailEmitter" || transform.name == "ImageEffect" ||
+                   transform.name == "ZodiacRing";
+        }
+
+        private static bool IsRuntimeAssignedCharacterMaterial(Transform transform)
+        {
+            var path = HierarchyPath(transform);
+            return path.Contains("/NPC/") && transform.name.EndsWith("_tri", System.StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

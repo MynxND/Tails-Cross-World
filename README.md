@@ -49,6 +49,8 @@ python tools/audit_legacy_scenes.py --export-project "D:\path\to\ExportedProject
 
 The audit reports scene coverage, dependency integrity, legacy static batching, terrain, lightmaps, runtime scripts, animations, particles, audio, and structure-visibility risks. Use its per-scene CSV as the migration checklist before generating Unity 6 prefabs.
 
+Use `--entry-glob` to plan or copy a complete scene group. `--include-static-batch-meshes` recovers likely individual visual meshes that old Unity scenes omitted from their direct GUID dependencies. Add `--manifest` to retain the exact entry, dependency, missing-GUID, and static-mesh plan before copying.
+
 Regenerate all original Blender character sources and Unity FBX imports with:
 
 ```powershell
