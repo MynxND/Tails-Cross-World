@@ -51,6 +51,8 @@ The audit reports scene coverage, dependency integrity, legacy static batching, 
 
 Use `--entry-glob` to plan or copy a complete scene group. `--include-static-batch-meshes` recovers likely individual visual meshes that old Unity scenes omitted from their direct GUID dependencies. Add `--manifest` to retain the exact entry, dependency, missing-GUID, and static-mesh plan before copying.
 
+After importing the Chapter 1 closure, run `12 Tails > Generate Chapter 1 Environment Prefabs` in Unity. The converter repairs matched combined meshes, converts materials to URP, removes legacy runtime scripts, and separates NPC/effect containers from the reusable environment prefabs.
+
 Regenerate all original Blender character sources and Unity FBX imports with:
 
 ```powershell

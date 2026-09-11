@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -611,6 +612,164 @@ namespace TwelveTails.EditorTools
         {
             var path = HierarchyPath(transform);
             return path.Contains("/NPC/") && transform.name.EndsWith("_tri", System.StringComparison.OrdinalIgnoreCase);
+        }
+
+        [MenuItem("12 Tails/Generate Chapter 1 Environment Prefabs")]
+        public static void GenerateChapterOneEnvironmentPrefabs()
+        {
+            const string sourceFolder = "Assets/TwelveTails/LegacyPrivate/Scene";
+            const string privateRoot = "Assets/TwelveTails/LegacyPrivate";
+            const string generatedRoot = privateRoot + "/Generated";
+            const string materialRoot = generatedRoot + "/Chapter1Materials";
+            const string sceneRoot = privateRoot + "/Scenes/Chapter1";
+            const string resourceRoot = privateRoot + "/Resources";
+            const string environmentRoot = resourceRoot + "/OriginalChapter1Maps";
+            EnsureFolder(privateRoot, "Generated");
+            EnsureFolder(generatedRoot, "Chapter1Materials");
+            EnsureFolder(privateRoot, "Scenes");
+            EnsureFolder(privateRoot + "/Scenes", "Chapter1");
+            EnsureFolder(privateRoot, "Resources");
+            EnsureFolder(resourceRoot, "OriginalChapter1Maps");
+
+            var scenePaths = AssetDatabase.FindAssets("t:Scene", new[] { sourceFolder })
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(path => Path.GetFileName(path).StartsWith("M1", System.StringComparison.OrdinalIgnoreCase))
+                .OrderBy(path => path)
+                .ToArray();
+            if (scenePaths.Length != 11) throw new System.Exception($"Expected 11 Chapter 1 scene files, found {scenePaths.Length}");
+            var report = new List<string>
+            {
+                "Twelve Tails Chapter 1 environment generation",
+                $"Unity: {Application.unityVersion}",
+                $"scenes={scenePaths.Length}"
+            };
+            foreach (var sourcePath in scenePaths)
+            {
+                var scene = EditorSceneManager.OpenScene(sourcePath, OpenSceneMode.Single);
+                var roots = scene.GetRootGameObjects();
+                foreach (var root in roots)
+                {
+                    RemoveMissingScripts(root);
+                    ConvertMaterials(root, Path.GetFileNameWithoutExtension(sourcePath), materialRoot);
+                }
+                var staticRepairs = RepairStaticBatchedMeshes(roots);
+                var title = Path.GetFileNameWithoutExtension(sourcePath);
+                var convertedPath = $"{sceneRoot}/{title}_URP.unity";
+                EditorSceneManager.SaveScene(scene, convertedPath, true);
+
+                var sourceRoot = roots.FirstOrDefault(root => root.name == "SceneObjects" || root.name == "SceneObject");
+                if (sourceRoot == null) throw new System.Exception($"{title} has no SceneObjects root");
+                var environment = Object.Instantiate(sourceRoot);
+                environment.name = title;
+                var removedContainers = environment.GetComponentsInChildren<Transform>(true)
+                    .Where(item => item != environment.transform && IsDynamicSceneContainer(item.name))
+                    .OrderByDescending(HierarchyDepth)
+                    .ToArray();
+                foreach (var container in removedContainers) Object.DestroyImmediate(container.gameObject);
+                var dynamicMeshPlaceholders = environment.GetComponentsInChildren<MeshFilter>(true)
+                    .Where(filter => filter.sharedMesh == null && IsExpectedDynamicMesh(filter.transform))
+                    .Select(filter => filter.gameObject)
+                    .Distinct()
+                    .ToArray();
+                foreach (var placeholder in dynamicMeshPlaceholders) Object.DestroyImmediate(placeholder);
+                RemoveMissingScripts(environment);
+                var prefabPath = $"{environmentRoot}/{title}.prefab";
+                PrefabUtility.SaveAsPrefabAsset(environment, prefabPath);
+                var renderers = environment.GetComponentsInChildren<Renderer>(true);
+                var missingMeshes = environment.GetComponentsInChildren<MeshFilter>(true).Count(filter => filter.sharedMesh == null) +
+                                    environment.GetComponentsInChildren<SkinnedMeshRenderer>(true).Count(renderer => renderer.sharedMesh == null);
+                var missingMaterials = renderers.Sum(renderer => renderer.sharedMaterials.Count(material => material == null));
+                var unsupportedMaterials = renderers.SelectMany(renderer => renderer.sharedMaterials)
+                    .Where(material => material != null).Distinct()
+                    .Count(material => material.shader == null || !material.shader.isSupported ||
+                                       material.shader.name == "Hidden/InternalErrorShader");
+                var missingScripts = environment.GetComponentsInChildren<Transform>(true)
+                    .Sum(item => GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(item.gameObject));
+                report.Add($"{title}: staticRepairs={staticRepairs}, removedDynamicContainers={removedContainers.Length}, " +
+                           $"removedDynamicMeshPlaceholders={dynamicMeshPlaceholders.Length}, " +
+                           $"renderers={renderers.Length}, missingMeshes={missingMeshes}, missingMaterials={missingMaterials}, " +
+                           $"unsupportedMaterials={unsupportedMaterials}, missingScripts={missingScripts}, prefab={prefabPath}");
+                Object.DestroyImmediate(environment);
+            }
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            var repositoryRoot = Directory.GetParent(Application.dataPath)?.Parent?.FullName ?? ".";
+            var artifactDirectory = Path.Combine(repositoryRoot, "artifacts");
+            Directory.CreateDirectory(artifactDirectory);
+            var reportPath = Path.Combine(artifactDirectory, "legacy-chapter-1-environment-generation.txt");
+            File.WriteAllLines(reportPath, report);
+            Debug.Log(string.Join("\n", report));
+            if (report.Skip(3).Any(line => !line.Contains("missingMeshes=0") ||
+                                                   !line.Contains("missingMaterials=0") ||
+                                                   !line.Contains("unsupportedMaterials=0") ||
+                                                   !line.Contains("missingScripts=0")))
+                throw new System.Exception($"Chapter 1 environment generation failed. See {reportPath}");
+        }
+
+        private static bool IsDynamicSceneContainer(string name)
+        {
+            return name.Equals("NPC", System.StringComparison.OrdinalIgnoreCase) ||
+                   name.Equals("Icons", System.StringComparison.OrdinalIgnoreCase) ||
+                   name.Equals("TestControl", System.StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static int RepairStaticBatchedMeshes(IEnumerable<GameObject> roots)
+        {
+            const string meshFolder = "Assets/TwelveTails/LegacyPrivate/Mesh";
+            var catalog = AssetDatabase.FindAssets("t:Mesh", new[] { meshFolder })
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Distinct()
+                .Where(path => !IsCollisionMeshPath(path))
+                .Select(path => AssetDatabase.LoadAssetAtPath<Mesh>(path))
+                .Where(mesh => mesh != null && !mesh.name.StartsWith("Combined Mesh", System.StringComparison.OrdinalIgnoreCase))
+                .Distinct()
+                .ToArray();
+            var repairs = 0;
+            foreach (var filter in roots.SelectMany(root => root.GetComponentsInChildren<MeshFilter>(true)))
+            {
+                if (filter.sharedMesh == null ||
+                    !filter.sharedMesh.name.StartsWith("Combined Mesh", System.StringComparison.OrdinalIgnoreCase)) continue;
+                var objectKey = NormalizedMeshName(filter.name);
+                var objectBase = Regex.Replace(objectKey, "[0-9]+$", string.Empty);
+                var ranked = catalog.Select(mesh => new
+                    {
+                        Mesh = mesh,
+                        Key = NormalizedMeshName(mesh.name)
+                    })
+                    .Select(item => new
+                    {
+                        item.Mesh,
+                        Score = item.Key == objectKey ? 4 :
+                            item.Key == objectBase ? 3 :
+                            item.Key.EndsWith(objectKey, System.StringComparison.Ordinal) ? 2 :
+                            Regex.Replace(item.Key, "[0-9]+$", string.Empty) == objectBase ? 1 : 0
+                    })
+                    .Where(item => item.Score > 0)
+                    .OrderByDescending(item => item.Score)
+                    .ThenBy(item => item.Mesh.name)
+                    .ToArray();
+                if (ranked.Length == 0) throw new System.Exception($"No individual mesh matches static object {HierarchyPath(filter.transform)}");
+                var best = ranked.Where(item => item.Score == ranked[0].Score).ToArray();
+                if (best.Length != 1)
+                    throw new System.Exception($"Ambiguous individual meshes for {HierarchyPath(filter.transform)}: " +
+                                               string.Join(",", best.Select(item => item.Mesh.name)));
+                filter.sharedMesh = best[0].Mesh;
+                repairs++;
+            }
+            return repairs;
+        }
+
+        private static string NormalizedMeshName(string value)
+        {
+            value = Regex.Replace(value, @"(?i)(^|[^a-z0-9])(tri|model|collision|collider|n)(?=$|[^a-z0-9])", " ");
+            return new string(value.Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant).ToArray());
+        }
+
+        private static bool IsCollisionMeshPath(string path)
+        {
+            var name = Path.GetFileNameWithoutExtension(path).ToLowerInvariant();
+            return name.Contains("collision") || name.Contains("collider") || name.EndsWith("_c");
         }
     }
 }
