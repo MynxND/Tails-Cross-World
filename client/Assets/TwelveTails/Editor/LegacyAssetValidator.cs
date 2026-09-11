@@ -329,6 +329,7 @@ namespace TwelveTails.EditorTools
                 RemoveMissingScripts(root);
                 ConvertMaterials(root, "M101", materialRoot);
             }
+            RepairM101StaticBatchedStructures(scene.GetRootGameObjects());
 
             var carronCandidates = scene.GetRootGameObjects()
                 .SelectMany(root => root.GetComponentsInChildren<Transform>(true))
@@ -391,6 +392,26 @@ namespace TwelveTails.EditorTools
                 "Assets/TwelveTails/LegacyPrivate/Resources/OriginalMaps/M101_CarronHarvest.prefab");
             var environmentCarrons = environment == null ? -1 : environment.GetComponentsInChildren<Transform>(true)
                 .Count(item => item.name == "Carron");
+            var environmentStructures = environment == null
+                ? System.Array.Empty<Transform>()
+                : environment.GetComponentsInChildren<Transform>(true)
+                    .Where(item => item.name == "Plain_Gate" || item.name == "Plain_Fence_short" ||
+                                   item.name == "Plain_Fence_long").ToArray();
+            var environmentGates = environmentStructures.Count(item => item.name == "Plain_Gate");
+            var environmentShortFences = environmentStructures.Count(item => item.name == "Plain_Fence_short");
+            var environmentLongFences = environmentStructures.Count(item => item.name == "Plain_Fence_long");
+            var invalidStructureMeshes = environmentStructures.Count(item =>
+            {
+                var filter = item.GetComponent<MeshFilter>();
+                if (filter == null || filter.sharedMesh == null) return true;
+                return item.name switch
+                {
+                    "Plain_Gate" => filter.sharedMesh.name != "Plain_Gate_tri",
+                    "Plain_Fence_short" => filter.sharedMesh.name != "PlainFence_short",
+                    "Plain_Fence_long" => filter.sharedMesh.name != "PlainFence_long",
+                    _ => true
+                };
+            });
             var carronPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(
                 "Assets/TwelveTails/LegacyPrivate/Resources/OriginalMonsters/Carron.prefab");
             var carronRenderers = carronPrefab == null
@@ -423,6 +444,10 @@ namespace TwelveTails.EditorTools
                 $"terrains={terrains.Length}",
                 $"sourceCarrons={sourceCarrons}",
                 $"environmentCarrons={environmentCarrons}",
+                $"environmentGates={environmentGates}",
+                $"environmentShortFences={environmentShortFences}",
+                $"environmentLongFences={environmentLongFences}",
+                $"invalidStructureMeshes={invalidStructureMeshes}",
                 $"carronPrefabRenderers={carronRenderers.Length}",
                 $"carronPrefabMaterials={carronMaterials.Length}",
                 $"carronPrefabUnsupportedMaterials={carronBadMaterials}",
@@ -447,8 +472,32 @@ namespace TwelveTails.EditorTools
             if (renderers.Length == 0 || meshes.Length == 0 || colliders.Length == 0 || terrains.Length == 0 ||
                 sourceCarrons == 0 || environmentCarrons != 0 || carronRenderers.Length == 0 ||
                 carronMaterials.Length == 0 || carronBadMaterials > 0 || carronAnimationClips == 0 ||
-                badMaterials > 0)
+                environmentGates != 3 || environmentShortFences != 14 || environmentLongFences != 6 ||
+                invalidStructureMeshes > 0 || badMaterials > 0)
                 throw new System.Exception($"Original M101 map validation failed. See {reportPath}");
+        }
+
+        private static void RepairM101StaticBatchedStructures(IEnumerable<GameObject> roots)
+        {
+            var meshes = new Dictionary<string, Mesh>
+            {
+                ["Plain_Gate"] = AssetDatabase.LoadAssetAtPath<Mesh>(
+                    "Assets/TwelveTails/LegacyPrivate/Mesh/Plain_Gate_tri.asset"),
+                ["Plain_Fence_short"] = AssetDatabase.LoadAssetAtPath<Mesh>(
+                    "Assets/TwelveTails/LegacyPrivate/Mesh/PlainFence_short.asset"),
+                ["Plain_Fence_long"] = AssetDatabase.LoadAssetAtPath<Mesh>(
+                    "Assets/TwelveTails/LegacyPrivate/Mesh/PlainFence_long.asset")
+            };
+            if (meshes.Values.Any(mesh => mesh == null))
+                throw new System.Exception("M101 individual gate/fence meshes are missing");
+
+            foreach (var transform in roots.SelectMany(root => root.GetComponentsInChildren<Transform>(true)))
+            {
+                if (!meshes.TryGetValue(transform.name, out var mesh)) continue;
+                var filter = transform.GetComponent<MeshFilter>();
+                if (filter == null) throw new System.Exception($"{transform.name} is missing its MeshFilter");
+                filter.sharedMesh = mesh;
+            }
         }
 
         private static int HierarchyDepth(Transform transform)

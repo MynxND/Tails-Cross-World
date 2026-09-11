@@ -66,6 +66,7 @@ Progress:
 - [x] Add a private GUID-closure importer for assets from the user's original installation without committing them to Git.
 - [x] Import and validate the original 12 character models, convert their default materials to URP, and restore Cat's default hair accessory.
 - [x] Import, convert, and validate the original M101 Carron Harvest map pilot, including terrain, colliders, and scene meshes.
+- [x] Repair M101's legacy static-batched gate and fence renderers with their original individual meshes for Unity 6.
 - [x] Extract the original Carron as a reusable monster prefab and wire it into the playable combat, quest reward, and save loop without duplicate scene monsters.
 - [ ] Expand the private production-asset migration to the remaining maps, monsters, equipment variants, animation clips, VFX, and LODs.
 
