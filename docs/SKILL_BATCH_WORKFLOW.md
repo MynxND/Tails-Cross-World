@@ -112,10 +112,17 @@ Implemented and committed:
 - Mole stun grenade base AoE, without conditional Smart Shell stun: `1b03c99`.
 - Wolf Blade Fang level-one multi-hit timing: `9ad55c0`.
 
+Implemented in the current batch:
+
+- Evidence catalog completed for the remaining nine characters.
+- Shared oriented-area, explicit-hit-schedule, multi-target, and collider-deduplication primitives.
+- Panda Three Steps level-one timing and animation binding.
+- Generic input `4` character-skill slot resolved from catalog ownership.
+
 Current full validation baseline:
 
-- Repository Python/content/protocol/policy checks: `45/45`.
-- Unity gameplay EditMode tests: `39/39`.
+- Repository Python/content/protocol/policy checks: `48/48`.
+- Unity gameplay EditMode tests: `45/45`.
 - Combined Windows build: `client/Builds/Windows/TwelveTailsPrototype.exe`.
 
-Next work should begin with Batch A for the remaining nine characters, then identify the smallest set of missing runtime primitives before editing individual skill records.
+Next work should continue Batch B with grouped primitives for charge, cast phases, persistent projectiles, traps/statuses, defensive blocks, spawned/channelled areas, and summons. Promote dependent skill records only after the relevant primitive has focused coverage.

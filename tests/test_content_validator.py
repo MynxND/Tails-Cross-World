@@ -68,6 +68,28 @@ class ContentValidatorTests(unittest.TestCase):
             with self.assertRaisesRegex(ContentError, "hit sequence outside"):
                 validate(root)
 
+    def test_explicit_hit_schedule_must_match_count(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in self.CONTENT_FILES:
+                data = json.loads((Path("content/v1") / name).read_text(encoding="utf-8"))
+                if name == "skills.json":
+                    data["skills"][-1]["hit_times_seconds"] = [0.4, 0.7]
+                (root / name).write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaisesRegex(ContentError, "invalid explicit hit schedule"):
+                validate(root)
+
+    def test_oriented_target_requires_positive_dimensions(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in self.CONTENT_FILES:
+                data = json.loads((Path("content/v1") / name).read_text(encoding="utf-8"))
+                if name == "skills.json":
+                    data["skills"][0]["target_shape"] = "oriented_box"
+                (root / name).write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaisesRegex(ContentError, "incomplete oriented target dimensions"):
+                validate(root)
+
     def test_mission_objective_count_must_match_actor_positions(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

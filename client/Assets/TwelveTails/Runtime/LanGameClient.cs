@@ -95,7 +95,7 @@ namespace TwelveTails.Gameplay
             if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame) SendSkill("skill.basic_slash");
             else if (keyboard != null && keyboard.digit2Key.wasPressedThisFrame) SendSkill("skill.power_strike");
             else if (keyboard != null && keyboard.digit3Key.wasPressedThisFrame) SendSkill("skill.class_special");
-            else if (keyboard != null && keyboard.digit4Key.wasPressedThisFrame) SendSkill("skill.mole_stun_grenade");
+            else if (keyboard != null && keyboard.digit4Key.wasPressedThisFrame) SendCharacterSkill();
             else if (keyboard != null && keyboard.digit5Key.wasPressedThisFrame) SendSkill("skill.blade_fang");
             else if (direction.sqrMagnitude > 0)
                 Send(new Request { kind = "move", token = token, sequence = ++sequence, direction = new[] { direction.x, direction.y, direction.z } });
@@ -107,7 +107,6 @@ namespace TwelveTails.Gameplay
             var selector = GetComponent<CharacterSelector>();
             var skills = GetComponent<SkillExecutor>();
             var characterId = selector == null ? "wolf" : selector.SelectedId;
-            if (inputSkillId == "skill.mole_stun_grenade" && characterId != "mole") return;
             if (inputSkillId == "skill.blade_fang" && characterId != "wolf") return;
             Send(new Request
             {
@@ -120,6 +119,13 @@ namespace TwelveTails.Gameplay
                 aim = new[] { transform.forward.x, transform.forward.y, transform.forward.z },
                 sequence = ++sequence
             });
+        }
+
+        private void SendCharacterSkill()
+        {
+            var skills = GetComponent<SkillExecutor>();
+            var skillId = skills == null ? string.Empty : skills.ResolveCharacterSkillId();
+            if (!string.IsNullOrEmpty(skillId)) SendSkill(skillId);
         }
 
         private void OnGUI()

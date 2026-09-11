@@ -78,12 +78,17 @@ namespace TwelveTails.EditorTools
             public float hit_delay_seconds;
             public int hit_count;
             public float hit_interval_seconds;
+            public float[] hit_times_seconds = Array.Empty<float>();
             public float action_duration_seconds;
             public float combo_window_start_seconds;
             public float combo_window_end_seconds;
             public string combo_next_skill_id = string.Empty;
             public int resource_cost;
             public float range;
+            public string target_shape = "sphere";
+            public float target_width;
+            public float target_height;
+            public int max_targets = 1;
             public float projectile_speed;
             public float projectile_lifetime_seconds;
             public float projectile_homing_radians_per_second;
@@ -632,12 +637,17 @@ namespace TwelveTails.EditorTools
                 hitDelaySeconds = skill.hit_delay_seconds,
                 hitCount = skill.hit_count,
                 hitIntervalSeconds = skill.hit_interval_seconds,
+                hitTimesSeconds = skill.hit_times_seconds,
                 actionDurationSeconds = skill.action_duration_seconds,
                 comboWindowStartSeconds = skill.combo_window_start_seconds,
                 comboWindowEndSeconds = skill.combo_window_end_seconds,
                 comboNextSkillId = skill.combo_next_skill_id,
                 resourceCost = skill.resource_cost,
                 range = skill.range,
+                targetShape = skill.target_shape,
+                targetWidth = skill.target_width,
+                targetHeight = skill.target_height,
+                maxTargets = skill.max_targets,
                 projectileSpeed = skill.projectile_speed,
                 projectileLifetimeSeconds = skill.projectile_lifetime_seconds,
                 projectileHomingRadiansPerSecond = skill.projectile_homing_radians_per_second,

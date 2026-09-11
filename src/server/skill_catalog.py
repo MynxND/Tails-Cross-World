@@ -14,8 +14,13 @@ class ServerSkill:
     damage: int
     cooldown_seconds: float
     hit_count: int
+    hit_times_seconds: tuple[float, ...]
     resource_cost: int
     range: float
+    target_shape: str
+    target_width: float
+    target_height: float
+    max_targets: int
     impact_radius: float
 
 
@@ -32,8 +37,13 @@ def load_skill_catalog(path: Path | None = None) -> dict[str, ServerSkill]:
             damage=raw["damage"],
             cooldown_seconds=raw["cooldown_seconds"],
             hit_count=raw["hit_count"],
+            hit_times_seconds=tuple(raw["hit_times_seconds"]),
             resource_cost=raw["resource_cost"],
             range=raw["range"],
+            target_shape=raw["target_shape"],
+            target_width=raw["target_width"],
+            target_height=raw["target_height"],
+            max_targets=raw["max_targets"],
             impact_radius=raw["impact_radius"],
         )
         if skill.skill_id in catalog:

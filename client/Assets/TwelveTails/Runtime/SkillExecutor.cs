@@ -16,12 +16,17 @@ namespace TwelveTails.Gameplay
         public float hitDelaySeconds;
         public int hitCount = 1;
         public float hitIntervalSeconds;
+        public float[] hitTimesSeconds = Array.Empty<float>();
         public float actionDurationSeconds;
         public float comboWindowStartSeconds;
         public float comboWindowEndSeconds;
         public string comboNextSkillId = string.Empty;
         public int resourceCost;
         public float range;
+        public string targetShape = "sphere";
+        public float targetWidth;
+        public float targetHeight;
+        public int maxTargets = 1;
         public float projectileSpeed;
         public float projectileLifetimeSeconds;
         public float projectileHomingRadiansPerSecond;
@@ -61,6 +66,7 @@ namespace TwelveTails.Gameplay
         private float resourceRegenerationRemainder;
         private bool impactApplied;
         private int pendingHitCount;
+        private int pendingHitIndex;
 
         public int Resource => resource;
         public IReadOnlyList<SkillDefinition> Skills => skills;
@@ -103,7 +109,7 @@ namespace TwelveTails.Gameplay
             if (keyboard.digit1Key.wasPressedThisFrame) ExecuteSkill("skill.basic_slash");
             if (keyboard.digit2Key.wasPressedThisFrame) ExecuteSkill("skill.power_strike");
             if (keyboard.digit3Key.wasPressedThisFrame) ExecuteSkill("skill.class_special");
-            if (keyboard.digit4Key.wasPressedThisFrame) ExecuteSkill("skill.mole_stun_grenade");
+            if (keyboard.digit4Key.wasPressedThisFrame) ExecuteSkill(ResolveCharacterSkillId());
             if (keyboard.digit5Key.wasPressedThisFrame) ExecuteSkill("skill.blade_fang");
         }
 
@@ -157,15 +163,17 @@ namespace TwelveTails.Gameplay
             }
             activeSkill = definition;
             actionStartedAt = actionTime;
-            pendingHitAt = actionTime + definition.hitDelaySeconds;
+            pendingHitIndex = 0;
+            pendingHitAt = actionTime + NextHitTime(definition, pendingHitIndex);
             pendingHitCount = Mathf.Max(1, definition.hitCount);
             actionEndsAt = actionTime + actionDuration;
-            impactApplied = definition.hitDelaySeconds <= 0f;
+            impactApplied = NextHitTime(definition, pendingHitIndex) <= 0f;
             if (impactApplied)
             {
                 ApplyDamage(definition);
                 pendingHitCount--;
-                pendingHitAt += Mathf.Max(0f, definition.hitIntervalSeconds);
+                pendingHitIndex++;
+                pendingHitAt = actionTime + NextHitTime(definition, pendingHitIndex);
             }
             return true;
         }
@@ -179,7 +187,8 @@ namespace TwelveTails.Gameplay
                 impactApplied = true;
                 changed = ApplyDamage(activeSkill) || changed;
                 pendingHitCount--;
-                pendingHitAt += Mathf.Max(0.0001f, activeSkill.hitIntervalSeconds);
+                pendingHitIndex++;
+                pendingHitAt = actionStartedAt + NextHitTime(activeSkill, pendingHitIndex);
             }
             if (actionTime < actionEndsAt) return changed;
             var nextSkill = queuedSkill;
@@ -216,6 +225,7 @@ namespace TwelveTails.Gameplay
             actionEndsAt = 0f;
             impactApplied = false;
             pendingHitCount = 0;
+            pendingHitIndex = 0;
             if (completedSkill != null) SkillEnded?.Invoke(completedSkill);
         }
 
@@ -243,6 +253,19 @@ namespace TwelveTails.Gameplay
             return inputSkillId;
         }
 
+        public string ResolveCharacterSkillId()
+        {
+            var selector = GetComponent<CharacterSelector>();
+            return ResolveCharacterSkillId(selector == null ? string.Empty : selector.SelectedId);
+        }
+
+        public string ResolveCharacterSkillId(string characterId)
+        {
+            foreach (var skill in skills)
+                if (skill != null && skill.characterId == characterId) return skill.id;
+            return string.Empty;
+        }
+
         private string ResolveAnimationClip(SkillDefinition definition)
         {
             var selector = GetComponent<CharacterSelector>();
@@ -257,32 +280,54 @@ namespace TwelveTails.Gameplay
         {
             SkillReleased?.Invoke(definition);
             if (definition.projectileSpeed > 0f) return SpawnProjectile(definition);
-            var center = transform.position + transform.forward * (definition.range * .6f);
-            foreach (var collider in Physics.OverlapSphere(center, definition.range, targetMask, QueryTriggerInteraction.Collide))
+            var hitTargets = new HashSet<Health>();
+            var applied = false;
+            foreach (var collider in FindTargets(definition))
             {
                 var enemy = collider.GetComponentInParent<EnemyTarget>();
-                if (enemy != null && !enemy.Health.IsDefeated)
+                if (enemy != null && !enemy.Health.IsDefeated && hitTargets.Add(enemy.Health))
                 {
                     enemy.TakeHit(definition.damage);
                     ApplyStatus(enemy.Health, definition);
-                    return true;
+                    applied = true;
                 }
                 var knockout = collider.GetComponentInParent<KnockoutObjectiveTarget>();
-                if (knockout != null && !knockout.Health.IsDefeated)
+                if (knockout != null && !knockout.Health.IsDefeated && hitTargets.Add(knockout.Health))
                 {
                     knockout.TakeHit(definition.damage);
                     ApplyStatus(knockout.Health, definition);
-                    return true;
+                    applied = true;
                 }
                 var mupo = collider.GetComponentInParent<MupoHerdTarget>();
-                if (mupo != null && !mupo.Health.IsDefeated)
+                if (mupo != null && !mupo.Health.IsDefeated && hitTargets.Add(mupo.Health))
                 {
                     mupo.Health.ApplyDamage(definition.damage);
                     ApplyStatus(mupo.Health, definition);
-                    return true;
+                    applied = true;
                 }
+                if (applied && definition.maxTargets > 0 && hitTargets.Count >= definition.maxTargets) break;
             }
-            return false;
+            return applied;
+        }
+
+        private static float NextHitTime(SkillDefinition definition, int hitIndex)
+        {
+            if (definition.hitTimesSeconds != null && hitIndex < definition.hitTimesSeconds.Length)
+                return Mathf.Max(0f, definition.hitTimesSeconds[hitIndex]);
+            return definition.hitDelaySeconds + Mathf.Max(0f, definition.hitIntervalSeconds) * hitIndex;
+        }
+
+        private Collider[] FindTargets(SkillDefinition definition)
+        {
+            if (definition.targetShape == "oriented_box")
+            {
+                var center = transform.position + transform.forward * (definition.range * .5f);
+                var halfExtents = new Vector3(Mathf.Max(.05f, definition.targetWidth * .5f),
+                    Mathf.Max(.05f, definition.targetHeight * .5f), Mathf.Max(.05f, definition.range * .5f));
+                return Physics.OverlapBox(center, halfExtents, transform.rotation, targetMask, QueryTriggerInteraction.Collide);
+            }
+            return Physics.OverlapSphere(transform.position + transform.forward * (definition.range * .6f),
+                definition.range, targetMask, QueryTriggerInteraction.Collide);
         }
 
         private bool SpawnProjectile(SkillDefinition definition)

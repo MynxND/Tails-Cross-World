@@ -147,6 +147,7 @@ namespace TwelveTails.EditorTools
             var clipNames = new[] { basicAttack, "nAttack2", "cAttack1", "hit", "ko", "getUp" }.ToList();
             if (character == "Mole") clipNames.Add("grenade");
             if (character == "Wolf") clipNames.AddRange(new[] { "bladeFang1", "bladeFang2", "bladeFang3" });
+            if (character == "Panda") clipNames.Add("threeSteps");
             foreach (var clipName in clipNames)
             {
                 var clip = AssetDatabase.FindAssets($"{clipName} t:AnimationClip", new[] { "Assets/TwelveTails/LegacyPrivate/AnimationClip" })

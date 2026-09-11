@@ -682,6 +682,118 @@ namespace TwelveTails.Tests
             }
         }
 
+        [TestCase("mole", "skill.mole_stun_grenade")]
+        [TestCase("wolf", "skill.wolf_blade_fang")]
+        [TestCase("panda", "skill.panda_three_steps")]
+        [TestCase("cat", "")]
+        public void CharacterSkillSlotUsesCatalogOwnership(string characterId, string expectedSkillId)
+        {
+            var playerObject = new GameObject("Character Skill Resolver");
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition { id = "skill.mole_stun_grenade", characterId = "mole", range = 1f },
+                    new SkillDefinition { id = "skill.wolf_blade_fang", characterId = "wolf", range = 1f },
+                    new SkillDefinition { id = "skill.panda_three_steps", characterId = "panda", range = 1f }
+                });
+
+                Assert.That(executor.ResolveCharacterSkillId(characterId), Is.EqualTo(expectedSkillId));
+            }
+            finally
+            {
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
+        public void OrientedBoxTargetsOnlyTheConfiguredForwardVolume()
+        {
+            var playerObject = new GameObject("Oriented Skill User");
+            var frontObject = new GameObject("Front Target") { transform = { position = new Vector3(0f, 0f, 2f) } };
+            var sideObject = new GameObject("Side Target") { transform = { position = new Vector3(2f, 0f, 2f) } };
+            var rearObject = new GameObject("Rear Target") { transform = { position = new Vector3(0f, 0f, -1f) } };
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition
+                    {
+                        id = "skill.oriented", damage = 5, range = 4f, targetShape = "oriented_box",
+                        targetWidth = 2f, targetHeight = 2f, maxTargets = 0
+                    }
+                });
+                frontObject.AddComponent<SphereCollider>();
+                var frontHealth = frontObject.AddComponent<Health>();
+                frontHealth.Configure(10);
+                frontObject.AddComponent<EnemyTarget>();
+                sideObject.AddComponent<SphereCollider>();
+                var sideHealth = sideObject.AddComponent<Health>();
+                sideHealth.Configure(10);
+                sideObject.AddComponent<EnemyTarget>();
+                rearObject.AddComponent<SphereCollider>();
+                var rearHealth = rearObject.AddComponent<Health>();
+                rearHealth.Configure(10);
+                rearObject.AddComponent<EnemyTarget>();
+                Physics.SyncTransforms();
+
+                Assert.That(executor.ExecuteSkill("skill.oriented", 1f), Is.True);
+                Assert.That(frontHealth.Current, Is.EqualTo(5));
+                Assert.That(sideHealth.Current, Is.EqualTo(10));
+                Assert.That(rearHealth.Current, Is.EqualTo(10));
+            }
+            finally
+            {
+                Object.DestroyImmediate(frontObject);
+                Object.DestroyImmediate(sideObject);
+                Object.DestroyImmediate(rearObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
+        [Test]
+        public void ExplicitHitScheduleSupportsUnevenIntervals()
+        {
+            var playerObject = new GameObject("Scheduled Skill User");
+            var targetObject = new GameObject("Scheduled Target") { transform = { position = Vector3.forward } };
+            try
+            {
+                var executor = playerObject.AddComponent<SkillExecutor>();
+                executor.Configure(new[]
+                {
+                    new SkillDefinition
+                    {
+                        id = "skill.scheduled", damage = 3, range = 2f, hitDelaySeconds = .4f, hitCount = 3,
+                        hitTimesSeconds = new[] { .4f, .7f, 1.3f }, actionDurationSeconds = 1.4f
+                    }
+                });
+                targetObject.AddComponent<SphereCollider>();
+                var health = targetObject.AddComponent<Health>();
+                health.Configure(12);
+                targetObject.AddComponent<EnemyTarget>();
+                Physics.SyncTransforms();
+
+                Assert.That(executor.ExecuteSkill("skill.scheduled", 10f), Is.True);
+                executor.AdvanceAction(10.39f);
+                Assert.That(health.Current, Is.EqualTo(12));
+                executor.AdvanceAction(10.4f);
+                Assert.That(health.Current, Is.EqualTo(9));
+                executor.AdvanceAction(10.7f);
+                Assert.That(health.Current, Is.EqualTo(6));
+                executor.AdvanceAction(11.29f);
+                Assert.That(health.Current, Is.EqualTo(6));
+                executor.AdvanceAction(11.3f);
+                Assert.That(health.Current, Is.EqualTo(3));
+            }
+            finally
+            {
+                Object.DestroyImmediate(targetObject);
+                Object.DestroyImmediate(playerObject);
+            }
+        }
+
         [Test]
         public void SkillLifecycleRaisesPresentationHooksAtConfiguredTimes()
         {

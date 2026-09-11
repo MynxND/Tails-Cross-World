@@ -144,7 +144,7 @@ def _map(data: dict[str, Any]) -> None:
 
 
 def _skill(data: dict[str, Any]) -> None:
-    _exact_fields(data, {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
+    _exact_fields(data, {"skill_id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "hit_times_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "target_shape", "target_width", "target_height", "max_targets", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}, "data")
     _string(data["skill_id"], "data.skill_id", identifier=True)
     if data["character_id"]:
         _string(data["character_id"], "data.character_id", identifier=True)
@@ -157,6 +157,16 @@ def _skill(data: dict[str, Any]) -> None:
     _number(data["hit_delay_seconds"], "data.hit_delay_seconds", minimum=0.0, maximum=60.0)
     _integer(data["hit_count"], "data.hit_count", minimum=1, maximum=100)
     _number(data["hit_interval_seconds"], "data.hit_interval_seconds", minimum=0.0, maximum=60.0)
+    if not isinstance(data["hit_times_seconds"], list) or len(data["hit_times_seconds"]) not in {0, data["hit_count"]}:
+        raise ContractError("data.hit_times_seconds must be empty or match hit_count")
+    previous_hit_time = -1.0
+    for index, hit_time in enumerate(data["hit_times_seconds"]):
+        hit_time = _number(hit_time, f"data.hit_times_seconds[{index}]", minimum=0.0, maximum=60.0)
+        if hit_time <= previous_hit_time:
+            raise ContractError("data.hit_times_seconds must be strictly increasing")
+        previous_hit_time = hit_time
+    if data["hit_times_seconds"] and data["hit_times_seconds"][0] != data["hit_delay_seconds"]:
+        raise ContractError("data.hit_times_seconds must start at hit_delay_seconds")
     _number(data["action_duration_seconds"], "data.action_duration_seconds", minimum=0.0, maximum=60.0)
     _number(data["combo_window_start_seconds"], "data.combo_window_start_seconds", minimum=0.0, maximum=60.0)
     _number(data["combo_window_end_seconds"], "data.combo_window_end_seconds", minimum=0.0, maximum=60.0)
@@ -166,6 +176,13 @@ def _skill(data: dict[str, Any]) -> None:
         raise ContractError("data.combo_next_skill_id must be a string")
     _integer(data["resource_cost"], "data.resource_cost", maximum=100000)
     _number(data["range"], "data.range", minimum=0.1, maximum=100.0)
+    if data["target_shape"] not in {"sphere", "oriented_box"}:
+        raise ContractError("data.target_shape is unsupported")
+    target_width = _number(data["target_width"], "data.target_width", minimum=0.0, maximum=100.0)
+    target_height = _number(data["target_height"], "data.target_height", minimum=0.0, maximum=100.0)
+    if data["target_shape"] == "oriented_box" and (target_width == 0 or target_height == 0):
+        raise ContractError("data oriented target dimensions must be positive")
+    _integer(data["max_targets"], "data.max_targets", minimum=0, maximum=1000)
     _number(data["projectile_speed"], "data.projectile_speed", minimum=0.0, maximum=1000.0)
     _number(data["projectile_lifetime_seconds"], "data.projectile_lifetime_seconds", minimum=0.0, maximum=60.0)
     _number(data["projectile_homing_radians_per_second"], "data.projectile_homing_radians_per_second", minimum=0.0, maximum=100.0)

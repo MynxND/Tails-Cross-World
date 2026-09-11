@@ -172,7 +172,7 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has invalid damage")
         if not isinstance(skill.get("cooldown_seconds"), (int, float)) or skill["cooldown_seconds"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid cooldown")
-        expected_fields = {"id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}
+        expected_fields = {"id", "character_id", "name_key", "animation_clip", "damage", "cooldown_seconds", "hit_delay_seconds", "hit_count", "hit_interval_seconds", "hit_times_seconds", "action_duration_seconds", "combo_window_start_seconds", "combo_window_end_seconds", "combo_next_skill_id", "resource_cost", "range", "target_shape", "target_width", "target_height", "max_targets", "projectile_speed", "projectile_lifetime_seconds", "projectile_homing_radians_per_second", "impact_radius", "status_effect_id", "status_duration_seconds", "status_tick_seconds", "status_damage_per_tick", "status_movement_multiplier"}
         if set(skill) != expected_fields:
             raise ContentError(f"skill {skill.get('id')} has unsupported or missing fields")
         if not isinstance(skill["character_id"], str):
@@ -181,6 +181,11 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has unknown character")
         if not isinstance(skill["hit_count"], int) or skill["hit_count"] < 1 or not isinstance(skill["hit_interval_seconds"], (int, float)) or skill["hit_interval_seconds"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid hit sequence")
+        hit_times = skill["hit_times_seconds"]
+        if not isinstance(hit_times, list) or len(hit_times) not in {0, skill["hit_count"]} or any(not isinstance(value, (int, float)) or value < 0 for value in hit_times) or any(current <= previous for previous, current in zip(hit_times, hit_times[1:])):
+            raise ContentError(f"skill {skill.get('id')} has invalid explicit hit schedule")
+        if hit_times and hit_times[0] != skill["hit_delay_seconds"]:
+            raise ContentError(f"skill {skill.get('id')} has an explicit schedule inconsistent with hit delay")
         if not isinstance(skill["projectile_speed"], (int, float)) or skill["projectile_speed"] < 0 or not isinstance(skill["projectile_lifetime_seconds"], (int, float)) or skill["projectile_lifetime_seconds"] < 0 or not isinstance(skill["projectile_homing_radians_per_second"], (int, float)) or skill["projectile_homing_radians_per_second"] < 0:
             raise ContentError(f"skill {skill.get('id')} has invalid projectile configuration")
         if not isinstance(skill["impact_radius"], (int, float)) or skill["impact_radius"] < 0:
@@ -199,7 +204,7 @@ def validate(root: Path) -> None:
         combo_next = skill.get("combo_next_skill_id")
         if not isinstance(duration, (int, float)) or duration < skill["hit_delay_seconds"]:
             raise ContentError(f"skill {skill.get('id')} has invalid action duration")
-        final_hit = skill["hit_delay_seconds"] + skill["hit_interval_seconds"] * (skill["hit_count"] - 1)
+        final_hit = hit_times[-1] if hit_times else skill["hit_delay_seconds"] + skill["hit_interval_seconds"] * (skill["hit_count"] - 1)
         if final_hit > duration:
             raise ContentError(f"skill {skill.get('id')} has a hit sequence outside its action duration")
         if not isinstance(combo_start, (int, float)) or not isinstance(combo_end, (int, float)) or not 0 <= combo_start <= combo_end <= duration:
@@ -212,6 +217,14 @@ def validate(root: Path) -> None:
             raise ContentError(f"skill {skill.get('id')} has invalid resource cost")
         if not isinstance(skill.get("range"), (int, float)) or skill["range"] <= 0:
             raise ContentError(f"skill {skill.get('id')} has invalid range")
+        if skill["target_shape"] not in {"sphere", "oriented_box"}:
+            raise ContentError(f"skill {skill.get('id')} has invalid target shape")
+        if any(not isinstance(skill[field], (int, float)) or skill[field] < 0 for field in ("target_width", "target_height")):
+            raise ContentError(f"skill {skill.get('id')} has invalid target dimensions")
+        if skill["target_shape"] == "oriented_box" and (skill["target_width"] <= 0 or skill["target_height"] <= 0):
+            raise ContentError(f"skill {skill.get('id')} has incomplete oriented target dimensions")
+        if not isinstance(skill["max_targets"], int) or skill["max_targets"] < 0:
+            raise ContentError(f"skill {skill.get('id')} has invalid target limit")
     profile_ids = _ids(profiles.get("profiles", []), "animation profiles", "character_id")
     if profile_ids != EXPECTED_CHARACTERS:
         raise ContentError("animation profiles must cover all 12 characters")
