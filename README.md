@@ -1,5 +1,7 @@
 # 12 Tails Cross World
 
+See [`docs/HANDOFF.md`](docs/HANDOFF.md) for the current implementation status, local asset locations, validation results, and ordered continuation plan.
+
 Clean-room development workspace for a new game inspired by observed behavior of a privately held legacy reference build.
 
 The legacy executable, Unity data, saves, logs, extracted assets, and decompiler output are private evidence. They must never be committed. This repository starts with a deny-by-default `.gitignore`; only the clean-room documentation, inspector source, tests, and CI configuration are allowed.

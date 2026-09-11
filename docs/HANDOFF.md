@@ -1,0 +1,810 @@
+# 12 Tails Cross World - Development Handoff
+
+Last updated: 2026-09-11 (Asia/Bangkok)  
+Repository branch: `develop`  
+Latest implementation commit at handoff: `eee9585 Generate Chapter 1 environment prefabs`
+
+## 1. Objective and non-negotiable requirements
+
+The user is rebuilding the offline 12 Tails client as a maintainable Unity 6 game with a new authoritative server. Development is divided into phases. The immediate work is Phase 4: migrate the original production assets and make the chapters playable.
+
+The user explicitly requires the original character, monster, map, and environment assets wherever they exist. Do not replace them with newly invented lookalikes. Visual assets should match the installed offline game as closely as the extracted source permits. Runtime gameplay code is being reimplemented in C# because the original UnityScript and server are obsolete or unavailable.
+
+Keep these boundaries:
+
+- Treat the original installation and AssetRipper export as read-only evidence.
+- Never execute legacy scripts as part of inspection or import.
+- Never commit original binaries, extracted assets, saves, logs, reports, or private asset payloads.
+- Store imported production assets only under `client/Assets/TwelveTails/LegacyPrivate/`; this directory is ignored by Git.
+- Store generated evidence and machine-readable audit output under `artifacts/`; this directory is ignored by Git.
+- Commit reusable code, tests, schemas, documentation, and editor tooling.
+- Preserve original `.meta` files and GUID relationships when copying AssetRipper output.
+
+Architecture decision record: `docs/architecture/0001-clean-room-boundary.md`.
+
+## 2. Local environment
+
+Workspace:
+
+```text
+C:\Users\nikza\Desktop\Co-Work\-=[ 12tailsoffline ]=-
+```
+
+Important local paths:
+
+```text
+Original offline game:
+D:\CaseShop\12tails-legacy-extracted\-=[ 12tailsoffline ]=-
+
+AssetRipper Unity export:
+D:\CaseShop\12tails-legacy-unity-export\ExportedProject
+
+Game specification PDF:
+D:\CaseShop\12-tails-game-spec-roadmap.pdf
+
+Unity Editor:
+C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Unity.exe
+
+Unity project:
+client\
+
+Windows development build:
+client\Builds\Windows\TwelveTailsPrototype.exe
+```
+
+The user has installed Unity Hub/Unity 6000.6.0f1 and Blender. The Unity project version is recorded in `client/ProjectSettings/ProjectVersion.txt`.
+
+Codex's bundled Python is available at:
+
+```text
+C:\Users\nikza\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+```
+
+PowerShell scripts already locate this Python automatically where practical.
+
+## 3. Current phase status
+
+### Phase 0 - Preserve and inventory
+
+Substantially complete:
+
+- Public/private boundary established.
+- Read-only reference inspector and SHA-256 inventory implemented.
+- Engine, architecture, assemblies, level files, shared assets, and sensitive paths detected.
+- Tests and public-tree policy checks added.
+
+### Phase 1 - Recover knowledge
+
+Partially complete:
+
+- Assembly inventory tool exists.
+- Initial system, protocol, persistence, and payload catalogs exist.
+- Versioned domain contracts exist for Account, Character, Item, Equipment, Quest, Monster, and Map.
+- Strict parsing and invalid-input rejection exist.
+- NRBF/BinaryFormatter save probe exists and does not deserialize untrusted data.
+
+Still incomplete:
+
+- Review and sanitize the full assembly inventory into final type/system summaries.
+- Complete protocol/RPC semantics beyond the eight priority payloads.
+- Reconcile mission codes, scene parts, and the complete chapter structure.
+
+### Phase 2 - Offline vertical slice
+
+Complete for the prototype scope:
+
+- Unity 6 URP project.
+- Player movement, follow camera, melee attack, health, enemy, quest, reward, save/load, corrupted-save rejection, NPC placeholder, portal marker, HUD.
+- Windows x64 development build.
+- EditMode tests.
+
+Current controls:
+
+```text
+WASD  Move
+Space Attack
+F5    Save
+F9    Load
+```
+
+The current quest defeats one Carron, grants 25 EXP and one potion, and saves automatically.
+
+### Phase 3 - LAN authoritative server
+
+Complete for the planned LAN prototype:
+
+- Session/account state.
+- Two-player lobby authority and host migration.
+- Versioned TCP transport.
+- Authoritative map state, movement, combat, rewards, reconnect, and atomic persistence.
+- Rejection of forged/replayed movement and invalid combat actions.
+- Two-client TCP integration coverage.
+
+Server source is under `src/server/`.
+
+### Phase 4 - Content pipeline
+
+Active.
+
+Completed:
+
+- Canonical roster of 12 characters and their base classes.
+- Data-driven training chapter and character definitions.
+- Cross-reference and 12-variant validation.
+- Original 12 character models imported into the private asset tree.
+- Character materials converted to URP.
+- Cat default hair accessory restored.
+- Original M101 Carron Harvest map imported.
+- M101 terrain, colliders, renderers, materials, fences, gates, and Carron model validated.
+- Original Carron extracted as a reusable monster prefab with three original animation clips.
+- Carron connected to the offline combat/quest/reward/save loop.
+- All 211 exported legacy scenes audited without running legacy code.
+- Chapter 1 dependency closure imported: Tutorial 1-3 and M101-M108.
+- Chapter 1 Unity source-scene validation added.
+- Clean Unity 6 environment prefabs generated for all 11 Chapter 1 scenes.
+
+Still incomplete:
+
+- Playable M102-M108 gameplay logic.
+- Mission objectives, NPC dialogue, cutscenes, portals, spawn waves, fail conditions, bosses, drops, and rewards.
+- Monster extraction and runtime AI beyond Carron.
+- Dynamic effects, trails, and particle conversion.
+- Runtime NPC appearance/material assignment.
+- Chapter selector/map graph and transitions.
+- Remaining chapters, towns, lobbies, guild scenes, arenas, events, and multi-part dungeons.
+- Equipment, armor, weapons, animation profiles, VFX, and LOD validation at production scale.
+
+### Phase 5 - Private online alpha
+
+Not started beyond Phase 3 LAN foundations. Needs dev/staging/production environments, TLS, secrets, metrics, backups, restore drills, launcher version enforcement, moderation, load testing, latency testing, crash recovery, and hostile-request testing.
+
+### Phase 6 - Public readiness
+
+Not started. Needs provenance/license review, Git-history review, secret scanning, performance, accessibility, compatibility, reproducible release, deployment, incident response, and rollback procedures.
+
+## 4. Repository layout
+
+```text
+client/                         Unity 6 client
+  Assets/TwelveTails/
+    Editor/                     Unity editor generators and validators
+    Runtime/                    Gameplay runtime scripts
+    Tests/EditMode/             Unity EditMode tests
+    Resources/Characters/       Public/generated fallback character prefabs
+    LegacyPrivate/              Original assets; ignored by Git
+    Scenes/TrainingGround.unity Tracked prototype scene
+
+content/v1/                     Versioned data-driven content
+docs/                           Roadmap, architecture, analysis, this handoff
+src/domain/                     Strict versioned domain contracts
+src/protocol/                   Versioned network messages
+src/server/                     LAN authoritative server
+tests/                          Python unit/integration/policy tests
+tools/                          Inspectors, validators, importers, Blender tools
+scripts/                        Test, server, and asset-generation entry points
+artifacts/                      Local reports/logs; ignored by Git
+output/pdf/                     Generated development status PDF
+```
+
+## 5. Original asset migration
+
+### Characters
+
+Private generated character prefabs:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Resources/OriginalCharacters/
+```
+
+All 12 characters have original visual assets. `LegacyAssetValidator.GenerateOriginalCharacterPrefabsIfAvailable()` regenerates them, applies default appearance, converts materials, and attaches Cat's default hair.
+
+The generated public fallback characters under `client/Assets/TwelveTails/Resources/Characters/` remain useful when private assets are unavailable. `CharacterSelector` prefers the original private resource path when present.
+
+### M101 and Carron
+
+Source scene:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Scene/M101_CarronHarvest.unity
+```
+
+Converted scene:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Scenes/M101_CarronHarvest_URP.unity
+```
+
+Existing M101 environment resource used by `VerticalSliceBuilder`:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Resources/OriginalMaps/M101_CarronHarvest.prefab
+```
+
+Carron resource:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Resources/OriginalMonsters/Carron.prefab
+```
+
+Carron validation:
+
+- One renderer.
+- One supported URP material.
+- One legacy `Animation` component.
+- Three animation clips.
+- Default clip name reported as `root`.
+- No embedded collider in the visual prefab; gameplay root owns the capsule collider, `Health`, and `EnemyTarget`.
+
+M101 validation after fence/gate repair:
+
+- Renderers: 68 in the full converted source scene.
+- Meshes: 14 distinct.
+- Materials: 26.
+- Colliders: 54.
+- Terrains: 1.
+- Original Carrons in source: 6.
+- Carrons retained in the reusable M101 environment: 0.
+- Gates: 3.
+- Short fences: 14.
+- Long fences: 6.
+- Invalid structure meshes: 0.
+- Unsupported materials: 0.
+
+### Chapter 1 imported source set
+
+Imported scenes:
+
+```text
+M100_GameTutorial1.unity
+M100_GameTutorial2.unity
+M100_GameTutorial3.unity
+M101_CarronHarvest.unity
+M102_MupoRoundUp.unity
+M103_BugTrouble.unity
+M104_StingbugNest.unity
+M105_NeedleCave.unity
+M106_BoldasRecruitment.unity
+M107_RequestFromAlcacia.unity
+M108_OneOnOneBout.unity
+```
+
+Import result:
+
+- 11 scenes.
+- 1,020 dependency assets.
+- Approximately 180.9 MiB.
+- 30 extra individual meshes recovered for old static-batched objects.
+- Zero unresolved GUIDs.
+- Zero static-batch names left unresolved by the import planner.
+
+Import plan:
+
+```text
+artifacts/chapter-1-import-plan.json
+```
+
+Unity source-scene validation:
+
+```text
+artifacts/legacy-chapter-1-unity-validation.txt
+```
+
+### Chapter 1 environment prefabs
+
+Generated prefabs:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Resources/OriginalChapter1Maps/
+```
+
+Generated converted scenes:
+
+```text
+client/Assets/TwelveTails/LegacyPrivate/Scenes/Chapter1/
+```
+
+Generation report:
+
+```text
+artifacts/legacy-chapter-1-environment-generation.txt
+```
+
+Latest successful results:
+
+| Scene | Renderers | Static mesh repairs | Dynamic containers removed | Dynamic mesh placeholders removed |
+|---|---:|---:|---:|---:|
+| M100_GameTutorial1 | 8 | 0 | 2 | 0 |
+| M100_GameTutorial2 | 49 | 0 | 2 | 0 |
+| M100_GameTutorial3 | 47 | 13 | 2 | 0 |
+| M101_CarronHarvest | 45 | 39 | 1 | 0 |
+| M102_MupoRoundUp | 34 | 0 | 2 | 0 |
+| M103_BugTrouble | 134 | 0 | 1 | 0 |
+| M104_StingbugNest | 39 | 12 | 2 | 0 |
+| M105_NeedleCave | 66 | 0 | 2 | 0 |
+| M106_BoldasRecruitment | 39 | 0 | 2 | 0 |
+| M107_RequestFromAlcacia | 42 | 0 | 2 | 2 |
+| M108_OneOnOneBout | 39 | 0 | 3 | 0 |
+
+Every generated environment prefab currently reports:
+
+```text
+missingMeshes=0
+missingMaterials=0
+unsupportedMaterials=0
+missingScripts=0
+```
+
+The converter removes the `NPC`, `Icons`, and `TestControl` containers from environment prefabs. It also removes known runtime-generated missing-mesh placeholders such as `LineEmitter`, `ImageEmitter`, `TrailEmitter`, `ImageEffect`, and `ZodiacRing`. These must be recreated later through runtime spawn/VFX systems.
+
+Important: `VerticalSliceBuilder` still loads `Resources/OriginalMaps/M101_CarronHarvest`. It has not yet been switched to the newer `Resources/OriginalChapter1Maps/M101_CarronHarvest` path. Compare both prefabs visually before changing the runtime path, then update the builder once the newer prefab is confirmed.
+
+## 6. Full legacy scene audit
+
+Original player files contain 271 `level*` binaries. AssetRipper exported 211 readable Unity scenes. The 60-file difference is not yet reconciled.
+
+Exported scene categories:
+
+| Category | Count |
+|---|---:|
+| Mission | 186 |
+| Town | 8 |
+| Lobby | 7 |
+| Guild | 9 |
+| Account/login | 1 |
+| Total | 211 |
+
+Inventory across the 211 scenes:
+
+| Item | Count |
+|---|---:|
+| GameObjects | 66,727 |
+| Renderers | 12,282 |
+| MeshFilters | 9,903 |
+| Skinned meshes | 2,442 |
+| Colliders | 6,721 |
+| Terrain instances | 132 across 130 scenes |
+| MonoBehaviours | 10,118 |
+| Animation/Animator components | 3,233 |
+| AudioSources | 1,394 |
+| Legacy particle components | 1,047 |
+| Lightmapped renderers | 250 across 76 scenes |
+| Legacy subset/static renderers | 231 across 25 scenes |
+| Fence/gate/door/wall/barrier objects | 1,561 |
+| Unresolved non-built-in GUIDs | 0 |
+
+Affected-scene counts:
+
+| Migration area | Scenes |
+|---|---:|
+| Runtime script reconstruction | 211 |
+| Audio migration | 211 |
+| Animation validation | 201 |
+| Terrain upgrade | 130 |
+| Legacy particles/trails | 97 |
+| Lightmap rebuild | 76 |
+| Legacy static batching | 25 |
+| Structure visibility exposed to static-batch loss | 23 |
+
+Static-batch scenes that need individual-mesh repair:
+
+```text
+G36_ForestCamp
+L16_LobbyForest
+M100_GameTutorial3
+M101_CarronHarvest
+M104_StingbugNest
+M405_WindValleyEntrance1
+M501_ThroughTheSwamp1
+M504_WaterTemple
+M707_MachineFromThePast
+M902_MadVegetables
+M916_CityUnderSiege
+M922_DancingHippos
+M946_GoldenKingBug
+M965_UltimateQuiz
+M971_MaohsTomb2
+M971_MaohsTomb3
+M971_MaohsTomb4
+M971_MaohsTomb5
+M971_MaohsTomb6
+M971_MaohsTomb7
+M971_MaohsTomb9
+M971_MaohsTomb10
+M983_CrystalDefense
+M984_SteelChaos
+T51_MainStreet
+```
+
+Audit outputs:
+
+```text
+artifacts/legacy-scene-migration-audit.md
+artifacts/legacy-scene-audit.csv
+artifacts/legacy-scene-audit.json
+artifacts/all-scenes-import-plan.json
+```
+
+The JSON/CSV/Markdown reports stay ignored because they are derived from private evidence.
+
+### Chapter-count reconciliation
+
+The user states that the main game has 12 chapters with 8 stages each, or 96 main stages. The exported data does not map one scene file to one stage:
+
+- 186 exported mission scene files.
+- 120 unique mission codes in exported scene filenames.
+- 140 `case` entries in legacy `MissionData`.
+- 90 entries explicitly marked `eMissionType.story` by the recovered script.
+- Several missions have multiple scene parts, such as `M205_...1` and `M205_...2`.
+- The `M9xx` range includes later story content, arenas, events, and multi-part dungeons.
+
+Do not infer chapter completion from raw `.unity` file counts. Build a canonical 96-stage manifest by correlating:
+
+1. The user's 12-by-8 chapter structure.
+2. `MissionData` mission metadata.
+3. Exported scene filename codes and numbered parts.
+4. The original 271 level binaries/build settings.
+5. Portal destinations, lobby entries, and observed offline-game behavior.
+
+Any ambiguity should be recorded with evidence and confidence instead of silently guessed.
+
+## 7. Important migration findings and fixes
+
+### Old Unity static batching
+
+Unity 3.5 scenes can reference a large `Combined Mesh` and store per-renderer subsets in `m_SubsetIndices`. Unity 6 does not reliably reconstruct the old subset selection, leaving GameObjects, colliders, and materials present while the visible fence/gate/structure disappears.
+
+M101 originally exhibited this problem. The fix assigns original individual visual meshes:
+
+```text
+Plain_Gate_tri
+PlainFence_short
+PlainFence_long
+```
+
+The generalized importer now searches for likely individual meshes whenever a scene contains non-empty `m_SubsetIndices`. It normalizes `_tri`, `_model_`, `_collision_`, `_n`, separators, and numeric suffixes. Collision/collider meshes are excluded from visual candidates.
+
+The Unity Chapter 1 converter performs a second repair stage by replacing loaded `Combined Mesh` references with the uniquely highest-scoring imported individual mesh. It throws on no match or an ambiguous best match. Keep this fail-closed behavior.
+
+### Legacy dynamic meshes
+
+The following missing `MeshFilter` objects are expected runtime-generated effects rather than lost static assets:
+
+```text
+LineEmitter
+ImageEmitter
+TrailEmitter
+ImageEffect
+ZodiacRing
+```
+
+They occur in LifeAltar effects, weapon trails, CosmoClock effects, and the zodiac ring. Rebuild them with Unity 6 `ParticleSystem`, `TrailRenderer`, meshes generated by new C# code, or VFX Graph as appropriate. Preserve original textures/materials/audio as references.
+
+### Runtime character materials
+
+Some legacy NPC `SkinnedMeshRenderer` components have an empty material slot because the old runtime selected skin/armor material dynamically. This appears in M106-M108, especially all 12 character NPCs in M107. The source-scene validator classifies these as `RUNTIME_CHARACTER_MATERIAL`, not unexplained loss.
+
+When adding NPCs back to playable scenes, use the existing original-character material/appearance pipeline. Do not put arbitrary fallback materials into these slots.
+
+### Materials and shaders
+
+`LegacyAssetValidator.ConvertMaterial` converts legacy materials to `Universal Render Pipeline/Lit`, copies the main texture/color/scale/offset, sets smoothness and metallic to zero, disables culling, and derives opaque/cutout/transparent settings from the old shader name and render queue.
+
+This removes the pink error shader, but visual QA is still required for:
+
+- Alpha cutout thresholds.
+- Additive particles.
+- Emission.
+- Normal maps.
+- Water.
+- Two-sided foliage.
+- Terrain layers.
+- Material animation and UV scrolling.
+
+### Terrain and lighting
+
+Terrain positions and height data load in Unity 6, but each of the 130 terrain scenes still needs checks for splat maps, detail meshes, trees, terrain shader, water, bounds, player grounding, and collision.
+
+Legacy lightmap indices are evidence only. Re-bake lighting in Unity 6 after environment extraction. Do not assume old lightmaps are correct simply because renderers retain an index.
+
+### Legacy scripts
+
+Imported `.cs` source is renamed to `.cs.legacy-source` so Unity 6 cannot compile or execute it. Environment prefabs remove Missing MonoBehaviours after their presence is recorded.
+
+Gameplay-critical behaviors must be written anew in C# and validated against observed behavior. Examples include mission state, spawn triggers, AI, escort/herding rules, timers, fail conditions, cutscenes, doors, portals, drops, and boss phases.
+
+## 8. Key code and tools
+
+### Unity editor tooling
+
+`client/Assets/TwelveTails/Editor/LegacyAssetValidator.cs`
+
+Menu commands and callable methods include:
+
+- Validate original character assets.
+- Generate original character prefabs.
+- Generate original M101 map pilot.
+- Validate original M101 map pilot.
+- Validate imported Chapter 1 scenes.
+- Generate Chapter 1 environment prefabs.
+
+`client/Assets/TwelveTails/Editor/VerticalSliceBuilder.cs`
+
+- Builds `TrainingGround.unity`.
+- Loads the private M101 environment when available.
+- Creates the fallback ground otherwise.
+- Creates player, Carron target, NPC placeholder, portal, camera, light, HUD, save system, and LAN client.
+- Builds the Windows development player through `BuildWindows()`.
+
+### Private importer
+
+`tools/import_legacy_assets.py`
+
+Capabilities:
+
+- One or more `--entry` paths.
+- One or more `--entry-glob` patterns.
+- GUID dependency closure.
+- Preserves original relative paths and `.meta` files.
+- Renames `.cs` to `.cs.legacy-source`.
+- Filters Unity built-in GUIDs.
+- Optional static-batch individual mesh discovery.
+- Optional JSON manifest.
+- Dry run unless `--copy` is passed.
+
+Chapter 1 import command:
+
+```powershell
+$python = 'C:\Users\nikza\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+& $python tools/import_legacy_assets.py `
+  --export-project 'D:\CaseShop\12tails-legacy-unity-export\ExportedProject' `
+  --entry-glob 'Scene/M1*.unity' `
+  --destination-assets 'client/Assets/TwelveTails/LegacyPrivate' `
+  --include-static-batch-meshes `
+  --manifest 'artifacts/chapter-1-import-plan.json' `
+  --copy
+```
+
+Complete 211-scene dry-run plan:
+
+```powershell
+& $python tools/import_legacy_assets.py `
+  --export-project 'D:\CaseShop\12tails-legacy-unity-export\ExportedProject' `
+  --entry-glob 'Scene/*.unity' `
+  --destination-assets 'client/Assets/TwelveTails/LegacyPrivate' `
+  --include-static-batch-meshes `
+  --manifest 'artifacts/all-scenes-import-plan.json'
+```
+
+Latest complete plan:
+
+- 211 scene entries.
+- 7,350 dependency assets.
+- Approximately 1,843.7 MiB before subsequent matcher improvements.
+- 25 static-batch scenes.
+
+Run the dry plan again before a full copy because the matcher has since been improved.
+
+### Scene audit
+
+`tools/audit_legacy_scenes.py`
+
+Example:
+
+```powershell
+& $python tools/audit_legacy_scenes.py `
+  --export-project 'D:\CaseShop\12tails-legacy-unity-export\ExportedProject' `
+  --output-json 'artifacts/legacy-scene-audit.json' `
+  --output-csv 'artifacts/legacy-scene-audit.csv' `
+  --output-markdown 'artifacts/legacy-scene-migration-audit.md' `
+  --level-file-count 271 `
+  --expected-chapters 12 `
+  --expected-stages-per-chapter 8
+```
+
+### Runtime gameplay files
+
+```text
+client/Assets/TwelveTails/Runtime/CharacterRoster.cs
+client/Assets/TwelveTails/Runtime/CharacterSelector.cs
+client/Assets/TwelveTails/Runtime/PlayerMotor.cs
+client/Assets/TwelveTails/Runtime/MeleeAttack.cs
+client/Assets/TwelveTails/Runtime/Health.cs
+client/Assets/TwelveTails/Runtime/EnemyTarget.cs
+client/Assets/TwelveTails/Runtime/QuestProgress.cs
+client/Assets/TwelveTails/Runtime/PlayerProgress.cs
+client/Assets/TwelveTails/Runtime/ProgressSave.cs
+client/Assets/TwelveTails/Runtime/SaveCoordinator.cs
+client/Assets/TwelveTails/Runtime/LanGameClient.cs
+client/Assets/TwelveTails/Runtime/PrototypeHud.cs
+```
+
+### Content and validation
+
+```text
+content/v1/characters.json
+content/v1/training_chapter.json
+tools/content_validator/validate_content.py
+src/domain/contracts.py
+```
+
+The current content schema is sufficient for the prototype but not for the full chapter campaign. Extend it in a versioned, backwards-compatible way with explicit validation.
+
+## 9. Tests and build commands
+
+Run Python tests, public-tree policy, and content validation:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test.ps1
+```
+
+Latest Python unit-test result during this handoff: 30 tests passed.
+
+Run Unity EditMode tests:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-unity.ps1
+```
+
+Latest known Unity result before the Chapter 1 converter work: 6 EditMode tests passed. Re-run after any runtime/editor code change when the Unity Editor is closed.
+
+Run the LAN server:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run-server.ps1
+```
+
+Generate the current training scene through Unity:
+
+```powershell
+& 'C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Unity.exe' `
+  -batchmode -quit `
+  -projectPath (Resolve-Path 'client') `
+  -executeMethod TwelveTails.EditorTools.VerticalSliceBuilder.Build `
+  -logFile (Join-Path (Resolve-Path 'artifacts') 'training-ground-build.log')
+```
+
+Build Windows:
+
+```powershell
+& 'C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Unity.exe' `
+  -batchmode -quit `
+  -projectPath (Resolve-Path 'client') `
+  -executeMethod TwelveTails.EditorTools.VerticalSliceBuilder.BuildWindows `
+  -logFile (Join-Path (Resolve-Path 'artifacts') 'windows-build.log')
+```
+
+Unity 6000.6 may launch a worker process and return control to PowerShell before the worker exits. Check `Get-Process Unity`, wait for it to finish, and inspect the requested log for `Exiting batchmode successfully now!` or `Build Finished, Result: Success.` Do not start another batch operation against the same project while the GUI Editor is open.
+
+The character generator recreates tracked Animator Controller files and `TrainingGround.unity`, producing noisy file-ID/line-ending changes. After validation/build, restore generated noise unless the scene/controller change is intentional:
+
+```powershell
+git restore -- 'client/Assets/TwelveTails/Generated/Controllers' 'client/Assets/TwelveTails/Scenes/TrainingGround.unity'
+```
+
+Never restore intentional source edits indiscriminately.
+
+## 10. Immediate next implementation plan
+
+### Priority 1 - Make M102 playable end to end
+
+M102 is `Mupo Round Up`. The recovered mission text says the player must herd six Mupo into a pen without killing them.
+
+Implement:
+
+1. Add a map/chapter runtime catalog that can load `OriginalChapter1Maps/M102_MupoRoundUp`.
+2. Create a map-selection/debug menu or command-line/default-map option so M101 and M102 can both be launched without editing code.
+3. Extract the original Mupo model, materials, skeleton, and animation clips into `Resources/OriginalMonsters/Mupo.prefab`.
+4. Record source spawn locations and pen/trigger geometry from M102.
+5. Implement authoritative `MupoHerdTarget` behavior in new C#.
+6. Implement a pen trigger that counts six unique live Mupo.
+7. Reject lethal player damage or fail the mission if a Mupo dies, based on observed original behavior.
+8. Add HUD objective progress, completion, fail state, reward, save, and reload.
+9. Mirror mission decisions on the LAN server; the client should request actions while the server owns success/failure/reward.
+10. Add EditMode/domain/server tests for unique counting, death/failure, reward idempotency, and save round-trip.
+11. Build Windows and visually test terrain, pen, fences, Mupo scale, animation, collision, and camera.
+
+### Priority 2 - General map runtime
+
+Replace the hard-coded training map selection with data-driven definitions containing:
+
+- Map ID and original resource path.
+- Spawn locations and rotations.
+- Player/team spawn groups.
+- NPC definitions.
+- Monster groups and respawn rules.
+- Trigger volumes.
+- Portals and destinations.
+- Mission objective graph.
+- Lighting/music/weather profiles.
+- Safe zones and instance rules.
+
+Keep environment assets separate from runtime entities. This separation is already established by the Chapter 1 converter.
+
+### Priority 3 - Chapter 1 missions M103-M108
+
+Work in order after M102 proves the reusable runtime:
+
+- M103 Bug Trouble: protect Carrons/Goat NPC while defeating Stingbugs.
+- M104 Stingbug Nest: enemy spawn/combat mission and nest environment.
+- M105 Needle Cave: cave navigation, enemies, lighting, and objective triggers.
+- M106 Boldas Recruitment: Boldas actor, weapon/trail reconstruction, dialogue/combat logic.
+- M107 Request From Alcacia: 12 NPC appearances, CosmoClock/ImageEffect/ZodiacRing reconstruction, dialogue/cutscene.
+- M108 One On One Bout: duel rules, Boldas weapon trail, win/fail state.
+
+For every mission, first inventory actors, missing scripts, triggers, animations, audio, and runtime-created effects. Then implement one complete objective/reward/save/server loop before moving to the next.
+
+### Priority 4 - Scale migration to all scenes
+
+After Chapter 1 gameplay/runtime patterns stabilize:
+
+1. Re-run the complete 211-scene import dry plan with the latest matcher.
+2. Review total size and every ambiguous/unresolved mesh name.
+3. Copy in batches by chapter or scene family, not one uncontrolled 1.8+ GiB import.
+4. Generalize `GenerateChapterOneEnvironmentPrefabs` into a manifest-driven converter instead of duplicating methods per chapter.
+5. Validate every generated prefab for missing mesh/material/script, supported shaders, renderer count, collider count, terrain presence, bounds, and expected dynamic-container separation.
+6. Add screenshot/reference comparison checkpoints for every playable scene.
+7. Handle the remaining 25 static-batch scenes explicitly and retain the mapping decisions in a private manifest.
+
+### Priority 5 - Reconcile all content
+
+- Build the canonical 12-chapter/96-stage manifest.
+- Account for every one of the 271 original level binaries.
+- Map multi-part scenes to one logical mission.
+- Classify extra content: town, guild, lobby, arena, event, dungeon, tutorial, PvP.
+- Extract and validate all monsters, bosses, NPCs, structures, weapons, armor, accessories, mounts, VFX, audio, and animation clips.
+- Record provenance and private/public status for every production asset.
+
+## 11. Definition of done per map
+
+A map is not complete merely because its scene opens. Require all of the following:
+
+- Original environment meshes visible and correctly positioned.
+- No Combined Mesh/subset loss.
+- No pink/error materials.
+- Correct opaque, cutout, transparent, emission, and two-sided rendering.
+- Terrain height, layers, trees, details, water, collider, and bounds validated.
+- Lighting rebuilt or deliberately configured.
+- Expected colliders and trigger volumes present.
+- Dynamic actors removed from the environment prefab and spawned by runtime data.
+- Original actor model, default appearance, scale, orientation, skeleton, and required animations validated.
+- Runtime scripts reimplemented in C#.
+- Objective, completion, failure, reward, save/load, reconnect, and server authority implemented.
+- Portals and destination maps validated.
+- Audio and VFX triggered correctly.
+- Automated validators/tests pass.
+- Windows build smoke test passes.
+- Visual comparison against the user's offline game is reviewed.
+
+## 12. Known risks and limitations
+
+- The private AssetRipper output is large and not a complete editable reconstruction of original Unity source.
+- 60 original player level files have not yet been reconciled with exported scenes.
+- Some visual data was only recoverable by undoing legacy static batching.
+- Some meshes/materials were generated or assigned at runtime and cannot be recovered by scene dependency closure alone.
+- Removing Missing Scripts is safe for environment extraction only after their names/counts are recorded; it does not recreate gameplay.
+- Original animation clips can load while still having incorrect wrap mode, binding, events, scale, or root motion.
+- A supported URP shader does not prove visual fidelity.
+- Environment prefab generation intentionally excludes NPC/effect containers; those assets must return through data-driven runtime spawning.
+- M101 currently functions as a prototype map with one stationary Carron target. Carron AI, attacks, hit/death reactions, sound, drops, and respawn remain incomplete.
+- The current HUD and map selection are developer prototypes.
+- The generated development-status PDF predates the latest all-scene audit and Chapter 1 environment conversion and should be regenerated before external review.
+
+## 13. Recent commits
+
+```text
+eee9585 Generate Chapter 1 environment prefabs
+26696c5 Add batch legacy chapter import validation
+6e11304 Audit all legacy scene migration risks
+5eeb944 Restore M101 gate and fence meshes
+7b1d761 Integrate original Carron combat target
+8121a87 Integrate original M101 map pilot
+4df57bc Add development status PDF generator
+66997fd Restore Cat default hair accessory
+b59c456 Convert original character materials for URP
+1ad1d3c Integrate private original character assets
+dc38cc2 Fix Blender armature deformation on Unity import
+8f30622 Add Blender character production pipeline
+```
+
+Before starting new work, run `git status --short`, read `docs/ROADMAP.md`, this file, and the relevant source/report files. Keep the branch clean after each validated commit.
+
