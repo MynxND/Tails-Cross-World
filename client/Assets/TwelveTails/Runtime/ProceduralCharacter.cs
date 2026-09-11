@@ -17,15 +17,26 @@ namespace TwelveTails.Gameplay
             var index = CharacterRoster.IndexOf(characterId);
             var root = new GameObject("Character Visual");
             root.transform.SetParent(parent, false);
+            var rig = new GameObject("Rig");
+            rig.transform.SetParent(root.transform, false);
             var color = Colors[index];
-            Part(root.transform, PrimitiveType.Capsule, "Body", new Vector3(0, 0, 0), new Vector3(.75f, .72f, .65f), color);
-            Part(root.transform, PrimitiveType.Sphere, "Head", new Vector3(0, .92f, .05f), new Vector3(.82f, .72f, .76f), color);
-            Part(root.transform, PrimitiveType.Sphere, "Muzzle", new Vector3(0, .78f, .45f), new Vector3(.38f, .25f, .3f), Color.Lerp(color, Color.white, .35f));
-            Eye(root.transform, -.18f); Eye(root.transform, .18f);
-            AddSpeciesParts(root.transform, index, color);
-            AddClassProp(root.transform, index);
+            Part(rig.transform, PrimitiveType.Capsule, "Body", new Vector3(0, 0, 0), new Vector3(.75f, .72f, .65f), color);
+            Part(rig.transform, PrimitiveType.Capsule, "Armor", new Vector3(0, .12f, .02f), new Vector3(.79f, .42f, .69f), Color.Lerp(color, new Color(.18f, .28f, .42f), .55f));
+            Part(rig.transform, PrimitiveType.Sphere, "Head", new Vector3(0, .92f, .05f), new Vector3(.82f, .72f, .76f), color);
+            Part(rig.transform, PrimitiveType.Sphere, "Muzzle", new Vector3(0, .78f, .45f), new Vector3(.38f, .25f, .3f), Color.Lerp(color, Color.white, .35f));
+            var leftArm = Limb(rig.transform, "LeftArm", new Vector3(-.52f, .25f, 0), color);
+            var rightArm = Limb(rig.transform, "RightArm", new Vector3(.52f, .25f, 0), color);
+            Limb(rig.transform, "LeftLeg", new Vector3(-.24f, -.68f, 0), color);
+            Limb(rig.transform, "RightLeg", new Vector3(.24f, -.68f, 0), color);
+            Eye(rig.transform, -.18f); Eye(rig.transform, .18f);
+            AddSpeciesParts(rig.transform, index, color);
+            AddClassProp(rightArm.transform, index);
+            root.AddComponent<CharacterAnimationDriver>();
             return root;
         }
+
+        private static GameObject Limb(Transform root, string name, Vector3 position, Color color) =>
+            Part(root, PrimitiveType.Capsule, name, position, new Vector3(.2f, .48f, .2f), color);
 
         private static void AddSpeciesParts(Transform root, int index, Color color)
         {
@@ -80,13 +91,16 @@ namespace TwelveTails.Gameplay
 
         private static void AddClassProp(Transform root, int index)
         {
+            var socket = new GameObject("WeaponSocket");
+            socket.transform.SetParent(root, false);
+            socket.transform.localPosition = new Vector3(0, -.35f, .12f);
             var propColor = new Color(.22f, .25f, .3f);
             if (index <= 2 || index == 11)
-                Part(root, PrimitiveType.Cube, "Class Prop", new Vector3(.58f, .35f, .05f), new Vector3(.12f, 1.1f, .12f), propColor, new Vector3(0, 0, -18));
+                Part(socket.transform, PrimitiveType.Cube, "Weapon", Vector3.zero, new Vector3(.12f, 1.1f, .12f), propColor, new Vector3(0, 0, -18));
             else if (index == 5 || index == 7 || index == 8 || index == 9)
-                Part(root, PrimitiveType.Cylinder, "Class Prop", new Vector3(.58f, .35f, .05f), new Vector3(.12f, .65f, .12f), propColor, new Vector3(0, 0, -12));
+                Part(socket.transform, PrimitiveType.Cylinder, "Weapon", Vector3.zero, new Vector3(.12f, .65f, .12f), propColor, new Vector3(0, 0, -12));
             else
-                Part(root, PrimitiveType.Sphere, "Class Prop", new Vector3(.58f, .35f, .05f), Vector3.one * .25f, propColor);
+                Part(socket.transform, PrimitiveType.Sphere, "Weapon", Vector3.zero, Vector3.one * .25f, propColor);
         }
 
         private static void Eye(Transform root, float x) =>

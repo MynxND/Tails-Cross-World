@@ -61,7 +61,8 @@ Progress:
 - [x] Add automated cross-reference and 12-character variant validation.
 - [x] Generate 12 distinct, addressable Unity prefabs and a persistent character-selection screen.
 - [x] Drive player/monster spawns, NPC placement, and portal markers from validated chapter data.
-- [ ] Add production-ready model, rig, animation, armor, and weapon assets.
+- [x] Add an original Unity-native low-poly rig, idle/run/attack motion, weapon socket, armor shell, and class prop to every character prefab.
+- [ ] Replace low-poly geometry with final art-directed meshes, authored skin weights, animation clips, textures, VFX, and LODs.
 
 ## Phase 5 - Private online alpha
 

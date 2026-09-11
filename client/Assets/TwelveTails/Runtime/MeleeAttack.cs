@@ -16,6 +16,7 @@ namespace TwelveTails.Gameplay
 
         public bool Attack()
         {
+            GetComponentInChildren<CharacterAnimationDriver>()?.PlayAttack();
             var center = transform.position + transform.forward * (range * 0.6f);
             foreach (var collider in Physics.OverlapSphere(center, range, targetMask, QueryTriggerInteraction.Collide))
             {

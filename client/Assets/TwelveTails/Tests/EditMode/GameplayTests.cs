@@ -87,7 +87,11 @@ namespace TwelveTails.Tests
             foreach (var id in CharacterRoster.Ids)
             {
                 var name = char.ToUpperInvariant(id[0]) + id.Substring(1);
-                Assert.That(Resources.Load<GameObject>($"Characters/{name}"), Is.Not.Null, $"Missing prefab for {id}");
+                var prefab = Resources.Load<GameObject>($"Characters/{name}");
+                Assert.That(prefab, Is.Not.Null, $"Missing prefab for {id}");
+                Assert.That(prefab.transform.Find("Rig/Armor"), Is.Not.Null, $"Missing armor variant for {id}");
+                Assert.That(prefab.transform.Find("Rig/RightArm/WeaponSocket/Weapon"), Is.Not.Null, $"Missing weapon for {id}");
+                Assert.That(prefab.GetComponent<CharacterAnimationDriver>(), Is.Not.Null, $"Missing animation driver for {id}");
             }
         }
     }
